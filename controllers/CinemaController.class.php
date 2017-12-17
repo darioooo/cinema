@@ -16,12 +16,6 @@ class CinemaController
 	function home(Request $request, Response $response, $args)
 	{
 		
-		$data['title']="Libreria Page";
-		$libri = new Libri ();
-		$lib_aut = new Lib_aut ();
-		$autore = new Autori();
-		//echo intval($data['pag']);exit()
-		//$pagination=intval($data['pag']) / $n_righe;
 		$data['libro']= $libri-> select();
 		foreach ($data['libro'] as $k => $value) {
 		
