@@ -15,27 +15,20 @@ class CinemaController
 	 */
 	function home(Request $request, Response $response, $args)
 	{
-		
-		$data['libro']= $libri-> select();
-		foreach ($data['libro'] as $k => $value) {
-		
-	
-				$id = $lib_aut->select(array("id_lib"=>$value['id_lib']),'id_aut');
-			
-	
-		
 
-		if (is_null($id)) {
-			
-		}
-		else
-		{
-			foreach ($id as $i => $a) {
-			
-			$data['libro'][intval($k)]['autore'][intval($i)]=$autore->select($a);
-			
-			}
-		}
+try{
+
+
+		$table = (new HomeView(null,null));
+		$page = new Page();
+		$page->addView("content",$table);
+		return $response->write($page->render());
+	
+	}
+	catch(Exception $e )
+	{
+		echo $e->getMessage();
+	}	
 	}
 
 	
