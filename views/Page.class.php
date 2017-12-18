@@ -1,7 +1,7 @@
 <?php
 class Page extends View
 {
-	function __construct($template="int.ms",$data=[],$var="content")
+	function __construct($template="index.ms",$data=[],$var="content")
 	{
 		parent::__construct($template,$data,$var);	
 	}
