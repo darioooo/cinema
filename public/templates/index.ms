@@ -21,24 +21,8 @@
 <script src="http://127.0.0.1/cinema/js/bootstrap3.3.5/bootstrap.min.js"></script>
 
 
+<link rel="stylesheet" href="http://127.0.0.1/cinema/css/stile.css">
 
-
-<style type="text/css">
-  
- 
-
-.navbar-brand {
-  padding: 0px;
-}
-.navbar-brand>img {
-  height: 100%;
-  padding: 3px;
-  padding-left: 20px;
-  width: auto;
-}
-
-
-</style>
 
 
 
@@ -54,7 +38,7 @@
     </div>
   </div>
 </nav>
-<div class="container">
+<div class="container-fluid">
 {{{content}}}
 </div>
 

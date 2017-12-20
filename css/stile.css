@@ -1,9 +1,14 @@
 #homediv {
 	height: 60%;
+	width: 100%;
+	display: inline-block;
 }
 
 #imgfilm {
-	height: 5%;
+	float: left;
+	height: 50%;
+	width: 20%;
+
 }
 #topdiv{
 	height: 20%;

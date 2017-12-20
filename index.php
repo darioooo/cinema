@@ -1,6 +1,6 @@
 <?php
 require 'lib/slim/autoload.php';
-include "lib/mustache/mustache.php";
+include "lib/mustache/mustache.php"; 
 error_reporting(E_ALL);
 ini_set('display_errors', 'On');
 function my_Autoload($class)
