@@ -3,7 +3,8 @@
  <head>
 
  <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="http://127.0.0.1/slim/css/bootstrap3.3.5/bootstrap.min.css">
+<link rel="stylesheet" href="http://127.0.0.1/cinema/css/bootstrap3.3.5/bootstrap.min.css">
+<link rel="stylesheet" href="http://127.0.0.1/cinema/css/stile.css">
 
 
 <!-- jQuery library -->
@@ -50,15 +51,16 @@
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="#"></a>
-
     </div>
-    
   </div>
-
 </nav>
-
+<div class="container">
 {{{content}}}
+</div>
 
+  <footer style="background-color: red;">
+    <p>Sito fatto dal Pinza e da Gabri</p>
+  </footer>
  </body>
  </html>
  

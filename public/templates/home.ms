@@ -1,23 +1,9 @@
-
-
-
-<script src="http://127.0.0.1/cinema/js/feedreader.js"></script>
- <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    
-
-  <script language="JavaScript" type="text/javascript">
-  $(document).ready(function() {
-$('#boxnews').feedreader({
-  targeturl: 'https://rss.news.yahoo.com/rss/topstories',
-  items: 3,
-  descLength: 30
-});
-});
-</script>
-
-    </script>
-
-<center>
-
-</center>
-<div id="boxnews"></div>
+<div id="topdiv" class="container-fluid">
+	
+</div>
+<div id="homediv" class="container">
+	<img src="https://s3-us-west-2.amazonaws.com/lightstalking-assets/wp-content/uploads/2017/02/21100120/more-1666629_1280.jpg" id="imgfilm">
+</div>
+<div id="downdiv" class="container-fluid">
+	
+</div>
