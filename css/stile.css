@@ -5,9 +5,22 @@
 #imgfilm {
 	height: 5%;
 }
-#topdiv{
+
+#topdiv {
+	height: 20%;
+	background-color: gray;
+}
+
+#downdiv {
 	height: 20%;
 }
-#downdiv{
-	height: 20%;
+
+a {
+	color: white;
+}
+
+#ciao {
+	border-radius: 0px;
+	border: 0px;
+	background-color: maroon;
 }

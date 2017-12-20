@@ -25,13 +25,7 @@ function my_Autoload($class)
 	}
 }
 
-
 spl_autoload_register("my_Autoload");
 $app = new Application(); // istanzio applicazione.class.php
 $app->bootstrap();
 $app->handle();
-
-
-
-
-
