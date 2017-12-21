@@ -31,6 +31,38 @@ try{
 	}	
 	}
 
+
+	/**
+	 * @desc This method provides the registration html page
+	 * @link /admin
+	 * @method GET
+	 * @param Request $request
+	 * @param Response $response
+	 * @param array $args
+	 * @return \Slim\Http\Response
+	 */
+	function admin(Request $request, Response $response, $args)
+	{
+
+try{
+
+	$feed = new FeedRssController();
+	$data=$feed->FeedRssController();
+	var_dump($data);
+		$table = (new FeedRssView(null,$data));
+		$page = new Page();
+		$page->addView("content",$table);
+		return $response->write($page->render());
+	
+	}
+	catch(Exception $e )
+	{
+		echo $e->getMessage();
+	}	
+	}
+
+
+
 	
 
 	
