@@ -27,8 +27,12 @@ class FeedRssController
 	
 		$path=parse_url($matches[0][$i], PHP_URL_PATH);
 		if (strpos($path, '.jpg')!= false) {
-			array_push($data['imageurl'], $matches[0][$i]);
-			array_push($data['titolo'], $titolo);
+			$data['film'][$a] = array('url' =>$matches[0][$i] ,'titolo'=>$titolo ,'id'=>$a);
+		
+			
+		
+			//$data['film']['titolo'][$a]=$titolo;
+
 			//$data['imageurl']=$matches[0][$i];
 			//$data['titolo']=$titolo;
 		//  echo "<img src='".$matches[0][$i]."'></img>";
@@ -40,6 +44,7 @@ class FeedRssController
 		}
 		  
 		}
+
 		return $data; 
 
 	}

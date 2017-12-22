@@ -20,7 +20,7 @@
 	height: 20%;
 }
 
-a {
+ {
 	color: white;
 }
 
@@ -28,4 +28,23 @@ a {
 	border-radius: 0px;
 	border: 0px;
 	background-color: maroon;
+}
+
+div#rightdiv{
+	width: 50%;
+	display: inline-flex;
+	
+
+}
+
+#leftdiv{
+	width: 50%;
+
+	
+
+}
+
+#block{
+	display: inline;
+	
 }
