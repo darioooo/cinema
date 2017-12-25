@@ -13,8 +13,11 @@
        $("#labeltitolo").text(titolo);
    });
 	$("#Submit").click(function(){
-		
-		 var dataString = 'titolo='+ titolo + '&url='+ url ;
+			$( "form" ).on( "submit", function( event ) {
+ 	 		event.preventDefault();
+  			console.log( $( this ).serialize() );
+			});
+		 var dataString = 'titolo='+ titolo + '&url='+ url  ;
 		$.ajax({
 		  type: "POST",
 		  url: "action_admin",
@@ -64,7 +67,7 @@
   </div>
   <div class="form-group">
     <label for="comment">descrizione</label>
-    <textarea class="form-control" rows="5"> </textarea>
+    <textarea id="desc" class="form-control" rows="5"> </textarea>
   </div>
   <div class="checkbox">
     

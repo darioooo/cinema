@@ -66,7 +66,7 @@ try{
 /**
 	 * @desc This method provides the registration html page
 	 * @link /save_film
-	 * @method POST
+	 * @method 
 	 * @param Request $request
 	 * @param Response $response
 	 * @param array $args
@@ -79,13 +79,19 @@ try{
 		$titolo =$_POST["titolo"];
 		$titolourl=  trim ($titolo ," ");
 
-		$img = "/image/".$titolourl.".jpg";
-		
-
+		$img = "image/".$titolourl.".jpg";
 		file_put_contents($img, file_get_contents($url));
-
-		
-
+		$insert_film['']=$img;
+		$insert_film['immagine']=$img;
+		$insert_film['titolo']= $titolo;
+		$film = new Film();
+		try{
+		$film->insert($insert_film);
+		}
+		catch(Exception $e )
+	    {
+			echo $e->getMessage();
+		}	
 
 
 
