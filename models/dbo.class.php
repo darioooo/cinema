@@ -146,5 +146,20 @@ class dbo
 
 	 }
 
+	 function unvisible_last_id()
+	 {
+
+
+	 	$sql = 'UPDATE '.$this->table.' SET visualizzato = FALSE  WHERE id ORDER by id DESC LIMIT 1';
+	 	try {
+			return $this->db->query($sql);
+			
+		} catch (Exception $e) {
+
+			echo $e->getMessage();
+			
+		}
+	 }
+
 
 }

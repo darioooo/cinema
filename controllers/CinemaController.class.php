@@ -18,7 +18,7 @@ class CinemaController
 
 try{
 
-
+		
 		$table = (new HomeView(null,null));
 		$page = new Page();
 		$page->addView("content",$table);
@@ -85,6 +85,8 @@ try{
 		$insert_film['immagine']=$img;
 		$insert_film['titolo']= $titolo;
 		$film = new Film();
+		$film->unvisible_last_id();
+		
 		try{
 		$film->insert($insert_film);
 		}
