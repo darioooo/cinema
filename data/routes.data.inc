@@ -16,3 +16,6 @@ $this->map(['GET'],"/home","CinemaController:home");
 $this->map(['GET'],"/admin","CinemaController:admin");
 
 $this->map(['GET'],"/libri/{id:[\d]+}","LibreriaController:get");
+
+
+$this->map(['POST'],"/action_admin","CinemaController:save_film");

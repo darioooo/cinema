@@ -63,6 +63,35 @@ try{
 
 
 
+/**
+	 * @desc This method provides the registration html page
+	 * @link /save_film
+	 * @method POST
+	 * @param Request $request
+	 * @param Response $response
+	 * @param array $args
+	 * @return \Slim\Http\Response
+	 */
+	function save_film(Request $request, Response $response, $args)
+	{
+		
+		$url =$_POST["url"];
+		$titolo =$_POST["titolo"];
+		$titolourl=  trim ($titolo ," ");
+
+		$img = "/image/".$titolourl.".jpg";
+		
+
+		file_put_contents($img, file_get_contents($url));
+
+		
+
+
+
+
+		
+	}
+
 	
 
 	
