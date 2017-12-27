@@ -81,7 +81,8 @@ try{
 
 		$img = "image/".$titolourl.".jpg";
 		file_put_contents($img, file_get_contents($url));
-		$insert_film['']=$img;
+		//$insert_film['']=$img;
+		$insert_film['visualizzato']=TRUE;
 		$insert_film['immagine']=$img;
 		$insert_film['titolo']= $titolo;
 		$film = new Film();

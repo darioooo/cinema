@@ -27,6 +27,7 @@ class dbo
 		$binds = "('".implode("','",$values)."')";
 		$sql = "INSERT INTO ".$this->table." ".$fields." VALUES ".$binds;
 		//var_dump($sql);exit();
+		
 		return $this->db->query($sql);
 
 		
