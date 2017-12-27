@@ -18,8 +18,13 @@ class CinemaController
 
 try{
 
-		
-		$table = (new HomeView(null,null));
+		$film = new Film();
+		$visualizzato['visualizzato']=true;
+		$data['film']=$film->select($visualizzato);
+		$id_scheda['id_scheda']=$data['film'][0]['id_scheda'];
+		$scheda=new Scheda();
+		$data['scheda']=$scheda->select($id_scheda);
+		$table = (new HomeView(null,$data));
 		$page = new Page();
 		$page->addView("content",$table);
 		return $response->write($page->render());
