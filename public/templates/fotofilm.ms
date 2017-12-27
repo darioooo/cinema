@@ -1,5 +1,5 @@
 <script type="text/javascript">
-	$(document).ready(function(){
+	$(document).ready(function () {
 		$('.datepicker').datepicker();
 		var url;
 		var titolo;
@@ -7,41 +7,41 @@
 		var attori;
 		var regia;
 
-				event.preventDefault();
-		$("img").click(function(){
-			 url=$(this).attr("src");
-			 titolo =$(this).attr("titolo");
-			 
-       $("#imagediv").html("<img  src="+ url +"></img>");
-       $("#formdiv").css("visibility","show");
-       $("#labeltitolo").text(titolo);
-   });
-	$("#Submit").click(function(){
+		event.preventDefault();
+		$("img").click(function () {
+			url = $(this).attr("src");
+			titolo = $(this).attr("titolo");
 
-			$( "form" ).on( "submit", function( event ) {
- 	 		event.preventDefault();
-  			console.log( $( this ).serialize() );
-  			console.log(event);
-  			descrizione=$("#desc").val();
-  			attori=$("#attori").val();
-  			regia=$("#regia").val();
+			$("#imagediv").html("<img  src=" + url + "></img>");
+			$("#formdiv").css("visibility", "show");
+			$("#labeltitolo").text(titolo);
+		});
+		$("#Submit").click(function () {
+
+			$("form").on("submit", function (event) {
+				event.preventDefault();
+				console.log($(this).serialize());
+				console.log(event);
+				descrizione = $("#desc").val();
+				attori = $("#attori").val();
+				regia = $("#regia").val();
 
 			});
-		 var dataString = 'titolo='+ titolo + '&url='+ url + '&descrizione='+ descrizione + '&attori='+ attori + '&regia='+ regia ;
-		$.ajax({
-		  type: "POST",
-		  url: "action_admin",
-		 // data: { titolo: titolo, url: url  },
-		  data: dataString,
-			cache: false,
-			success: function(result){
-			alert(result);
-		
-					}
-					});
-				});
+			var dataString = 'titolo=' + titolo + '&url=' + url + '&descrizione=' + descrizione + '&attori=' + attori + '&regia=' + regia;
+			$.ajax({
+				type: "POST",
+				url: "action_admin",
+				// data: { titolo: titolo, url: url  },
+				data: dataString,
+				cache: false,
+				success: function (result) {
+					alert(result);
 
 				}
+			});
+		});
+
+	}
 			});
 		});
 	});
@@ -77,39 +77,39 @@
 				<div class="form-group">
 					<label id="labeltitolo"></label>
 
-<div id="formdiv" style="visibility: hidden">
-<form >
-  <div class="form-group">
-    <label id="labeltitolo" ></label>
-    
-  </div>
-  <div class="form-group" id="myForm">
+					<div id="formdiv" style="visibility: hidden">
+						<form>
+							<div class="form-group">
+								<label id="labeltitolo"></label>
 
-<label for="comment">data inizio</label>  
-  <input class="datepicker form-control " data-date-format="dd/mm/yyyy" rows="1" >
+							</div>
+							<div class="form-group" id="myForm">
+
+								<label for="comment">data inizio</label>
+								<input class="datepicker form-control " data-date-format="dd/mm/yyyy" rows="1">
 
 
-<label for="comment">data fine</label>  
-  <input class="datepicker form-control " data-date-format="dd/mm/yyyy" rows="1" >
+								<label for="comment">data fine</label>
+								<input class="datepicker form-control " data-date-format="dd/mm/yyyy" rows="1">
 
-  <label for="comment">durata</label>
-    <textarea id="durata" class="form-control" rows="1"> </textarea>
+								<label for="comment">durata</label>
+								<textarea id="durata" class="form-control" rows="1"> </textarea>
 
-    <label for="comment">attori</label>
-    <textarea id="attori" class="form-control" rows="3"> </textarea>
+								<label for="comment">attori</label>
+								<textarea id="attori" class="form-control" rows="3"> </textarea>
 
-    <label for="comment">regia</label>
-    <textarea id="regia" class="form-control" rows="3"> </textarea>
+								<label for="comment">regia</label>
+								<textarea id="regia" class="form-control" rows="3"> </textarea>
 
-    <label for="comment">descrizione</label>
-    <textarea id="desc" class="form-control" rows="5"> </textarea>
+								<label for="comment">descrizione</label>
+								<textarea id="desc" class="form-control" rows="5"> </textarea>
 
-  </div>
-  <div class="checkbox">
-    
-  </div> 
-  <button class="btn btn-default" id="Submit">Submit</button>
-</form>
-</div>	
-</div>
-</div> 
+							</div>
+							<div class="checkbox">
+
+							</div>
+							<button class="btn btn-default" id="Submit">Submit</button>
+						</form>
+					</div>
+				</div>
+		</div>
