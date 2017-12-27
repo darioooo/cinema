@@ -1,6 +1,7 @@
 
 <script type="text/javascript">
 	$(document).ready(function(){
+		$('.datepicker').datepicker();
 		var url;
 		var titolo;
 		var descrizione;
@@ -75,6 +76,14 @@
     
   </div>
   <div class="form-group" id="myForm">
+
+<label for="comment">data inizio</label>  
+  <input class="datepicker form-control " data-date-format="dd/mm/yyyy" rows="1" >
+
+
+<label for="comment">data fine</label>  
+  <input class="datepicker form-control " data-date-format="dd/mm/yyyy" rows="1" >
+
   <label for="comment">durata</label>
     <textarea id="durata" class="form-control" rows="1"> </textarea>
 

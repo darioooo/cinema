@@ -6,10 +6,37 @@
   <link rel="stylesheet" href="http://127.0.0.1/cinema/css/stile.css">
   <link rel="stylesheet" href="http://127.0.0.1/cinema/css/bootstrap3.3.5/bootstrap.min.css">
   <link rel="stylesheet" href="http://127.0.0.1/cinema/jquery-ui/jquery-ui.min.css">
+<<<<<<< Updated upstream
   <!-- JavaScript scripts -->
   <script src="http://127.0.0.1/cinema/js/jquery-1.11.0.min.js"></script>
   <script src="http://127.0.0.1/cinema/jquery-ui/jquery-ui.min.js"></script>
   <script src="http://127.0.0.1/cinema/js/bootstrap3.3.5/bootstrap.min.js"></script>
+=======
+    <link rel="stylesheet" href="http://127.0.0.1/cinema/css/bootstrap-datepicker.min.css">
+
+
+  <!-- jQuery library -->
+  <script src="http://127.0.0.1/cinema/js/jquery-1.11.0.min.js"></script>
+
+<!-- jQuery library -->
+<script src="http://127.0.0.1/cinema/js/bootstrap-datepicker.min.js"></script>
+
+<script type="text/javascript" src="http://127.0.0.1/cinema/js/bootstrap-datepicker.it.min.js"></script>
+
+<script src="http://127.0.0.1/cinema/jquery-ui/jquery-ui.min.js"></script>
+
+<script src="http://127.0.0.1/cinema/jquery-ui/jquery-ui.min.css"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://127.0.0.1/cinema/js/bootstrap3.3.5/bootstrap.min.js"></script>
+
+
+<link rel="stylesheet" href="http://127.0.0.1/cinema/css/stile.css">
+
+
+
+
+>>>>>>> Stashed changes
 
   <title>Cinema Accademia</title>
 </head>
