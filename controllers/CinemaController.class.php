@@ -94,6 +94,7 @@ try{
 		//$insert_film['']=$img;
 		$insert_scheda['attori']=$attori;
 		$insert_scheda['regia']=$regia;
+		var_dump($insert_scheda);exit();
 		$insert_film['visualizzato']=TRUE;
 		$insert_film['immagine']=$img;
 		$insert_film['titolo']= $titolo;

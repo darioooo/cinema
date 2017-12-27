@@ -1,12 +1,13 @@
 <script type="text/javascript">
+
 	$(document).ready(function () {
-		$('.datepicker').datepicker();
+		
 		var url;
 		var titolo;
 		var descrizione;
 		var attori;
 		var regia;
-
+		$('.datepicker').datepicker();
 		event.preventDefault();
 		$("img").click(function () {
 			url = $(this).attr("src");
@@ -17,6 +18,8 @@
 			$("#labeltitolo").text(titolo);
 		});
 		$("#Submit").click(function () {
+		
+	
 
 			$("form").on("submit", function (event) {
 				event.preventDefault();
@@ -25,8 +28,9 @@
 				descrizione = $("#desc").val();
 				attori = $("#attori").val();
 				regia = $("#regia").val();
+		
 
-			});
+	
 			var dataString = 'titolo=' + titolo + '&url=' + url + '&descrizione=' + descrizione + '&attori=' + attori + '&regia=' + regia;
 			$.ajax({
 				type: "POST",
@@ -40,8 +44,9 @@
 				}
 			});
 		});
-
 	});
+
+});
 			
 </script>
 
