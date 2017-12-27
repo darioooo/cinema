@@ -24,6 +24,7 @@ try{
 		$id_scheda['id_scheda']=$data['film'][0]['id_scheda'];
 		$scheda=new Scheda();
 		$data['scheda']=$scheda->select($id_scheda);
+		var_dump($data);exit();
 		$table = (new HomeView(null,$data));
 		$page = new Page();
 		$page->addView("content",$table);
@@ -85,8 +86,9 @@ try{
 		$regia =$_POST["regia"];
 		$descrizione =$_POST["descrizione"];
 		$titolo =$_POST["titolo"];
-		$titolourl=  trim ($titolo ," ");
-
+		$vowels = array(" ","'");
+		$titolourl=  str_replace($vowels, '', $titolo);
+		// var_dump($titolourl);exit();
 		$img = "image/".$titolourl.".jpg";
 		file_put_contents($img, file_get_contents($url));
 		//$insert_film['']=$img;
@@ -101,7 +103,7 @@ try{
 		$scheda->insert($insert_scheda);
 		$id=$scheda->get_last_id();
 		$insert_film['id_scheda']=$id[0]['id_scheda'];
-		//var_dump($insert_film);exit();
+		
 		$film->unvisible_last_id();
 		
 		try{
