@@ -1,4 +1,3 @@
-
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('.datepicker').datepicker();
@@ -8,6 +7,7 @@
 		var attori;
 		var regia;
 
+				event.preventDefault();
 		$("img").click(function(){
 			 url=$(this).attr("src");
 			 titolo =$(this).attr("titolo");
@@ -41,33 +41,41 @@
 					});
 				});
 
+				}
 			});
+		});
+	});
 </script>
 
 <div ip="block" class="container-fluid">
-<div  class="btn-group-vertical inlinea col-sm-4" id="leftdiv">
+	<div class="btn-group-vertical inlinea col-sm-4" id="leftdiv">
 
-{{#film}}
+		{{#film}}
 
-<button class="btn btn-danger " type="button" data-toggle="collapse" data-target="#{{id}}">{{titolo}}</button>
+		<button class="btn btn-danger " type="button" data-toggle="collapse" data-target="#{{id}}">{{titolo}}</button>
 
 
-<div id="{{id}}" class="collapse">
+		<div id="{{id}}" class="collapse">
 
-	<img src="{{url}}" id="imgfilm" class="img immage" titolo="{{titolo}}" style="min-width: 200px"></img>
-	<div class="well" style="background-color: black">
-	<p style="padding-left: 200px ; color:white" >      {{titolo}}</p>
-		
+			<img src="{{url}}" id="imgfilm" class="img immage" titolo="{{titolo}}" style="min-width: 200px"></img>
+			<div class="well" style="background-color: black">
+				<p style="padding-left: 200px ; color:white"> {{titolo}}</p>
+
+			</div>
+
+		</div>
+
+		{{/film}}
 	</div>
+	<div id="rightdiv" class="col-sm-6" style="text-align: center;">
+		<div id="imagediv">
 
-</div>
+		</div>
 
-{{/film}}
-</div>
-<div id="rightdiv" class="col-sm-6" style="text-align: center;">
-<div id="imagediv">
-	
-</div>
+		<div id="formdiv" style="visibility: hidden">
+			<form>
+				<div class="form-group">
+					<label id="labeltitolo"></label>
 
 <div id="formdiv" style="visibility: hidden">
 <form >
