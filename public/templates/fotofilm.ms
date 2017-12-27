@@ -41,10 +41,8 @@
 			});
 		});
 
-	}
-			});
-		});
 	});
+			
 </script>
 
 <div ip="block" class="container-fluid">
@@ -72,10 +70,6 @@
 
 		</div>
 
-		<div id="formdiv" style="visibility: hidden">
-			<form>
-				<div class="form-group">
-					<label id="labeltitolo"></label>
 
 					<div id="formdiv" style="visibility: hidden">
 						<form>

@@ -6,7 +6,13 @@
   <link rel="stylesheet" href="http://127.0.0.1/cinema/css/stile.css">
   <link rel="stylesheet" href="http://127.0.0.1/cinema/css/bootstrap3.3.5/bootstrap.min.css">
   <link rel="stylesheet" href="http://127.0.0.1/cinema/jquery-ui/jquery-ui.min.css">
-  <link rel="stylesheet" href="http://127.0.0.1/cinema/css/bootstrap-datepicker.min.css">
+
+  <!-- JavaScript scripts -->
+  <script src="http://127.0.0.1/cinema/js/jquery-1.11.0.min.js"></script>
+  <script src="http://127.0.0.1/cinema/jquery-ui/jquery-ui.min.js"></script>
+  <script src="http://127.0.0.1/cinema/js/bootstrap3.3.5/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="http://127.0.0.1/cinema/css/bootstrap-datepicker.min.css">
 
 
   <!-- jQuery library -->
