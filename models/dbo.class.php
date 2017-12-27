@@ -162,5 +162,21 @@ class dbo
 		}
 	 }
 
+	 	 function get_last_id()
+	 {
+
+
+	 	$sql = 'SELECT id_scheda FROM '.$this->table.' WHERE id_scheda ORDER by id_scheda DESC LIMIT 1';
+	 	try {
+			return $this->db->query($sql);
+			
+		} catch (Exception $e) {
+
+			echo $e->getMessage();
+			
+		}
+	 }
+
+
 
 }

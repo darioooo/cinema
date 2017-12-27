@@ -3,6 +3,9 @@
 	$(document).ready(function(){
 		var url;
 		var titolo;
+		var descrizione;
+		var attori;
+		var regia;
 
 		$("img").click(function(){
 			 url=$(this).attr("src");
@@ -13,11 +16,17 @@
        $("#labeltitolo").text(titolo);
    });
 	$("#Submit").click(function(){
+
 			$( "form" ).on( "submit", function( event ) {
  	 		event.preventDefault();
   			console.log( $( this ).serialize() );
+  			console.log(event);
+  			descrizione=$("#desc").val();
+  			attori=$("#attori").val();
+  			regia=$("#regia").val();
+
 			});
-		 var dataString = 'titolo='+ titolo + '&url='+ url  ;
+		 var dataString = 'titolo='+ titolo + '&url='+ url + '&descrizione='+ descrizione + '&attori='+ attori + '&regia='+ regia ;
 		$.ajax({
 		  type: "POST",
 		  url: "action_admin",
@@ -65,9 +74,19 @@
     <label id="labeltitolo" ></label>
     
   </div>
-  <div class="form-group">
+  <div class="form-group" id="myForm">
+  <label for="comment">durata</label>
+    <textarea id="durata" class="form-control" rows="1"> </textarea>
+
+    <label for="comment">attori</label>
+    <textarea id="attori" class="form-control" rows="3"> </textarea>
+
+    <label for="comment">regia</label>
+    <textarea id="regia" class="form-control" rows="3"> </textarea>
+
     <label for="comment">descrizione</label>
     <textarea id="desc" class="form-control" rows="5"> </textarea>
+
   </div>
   <div class="checkbox">
     

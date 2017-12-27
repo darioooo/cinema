@@ -76,16 +76,27 @@ try{
 	{
 		
 		$url =$_POST["url"];
+		$attori =$_POST["attori"];
+		$regia =$_POST["regia"];
+		$descrizione =$_POST["descrizione"];
 		$titolo =$_POST["titolo"];
 		$titolourl=  trim ($titolo ," ");
 
 		$img = "image/".$titolourl.".jpg";
 		file_put_contents($img, file_get_contents($url));
 		//$insert_film['']=$img;
+		$insert_scheda['attori']=$attori;
+		$insert_scheda['regia']=$regia;
 		$insert_film['visualizzato']=TRUE;
 		$insert_film['immagine']=$img;
 		$insert_film['titolo']= $titolo;
+		$insert_film['descrizione']=$descrizione;
 		$film = new Film();
+		$scheda=new Scheda();
+		$scheda->insert($insert_scheda);
+		$id=$scheda->get_last_id();
+		$insert_film['id_scheda']=$id[0]['id_scheda'];
+		//var_dump($insert_film);exit();
 		$film->unvisible_last_id();
 		
 		try{
