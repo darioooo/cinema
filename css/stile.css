@@ -1,27 +1,24 @@
+body {
+	padding-top: 70px;
+	padding-bottom: 70px;
+}
 #homediv {
 	height: 60%;
 	width: 100%;
 	display: inline-block;
 }
 
+#barranav {
+	position: fixed;
+	border-radius: 0px;
+	border: 0px;
+	background-color: rgba(128, 0, 0, 0.95);
+}
+
 #imgfilm {
 	float: left;
 	height: 50%;
 	width: 20%;
-
-}
-
-#topdiv {
-	height: 20%;
-	background-color: gray;
-}
-
-#downdiv {
-	height: 20%;
-}
-
- {
-	color: white;
 }
 
 #ciao {
@@ -30,3 +27,28 @@
 	background-color: maroon;
 }
 
+#maincontainer {
+	min-height: 700px;
+}
+
+.footer {
+	background-color: rgba(128, 0, 0, 0.95);
+	position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+	text-align: center;
+	color: white;
+}
+
+.col-lg-4 .col-md-4 .col-xs-12{
+	align-items: center;
+}
+div.contentjumbo.jumbotron {
+	background-color: rgba(128, 0, 0, 0.8);
+	padding: 10px;
+}
+
+div.filmjumbo.jumbotron {
+	background-color: rgb(255, 255, 255);
+}

@@ -47,7 +47,7 @@ try{
 try{
 
 	$feed = new FeedRssController();
-	$data=$feed->FeedRssController();
+	$data=$feed->FeedRss();
 
 		$table = (new FeedRssView(null,$data));
 		$page = new Page();

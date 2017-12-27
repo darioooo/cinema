@@ -5,7 +5,7 @@ use Slim\Http\Response;
 class FeedRssController
 {
 	
-	function FeedRssController()
+	function FeedRss()
 	{
 		 $xml=("http://www.filmscoop.it/feed/alcinema.asp");
 
