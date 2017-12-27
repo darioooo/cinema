@@ -67,3 +67,7 @@ div.filmjumbo.jumbotron {
 	border-radius: 0px;
 	outline: none;
 }
+
+input.fielderror {
+	border: 2px solid red;
+}

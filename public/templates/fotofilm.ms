@@ -1,12 +1,14 @@
 <script type="text/javascript">
 
 	$(document).ready(function () {
-		
+
 		var url;
 		var titolo;
 		var descrizione;
 		var attori;
 		var regia;
+		var datainizio, datafine;
+
 		$('.datepicker').datepicker();
 		event.preventDefault();
 		$("img").click(function () {
@@ -18,8 +20,8 @@
 			$("#labeltitolo").text(titolo);
 		});
 		$("#Submit").click(function () {
-		
-	
+
+
 
 			$("form").on("submit", function (event) {
 				event.preventDefault();
@@ -28,26 +30,46 @@
 				descrizione = $("#desc").val();
 				attori = $("#attori").val();
 				regia = $("#regia").val();
-		
 
-	
-			var dataString = 'titolo=' + titolo + '&url=' + url + '&descrizione=' + descrizione + '&attori=' + attori + '&regia=' + regia;
-			$.ajax({
-				type: "POST",
-				url: "action_admin",
-				// data: { titolo: titolo, url: url  },
-				data: dataString,
-				cache: false,
-				success: function (result) {
-					alert(result);
+				datainizio = $("#datainizio").val();
+				datafine = $("#datafine").val();
 
+				if (datainizio > datafine) {
+					$("#datainizio").addClass("fielderror");
+					$("#datafine").addClass("fielderror");
+					$("#myModal").modal();
+				}
+
+				else {
+					var dataString = 'titolo=' + titolo + '&url=' + url + '&descrizione=' + descrizione + '&attori=' + attori + '&regia=' + regia;
+					$.ajax({
+						type: "POST",
+						url: "action_admin",
+						// data: { titolo: titolo, url: url  },
+						data: dataString,
+						cache: false,
+						success: function (result) {
+							alert(result);
+						}
+					});
 				}
 			});
+
 		});
+		/* function checkDateDifference(startDate, endDate) {
+			startDate = $.datepicker.parseDate('mm/dd/yy', startDate);
+			endDate = $.datepicker.parseDate('mm/dd/yy', endDate);
+	
+			var difference = (endDate - startDate) / (86400000);
+			alert(difference)
+			if (difference < 0) {
+				showError("The start date must come before the end date.");
+				return false;
+			}
+			return true;
+		} */
 	});
 
-});
-			
 </script>
 
 <div id="block" class="container-fluid">
@@ -76,22 +98,22 @@
 				<div class="form-group" id="myForm">
 
 					<label for="comment">data inizio</label>
-					<input class="datepicker form-control " data-date-format="dd/mm/yyyy" rows="1">
+					<input id="datainizio" class="datepicker form-control " data-date-format="dd/mm/yyyy" rows="1" required />
 
 					<label for="comment">data fine</label>
-					<input class="datepicker form-control " data-date-format="dd/mm/yyyy" rows="1">
+					<input id="datafine" class="datepicker form-control " data-date-format="dd/mm/yyyy" rows="1" required />
 
 					<label for="comment">durata</label>
-					<textarea id="durata" class="form-control" rows="1"> </textarea>
+					<input type="number" id="durata" class="form-control" rows="1" required />
 
 					<label for="comment">attori</label>
-					<textarea id="attori" class="form-control" rows="3"> </textarea>
+					<input type="text" id="attori" class="form-control" rows="3" required />
 
 					<label for="comment">regia</label>
-					<textarea id="regia" class="form-control" rows="3"> </textarea>
+					<input type="text" id="regia" class="form-control" rows="3" required />
 
 					<label for="comment">descrizione</label>
-					<textarea id="desc" class="form-control" rows="5"> </textarea>
+					<textarea type="textarea" id="desc" class="form-control" rows="5" required> </textarea>
 
 				</div>
 				<div class="checkbox">
@@ -99,6 +121,25 @@
 				</div>
 				<button class="btn btn-default" id="Submit">Submit</button>
 			</form>
+			<div id="myModal" class="modal fade">
+				<div class="modal-dialog">
+
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title">Modal Header</h4>
+						</div>
+						<div class="modal-body">
+							<p>Some text in the modal.</p>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						</div>
+					</div>
+
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
