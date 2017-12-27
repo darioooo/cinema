@@ -2,55 +2,41 @@
 <html>
 
 <head>
-
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="http://localhost/cinema/css/stile.css">
+  <!-- CSS links -->
+  <link rel="stylesheet" href="http://127.0.0.1/cinema/css/stile.css">
   <link rel="stylesheet" href="http://127.0.0.1/cinema/css/bootstrap3.3.5/bootstrap.min.css">
   <link rel="stylesheet" href="http://127.0.0.1/cinema/jquery-ui/jquery-ui.min.css">
-
-  <!-- jQuery library -->
+  <!-- JavaScript scripts -->
   <script src="http://127.0.0.1/cinema/js/jquery-1.11.0.min.js"></script>
-
-<!-- jQuery library -->
-<script src="http://127.0.0.1/cinema/js/jquery-1.11.0.min.js"></script>
-
-<script src="http://127.0.0.1/cinema/jquery-ui/jquery-ui.min.js"></script>
-
-<script src="http://127.0.0.1/cinema/jquery-ui/jquery-ui.min.css"></script>
-
-<!-- Latest compiled JavaScript -->
-<script src="http://127.0.0.1/cinema/js/bootstrap3.3.5/bootstrap.min.js"></script>
-
-
-<link rel="stylesheet" href="http://127.0.0.1/cinema/css/stile.css">
-
-
-
-
+  <script src="http://127.0.0.1/cinema/jquery-ui/jquery-ui.min.js"></script>
+  <script src="http://127.0.0.1/cinema/js/bootstrap3.3.5/bootstrap.min.js"></script>
 
   <title>Cinema Accademia</title>
 </head>
 
 <body>
 
-  <nav class="navbar navbar-inverse" id="ciao">
+  <nav class="navbar navbar-inverse navbar-fixed-top" id="barranav">
     <div class="container-fluid">
       <div class="navbar-header">
-        <a class="navbar-brand" href="#"></a>
+        <a class="navbar-brand" href="#">CinemaAccademia</a>
       </div>
-
+      <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="#">Link</a></li>
+          <li><a href="#">Gallery</a></li>
+        </ul>
+      </div>
     </div>
   </nav>
 
 
-  <div class="container-fluid" >
+  <div class="container-fluid" id="maincontainer">
     {{{content}}}
   </div>
 
-
-
-  <footer style="background-color: red;">
-    <p>Sito fatto dal Pinza e da Gabri</p>
+  <footer class="footer">
+    <h5>Via Montanelli 33, 50065 Pontassieve FI - Tel. 0558368252</h5>
   </footer>
 </body>
 
