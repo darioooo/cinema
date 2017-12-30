@@ -24,7 +24,7 @@ try{
 		$id_scheda['id_scheda']=$data['film'][0]['id_scheda'];
 		$scheda=new Scheda();
 		$data['scheda']=$scheda->select($id_scheda);
-		var_dump($data);exit();
+		// var_dump($data);exit();
 		$table = (new HomeView(null,$data));
 		$page = new Page();
 		$page->addView("content",$table);
@@ -86,6 +86,8 @@ try{
 		$regia =$_POST["regia"];
 		$descrizione =$_POST["descrizione"];
 		$titolo =$_POST["titolo"];
+		$data_inizio=$_POST["data_inizio"];
+		$data_fine=$_POST["data_fine"];
 		$vowels = array(" ","'");
 		$titolourl=  str_replace($vowels, '', $titolo);
 		// var_dump($titolourl);exit();
@@ -94,14 +96,19 @@ try{
 		//$insert_film['']=$img;
 		$insert_scheda['attori']=$attori;
 		$insert_scheda['regia']=$regia;
-		var_dump($insert_scheda);exit();
+		// var_dump($insert_scheda);exit();
 		$insert_film['visualizzato']=TRUE;
 		$insert_film['immagine']=$img;
 		$insert_film['titolo']= $titolo;
 		$insert_film['descrizione']=$descrizione;
+		$insert_film['data_inizio']=$data_inizio;
+		$insert_film['data_fine']=$data_fine;
+		var_dump($data_inizio);
 		$film = new Film();
-		$scheda=new Scheda();
+		$scheda=new Scheda();	
 		$scheda->insert($insert_scheda);
+
+
 		$id=$scheda->get_last_id();
 		$insert_film['id_scheda']=$id[0]['id_scheda'];
 		

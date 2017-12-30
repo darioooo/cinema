@@ -7,7 +7,7 @@
 		var descrizione;
 		var attori;
 		var regia;
-		var datainizio, datafine;
+		var data_inizio, data_fine;
 
 		$('.datepicker').datepicker();
 		event.preventDefault();
@@ -19,29 +19,32 @@
 			$("#formdiv").css("visibility", "show");
 			$("#labeltitolo").text(titolo);
 		});
-		$("#Submit").click(function () {
-
-
-
+		
 			$("form").on("submit", function (event) {
 				event.preventDefault();
-				console.log($(this).serialize());
-				console.log(event);
 				descrizione = $("#desc").val();
 				attori = $("#attori").val();
 				regia = $("#regia").val();
+				// var datainizio =$("#datainizio").datepicker("getDate");
+				// var dateString = $.datepicker.dateFormat("yyyy-mm-dd", datainizio);
+				var datainizio
+				console.log(dateString);
+				exit();
+				data_inizio = $("#datainizio").val();
+				data_fine = $("#datafine").val();
 
-				datainizio = $("#datainizio").val();
-				datafine = $("#datafine").val();
-
-				if (datainizio > datafine) {
+				if (data_inizio > data_fine) {
 					$("#datainizio").addClass("fielderror");
 					$("#datafine").addClass("fielderror");
 					$("#myModal").modal();
 				}
 
 				else {
-					var dataString = 'titolo=' + titolo + '&url=' + url + '&descrizione=' + descrizione + '&attori=' + attori + '&regia=' + regia;
+					$("#datainizio").removeClass("fielderror");
+					$("#datafine").removeClass("fielderror");
+					var dataString = 'titolo=' + titolo + '&url=' + url + '&descrizione=' 
+					+ descrizione + '&attori=' + attori + '&regia=' + regia + '&data_inizio=' + data_inizio
+					+ '&data_fine=' + data_fine;
 					$.ajax({
 						type: "POST",
 						url: "action_admin",
@@ -85,22 +88,23 @@
 				<div class="form-group" id="myForm">
 
 					<label for="comment">data inizio</label>
-					<input id="datainizio" class="datepicker form-control " data-date-format="dd/mm/yyyy" rows="1" required />
+					<input id="datainizio" class="datepicker form-control " data-date-format="dd/mm/yyyy" rows="1" required>
 
 					<label for="comment">data fine</label>
-					<input id="datafine" class="datepicker form-control " data-date-format="dd/mm/yyyy" rows="1" required />
+					<input id="datafine" class="datepicker form-control " data-date-format="dd/mm/yyyy" rows="1" required>
 
 					<label for="comment">durata</label>
-					<input type="number" id="durata" class="form-control" rows="1" required />
+					<textarea id="durata" class="form-control" rows="1" required> </textarea>
 
 					<label for="comment">attori</label>
-					<input type="text" id="attori" class="form-control" rows="3" required />
+					<textarea id="attori" class="form-control" rows="3" required> </textarea>
 
 					<label for="comment">regia</label>
-					<input type="text" id="regia" class="form-control" rows="3" required />
+					<textarea id="regia" class="form-control" rows="3" required> </textarea>
 
 					<label for="comment">descrizione</label>
 					<textarea type="textarea" id="desc" class="form-control" rows="5" required> </textarea>
+
 				</div>
 				<div class="checkbox">
 
