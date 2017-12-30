@@ -1,3 +1,9 @@
+html {
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%
+}
+
 body {
 	padding-top: 70px;
 	padding-bottom: 70px;
@@ -14,11 +20,6 @@ nav.barranav.navbar {
 	border-radius: 0px;
 	border: 0px;
 	background-color: rgba(128, 0, 0, 0.95);
-	color: white;
-}
-
-ul.navbarlinks.nav {
-	color: white;
 }
 
 #imgfilm {
@@ -70,4 +71,12 @@ div.filmjumbo.jumbotron {
 
 input.fielderror {
 	border: 2px solid red;
+}
+
+.navbar-inverse .navbar-brand {
+    color: white;
+}
+
+.navbar-inverse .navbar-collapse .links {
+	color: white;
 }

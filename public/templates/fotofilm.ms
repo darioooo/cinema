@@ -56,18 +56,6 @@
 			});
 
 		});
-		/* function checkDateDifference(startDate, endDate) {
-			startDate = $.datepicker.parseDate('mm/dd/yy', startDate);
-			endDate = $.datepicker.parseDate('mm/dd/yy', endDate);
-	
-			var difference = (endDate - startDate) / (86400000);
-			alert(difference)
-			if (difference < 0) {
-				showError("The start date must come before the end date.");
-				return false;
-			}
-			return true;
-		} */
 	});
 
 </script>
@@ -84,7 +72,6 @@
 				<p style="padding-left: 200px ; color:white"> {{titolo}}</p>
 			</div>
 		</div>
-
 		{{/film}}
 	</div>
 	<div id="rightdiv" class="col-sm-6" style="text-align: center;">
@@ -114,7 +101,6 @@
 
 					<label for="comment">descrizione</label>
 					<textarea type="textarea" id="desc" class="form-control" rows="5" required> </textarea>
-
 				</div>
 				<div class="checkbox">
 
@@ -123,21 +109,15 @@
 			</form>
 			<div id="myModal" class="modal fade">
 				<div class="modal-dialog">
-
-					<!-- Modal content-->
 					<div class="modal-content">
-						<div class="modal-header">
+						<div class="modal-header" style="background-color: rgba(128, 0, 0, 0.7);">
 							<button type="button" class="close" data-dismiss="modal">&times;</button>
-							<h4 class="modal-title">Modal Header</h4>
+							<h4 class="modal-title">ERRORE SULLE DATE!</h4>
 						</div>
 						<div class="modal-body">
-							<p>Some text in the modal.</p>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							<p>La data di fine del film non può essere prima della data di inizio!</p>
 						</div>
 					</div>
-
 				</div>
 			</div>
 		</div>
