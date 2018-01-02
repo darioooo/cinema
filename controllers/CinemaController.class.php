@@ -31,13 +31,6 @@ try{
 		return $response->write($page->render());
 	
 	}
-	catch(Exception $e )
-	{
-		echo $e->getMessage();
-	}	
-	}
-
-
 	/**
 	 * @desc This method provides the registration html page
 	 * @link /admin
@@ -49,27 +42,20 @@ try{
 	 */
 	function admin(Request $request, Response $response, $args)
 	{
-
-try{
-
-	$feed = new FeedRssController();
-	$data=$feed->FeedRss();
-
-		$table = (new FeedRssView(null,$data));
-		$page = new Page();
-		$page->addView("content",$table);
-		return $response->write($page->render());
-	
+		try{
+			$feed = new FeedRssController();
+			$data=$feed->FeedRss();
+			$table = (new FeedRssView(null,$data));
+			$page = new Page();
+			$page->addView("content",$table);
+			return $response->write($page->render());
+		}
+		catch(Exception $e )
+		{
+			echo $e->getMessage();
+		}	
 	}
-	catch(Exception $e )
-	{
-		echo $e->getMessage();
-	}	
-	}
-
-
-
-/**
+	/**
 	 * @desc This method provides the registration html page
 	 * @link /save_film
 	 * @method 
@@ -80,7 +66,6 @@ try{
 	 */
 	function save_film(Request $request, Response $response, $args)
 	{
-		
 		$url =$_POST["url"];
 		$attori =$_POST["attori"];
 		$regia =$_POST["regia"];
@@ -111,25 +96,14 @@ try{
 
 		$id=$scheda->get_last_id();
 		$insert_film['id_scheda']=$id[0]['id_scheda'];
-		
 		$film->unvisible_last_id();
 		
-		try{
-		$film->insert($insert_film);
+		try {
+			$film->insert($insert_film);
 		}
 		catch(Exception $e )
 	    {
 			echo $e->getMessage();
-		}	
-
-
-
-		
+		}
 	}
-
-	
-
-	
-	
-
 }
