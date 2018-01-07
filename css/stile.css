@@ -1,10 +1,14 @@
 html {
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
-    -webkit-text-size-adjust: 100%;
-    -ms-text-size-adjust: 100%
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%
 }
 
 body {
+	background-image: url("http://127.0.0.1/cinema/CinemaImages/film4.jpeg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
 	padding-top: 70px;
 	padding-bottom: 70px;
 }
@@ -55,10 +59,11 @@ nav.barranav.navbar {
 div.contentjumbo.jumbotron {
 	background-color: rgba(128, 0, 0, 0.8);
 	padding: 10px;
+	color: white;
 }
 
 div.filmjumbo.jumbotron {
-	background-color: rgb(255, 255, 255);
+	background-color: transparent;
 }
 
 .filmdropdown.btn {
@@ -73,3 +78,6 @@ input.fielderror {
 	border: 2px solid red;
 }
 
+div.formdiv {
+	visibility: hidden;
+}
