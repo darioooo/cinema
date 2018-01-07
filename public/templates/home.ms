@@ -1,6 +1,5 @@
 <div class="row jumbotron filmjumbo">
 	<div class="col-xs-0 col-md-2 col-lg-2">
-
 	</div>
 	<div class="col-xs-12 col-md-4 col-lg-4">
 		<div class="col-xs-12 col-md-11 col-lg-11 jumbotron contentjumbo">
@@ -155,3 +154,4 @@
 		<div class="col-xs-0 col-md-4 col-lg-4">
 		</div>
 	</div>
+</div>
