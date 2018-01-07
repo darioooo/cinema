@@ -16,7 +16,6 @@ class CinemaController
 	function home(Request $request, Response $response, $args)
 	{
 
-try{
 
 		$film = new Film();
 		$visualizzato['visualizzato']=true;
@@ -86,14 +85,34 @@ try{
 		$insert_film['immagine']=$img;
 		$insert_film['titolo']= $titolo;
 		$insert_film['descrizione']=$descrizione;
-		$insert_film['data_inizio']=$data_inizio;
-		$insert_film['data_fine']=$data_fine;
+		var_dump($data_fine);
 		var_dump($data_inizio);
+		$datai = explode( "/",$data_inizio  );
+		$dataf = explode( "/",$data_fine  );
+		$newDateInizio = new DateTime();
+		$newDateInizio->setDate($datai['2'],$datai['1'],$datai['0']);
+		$newDateInizio = date_format($newDateInizio, 'Y/m/d');
+		$insert_film['data_inizio']=$newDateInizio;
+		// try
+		// {
+		$newDateFine = new DateTime();
+		$newDateFine->setDate($dataf['2'],$dataf['1'],$dataf['0']);
+		$newDateFine = date_format($newDateFine, 'Y/m/d');
+		// var_dump($newDateFine);exit();
+		$insert_film['data_fine']=$newDateFine;
+		// }
+		// catch(Exception $e )
+		// {
+		// 	echo $e->getMessage();
+		// }
+		echo("kjenkvsseseoe inizio     ");
+		var_dump($data_fine);
+		var_dump($data_inizio);	
 		$film = new Film();
 		$scheda=new Scheda();	
 		$scheda->insert($insert_scheda);
 
-
+	
 		$id=$scheda->get_last_id();
 		$insert_film['id_scheda']=$id[0]['id_scheda'];
 		$film->unvisible_last_id();

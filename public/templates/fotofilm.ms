@@ -25,11 +25,9 @@
 				descrizione = $("#desc").val();
 				attori = $("#attori").val();
 				regia = $("#regia").val();
-				// var datainizio =$("#datainizio").datepicker("getDate");
-				// var dateString = $.datepicker.dateFormat("yyyy-mm-dd", datainizio);
-				var datainizio
-				console.log(dateString);
-				exit();
+				var datainizio = $("#datainizio").datepicker({ dateFormat: "yyyy-mm-dd" }).val();
+				var datafine = $("#datafine").datepicker({ dateFormat: "yyyy-mm-dd" }).val();
+				 console.log(datainizio);
 				data_inizio = $("#datainizio").val();
 				data_fine = $("#datafine").val();
 
@@ -43,8 +41,8 @@
 					$("#datainizio").removeClass("fielderror");
 					$("#datafine").removeClass("fielderror");
 					var dataString = 'titolo=' + titolo + '&url=' + url + '&descrizione=' 
-					+ descrizione + '&attori=' + attori + '&regia=' + regia + '&data_inizio=' + data_inizio
-					+ '&data_fine=' + data_fine;
+					+ descrizione + '&attori=' + attori + '&regia=' + regia + '&data_inizio=' + datainizio
+					+ '&data_fine=' + datafine;
 					$.ajax({
 						type: "POST",
 						url: "action_admin",
@@ -59,7 +57,7 @@
 			});
 
 		});
-	});
+
 
 </script>
 
