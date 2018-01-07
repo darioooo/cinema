@@ -74,13 +74,10 @@ class CinemaController
 		$data_fine=$_POST["data_fine"];
 		$vowels = array(" ","'");
 		$titolourl=  str_replace($vowels, '', $titolo);
-		// var_dump($titolourl);exit();
 		$img = "image/".$titolourl.".jpg";
 		file_put_contents($img, file_get_contents($url));
-		//$insert_film['']=$img;
 		$insert_scheda['attori']=$attori;
 		$insert_scheda['regia']=$regia;
-		// var_dump($insert_scheda);exit();
 		$insert_film['visualizzato']=TRUE;
 		$insert_film['immagine']=$img;
 		$insert_film['titolo']= $titolo;
@@ -93,18 +90,10 @@ class CinemaController
 		$newDateInizio->setDate($datai['2'],$datai['1'],$datai['0']);
 		$newDateInizio = date_format($newDateInizio, 'Y/m/d');
 		$insert_film['data_inizio']=$newDateInizio;
-		// try
-		// {
 		$newDateFine = new DateTime();
 		$newDateFine->setDate($dataf['2'],$dataf['1'],$dataf['0']);
 		$newDateFine = date_format($newDateFine, 'Y/m/d');
-		// var_dump($newDateFine);exit();
 		$insert_film['data_fine']=$newDateFine;
-		// }
-		// catch(Exception $e )
-		// {
-		// 	echo $e->getMessage();
-		// }
 		echo("kjenkvsseseoe inizio     ");
 		var_dump($data_fine);
 		var_dump($data_inizio);	

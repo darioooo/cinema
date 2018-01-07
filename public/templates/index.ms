@@ -21,9 +21,16 @@
 <body>
   <nav class="navbar navbar-inverse navbar-fixed-top barranav">
     <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand links" href="#">CinemaAccademia</a>
-      </div>
+          <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar3">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#"><img id="logo" src="../CinemaImages/CINEMA.png" alt="CinemaAccademia">
+              </a>
+            </div>
       <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
           <li>

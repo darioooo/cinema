@@ -18,6 +18,24 @@
 			$("#imagediv").html("<img  src=" + url + "></img>");
 			$("#formdiv").css("visibility", "show");
 			$("#labeltitolo").text(titolo);
+			$("#filmdiv").hide('1000');
+			$("#buttonhide").css("visibility", "show");
+
+		});
+
+		$("#datafine").change(function (){
+			
+			var datainizio = $("#datainizio").datepicker({ dateFormat: "yyyy-mm-dd" }).val();
+			var datafine = $("#datafine").datepicker({ dateFormat: "yyyy-mm-dd" }).val();
+			var datai=$("#datainizio").datepicker('getDate');
+			var dataf=$("#datafine").datepicker('getDate');
+			if(datainizio < datafine)
+				{
+					console.log("ciaooo");
+
+				}
+			
+
 		});
 		
 			$("form").on("submit", function (event) {
@@ -63,6 +81,10 @@
 
 <div id="block" class="container-fluid">
 	<div class="btn-group-vertical inlinea col-sm-4" id="leftdiv">
+		
+			<span id="buttonhide" class="glyphicon glyphicon-align-justify" aria-hidden="false" style="visibility: hidden"></span>
+			<div class="btn-group-vertical inlinea  " id="filmdiv">
+		
 		{{#film}}
 
 		<button class="btn btn-danger filmdropdown" type="button" data-toggle="collapse" data-target="#{{id}}">{{titolo}}</button>
@@ -74,6 +96,7 @@
 			</div>
 		</div>
 		{{/film}}
+		</div>
 	</div>
 	<div id="rightdiv" class="col-sm-6" style="text-align: center;">
 		<div id="imagediv">

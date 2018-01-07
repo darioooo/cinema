@@ -73,3 +73,15 @@ input.fielderror {
 	border: 2px solid red;
 }
 
+#buttonhide {
+	width: 100px;
+	height: 100px;
+	color: black;
+
+}
+.navbar-brand>img {
+	height: 100%;
+	padding: 3px;
+	padding-left: 20px;
+	width: auto;
+  } 
