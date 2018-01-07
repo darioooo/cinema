@@ -1,14 +1,14 @@
 html {
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
-	-webkit-text-size-adjust: 100%;
-	-ms-text-size-adjust: 100%
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%
 }
 
 body {
-	background-image: url("http://127.0.0.1/cinema/CinemaImages/film4.jpeg");
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: center center;
+	background-image: url("http://127.0.0.1/cinema/CinemaImages/film4.jpeg"); 
+	background-repeat: no-repeat; 
+	background-size: cover; 
+	background-position: center center; 
 	padding-top: 70px;
 	padding-bottom: 70px;
 }
@@ -59,11 +59,12 @@ nav.barranav.navbar {
 div.contentjumbo.jumbotron {
 	background-color: rgba(128, 0, 0, 0.8);
 	padding: 10px;
-	color: white;
 }
 
 div.filmjumbo.jumbotron {
-	background-color: transparent;
+	background-color: rgb(255, 255, 255);
+	background-color: transparent; 
+
 }
 
 .filmdropdown.btn {
@@ -79,18 +80,20 @@ input.fielderror {
 }
 
 #buttonhide {
-	width: 100px;
-	height: 100px;
-	color: black;
-
+	width: 40px;
+	height: 40px;
+	background-color: black;
+	margin: 0px;
+	
+}
+.navbar-brand{
+	padding-top: 0px;
 }
 .navbar-brand>img {
-	height: 100%;
-	padding: 3px;
-	padding-left: 20px;
+	height: 150%;
+	padding: 0px;
+	padding-bottom: 3px;
+	padding-top: 0px;
+	padding-left: 2px;
 	width: auto;
   } 
-
-div.formdiv {
-	visibility: hidden;
-}
