@@ -15,7 +15,7 @@ class CinemaController
 	 */
 	function home(Request $request, Response $response, $args)
 	{
-		try{
+		/* try{
 			$film = new Film();
 			$visualizzato['visualizzato']=true;
 			$data['film']=$film->select($visualizzato);
@@ -30,7 +30,7 @@ class CinemaController
 		}
 		catch(Exception $e) {
 			echo $e -> getMessage();
-		}
+		} */
 	
 		$film = new Film();
 		$visualizzato['visualizzato']=true;
@@ -38,16 +38,27 @@ class CinemaController
 		$id_scheda['id_scheda']=$data['film'][0]['id_scheda'];
 		$scheda=new Scheda();
 		$sc=$scheda->select($id_scheda);
-		for($i=0;$i<count($sc);$i++)
+		// var_dump($data);
+		for($i=0;$i<=count($sc);$i++)
 		{
 		$data['film'][$i]['regia']=$sc[$i]['regia']; 
 		$data['film'][$i]['attori']=$sc[$i]['attori'];
 		$data['film'][$i]['durata']=$sc[$i]['durata'];  
 		$data['film'][$i]['genere']=$sc[$i]['genere']; 
 		$data['film'][$i]['pese']=$sc[$i]['pese']; 
-		$data['film'][$i]['id_scheda']=$sc[$i]['id_scheda']; 
+		$data['film'][$i]['id_scheda']=$sc[$i]['id_scheda'];
+		$data['film'][$i]['indice']=$i;
+		// var_dump($i);
+		if($i==0)
+		{
+		$data['film'][$i]['active']='item active';
 		}
-		// var_dump($data);exit();
+		else
+		{
+			$data['film'][$i]['active']='item';	
+		} 
+		}
+		//   var_dump($data);exit();
 		$table = (new HomeView(null,$data));
 		$page = new Page();
 		$page->addView("content",$table);
