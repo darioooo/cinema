@@ -37,7 +37,16 @@ class CinemaController
 		$data['film']=$film->select($visualizzato);
 		$id_scheda['id_scheda']=$data['film'][0]['id_scheda'];
 		$scheda=new Scheda();
-		$data['scheda']=$scheda->select($id_scheda);
+		$sc=$scheda->select($id_scheda);
+		for($i=0;$i<count($sc);$i++)
+		{
+		$data['film'][$i]['regia']=$sc[$i]['regia']; 
+		$data['film'][$i]['attori']=$sc[$i]['attori'];
+		$data['film'][$i]['durata']=$sc[$i]['durata'];  
+		$data['film'][$i]['genere']=$sc[$i]['genere']; 
+		$data['film'][$i]['pese']=$sc[$i]['pese']; 
+		$data['film'][$i]['id_scheda']=$sc[$i]['id_scheda']; 
+		}
 		// var_dump($data);exit();
 		$table = (new HomeView(null,$data));
 		$page = new Page();
