@@ -16,15 +16,24 @@
 			titolo = $(this).attr("titolo");
 
 			$("#imagediv").html("<img  src=" + url + "></img>");
-			$("#formdiv").css("visibility", "show");
+			$("#formdiv").css("visibility", "visible");
 			$("#labeltitolo").text(titolo);
 			$("#filmdiv").toggle( "slide" );
+			$("#rightdiv").removeClass('col-sm-6').addClass('col-sm-8');
+			$("#leftdiv").removeClass('col-sm-4').addClass('col-sm-2');
 			setTimeout(
 				function() 
 				{
-					$("#buttonhide").css("visibility", "show");
+					$("#buttonhide").css("visibility", "visible");
 				}, 350);
 			 
+		});
+
+		$('#buttonhide').click(function(){
+			$("#buttonhide").css("visibility", "hide");;
+			$("#filmdiv").toggle( "slide" );
+			$("#rightdiv").removeClass('col-sm-8').addClass('col-sm-6');
+			$("#leftdiv").removeClass('col-sm-2').addClass('col-sm-4');
 		});
 
 		$(".filmdropdown").click(function(){ 
