@@ -8,7 +8,7 @@ body {
 	background-image: url("http://127.0.0.1/cinema/CinemaImages/film4.jpeg"); 
 	background-repeat: no-repeat; 
 	background-size: cover; 
-	background-position: center center; 
+	background-position: center; 
 	padding-top: 70px;
 	padding-bottom: 70px;
 }
@@ -36,10 +36,6 @@ nav.barranav.navbar {
 	border-radius: 0px;
 	border: 0px;
 	background-color: maroon;
-}
-
-#maincontainer {
-	min-height: 700px;
 }
 
 .footer {
@@ -79,13 +75,6 @@ input.fielderror {
 	border: 2px solid red;
 }
 
-#buttonhide {
-	width: 40px;
-	height: 40px;
-	background-color: black;
-	margin: 0px;
-	
-}
 .navbar-brand{
 	padding-top: 0px;
 }
@@ -96,4 +85,30 @@ input.fielderror {
 	padding-top: 0px;
 	padding-left: 2px;
 	width: auto;
-  } 
+} 
+
+#buttonhide {
+	width: 50px;
+	height: 50px;
+	background-color: black;
+	margin: 0px;
+	outline: none;
+	border: 0px;
+	border-radius: 2px;
+	transition-duration: 1s;
+	visibility: hidden;
+}
+
+
+.leftdivbg {
+	background-color: rgba(128, 0, 0, 0.95);
+	height: 100%;
+    position: fixed;
+    margin-left: -30px;
+    margin-top: -20PX;
+    padding-top: 20px; 
+}
+
+#leftdiv{
+	
+}

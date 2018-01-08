@@ -2,8 +2,6 @@
 <html>
 
 <head>
-  <!-- CSS links -->
- 
   <link rel="stylesheet" href="http://127.0.0.1/cinema/css/bootstrap3.3.5/bootstrap.min.css">
   <link rel="stylesheet" href="http://127.0.0.1/cinema/css/bootstrap-datepicker.min.css">
   <link rel="stylesheet" href="http://127.0.0.1/cinema/css/stile.css">
@@ -12,8 +10,6 @@
   <script src="http://127.0.0.1/cinema/js/bootstrap3.3.5/bootstrap.min.js"></script>
   <script src="http://127.0.0.1/cinema/js/bootstrap-datepicker.min.js"></script>
   <script src="http://127.0.0.1/cinema/js/bootstrap-datepicker.it.min.js"></script>
-
-  <link rel="stylesheet" href="http://127.0.0.1/cinema/css/stile.css">
 
   <title>Cinema Accademia</title>
 </head>
@@ -43,7 +39,6 @@
       </div>
     </div>
   </nav>
-
 
   <div class="container-fluid" id="maincontainer">
     {{{content}}}

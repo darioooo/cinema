@@ -11,115 +11,111 @@
 
 		$('.datepicker').datepicker();
 		event.preventDefault();
-		$("img").click(function () {
+		$(".imgfilm").click(function () {
 			url = $(this).attr("src");
 			titolo = $(this).attr("titolo");
 
 			$("#imagediv").html("<img  src=" + url + "></img>");
 			$("#formdiv").css("visibility", "visible");
 			$("#labeltitolo").text(titolo);
-			$("#filmdiv").toggle( "slide" );
-			$("#rightdiv").removeClass('col-sm-6').addClass('col-sm-8');
-			$("#leftdiv").removeClass('col-sm-4').addClass('col-sm-2');
-			setTimeout(
-				function() 
-				{
-					$("#buttonhide").css("visibility", "visible");
-				}, 350);
-			 
-		});
-
-		$('#buttonhide').click(function(){
-			$("#buttonhide").css("visibility", "hide");;
-			$("#filmdiv").toggle( "slide" );
-			$("#rightdiv").removeClass('col-sm-8').addClass('col-sm-6');
-			$("#leftdiv").removeClass('col-sm-2').addClass('col-sm-4');
-		});
-
-		$(".filmdropdown").click(function(){ 
-      $("#imgfilm").fadeIn(3000); 
-    }); 
-
-		$("#datafine").change(function (){
+			$("#filmdiv").toggle("slide");
 			
+			setTimeout(
+				function () {
+					$("#buttonhide").css("visibility", "visible");
+					$("#rightdiv").removeClass('col-sm-6 col-md-4').addClass('col-sm-10 col-md-11');
+					$("#centerdiv").removeClass('col-sm-2 col-md-2').addClass('col-sm-1 col-md-1');
+					$("#leftdiv").removeClass('col-sm-4 col-md-4').addClass(' leftdivbg');
+				}, 350);
+
+		});
+
+		$('#buttonhide').click(function () {
+			$("#buttonhide").css("visibility", "hidden");
+			$("#filmdiv").toggle("slide");
+			$("#rightdiv").removeClass('col-sm-10 col-md-11').addClass('col-sm-6 col-md-4');
+			$("#centerdiv").removeClass('col-sm-1 col-md-1').addClass('col-sm-2 col-md-2');
+			$("#leftdiv").removeClass(' leftdivbg').addClass('col-sm-4 col-md-4');
+		});
+		$(".filmdropdown").click(function () {
+			$("#imgfilm").fadeIn(3000);
+		});
+
+		$("#datafine").change(function () {
 			var datainizio = $("#datainizio").datepicker({ dateFormat: "yyyy-mm-dd" }).val();
 			var datafine = $("#datafine").datepicker({ dateFormat: "yyyy-mm-dd" }).val();
-			var datai=$("#datainizio").datepicker('getDate');
-			var dataf=$("#datafine").datepicker('getDate');
-			if(datainizio < datafine)
-				{
-					console.log("ciaooo");
-
-				}
-			
-
+			var datai = $("#datainizio").datepicker('getDate');
+			var dataf = $("#datafine").datepicker('getDate');
+			if (datainizio < datafine) {
+				console.log("ciaooo");
+			}
 		});
-		
-			$("form").on("submit", function (event) {
-				event.preventDefault();
-				descrizione = $("#desc").val();
-				attori = $("#attori").val();
-				regia = $("#regia").val();
-				var datainizio = $("#datainizio").datepicker({ dateFormat: "yyyy-mm-dd" }).val();
-				var datafine = $("#datafine").datepicker({ dateFormat: "yyyy-mm-dd" }).val();
-				 console.log(datainizio);
-				data_inizio = $("#datainizio").val();
-				data_fine = $("#datafine").val();
 
-				if (data_inizio > data_fine) {
-					$("#datainizio").addClass("fielderror");
-					$("#datafine").addClass("fielderror");
-					$("#myModal").modal();
-				}
+		$("form").on("submit", function (event) {
+			event.preventDefault();
+			descrizione = $("#desc").val();
+			attori = $("#attori").val();
+			regia = $("#regia").val();
+			var datainizio = $("#datainizio").datepicker({ dateFormat: "yyyy-mm-dd" }).val();
+			var datafine = $("#datafine").datepicker({ dateFormat: "yyyy-mm-dd" }).val();
+			console.log(datainizio);
+			data_inizio = $("#datainizio").val();
+			data_fine = $("#datafine").val();
 
-				else {
-					$("#datainizio").removeClass("fielderror");
-					$("#datafine").removeClass("fielderror");
-					var dataString = 'titolo=' + titolo + '&url=' + url + '&descrizione=' 
+			if (data_inizio > data_fine) {
+				$("#datainizio").addClass("fielderror");
+				$("#datafine").addClass("fielderror");
+				$("#myModal").modal();
+			}
+
+			else {
+				$("#datainizio").removeClass("fielderror");
+				$("#datafine").removeClass("fielderror");
+				var dataString = 'titolo=' + titolo + '&url=' + url + '&descrizione='
 					+ descrizione + '&attori=' + attori + '&regia=' + regia + '&data_inizio=' + datainizio
 					+ '&data_fine=' + datafine;
-					$.ajax({
-						type: "POST",
-						url: "action_admin",
-						// data: { titolo: titolo, url: url  },
-						data: dataString,
-						cache: false,
-						success: function (result) {
-							alert(result);
-						}
-					});
-				}
-			});
-
+				$.ajax({
+					type: "POST",
+					url: "action_admin",
+					// data: { titolo: titolo, url: url  },
+					data: dataString,
+					cache: false,
+					success: function (result) {
+						alert(result);
+					}
+				});
+			}
 		});
-
+	});
 
 </script>
 
-<div id="block" class="container-fluid">
-	<div class="btn-group-vertical inlinea col-sm-4" id="leftdiv">
+<div id="block" >
+	<div class="btn-group-vertical inlinea col-sm-4 col-md-4" id="leftdiv">
 
-			<input type="button" style="visibility: hidden" id="buttonhide"></input>
-			<div class="btn-group-vertical inlinea  " id="filmdiv" style="background-color: black">
-		
-		{{#film}}
+		<input type="button" style="visibility: hidden" id="buttonhide"></input>
+		<div class="btn-group-vertical inlinea  " id="filmdiv" style="background-color: black">
 
-		<button class="btn btn-danger filmdropdown" type="button" data-toggle="collapse" data-target="#{{id}}">{{titolo}}</button>
+			{{#film}}
 
-		<div id="{{id}}" class="collapse">
-			
+			<button class="btn btn-danger filmdropdown" type="button" data-toggle="collapse" data-target="#{{id}}">{{titolo}}</button>
+
+			<div id="{{id}}" class="collapse">
+
 				<div class="well" style="background-color: black;     margin-bottom: 0px">
-						<p style="text-align:center; color:white"> {{titolo}}</p>
-					</div>
-					
-			<img src="{{url}}" id="imgfilm" class="img immage" titolo="{{titolo}}" style="min-width: 433px"></img>
-		
-		</div>
+					<p style="text-align:center; color:white"> {{titolo}}</p>
+				</div>
 
-		{{/film}}
+				<img src="{{url}}" class="imgfilm" titolo="{{titolo}}" style="min-width: 433px"></img>
+			
+			</div>
+
+			{{/film}}
 		</div>
 	</div>
-	<div id="rightdiv" class="col-sm-6" style="text-align: center;">
+	<div class="col-sm-2 col-md-2" id="centerdiv">
+	</div>
+	<div id="rightdiv" class="col-sm-6 col-md-4" style="text-align: center;">
 		<div id="imagediv">
 		</div>
 		<div id="formdiv" style="visibility: hidden">

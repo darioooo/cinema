@@ -15,8 +15,23 @@ class CinemaController
 	 */
 	function home(Request $request, Response $response, $args)
 	{
-
-
+		try{
+			$film = new Film();
+			$visualizzato['visualizzato']=true;
+			$data['film']=$film->select($visualizzato);
+			$id_scheda['id_scheda']=$data['film'][0]['id_scheda'];
+			$scheda=new Scheda();
+			$data['scheda']=$scheda->select($id_scheda);
+			// var_dump($data);exit();
+			$table = (new HomeView(null,$data));
+			$page = new Page();
+			$page->addView("content",$table);
+			return $response->write($page->render());
+		}
+		catch(Exception $e) {
+			echo $e -> getMessage();
+		}
+	
 		$film = new Film();
 		$visualizzato['visualizzato']=true;
 		$data['film']=$film->select($visualizzato);
@@ -28,7 +43,6 @@ class CinemaController
 		$page = new Page();
 		$page->addView("content",$table);
 		return $response->write($page->render());
-	
 	}
 	/**
 	 * @desc This method provides the registration html page
@@ -39,6 +53,7 @@ class CinemaController
 	 * @param array $args
 	 * @return \Slim\Http\Response
 	 */
+
 	function admin(Request $request, Response $response, $args)
 	{
 		try{
@@ -109,7 +124,7 @@ class CinemaController
 		try {
 			$film->insert($insert_film);
 		}
-		catch(Exception $e )
+		catch(Exception $e)
 	    {
 			echo $e->getMessage();
 		}
