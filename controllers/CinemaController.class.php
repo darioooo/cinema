@@ -35,12 +35,13 @@ class CinemaController
 		$film = new Film();
 		$visualizzato['visualizzato']=true;
 		$data['film']=$film->select($visualizzato);
-		$id_scheda['id_scheda']=$data['film'][0]['id_scheda'];
+		// $id_scheda['id_scheda']=$data['film'][0]['id_scheda'];
 		$scheda=new Scheda();
-		$sc=$scheda->select($id_scheda);
-		// var_dump($data);
-		for($i=0;$i<=count($sc);$i++)
+		
+	
+		for($i=0;$i<count($data['film']);$i++)
 		{
+		$sc=$scheda->select($data['film'][$i]['id_scheda']);
 		$data['film'][$i]['regia']=$sc[$i]['regia']; 
 		$data['film'][$i]['attori']=$sc[$i]['attori'];
 		$data['film'][$i]['durata']=$sc[$i]['durata'];  
@@ -48,7 +49,7 @@ class CinemaController
 		$data['film'][$i]['pese']=$sc[$i]['pese']; 
 		$data['film'][$i]['id_scheda']=$sc[$i]['id_scheda'];
 		$data['film'][$i]['indice']=$i;
-		// var_dump($i);
+		//  var_dump($i);
 		if($i==0)
 		{
 		$data['film'][$i]['active']='item active';

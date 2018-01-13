@@ -26,7 +26,7 @@ nav.barranav.navbar {
 	background-color: rgba(128, 0, 0, 0.95);
 }
 
-#imgfilm {
+.imgfilm {
 	float: left;
 	height: 50%;
 	width: 20%;
