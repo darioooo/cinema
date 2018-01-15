@@ -160,6 +160,12 @@ class CinemaController
 		$titolo =$_POST["titolo"];
 		$data_inizio=$_POST["data_inizio"];
 		$data_fine=$_POST["data_fine"];
+		$orari["lunedì"]=$_POST["lunedì"];
+		$orari["martedì"]=$_POST["martedì"];
+		$orari["mercoledì"]=$_POST["mercoledì"];
+		$orari["venerdì"]=$_POST["venerdì"];
+		$orari["sabato"]=$_POST["sabato"];
+		$orari["domenica"]=$_POST["domenica"];
 		$vowels = array(" ","'");
 		$titolourl=  str_replace($vowels, '', $titolo);
 		$img = "image/".$titolourl.".jpg";
