@@ -34,7 +34,7 @@ class CinemaController
 	
 		$film = new Film();
 		$visualizzato['visualizzato']=true;
-		$data['film']=$film->select($visualizzato);
+		$data['film']=$film->get_FilmDataCourrent();
 		// $id_scheda['id_scheda']=$data['film'][0]['id_scheda'];
 		$scheda=new Scheda();
 		
