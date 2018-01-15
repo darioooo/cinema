@@ -104,7 +104,34 @@ class CinemaController
 	function modifica_admin(Request $request, Response $response, $args)
 	{
 		try{
-			//$data=
+			$$film = new Film();
+			$visualizzato['visualizzato']=true;
+			$data['film']=$film->select($visualizzato);
+			// $id_scheda['id_scheda']=$data['film'][0]['id_scheda'];
+			$scheda=new Scheda();
+			
+		
+			for($i=0;$i<count($data['film']);$i++)
+			{
+			$sc=$scheda->select($data['film'][$i]['id_scheda']);
+			$data['film'][$i]['regia']=$sc[$i]['regia']; 
+			$data['film'][$i]['attori']=$sc[$i]['attori'];
+			$data['film'][$i]['durata']=$sc[$i]['durata'];  
+			$data['film'][$i]['genere']=$sc[$i]['genere']; 
+			$data['film'][$i]['pese']=$sc[$i]['pese']; 
+			$data['film'][$i]['id_scheda']=$sc[$i]['id_scheda'];
+			$data['film'][$i]['indice']=$i;
+			//  var_dump($i);
+			if($i==0)
+			{
+			$data['film'][$i]['active']='item active';
+			}
+			else
+			{
+				$data['film'][$i]['active']='item';	
+			} 
+			}
+
 			$modifica= (new ModificaAdminView(null,$data));
 			$page = new Page();
 			$page->addView("content",$table);
