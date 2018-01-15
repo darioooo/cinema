@@ -90,6 +90,31 @@ class CinemaController
 			echo $e->getMessage();
 		}	
 	}
+
+	/**
+	 * @desc This method provides the registration html page
+	 * @link /modifica_admin
+	 * @method GET
+	 * @param Request $request
+	 * @param Response $response
+	 * @param array $args
+	 * @return \Slim\Http\Response
+	 */
+
+	function modifica_admin(Request $request, Response $response, $args)
+	{
+		try{
+			//$data=
+			$modifica= (new ModificaAdminView(null,$data));
+			$page = new Page();
+			$page->addView("content",$table);
+			return $response->write($page->render());
+		}
+		catch(Exception $e )
+		{
+			echo $e->getMessage();
+		}	
+	}
 	/**
 	 * @desc This method provides the registration html page
 	 * @link /save_film

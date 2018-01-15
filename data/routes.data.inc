@@ -13,6 +13,8 @@ $this->get("/user/{titolo}",function($request,$response,$args)
 
 $this->map(['GET'],"/home","CinemaController:home");
 
+$this->map(['GET'],"/modifica","CinemaController:modifica_admin");
+
 $this->map(['GET'],"/admin","CinemaController:admin");
 
 $this->map(['GET'],"/libri/{id:[\d]+}","LibreriaController:get");
