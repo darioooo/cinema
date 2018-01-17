@@ -1,5 +1,5 @@
 <?php
-class FeedRssView extends View
+class ModificaAdminView extends View
 {
 	function __construct($template=null,$data=null,$var="content")
 	{

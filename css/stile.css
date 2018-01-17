@@ -1,21 +1,18 @@
 html {
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
-    -webkit-text-size-adjust: 100%;
-    -ms-text-size-adjust: 100%
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%
 }
 
 body {
 	background-image: url("http://127.0.0.1/cinema/CinemaImages/film4.jpeg");
-	height: -webkit-fill-available; 
-	background-repeat: no-repeat; 
-	background-size: cover; 
-	background-position: center; 
+	height: -webkit-fill-available;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
 	padding-top: 70px;
-	
-
 	padding-bottom: 70px;
 }
-
 
 #homediv {
 	height: 60%;
@@ -63,8 +60,7 @@ div.contentjumbo.jumbotron {
 
 div.filmjumbo.jumbotron {
 	background-color: rgb(255, 255, 255);
-	background-color: transparent; 
-
+	background-color: transparent;
 }
 
 .filmdropdown.btn {
@@ -79,9 +75,10 @@ input.fielderror {
 	border: 2px solid red;
 }
 
-.navbar-brand{
+.navbar-brand {
 	padding-top: 0px;
 }
+
 .navbar-brand>img {
 	height: 150%;
 	padding: 0px;
@@ -89,7 +86,7 @@ input.fielderror {
 	padding-top: 0px;
 	padding-left: 2px;
 	width: auto;
-} 
+}
 
 #buttonhide {
 	width: 50px;
@@ -103,14 +100,13 @@ input.fielderror {
 	visibility: hidden;
 }
 
-
 .leftdivbg {
 	background-color: rgba(128, 0, 0, 0.95);
 	height: 100%;
-    position: fixed;
-    margin-left: -30px;
-    margin-top: -20PX;
-    padding-top: 20px; 
+	position: fixed;
+	margin-left: -30px;
+	margin-top: -20PX;
+	padding-top: 20px;
 }
 
 
@@ -119,21 +115,20 @@ input.fielderror {
   overflow-y: scroll;
 }
 
-
-@media screen and (max-width: 480px)
-{
-	#filmdiv{
+@media screen and (max-width: 480px) {
+	#filmdiv {
 		height: 100%;
 		overflow-y: scroll;
-		
 	}
-
 }
 
-#rightdiv{
-	height: -webkit-fill-available; 
-  overflow-y: scroll;
-  
+#rightdiv {
+	height: -webkit-fill-available;
+	overflow-y: scroll;
+}
+
+::-webkit-scrollbar {
+	display: none;
 }
 ::-webkit-scrollbar {  display: none;}
 
@@ -145,4 +140,25 @@ input.fielderror {
 	border-radius: 0px;
 	outline: none;
 
+}
+
+#times {
+	text-align: right;
+}
+#timesLabels {
+	font-weight: bold;
+	color: maroon;
+}
+
+#checkboxes {
+	text-align: left;
+}
+
+#datafineCheckbox {
+	width: 20px;
+	outline: none;
+}
+
+.radio-line {
+	font-weight: bold;
 }
