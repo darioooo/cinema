@@ -27,17 +27,17 @@
 			$("#labeltitolo").text(titolo);
 			$("#filmdiv").toggle("slide");
 			
-			setTimeout(
-				function () {
+			
 					$("#buttonhide").css("visibility", "visible");
 					$("#rightdiv").removeClass('col-sm-6 col-md-4').addClass('col-sm-10 col-md-11');
 					$("#centerdiv").removeClass('col-sm-2 col-md-2').addClass('col-sm-1 col-md-1');
 					$("#leftdiv").removeClass('col-sm-4 col-md-4').addClass(' leftdivbg');
-				}, 350);
+				
 
 		});
-
+		
 		$('#buttonhide').click(function () {
+			
 			$("#buttonhide").css("visibility", "hidden");
 			$("#filmdiv").toggle("slide");
 			$("#rightdiv").removeClass('col-sm-10 col-md-11').addClass('col-sm-6 col-md-4');
@@ -166,7 +166,7 @@
 
 		<input type="button" style="visibility: hidden" id="buttonhide"></input>
 		<div class="btn-group-vertical inlinea  " id="filmdiv" style="background-color: black">
-
+			<button class="btn btn-danger " type="button" id="newfilm"  >INSERISCI NUOVO FILM</button>
 			{{#film}}
 
 			<button class="btn btn-danger filmdropdown" type="button" data-toggle="collapse" data-target="#{{id}}">{{titolo}}</button>

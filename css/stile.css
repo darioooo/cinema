@@ -113,6 +113,7 @@ input.fielderror {
     padding-top: 20px; 
 }
 
+
 #filmdiv{
 	height: -webkit-fill-available; 
   overflow-y: scroll;
@@ -135,3 +136,13 @@ input.fielderror {
   
 }
 ::-webkit-scrollbar {  display: none;}
+
+#newfilm{
+	background-color: rgba(128, 0, 0, 0.95);
+	border: 10px solid;
+	text-decoration-color: white;
+	border-color: rgb(0, 0, 0);
+	border-radius: 0px;
+	outline: none;
+
+}
