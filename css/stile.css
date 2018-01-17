@@ -5,12 +5,13 @@ html {
 }
 
 body {
-	background-image: url("http://127.0.0.1/cinema/CinemaImages/film4.jpeg"); 
+	background-image: url("http://127.0.0.1/cinema/CinemaImages/film4.jpeg");
+	height: -webkit-fill-available; 
 	background-repeat: no-repeat; 
 	background-size: cover; 
 	background-position: center; 
 	padding-top: 70px;
-	height: -webkit-fill-available;
+	
 
 	padding-bottom: 70px;
 }
@@ -127,3 +128,10 @@ input.fielderror {
 	}
 
 }
+
+#rightdiv{
+	height: -webkit-fill-available; 
+  overflow-y: scroll;
+  
+}
+::-webkit-scrollbar {  display: none;}
