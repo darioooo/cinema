@@ -67,45 +67,45 @@
 			$(".lunedì").each(function () {
 				var ischecked = $(this).is(":checked");
 				if (ischecked) {
-					lunedì += $(this).val() + ",";
+					lunedì += $(this).val() + "/";
 				}
 			});
 			
 			$(".martedì").each(function () {
 				var ischecked = $(this).is(":checked");
 				if (ischecked) {
-					martedì += $(this).val() + ",";
+					martedì += $(this).val() + "/";
 				}
 			});
 
 			$(".mercoledì").each(function () {
 				var ischecked = $(this).is(":checked");
 				if (ischecked) {
-					mercoledì += $(this).val() + ",";
+					mercoledì += $(this).val() + "/";
 				}
 			});
 
 			$(".venerdì").each(function () {
 				var ischecked = $(this).is(":checked");
 				if (ischecked) {
-					venerdì += $(this).val() + ",";
+					venerdì += $(this).val() + "/";
 				}
 			});
 
 			$(".sabato").each(function () {
 				var ischecked = $(this).is(":checked");
 				if (ischecked) {
-					sabato += $(this).val() + ",";
+					sabato += $(this).val() + "/";
 				}
 			});
 
 			$(".domenica").each(function () {
 				var ischecked = $(this).is(":checked");
 				if (ischecked) {
-					domenica += $(this).val() + ",";
+					domenica += $(this).val() + "/";
 				}
 			});
-
+			alert(venerdì);
 			var datainizio = $("#datainizio").datepicker({ dateFormat: "yyyy-mm-dd" }).val();
 			var datafine = $("#datafine").datepicker({ dateFormat: "yyyy-mm-dd" }).val();
 			console.log(datainizio);
@@ -136,7 +136,14 @@
 					if(regia!=null)
 					{
 						var dataString=dataString+ '&regia=' + regia;
-					}	
+					}
+					lunedì="";
+					martedì="";
+					mercoledì="";
+					giovedì="";
+					venerdì="";
+					sabato="";
+					domenica="";	
 				$.ajax({
 					type: "POST",
 					url: "action_admin",
@@ -145,6 +152,7 @@
 					cache: false,
 					success: function (result) {
 						alert(result);
+						console.log(result);
 					}
 				});
 			}

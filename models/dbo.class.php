@@ -26,10 +26,15 @@ class dbo
 		$fields = "(".implode(",",$cols).")";
 		$binds = "('".implode("','",$values)."')";
 		$sql = "INSERT INTO ".$this->table." ".$fields." VALUES ".$binds;
-		//var_dump($sql);exit();
-		
+//   var_dump($sql);exit();
+		try
+	{
 		return $this->db->query($sql);
-
+	}
+	catch(Exception $e)
+	{
+		echo $e->getMessage();
+	}
 		
 	}
 	
@@ -162,11 +167,12 @@ class dbo
 		}
 	 }
 
-	 	 function get_last_id()
+	 	 function get_last_id($id_name)
 	 {
 
 
-	 	$sql = 'SELECT id_scheda FROM '.$this->table.' WHERE id_scheda ORDER by id_scheda DESC LIMIT 1';
+		 $sql = 'SELECT '.$id_name.' FROM '.$this->table.' WHERE '. $id_name.' ORDER by '. $id_name.' DESC LIMIT 1';
+		//   var_dump($sql);exit();
 	 	try {
 			return $this->db->query($sql);
 			
@@ -176,7 +182,7 @@ class dbo
 			
 		}
 	 }
-
+	 
 	 function get_FilmDataCourrent()
 	 {
 		 $sql = 'SELECT * FROM  '.$this->table.' WHERE  CURDATE() > data_inizio and CURDATE() < data_fine ';

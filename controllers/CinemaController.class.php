@@ -152,7 +152,7 @@ class CinemaController
 	 * @return \Slim\Http\Response
 	 */
 	function save_film(Request $request, Response $response, $args)
-	{
+	{	
 		$url =$_POST["url"];
 		$attori =$_POST["attori"];
 		$regia =$_POST["regia"];
@@ -160,12 +160,16 @@ class CinemaController
 		$titolo =$_POST["titolo"];
 		$data_inizio=$_POST["data_inizio"];
 		$data_fine=$_POST["data_fine"];
-		$orari["lunedì"]=$_POST["lunedì"];
-		$orari["martedì"]=$_POST["martedì"];
-		$orari["mercoledì"]=$_POST["mercoledì"];
-		$orari["venerdì"]=$_POST["venerdì"];
+		
+		$orari["lunedi"]=$_POST["lunedì"];
+		$orari["martedi"]=$_POST["martedì"];
+		$orari["mercoledi"]=$_POST["mercoledì"];
+		$orari["giovedi"]="";
+		$orari["venerdi"]=$_POST["venerdì"];
 		$orari["sabato"]=$_POST["sabato"];
 		$orari["domenica"]=$_POST["domenica"];
+		
+
 		$vowels = array(" ","'");
 		$titolourl=  str_replace($vowels, '', $titolo);
 		$img = "image/".$titolourl.".jpg";
@@ -193,12 +197,17 @@ class CinemaController
 		var_dump($data_inizio);	
 		$film = new Film();
 		$scheda=new Scheda();	
-		$scheda->insert($insert_scheda);
+		$film_orario= new Film_Orario();
 
-	
-		$id=$scheda->get_last_id();
+		$film_orario->insert($orari);
+		$scheda->insert($insert_scheda);
+		
+		$id=$scheda->get_last_id("id_scheda");
+		 $id_orari=$film_orario->get_last_id("id_orario");
+		
 		$insert_film['id_scheda']=$id[0]['id_scheda'];
-		$film->unvisible_last_id();
+		  $insert_film['id_film_orario']=$id_orari[0]['id_orario'];
+		// $film->unvisible_last_id();
 		
 		try {
 			$film->insert($insert_film);
