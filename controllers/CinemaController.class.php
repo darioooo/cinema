@@ -53,10 +53,12 @@ class CinemaController
 		if($i==0)
 		{
 		$data['film'][$i]['active']='item active';
+		$data['film'][$i]['visible']='visible';
 		}
 		else
 		{
 			$data['film'][$i]['active']='item';	
+			$data['film'][$i]['visible']='hidden';
 		} 
 		}
 		//   var_dump($data);exit();

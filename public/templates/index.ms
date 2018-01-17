@@ -15,6 +15,7 @@
 </head>
 
 <body>
+  <div id="tot">
   <nav class="navbar navbar-inverse navbar-fixed-top barranav">
     <div class="container-fluid">
           <div class="navbar-header">
@@ -47,6 +48,7 @@
   <footer class="footer">
     <h5>Via Montanelli 33, 50065 Pontassieve FI - Tel. 0558368252</h5>
   </footer>
+</div>
 </body>
 
 </html>

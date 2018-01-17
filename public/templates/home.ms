@@ -51,7 +51,7 @@
 		<div class="col-xs-12 col-md-4 col-lg-4">
 				<div class="col-xs-12 col-md-12 col-lg-12 jumbotron contentjumbo">
 					{{#film}}
-					<p id="{{indice}}" style="visibility: hidden">{{titolo}}</p>
+					<p id="{{indice}}" style="visibility: {{visible}}">{{titolo}}</p>
 					{{/film}}
 				</div>
 		</div>
