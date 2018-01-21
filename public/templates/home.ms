@@ -10,14 +10,17 @@
 			var valore = $($('#myCarousel .item.active').html()).attr('value');
 			$('#' + valore).css("visibility", "hidden");
 		});
+
+
+
 	});
 
 </script>
-
-<div class="row jumbotron filmjumbo">
+<div class="jumbotron contentjumbo jumbo  clearfix visible-md-block  clearfix visible-lg-block" id="titlejumbo"><p id="filmprog">FILM IN PROGRMMAZIONE</p></div>
+<div class="row jumbotron filmjumbo ">
 	<div class="col-xs-0 col-md-2 col-lg-2">
 	</div>
-	<div class="col-xs-12 col-md-4 col-lg-4">
+	<div class="col-xs-12 col-md-4 col-lg-3">
 		<div class="col-xs-12 col-md-12 col-lg-12 jumbotron contentjumbo">
 			<div id="myCarousel" class="carousel slide" data-ride="carousel">
 				<ol class="carousel-indicators">
@@ -29,7 +32,7 @@
 					{{#film}}
 
 					<div class="{{active}}" value="{{indice}}">
-						<img src="http://localhost/cinema/{{immagine}}" class="imgfilm" value="{{indice}}" style="width:100%;">
+						<img src="http://localhost/cinema/{{immagine}}" class="imgfilm" value="{{indice}}" >
 					</div>
 
 					{{/film}}
@@ -48,13 +51,14 @@
 		</div>
 
 	</div>
-	<div class="col-xs-12 col-md-4 col-lg-4">
-		<div class="col-xs-12 col-md-12 col-lg-12 jumbotron contentjumbo">
+	<div class="col-xs-12 col-md-4 col-lg-5">
 			{{#film}}
-			<p id="{{indice}}" style="visibility: {{visible}}">{{titolo}}</p>
-			{{/film}}
+		<div class="col-xs-12 col-md-12 col-lg-12 jumbotron contentjumbo" id="{{indice}}" style="visibility: {{visible}}">
+					<p >{{titolo}}</p>	
 		</div>
+		{{/film}}
 	</div>
 </div>
 
 </div>
+

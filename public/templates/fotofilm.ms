@@ -159,6 +159,7 @@
 </script>
 
 <div id="block">
+
 	<div class="btn-group-vertical inlinea col-sm-4 col-md-4" id="leftdiv">
 
 		<input type="button" style="visibility: hidden" id="buttonhide"></input>

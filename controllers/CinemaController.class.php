@@ -37,26 +37,38 @@ class CinemaController
 		$data['film']=$film->get_FilmDataCourrent();
 		// $id_scheda['id_scheda']=$data['film'][0]['id_scheda'];
 		$scheda=new Scheda();
+		$film_orario= new Film_Orario();
 		
+	
 		for($i=0;$i<count($data['film']);$i++)
 		{
-			$sc=$scheda->select($data['film'][$i]['id_scheda']);
-			$data['film'][$i]['regia']=$sc[$i]['regia']; 
-			$data['film'][$i]['attori']=$sc[$i]['attori'];
-			$data['film'][$i]['durata']=$sc[$i]['durata'];  
-			$data['film'][$i]['genere']=$sc[$i]['genere']; 
-			$data['film'][$i]['pese']=$sc[$i]['pese']; 
-			$data['film'][$i]['id_scheda']=$sc[$i]['id_scheda'];
-			$data['film'][$i]['indice']=$i;
-			//  var_dump($i);
-			if($i==0)
-			{
-				$data['film'][$i]['active']='item active';
-			}
-			else
-			{
-				$data['film'][$i]['active']='item';	
-			} 
+		$sc=$scheda->select($data['film'][$i]['id_scheda']);
+		$orari= $film_orario->select($data['film'][$i]['id_film_orario']);
+		$data['film'][$i]['regia']=$sc[$i]['regia']; 
+		$data['film'][$i]['attori']=$sc[$i]['attori'];
+		$data['film'][$i]['durata']=$sc[$i]['durata'];  
+		$data['film'][$i]['genere']=$sc[$i]['genere']; 
+		$data['film'][$i]['pese']=$sc[$i]['pese']; 
+		$data['film'][$i]['id_scheda']=$sc[$i]['id_scheda'];
+		$data['film'][$i]['indice']=$i;
+		$data['film'][$i]['lunedi']=$orari[$i]['lunedi'];
+		$data['film'][$i]['martedi']=$orari[$i]['martedi'];
+		$data['film'][$i]['mercoledi']=$orari[$i]['mercoledi'];
+		$data['film'][$i]['giovedi']=$orari[$i]['giovedi'];
+		$data['film'][$i]['venerdi']=$orari[$i]['venerdi'];
+		$data['film'][$i]['sabato']=$orari[$i]['sabato'];
+		$data['film'][$i]['domenica']=$orari[$i]['domenica'];
+		//  var_dump($i);
+		if($i==0)
+		{
+		$data['film'][$i]['active']='item active';
+		$data['film'][$i]['visible']='visible';
+		}
+		else
+		{
+			$data['film'][$i]['active']='item';	
+			$data['film'][$i]['visible']='hidden';
+		} 
 		}
 		//   var_dump($data);exit();
 		$table = (new HomeView(null,$data));
@@ -103,7 +115,7 @@ class CinemaController
 	function modifica_admin(Request $request, Response $response, $args)
 	{
 		try{
-			$film = new Film();
+
 			$visualizzato['visualizzato']=true;
 			$data['film']=$film->select($visualizzato);
 			// $id_scheda['id_scheda']=$data['film'][0]['id_scheda'];
@@ -133,7 +145,7 @@ class CinemaController
 
 			$modifica= (new ModificaAdminView(null,$data));
 			$page = new Page();
-			$page->addView("content",$modifica);
+			$page->addView("content",$table);
 			return $response->write($page->render());
 		}
 		catch(Exception $e )
