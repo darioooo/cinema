@@ -3,11 +3,13 @@
 	$(document).ready(function () {
 		$("#myCarousel").on('slid.bs.carousel', function () {
 			var valore = $($('#myCarousel .item.active').html()).attr('value');
+			$('#' + valore).fadeIn();
 			$('#' + valore).css("visibility", "visible");
 		});
 
 		$("#myCarousel").on('slide.bs.carousel', function () {
 			var valore = $($('#myCarousel .item.active').html()).attr('value');
+			$('#' + valore).fadeOut();
 			$('#' + valore).css("visibility", "hidden");
 		});
 
@@ -17,7 +19,8 @@
 
 </script>
 <div class="jumbotron contentjumbo jumbo  clearfix visible-md-block  clearfix visible-lg-block" id="titlejumbo"><p id="filmprog">FILM IN PROGRMMAZIONE</p></div>
-<div class="row jumbotron filmjumbo ">
+<div class="row jumbotron filmjumbo " style="background-color:rgb(123,22,44);">
+
 	<div class="col-xs-0 col-md-2 col-lg-2">
 	</div>
 	<div class="col-xs-12 col-md-4 col-lg-3">
@@ -54,10 +57,39 @@
 	<div class="col-xs-12 col-md-4 col-lg-5">
 			{{#film}}
 		<div class="col-xs-12 col-md-12 col-lg-12 jumbotron contentjumbo" id="{{indice}}" style="visibility: {{visible}}">
-					<p >{{titolo}}</p>	
+					<p ip ="scheda_film" >{{titolo}}
+						{{#lunedi}}
+					</br>lunedì={{lunedi}}
+						{{/lunedi}}
+
+						{{#martedi}}
+					</br>martedì={{martedi}}
+						{{/martedi}}
+
+						{{#mercoledi}}
+					</br>mercoledì={{mercoledi}}
+						{{/mercoledi}}
+
+						{{#giovedi}}
+					</br>giovedì={{giovedi}}
+						{{/giovedi}}
+
+						{{#venerdi}}
+					</br>venerdì={{venerdi}}
+						{{/venerdi}}
+
+						{{#sabato}}
+					</br>lunedì={{sabato}}
+						{{/sabato}}
+
+						{{#domenica}}
+					</br>domenica={{domenica}}
+						{{/domenica}}
+					</p>	
 		</div>
 		{{/film}}
 	</div>
+</div>
 </div>
 
 </div>
