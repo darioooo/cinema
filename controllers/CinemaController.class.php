@@ -70,11 +70,17 @@ class CinemaController
 			$data['film'][$i]['visible']='hidden';
 		} 
 		}
+		try{
 		//   var_dump($data);exit();
 		$table = (new HomeView(null,$data));
 		$page = new Page();
 		$page->addView("content",$table);
 		return $response->write($page->render());
+		}
+		catch(Exception $e )
+		{
+			echo $e->getMessage();
+		}	
 	}
 	/**
 	 * @desc This method provides the registration html page
