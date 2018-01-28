@@ -1,9 +1,6 @@
 <?php
-
-
 class Scheda extends dbo
 {
-	
 	private $regia = "";
 	private $attori = "";
 	private $durata = "";
@@ -75,11 +72,4 @@ class Scheda extends dbo
 	{
 		$this->paese=$mValue;
 	}
-
-
-
-
-
-
-
 }

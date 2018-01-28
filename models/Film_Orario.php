@@ -1,5 +1,4 @@
 <?php
-
 class Film_Orario extends dbo
 {
 	private $id_orario="";
@@ -17,7 +16,6 @@ class Film_Orario extends dbo
 		$this->table="film_orario";
 	}
 	
-
 	function get_id_orario()
 	{
 		return $this->$id_orario;
@@ -58,12 +56,10 @@ class Film_Orario extends dbo
 		return $this->$domenica;
 	}
 
-
 	private function set_lunedi($mValue)
 	{
 		$this->lunedi=$mValue;
 	}
-
 
 	private function set_martedi($mValue)
 	{
@@ -94,6 +90,4 @@ class Film_Orario extends dbo
 	{
 		$this->domenica=$mValue;
 	}
-
-
 }

@@ -209,7 +209,7 @@ class CinemaController
 		$newDateFine->setDate($dataf['2'],$dataf['1'],$dataf['0']);
 		$newDateFine = date_format($newDateFine, 'Y/m/d');
 		$insert_film['data_fine']=$newDateFine;
-		echo("kjenkvsseseoe inizio     ");
+		// echo("kjenkvsseseoe inizio     ");
 		var_dump($data_fine);
 		var_dump($data_inizio);	
 		$film = new Film();

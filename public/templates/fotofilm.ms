@@ -1,7 +1,5 @@
 <script type="text/javascript">
-
 	$(document).ready(function () {
-
 		var url;
 		var titolo;
 		var descrizione;
@@ -26,18 +24,15 @@
 			$("#formdiv").css("visibility", "visible");
 			$("#labeltitolo").text(titolo);
 			$("#filmdiv").toggle("slide");
-			
-			
-					$("#buttonhide").css("visibility", "visible");
-					$("#rightdiv").removeClass('col-sm-6 col-md-4').addClass('col-sm-10 col-md-11');
-					$("#centerdiv").removeClass('col-sm-2 col-md-2').addClass('col-sm-1 col-md-1');
-					$("#leftdiv").removeClass('col-sm-4 col-md-4').addClass(' leftdivbg');
-				
 
+			$("#buttonhide").css("visibility", "visible");
+			$("#rightdiv").removeClass('col-sm-6 col-md-4').addClass('col-sm-10 col-md-11');
+			$("#centerdiv").removeClass('col-sm-2 col-md-2').addClass('col-sm-1 col-md-1');
+			$("#leftdiv").removeClass('col-sm-4 col-md-4').addClass('leftdivbg');
 		});
-		
+
 		$('#buttonhide').click(function () {
-			
+
 			$("#buttonhide").css("visibility", "hidden");
 			$("#filmdiv").toggle("slide");
 			$("#rightdiv").removeClass('col-sm-10 col-md-11').addClass('col-sm-6 col-md-4');
@@ -53,9 +48,6 @@
 			var datafine = $("#datafine").datepicker({ dateFormat: "yyyy-mm-dd" }).val();
 			var datai = $("#datainizio").datepicker('getDate');
 			var dataf = $("#datafine").datepicker('getDate');
-			if (datainizio < datafine) {
-				console.log("ciaooo");
-			}
 		});
 
 		$("form").on("submit", function (event) {
@@ -67,42 +59,42 @@
 			$(".lunedì").each(function () {
 				var ischecked = $(this).is(":checked");
 				if (ischecked) {
-					lunedì += $(this).val() + "/";
+					lunedì += $(this).val() + " | ";
 				}
 			});
 
 			$(".martedì").each(function () {
 				var ischecked = $(this).is(":checked");
 				if (ischecked) {
-					martedì += $(this).val() + "/";
+					martedì += $(this).val() + " | ";
 				}
 			});
 
 			$(".mercoledì").each(function () {
 				var ischecked = $(this).is(":checked");
 				if (ischecked) {
-					mercoledì += $(this).val() + "/";
+					mercoledì += $(this).val() + " | ";
 				}
 			});
 
 			$(".venerdì").each(function () {
 				var ischecked = $(this).is(":checked");
 				if (ischecked) {
-					venerdì += $(this).val() + "/";
+					venerdì += $(this).val() + " | ";
 				}
 			});
 
 			$(".sabato").each(function () {
 				var ischecked = $(this).is(":checked");
 				if (ischecked) {
-					sabato += $(this).val() + "/";
+					sabato += $(this).val() + " | ";
 				}
 			});
 
 			$(".domenica").each(function () {
 				var ischecked = $(this).is(":checked");
 				if (ischecked) {
-					domenica += $(this).val() + "/";
+					domenica += $(this).val() + " | ";
 				}
 			});
 			alert(venerdì);
@@ -164,7 +156,7 @@
 
 		<input type="button" style="visibility: hidden" id="buttonhide"></input>
 		<div class="btn-group-vertical inlinea  " id="filmdiv" style="background-color: black">
-			<button class="btn btn-danger " type="button" id="newfilm"  >INSERISCI NUOVO FILM</button>
+			<button class="btn btn-danger " type="button" id="newfilm">INSERISCI NUOVO FILM</button>
 			{{#film}}
 
 			<button class="btn btn-danger filmdropdown" type="button" data-toggle="collapse" data-target="#{{id}}">{{titolo}}</button>
@@ -205,7 +197,8 @@
 								<h4 id="timesLabels" for="comment">VENERDÌ</h4>
 							</div>
 							<div class="col-md-7" id="checkboxes">
-								<label class="radio-inline"><input type="checkbox" id="datafineCheckbox" class="form-control venerdì" value="17.00" rows="1" />17.00</label>
+								<label class="radio-inline">
+									<input type="checkbox" id="datafineCheckbox" class="form-control venerdì" value="17.00" rows="1">17.00</label>
 								<label class="radio-inline">
 									<input type="checkbox" id="datafineCheckbox" class="form-control venerdì" value="17.30" rows="1">17.30</label>
 								<label class="radio-inline">

@@ -12,7 +12,6 @@ class Film extends dbo
 	protected $id_scheda="";
 	protected $id_orario="";
 	
-	
 	function __construct()
 	{
 		parent::__construct();
@@ -103,6 +102,5 @@ class Film extends dbo
 	private function set_id_orario($mValue)
 	{
 		$this->id_orario=$mValue;
-	}
-	
+	}	
 }

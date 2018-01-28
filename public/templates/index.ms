@@ -16,39 +16,39 @@
 
 <body>
   <div id="tot">
-  <nav class="navbar navbar-inverse navbar-fixed-top barranav">
-    <div class="container-fluid">
-          <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar3">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <a class="navbar-brand" href="#"><img id="logo" src="../CinemaImages/CINEMA.png" alt="CinemaAccademia">
-              </a>
-            </div>
-      <div class="collapse navbar-collapse">
-        <ul class="nav navbar-nav">
-          <li>
-            <a href="#" class="links">Link</a>
-          </li>
-          <li>
-            <a href="#" class="links">Contatti</a>
-          </li>
-        </ul>
+    <nav class="navbar navbar-inverse navbar-fixed-top barranav">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar3">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">
+            <img id="logo" src="../CinemaImages/CINEMA.png" alt="CinemaAccademia">
+          </a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li>
+              <a href="#" class="links">CineLandia</a>
+            </li>
+            <li>
+              <a href="#" class="links">Contatti</a>
+            </li>
+          </ul>
+        </div>
       </div>
+    </nav>
+
+    <div class="container-fluid" id="maincontainer">
+      {{{content}}}
     </div>
-  </nav>
 
-  <div class="container-fluid" id="maincontainer">
-    {{{content}}}
+    <footer class="footer">
+      <h5>Via Montanelli 33, 50065 Pontassieve FI - Tel. 0558368252</h5>
+    </footer>
   </div>
-
-  <footer class="footer">
-    <h5>Via Montanelli 33, 50065 Pontassieve FI - Tel. 0558368252</h5>
-  </footer>
-</div>
 </body>
-
 </html>
