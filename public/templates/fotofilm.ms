@@ -1,6 +1,7 @@
 <script type="text/javascript">
 	$(document).ready(function () {
 		var url;
+		var file;
 		var titolo;
 		var descrizione;
 		var attori;
@@ -24,7 +25,7 @@
 			$("#formdiv").css("visibility", "visible");
 			$("#labeltitolo").text(titolo);
 			$("#filmdiv").toggle("slide");
-
+			$('#buttonhide').show();
 			$("#buttonhide").css("visibility", "visible");
 			$("#rightdiv").removeClass('col-sm-6 col-md-4').addClass('col-sm-10 col-md-11');
 			$("#centerdiv").removeClass('col-sm-2 col-md-2').addClass('col-sm-1 col-md-1');
@@ -32,7 +33,7 @@
 		});
 
 		$('#buttonhide').click(function () {
-
+			$("#buttonhide").hide();
 			$("#buttonhide").css("visibility", "hidden");
 			$("#filmdiv").toggle("slide");
 			$("#rightdiv").removeClass('col-sm-10 col-md-11').addClass('col-sm-6 col-md-4');
@@ -126,6 +127,23 @@
 				if (regia != null) {
 					var dataString = dataString + '&regia=' + regia;
 				}
+		
+				// if(file)
+				// {
+					console.log("cgslihghghoiauhhsdohohdoh");
+					$.ajax({
+					type: "POST",
+					dataType: 'script',
+					url: "action_image",
+					// data: { titolo: titolo, url: url  },
+					data:file,
+					cache: false,
+					success: function (result) {
+						alert(result);
+						console.log(result);
+					}
+				});
+				// }
 				lunedì = "";
 				martedì = "";
 				mercoledì = "";
@@ -146,6 +164,65 @@
 				});
 			}
 		});
+		$("#newfilm").click(function(){
+
+			url = $(this).attr("src");
+			titolo = $(this).attr("titolo");
+
+			
+			$("#formdiv").css("visibility", "visible");
+			$("#labeltitolo").text(titolo);
+			$("#filmdiv").toggle("slide");
+			
+			
+					$("#buttonhide").css("visibility", "visible");
+					$("#rightdiv").removeClass('col-sm-6 col-md-4').addClass('col-sm-10 col-md-11');
+					$("#centerdiv").removeClass('col-sm-2 col-md-2').addClass('col-sm-1 col-md-1');
+					$("#leftdiv").removeClass('col-sm-4 col-md-4').addClass(' leftdivbg');
+
+					
+				
+
+		});
+		$("#saveModal").click(function(){
+			if($("#title").val()!="" && $("#input-b9").fileinput()!= null)
+			{
+
+				
+		file=$("#input-b9").fileinput();
+		file.files[0];
+		$("#imagediv").html("<img  src=" + $("data") + "></img>");
+		
+		console.log($("#input-b9").fileinput());
+
+		$("#fileModal").modal('toggle');
+
+			}
+			else{
+			alert("inserimento non completo");
+			console.log($("#title").val());
+
+			}
+			
+		});
+
+		$("#input-b9").fileinput({
+        showPreview: true,
+        showUpload: true,
+		uploadAsync:false,
+        elErrorContainer: '#kartik-file-errors',
+        allowedFileExtensions: ["jpg", "png", "gif"],
+        uploadUrl: "action_image",
+		uploadExtraData: function(){
+			return{
+				titolo:$("#title").val(),
+			};
+		}
+
+		});
+
+		
+
 	});
 
 </script>
@@ -156,7 +233,7 @@
 
 		<input type="button" style="visibility: hidden" id="buttonhide"></input>
 		<div class="btn-group-vertical inlinea  " id="filmdiv" style="background-color: black">
-			<button class="btn btn-danger " type="button" id="newfilm">INSERISCI NUOVO FILM</button>
+			<button class="btn btn-danger " type="button" id="newfilm" data-toggle="modal" data-target="#fileModal" >INSERISCI NUOVO FILM</button>
 			{{#film}}
 
 			<button class="btn btn-danger filmdropdown" type="button" data-toggle="collapse" data-target="#{{id}}">{{titolo}}</button>
@@ -306,6 +383,34 @@
 				</div>
 				<button class="btn btn-default" id="Submit">Submit</button>
 			</form>
+
+			<div class="modal fade" id="fileModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-lg" role="document">
+					  <div class="modal-content">
+						<div class="modal-header">
+						  <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+						  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						  </button>
+						</div>
+						<div class="modal-body">
+						  <div class="file-loading">
+							<input id="input-b9" type="file" class="file" name="image" multiple type="file" required>
+						  </div>
+						  <div>
+							<label for="comment form-control">TITOLO</label>
+							<input id="title" type="text" class="form-control" required></input>
+						  </div>
+						  <div id="kartik-file-errors"></div>
+						</div>
+						<div class="modal-footer">
+						  <button type="button" class="btn btn-secondary" data-dismiss="modal" id="closeModal">Close</button>
+						  <button type="button" class="btn btn-primary" title="Your custom upload logic" id="saveModal">Save</button>
+						</div>
+					  </div>
+					</div>
+				  </div>
+
 			<div id="myModal" class="modal fade">
 				<div class="modal-dialog">
 					<div class="modal-content">

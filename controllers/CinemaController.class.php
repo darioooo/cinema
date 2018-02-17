@@ -42,6 +42,7 @@ class CinemaController
 	
 		for($i=0;$i<count($data['film']);$i++)
 		{
+			
 		$sc=$scheda->select($data['film'][$i]['id_scheda']);
 		$orari= $film_orario->select($data['film'][$i]['id_film_orario']);
 		$data['film'][$i]['regia']=$sc[$i]['regia']; 
@@ -58,7 +59,7 @@ class CinemaController
 		$data['film'][$i]['venerdi']=$orari[$i]['venerdi'];
 		$data['film'][$i]['sabato']=$orari[$i]['sabato'];
 		$data['film'][$i]['domenica']=$orari[$i]['domenica'];
-		//  var_dump($i);
+		  var_dump($data);
 		if($i==0)
 		{
 		$data['film'][$i]['active']='item active';
@@ -177,18 +178,77 @@ class CinemaController
 		$titolo =$_POST["titolo"];
 		$data_inizio=$_POST["data_inizio"];
 		$data_fine=$_POST["data_fine"];
+		$data=explode("/",$data_inizio);
+		$dataf=explode("/",$data_fine);
+		// $data_i=$data['2']."/".$data['1']."/".$data['0'];
+		// $data_f=$dataf['2']."/".$dataf['1']."/".$dataf['0'];
+		try
+		{
+		$data_i = new DateTime($data['2'].'-'.$data['1'].'-'.$data['0']);
+		$data_f = new DateTime($dataf['2'].'-'.$dataf['1'].'-'.$dataf['0']);
+		$datainizio = date_format($data_i, 'Y/m/d');
+		$datafine = date_format($data_f, 'Y/m/d');
+		// $interval= DateInterval::createFromDateString('1 day');
+		// $period= new DatePeriod($data_i ,$interval ,$data_f);
 		
-		$orari["lunedi"]=$_POST["lunedì"];
-		$orari["martedi"]=$_POST["martedì"];
-		$orari["mercoledi"]=$_POST["mercoledì"];
-		$orari["giovedi"]="";
-		$orari["venerdi"]=$_POST["venerdì"];
-		$orari["sabato"]=$_POST["sabato"];
-		$orari["domenica"]=$_POST["domenica"];
-		
+		}	
+		catch(Exception $e)
+{
+	echo $e->getMessage();
+}
+		for($i=$data_i; $i<$data_f; $i->modify('+1 day'))
+		{	
+			$timeTemp=strtotime(date_format($i,'Y/m/d'));
+			
+			if(date("w",$timeTemp)==1)
+			{
+			$orari[date("w",$timeTemp)]["ora"]=$_POST["lunedì"];
+			$orari[date("w",$timeTemp)]["giornosettimana"]="lunedì";
+			$orari[date("w",$timeTemp)]["giorno"]=date_format($i,'Y/m/d');
+			var_dump($orari);
 
+			}
+			if(date("w",$timeTemp)==2)
+			{
+				$orari[date("w",$timeTemp)]["ora"]=$_POST["martedì"];
+				$orari[date("w",$timeTemp)]["giornosettimana"]="martedì";
+				$orari[date("w",$timeTemp)]["giorno"]=date_format($i,'Y/m/d');
+			}
+			if(date("w",$timeTemp)==3)
+			{
+				$orari[date("w",$timeTemp)]["ora"]=$_POST["mercoledì"];
+				$orari[date("w",$timeTemp)]["giornosettimana"]="mercoledì";
+				$orari[date("w",$timeTemp)]["giorno"]=date_format($i,'Y/m/d');
+			}
+			if(date("w",$timeTemp)==4)
+			{
+				$orari[date("w",$timeTemp)]["ora"]="";
+				$orari[date("w",$timeTemp)]["giornosettimana"]="giovedì";
+				$orari[date("w",$timeTemp)]["giorno"]=date_format($i,'Y/m/d');
+			}
+			if(date("w",$timeTemp)==5)
+			{
+				$orari[date("w",$timeTemp)]["ora"]=$_POST["venerdì"];
+				$orari[date("w",$timeTemp)]["giornosettimana"]="venerdì";
+				$orari[date("w",$timeTemp)]["giorno"]=date_format($i,'Y/m/d');
+			}
+			if(date("w",$timeTemp)==6)
+			{
+				$orari[date("w",$timeTemp)]["ora"]=$_POST["sabato"];
+				$orari[date("w",$timeTemp)]["giornosettimana"]="sabato";
+				$orari[date("w",$timeTemp)]["giorno"]=date_format($i,'Y/m/d');
+			}
+			if(date("w",$timeTemp)==7)
+			{
+				$orari[date("w",$timeTemp)]["ora"]=$_POST["domenica"];
+				$orari[date("w",$timeTemp)]["giornosettimana"]="domenica";
+				$orari[date("w",$timeTemp)]["giorno"]=date_format($i,'Y/m/d');
+			}
+		}
+	
 		$vowels = array(" ","'");
 		$titolourl=  str_replace($vowels, '', $titolo);
+	
 		$img = "image/".$titolourl.".jpg";
 		file_put_contents($img, file_get_contents($url));
 		$insert_scheda['attori']=$attori;
@@ -215,23 +275,76 @@ class CinemaController
 		$film = new Film();
 		$scheda=new Scheda();	
 		$film_orario= new Film_Orario();
-
-		$film_orario->insert($orari);
+		// var_dump($orari);exit();
+	
 		$scheda->insert($insert_scheda);
 		
 		$id=$scheda->get_last_id("id_scheda");
-		 $id_orari=$film_orario->get_last_id("id_orario");
+		
 		
 		$insert_film['id_scheda']=$id[0]['id_scheda'];
-		  $insert_film['id_film_orario']=$id_orari[0]['id_orario'];
+
 		// $film->unvisible_last_id();
 		
 		try {
 			$film->insert($insert_film);
+			$id_film=$film->get_last_id("id");
+			var_dump($id_film);
+			
+			if($orari!= null)
+		{
+			foreach($orari as $value)
+			{
+				if($value["ora"]!="")
+				{
+				$orarioDbo["ora"]=$value["ora"];
+				$orarioDbo["giorno"]=$value["giorno"];
+				$orarioDbo["giornosettimana"]=str_replace("ì","i",$value["giornosettimana"]);
+				$orarioDbo["id_film"]=$id_film[0]['id'];
+				$film_orario->insert($orarioDbo);
+				}
+			}
+		}
 		}
 		catch(Exception $e)
 	    {
 			echo $e->getMessage();
 		}
 	}
+
+	/**
+	 * @desc This method provides the registration html page
+	 * @link /save_new_image
+	 * @method 
+	 * @param Request $request
+	 * @param Response $response
+	 * @param array $args
+	 * @return \Slim\Http\Response
+	 */
+	function save_new_image(Request $request, Response $response, $args)
+	{	
+
+		$sourcePath = $_FILES["file"]["tmp_name"];
+		var_dump($sourcePath);
+		$targetPath = "image/".$_FILES['file']['name'];
+		var_dump($targetPath);
+
+try 
+{	
+	move_uploaded_file($sourcePath,$targetPath) ;
+}
+catch(Exception $e)
+{
+	echo $e->getMessage();
+}
+
+		
+		
+		
+
+		
+		
+	}
+
+
 }
