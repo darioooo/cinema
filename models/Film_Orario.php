@@ -2,13 +2,11 @@
 class Film_Orario extends dbo
 {
 	private $id_orario="";
-	private $lunedi="";
-	private $martedi="";
-	private $mercoledi="";
-	private $giovedi="";
-	private $venerdi="";
-	private $sabato="";
-	private $domenica="";
+	private $giorno="";
+	private $ora="";
+	private $giornosettimana="";
+	private $id_film="";
+	
 
 	function __construct()
 	{
@@ -21,73 +19,43 @@ class Film_Orario extends dbo
 		return $this->$id_orario;
 	}
 
-	function get_lunedi()
+	function get_giorno()
 	{
-		return $this->$lunedi;
+		return $this->$giorno;
 	}
 
-	function get_martedi()
+	function get_ora()
 	{
-		return $this->$martedi;
+		return $this->$ora;
 	}
 
-	function get_mercoledi()
+	function get_giornosettimana()
 	{
-		return $this->$mercoledi;
+		return $this->$giornosettimana;
 	}
 
-	function get_giovedi()
+	function get_id_film()
 	{
-		return $this->$giovedi;
+		return $this->$id_film;
 	}
 
-	function get_venerdi()
+	private function set_giorno($mValue)
 	{
-		return $this->$venerdi;
+		$this->giorno=$mValue;
 	}
 
-	function get_sabato()
+	private function set_ora($mValue)
 	{
-		return $this->$sabato;
+		$this->ora=$mValue;
 	}
 
-	function get_domenica()
+	private function set_giornosettimana($mValue)
 	{
-		return $this->$domenica;
+		$this->giornosettimana=$mValue;
 	}
 
-	private function set_lunedi($mValue)
+	private function set_id_film($mValue)
 	{
-		$this->lunedi=$mValue;
-	}
-
-	private function set_martedi($mValue)
-	{
-		$this->martedi=$mValue;
-	}
-
-	private function set_mercoledi($mValue)
-	{
-		$this->mercoledi=$mValue;
-	}
-
-	private function set_giovedi($mValue)
-	{
-		$this->giovedi=$mValue;
-	}
-
-	private function set_sabato($mValue)
-	{
-		$this->sabato=$mValue;
-	}
-
-	private function set_venerdi($mValue)
-	{
-		$this->venerdi=$mValue;
-	}
-
-	private function set_domenica($mValue)
-	{
-		$this->domenica=$mValue;
+		$this->id_film=$mValue;
 	}
 }

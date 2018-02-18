@@ -183,9 +183,9 @@ class dbo
 		}
 	 }
 	 
-	 function get_FilmDataCourrent()
+	 function get_FilmAfterDataCourrent()
 	 {
-		 $sql = 'SELECT * FROM  '.$this->table.' WHERE  CURDATE() >= data_inizio and CURDATE() < data_fine ';
+		 $sql = 'SELECT * FROM  '.$this->table.' WHERE  CURDATE() < data_inizio and CURDATE() < data_fine ';
 		 try {
 			return $this->db->query($sql);
 			
@@ -196,6 +196,20 @@ class dbo
 		}
 		
 		}
+
+		function get_FilmTodayDataCourrent()
+		{
+			$sql = 'SELECT * FROM film,film_orario WHERE film.id = film_orario.id_film AND CURDATE() = film_orario.giorno';
+			try {
+			   return $this->db->query($sql);
+			   
+		   } catch (Exception $e) {
+   
+			   echo $e->getMessage();
+			   
+		   }
+		   
+		   }
 
 
 

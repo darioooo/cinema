@@ -25,18 +25,18 @@
 			<div class="col-xs-12 col-md-12 col-lg-12 jumbotron contentjumbo">
 				<div id="myCarousel" class="carousel slide" data-ride="carousel">
 					<ol class="carousel-indicators">
-						{{#film}}
+						{{#filmtoday}}
 						<li data-target="#myCarousel" data-slide-to="{{indice}}"></li>
-						{{/film}}
+						{{/filmtoday}}
 					</ol>
 					<div class="carousel-inner">
-						{{#film}}
+						{{#filmtoday}}
 
 						<div class="{{active}}" value="{{indice}}" id="imageFilmDiv">
 							<img src="http://localhost/cinema/{{immagine}}" class="imgfilm" value="{{indice}}">
 						</div>
 
-						{{/film}}
+						{{/filmtoday}}
 
 						<!-- Left and right controls -->
 						<a class="left carousel-control" href="#myCarousel" data-slide="prev">
@@ -56,7 +56,7 @@
 			</div>
 		</div>
 		<div class="col-xs-12 col-md-4 col-lg-5">
-			{{#film}}
+			{{#filmtoday}}
 			<div class="col-xs-10 col-md-12 col-lg-12 jumbotron contentjumbo film-details" id="{{indice}}" style="visibility: {{visible}}">
 				<p class="film-title" align="center">
 					{{titolo}}
@@ -88,7 +88,7 @@
 					</p>
 				</div>
 			</div>
-			{{/film}}
+			{{/filmtoday}}
 		</div>
 	</div>
 </div>
