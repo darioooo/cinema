@@ -1,19 +1,3 @@
-<script type="text/javascript">
-	$(document).ready(function () {
-		$("#myCarousel").on('slid.bs.carousel', function () {
-			var valore = $($('#myCarousel .item.active').html()).attr('value');
-			$('#' + valore).fadeIn();
-			$('#' + valore).css("visibility", "visible");
-		});
-
-		$("#myCarousel").on('slide.bs.carousel', function () {
-			var valore = $($('#myCarousel .item.active').html()).attr('value');
-			$('#' + valore).fadeOut();
-			$('#' + valore).css("visibility", "hidden");
-		});
-	});
-</script>
-
 <p id="filmprog">FILM IN PROGRAMMAZIONE</p>
 <div class="row jumbotron filmjumbo">
 	<div class="col-xs-0 col-md-2 col-lg-2">
@@ -31,26 +15,10 @@
 					</ol>
 					<div class="carousel-inner">
 						{{#filmtoday}}
-
 						<div class="{{active}}" value="{{indice}}" id="imageFilmDiv">
 							<img src="http://localhost/cinema/{{immagine}}" class="imgfilm" value="{{indice}}">
 						</div>
-
 						{{/filmtoday}}
-
-						<!-- Left and right controls -->
-						<a class="left carousel-control" href="#myCarousel" data-slide="prev">
-							<span>
-								<img class="carouselChevrons left" src="http://localhost/cinema/CinemaImages/leftChevron.png" />
-							</span>
-							<span class="sr-only">Previous</span>
-						</a>
-						<a class="right carousel-control" href="#myCarousel" data-slide="next">
-							<span>
-								<img class="carouselChevrons right" src="http://localhost/cinema/CinemaImages/rightChevron.png" />
-							</span>
-							<span class="sr-only">Next</span>
-						</a>
 					</div>
 				</div>
 			</div>
@@ -88,7 +56,16 @@
 					</p>
 				</div>
 			</div>
-			{{/filmtoday}}
 		</div>
 	</div>
+	{{/filmtoday}}
+</div>
+
+<p>Prossimi film</p>
+<div class="row">
+	{{#filmafter}}
+	<div value="{{indice}}" id="film-futuri" class="column">
+		<img src="http://localhost/cinema/{{immagine}}" id="film-after-img" value="{{indice}}">
+	</div>
+	{{/filmafter}}
 </div>

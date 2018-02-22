@@ -19,14 +19,12 @@ class FeedRssController
 			$regex = '/\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|$!:,.;]*[A-Z0-9+&@#\/%=~_|$]/i';
 			preg_match_all($regex, $image, $matches);
 		
-			for ($i=0; $i <2 ; $i++) { 	
-			if($i)
-			{
-				$path=parse_url($matches[0][$i], PHP_URL_PATH);
-			
-			}
-			
-		
+			for ($i=0; $i <2 ; $i++) {
+				if($i)
+				{
+					$path=parse_url($matches[0][$i], PHP_URL_PATH);
+				}
+				
 				if (strpos($path, '.jpg')!= false) {
 					$data['film'][$a] = array('url' =>$matches[0][$i] ,'titolo'=>$titolo ,'id'=>$a);
 
@@ -35,7 +33,6 @@ class FeedRssController
 					// $data['titolo']=$titolo;
 					// echo "<img src='".$matches[0][$i]."'></img>";
 				}
-			
 			}
 		}
 		return $data; 

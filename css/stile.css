@@ -1,10 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Ubuntu');
 body {
-	/* background-image: url("http://127.0.0.1/cinema/CinemaImages/film4.jpeg");
-	height: -webkit-fill-available;
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: center; */
 	background-color: rgb(209, 209, 209);
 	padding-top: 70px;
 	padding-bottom: 70px;
@@ -41,24 +36,12 @@ nav.barranav.navbar a {
 	width: auto;
 }
 
-/* Carousel controls and image */
-
 .carousel-inner>.item>img {
 	width: 100%;
 	max-height: 1300px;
 	min-height: 492px;
 	position: relative;
 }
-/* Carousel controls and image */
-/* @media screen and (min-width: 768px)
-{
-.carousel-inner>.item>img {
-	width: 100%;
-	height: 530px;
-	
-	position: relative;
-}
-} */
 
 @media screen and (min-width: 480px) {
 	.carousel-inner>.item>img {
@@ -67,49 +50,31 @@ nav.barranav.navbar a {
 		min-height: 492px;
 		position: relative;
 	}
-   }
-   
-   @media screen and (min-width: 768px) {
+}
+
+@media screen and (min-width: 768px) {
 	.carousel-inner>.item>img {
 		width: 100%;
 		max-height: 1300px;
 		min-height: 492px;
 		position: relative;
 	}
-   }
-   
-   @media screen and (min-width: 1024px) {
+}
+
+@media screen and (min-width: 1024px) {
 	.carousel-inner>.item>img {
 		width: 100%;
 		height: 580px;
-		
 		position: relative;
 	}
-   }
-   
-   @media screen and (min-width: 1200px) {
+}
+
+@media screen and (min-width: 1200px) {
 	.carousel-inner>.item>img {
 		width: 100%;
 		height: 580px;
-		
 		position: relative;
 	}
-   }
-
-.carouselChevrons {
-	width: 90px;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-}
-
-.carouselChevrons.left {
-	margin-left: 10px;
-}
-
-.carouselChevrons.right {
-	margin-left: -10px;
 }
 
 .footer {
@@ -126,15 +91,13 @@ nav.barranav.navbar a {
 	align-items: center;
 }
 
-/* foto film e orari */
-
 div.contentjumbo.jumbotron {
 	background-color: rgba(128, 0, 0, 1);
 	padding: 2px;
 }
 
 div.filmjumbo.jumbotron {
-	background-color: transparent
+	background-color: transparent;
 }
 
 div.filmjumbo.jumbotron {
@@ -169,7 +132,7 @@ div.contentjumbo.jumbotron.film-details {
 
 .jumbotron {
 	width: 100%;
-	border-radius: 0px!important;
+	border-radius: 0px !important;
 	color: rgb(209, 209, 209)
 }
 
@@ -227,10 +190,6 @@ input.fielderror {
 	display: none;
 }
 
-::-webkit-scrollbar {
-	display: none;
-}
-
 #newfilm {
 	background-color: rgba(128, 0, 0, 0.95);
 	border: 10px solid;
@@ -249,10 +208,6 @@ input.fielderror {
 	color: white;
 }
 
-#checkboxes {
-	/* text-align: left; */
-}
-
 #datafineCheckbox {
 	width: 20px;
 	outline: none;
@@ -262,18 +217,11 @@ input.fielderror {
 	font-weight: bold;
 }
 
-
-
 #filmprog {
 	font-size: 40px;
 	font-weight: 900;
 	color: rgb(48, 48, 48);
 	text-align: center;
-}
-
-div#maincontainer {
-	padding-left: 0px;
-	padding-right: 0px;
 }
 
 #titlejumbo {
@@ -289,4 +237,21 @@ div#maincontainer {
 
 #backgroundhoverdiv {
 	background-color: #862312;
+}
+
+#film-futuri {
+	width: 1400px;
+	margin: auto;
+	margin-left: 10px;
+	padding: 0px 50px;
+}
+
+#film-after-img {
+	float: left;
+	width: 200px;
+	height: 300px;
+	margin-right: 5px;
+	border: 2px solid #862312; 
+	overflow-x: scroll;
+
 }
