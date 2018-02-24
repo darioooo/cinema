@@ -72,7 +72,7 @@ nav.barranav.navbar a {
 @media screen and (min-width: 1200px) {
 	.carousel-inner>.item>img {
 		width: 100%;
-		height: 580px;
+		height: 492px;
 		position: relative;
 	}
 }
@@ -239,19 +239,54 @@ input.fielderror {
 	background-color: #862312;
 }
 
-#film-futuri {
-	width: 1400px;
-	margin: auto;
-	margin-left: 10px;
-	padding: 0px 50px;
+/* #film-futuri {
+	width: 980px;
+	margin-right: auto;
+	margin-left: auto;
+	padding: 0px 30px;
 }
+ */
 
 #film-after-img {
 	float: left;
-	width: 200px;
-	height: 300px;
-	margin-right: 5px;
-	border: 2px solid #862312; 
+	width: 170px;
+	height: 250px;
+	margin-right: 10px;
+	border: 2px solid #862312;
 	overflow-x: scroll;
+}
 
+#prossimi {
+	text-align: center;
+	margin-left: 40px;
+	margin-top: -100px;
+	margin-bottom: 40px;
+	font-size: 50px;
+}
+
+#easyPaginate {
+	width: 900px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.easyPaginateNav a {
+	margin-right: auto;
+	color: rgba(128, 0, 0, 1);
+	padding: 5px;
+	text-decoration: none !important;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.easyPaginateNav {
+	margin-top: 10px;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.easyPaginateNav a.current {
+	text-decoration: underline;
+	color: black;
 }

@@ -17,6 +17,7 @@
   <script src="http://127.0.0.1/cinema/fileinput/js/fileinput.min.js"></script>
   <script src="http://127.0.0.1/cinema/fileinput/themes/fa/theme.js"></script>
   <script src="http://127.0.0.1/cinema/fileinput/js/locales/it.js"></script>
+  <script src="http://127.0.0.1/cinema/easyPaginateJQuery/lib/jquery.easyPaginate.js"></script>
 
   <title>Cinema Accademia</title>
 </head>

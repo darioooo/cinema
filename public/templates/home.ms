@@ -1,3 +1,12 @@
+<script>
+	$(document).ready(function () {
+		$('#easyPaginate').easyPaginate({
+			paginateElement: 'img',
+			elementsPerPage: 5,
+			effect: 'fade'
+		});
+	});
+</script>
 <p id="filmprog">FILM IN PROGRAMMAZIONE</p>
 <div class="row jumbotron filmjumbo">
 	<div class="col-xs-0 col-md-2 col-lg-2">
@@ -19,13 +28,18 @@
 							<img src="http://localhost/cinema/{{immagine}}" class="imgfilm" value="{{indice}}">
 						</div>
 						{{/filmtoday}}
+						<a class="left carousel-control" href="#myCarousel" data-slide="prev">
+						</a>
+						<a class="right carousel-control" href="#myCarousel" data-slide="next">
+						</a>
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="col-xs-12 col-md-4 col-lg-5">
 			{{#filmtoday}}
-			<div class="col-xs-10 col-md-12 col-lg-12 jumbotron contentjumbo film-details" id="{{indice}}" style="visibility: {{visible}}">
+			<div class="col-xs-10 col-md-12 col-lg-12 jumbotron contentjumbo film-details" id="{{indice}}" style="display: {{visible}}"
+			    id="pinzagay">
 				<p class="film-title" align="center">
 					{{titolo}}
 				</p>
@@ -61,8 +75,8 @@
 	{{/filmtoday}}
 </div>
 
-<p>Prossimi film</p>
-<div class="row">
+<h1 id="prossimi">Prossimi film</h1>
+<div class="row" id="easyPaginate">
 	{{#filmafter}}
 	<div value="{{indice}}" id="film-futuri" class="column">
 		<img src="http://localhost/cinema/{{immagine}}" id="film-after-img" value="{{indice}}">
