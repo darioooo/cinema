@@ -109,11 +109,20 @@
 			var datafine = $("#datafine").datepicker({
 				dateFormat: "yyyy-mm-dd"
 			}).val();
-			console.log(datainizio);
 			data_inizio = $("#datainizio").val();
 			data_fine = $("#datafine").val();
 
-			if (data_inizio > data_fine) {
+			myDateInizio = datainizio.split("/");
+			var newDatei = myDateInizio[1] + "," + myDateInizio[0] + "," + myDateInizio[2];
+
+			var newDataInizio = new Date(newDatei).getTime();
+
+			myDateFine = datafine.split("/");
+			var newDatef = myDateFine[1] + "," + myDateFine[0] + "," + myDateFine[2];
+			var newDataFine = new Date(newDatef).getTime();
+
+
+			if (newDataInizio > newDataFine) {
 				$("#datainizio").addClass("fielderror");
 				$("#datafine").addClass("fielderror");
 				$("#myModal").modal();
@@ -134,9 +143,6 @@
 					var dataString = dataString + '&regia=' + regia;
 				}
 
-				// if(file)
-				// {
-				console.log("cgslihghghoiauhhsdohohdoh");
 				$.ajax({
 					type: "POST",
 					dataType: 'script',
