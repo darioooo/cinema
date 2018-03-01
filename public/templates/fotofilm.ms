@@ -27,6 +27,8 @@
 			$("#filmdiv").toggle("slide");
 			$('#buttonhide').show();
 			$("#buttonhide").css("visibility", "visible");
+			$('#buttonhidemodifica').show();
+			$("#buttonhidemodifica").css("visibility", "visible");
 			$("#rightdiv").removeClass('col-sm-6 col-md-4').addClass('col-sm-10 col-md-11');
 			$("#centerdiv").removeClass('col-sm-2 col-md-2').addClass('col-sm-1 col-md-1');
 			$("#leftdiv").removeClass('col-sm-4 col-md-4').addClass('leftdivbg');
@@ -35,11 +37,25 @@
 		$('#buttonhide').click(function () {
 			$("#buttonhide").hide();
 			$("#buttonhide").css("visibility", "hidden");
+			$("#buttonhidemodifica").hide();
+			$("#buttonhidemodifica").css("visibility", "hidden");
 			$("#filmdiv").toggle("slide");
 			$("#rightdiv").removeClass('col-sm-10 col-md-11').addClass('col-sm-6 col-md-4');
 			$("#centerdiv").removeClass('col-sm-1 col-md-1').addClass('col-sm-2 col-md-2');
 			$("#leftdiv").removeClass(' leftdivbg').addClass('col-sm-4 col-md-4');
 		});
+		//TODO pagina modifica eccccc;
+		$('#buttonhidemodifica').click(function () {
+			$("#buttonhide").hide();
+			$("#buttonhide").css("visibility", "hidden");
+			$("#buttonhidemodifica").hide();
+			$("#buttonhidemodifica").css("visibility", "hidden");
+			$("#filmdiv").toggle("slide");
+			$("#rightdiv").removeClass('col-sm-10 col-md-11').addClass('col-sm-6 col-md-4');
+			$("#centerdiv").removeClass('col-sm-1 col-md-1').addClass('col-sm-2 col-md-2');
+			$("#leftdiv").removeClass(' leftdivbg').addClass('col-sm-4 col-md-4');
+		});
+
 		$(".filmdropdown").click(function () {
 			$("#imgfilm").fadeIn(3000);
 		});
@@ -109,6 +125,7 @@
 			var datafine = $("#datafine").datepicker({
 				dateFormat: "yyyy-mm-dd"
 			}).val();
+			console.log(datainizio);
 			data_inizio = $("#datainizio").val();
 			data_fine = $("#datafine").val();
 
@@ -176,6 +193,39 @@
 				});
 			}
 		});
+		$("#buttonhide").mouseover(function(){
+			$("#buttonhide").animate({ width: '200px' },{
+			complete: function (){
+				// $("#phide").show()
+				// $("#phide").css("visibility", "visible")
+			// $("#phide").css("visibility", "visible");
+			}});
+			
+		});
+		$("#buttonhide").mouseout(function(){
+			$("#buttonhide").animate({ width: '50px' },{
+				complete:function(){
+				// $(this).after($("#phide").hide())
+			// $("#phide").css("visibility", "hidden")
+			}});
+			
+			
+		});
+		$("#buttonhidemodifica").mouseover(function(){
+			$("#buttonhidemodifica").animate({ width: '200px' },function(){	
+			// $("#pmodifica").show();
+			// $("#pmodifica").css("visibility", "visible");
+			});
+		
+		});
+		$("#buttonhidemodifica").mouseout(function(){
+			$("#buttonhidemodifica").animate({ width: '50px' },function(){
+			// $("#pmodifica").hide();
+			// $("#pmodifica").css("visibility", "hidden");
+			});
+
+			
+		});
 		$("#newfilm").click(function () {
 
 			url = $(this).attr("src");
@@ -188,6 +238,7 @@
 
 
 			$("#buttonhide").css("visibility", "visible");
+			$("#buttonhidemodifica").css("visibility", "visible");
 			$("#rightdiv").removeClass('col-sm-6 col-md-4').addClass('col-sm-10 col-md-11');
 			$("#centerdiv").removeClass('col-sm-2 col-md-2').addClass('col-sm-1 col-md-1');
 			$("#leftdiv").removeClass('col-sm-4 col-md-4').addClass(' leftdivbg');
@@ -240,7 +291,8 @@
 
 	<div class="btn-group-vertical inlinea col-sm-4 col-md-4" id="leftdiv">
 
-		<input type="button" style="visibility: hidden" id="buttonhide"></input>
+		<button type="button" class="btn" style="visibility: hidden; text-align: right;" id="buttonhide"><span id="spanhide" class="glyphicon glyphicon-chevron-right"style="color:white"></span> </button>
+		<button type="button" class="btn" style="visibility: hidden; text-align: right;" id="buttonhidemodifica"><span id="spanmodifica" class="glyphicon glyphicon-chevron-right"style="color:white"></span> </button>
 		<div class="btn-group-vertical inlinea  " id="filmdiv" style="background-color: black">
 			<button class="btn btn-danger " type="button" id="newfilm" data-toggle="modal" data-target="#fileModal">INSERISCI NUOVO FILM</button>
 			{{#film}}
