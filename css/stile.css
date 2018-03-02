@@ -148,28 +148,40 @@ input.fielderror {
 	border: 2px solid red;
 }
 
-#buttonhide {
-	width: 50px;
+#buttonadd {
+	width: 80px;
 	height: 50px;
 	background-color: black;
 	margin: 0px;
 	outline: none;
 	border: 0px;
 	border-radius: 2px;
-	transition-duration: 1s;
+	/* transition-duration: 1s; */
+	visibility: hidden;
+}
+#buttonhide {
+	width: 80px;
+	height: 50px;
+	background-color: black;
+	margin: 0px;
+	outline: none;
+	border: 0px;
+	border-radius: 2px;
+	/* transition-duration: 1s; */
 	visibility: hidden;
 }
 #buttonhidemodifica {
-	width: 50px;
+	width: 80px;
 	height: 50px;
 	background-color: black;
 	margin: 0px;
 	outline: none;
 	border: 0px;
 	border-radius: 2px;
-	transition-duration: 1s;
+	/* transition-duration: 1s; */
 	visibility: hidden;
 }
+
 
 .leftdivbg {
 	background-color: rgba(128, 0, 0, 0.95);
@@ -203,11 +215,12 @@ input.fielderror {
 
 #newfilm {
 	background-color: rgba(128, 0, 0, 0.95);
-	border: 10px solid;
-	text-decoration-color: white;
+	font-weight: bold;
+	font-family: 'Ubuntu', sans-serif;
+	text-decoration-color: black;
 	border-color: rgb(0, 0, 0);
-	border-radius: 0px;
-	outline: none;
+
+
 }
 
 #times {
