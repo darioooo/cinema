@@ -53,6 +53,11 @@
 			}).val();
 			var datai = $("#datainizio").datepicker('getDate');
 			var dataf = $("#datafine").datepicker('getDate');
+			console.log("datainizio" + datainizio);
+			console.log("datafine" + datafine);
+
+			console.log("d_i" + datai);
+			console.log("d_f" + dataf);
 		});
 
 		$("form").on("submit", function (event) {
@@ -114,92 +119,88 @@
 
 			myDateInizio = datainizio.split("/");
 			var newDatei = myDateInizio[1] + "," + myDateInizio[0] + "," + myDateInizio[2];
-
 			var newDataInizio = new Date(newDatei).getTime();
+			var todaysDate = Date.now();
 
 			myDateFine = datafine.split("/");
 			var newDatef = myDateFine[1] + "," + myDateFine[0] + "," + myDateFine[2];
 			var newDataFine = new Date(newDatef).getTime();
 
-
-			if (newDataInizio > newDataFine) {
+			if (newDataInizio < todaysDate) {
 				$("#datainizio").addClass("fielderror");
-				$("#datafine").addClass("fielderror");
-				$("#myModal").modal();
+				$("#todaysDateModal").modal();
 			} else {
 				$("#datainizio").removeClass("fielderror");
-				$("#datafine").removeClass("fielderror");
 
-				var dataString = 'titolo=' + titolo + '&url=' + url + '&data_inizio=' + datainizio +
-					'&data_fine=' + datafine + '&lunedì=' + lunedì + '&martedì=' + martedì + '&mercoledì=' +
-					mercoledì + '&venerdì=' + venerdì + '&sabato=' + sabato + '&domenica=' + domenica;
-				if (descrizione != null) {
-					var dataString = dataString + '&descrizione=' + descrizione;
-				}
-				if (attori != null) {
-					var dataString = dataString + '&attori=' + attori;
-				}
-				if (regia != null) {
-					var dataString = dataString + '&regia=' + regia;
-				}
+				if (newDataInizio > newDataFine) {
+					$("#datainizio").addClass("fielderror");
+					$("#datafine").addClass("fielderror");
+					$("#myModal").modal();
+				} else {
+					$("#datainizio").removeClass("fielderror");
+					$("#datafine").removeClass("fielderror");
 
-				$.ajax({
-					type: "POST",
-					dataType: 'script',
-					url: "action_image",
-					// data: { titolo: titolo, url: url  },
-					data: file,
-					cache: false,
-					success: function (result) {
-						alert(result);
-						console.log(result);
+					var dataString = 'titolo=' + titolo + '&url=' + url + '&data_inizio=' + datainizio +
+						'&data_fine=' + datafine + '&lunedì=' + lunedì + '&martedì=' + martedì + '&mercoledì=' +
+						mercoledì + '&venerdì=' + venerdì + '&sabato=' + sabato + '&domenica=' + domenica;
+					if (descrizione != null) {
+						var dataString = dataString + '&descrizione=' + descrizione;
 					}
-				});
-				// }
-				lunedì = "";
-				martedì = "";
-				mercoledì = "";
-				giovedì = "";
-				venerdì = "";
-				sabato = "";
-				domenica = "";
-				$.ajax({
-					type: "POST",
-					url: "action_admin",
-					// data: { titolo: titolo, url: url  },
-					data: dataString,
-					cache: false,
-					success: function (result) {
-						alert(result);
-						console.log(result);
+					if (attori != null) {
+						var dataString = dataString + '&attori=' + attori;
 					}
-				});
+					if (regia != null) {
+						var dataString = dataString + '&regia=' + regia;
+					}
+
+					$.ajax({
+						type: "POST",
+						dataType: 'script',
+						url: "action_image",
+						// data: { titolo: titolo, url: url  },
+						data: file,
+						cache: false,
+						success: function (result) {
+							alert(result);
+							console.log(result);
+						}
+					});
+					lunedì = "";
+					martedì = "";
+					mercoledì = "";
+					giovedì = "";
+					venerdì = "";
+					sabato = "";
+					domenica = "";
+					$.ajax({
+						type: "POST",
+						url: "action_admin",
+						// data: { titolo: titolo, url: url  },
+						data: dataString,
+						cache: false,
+						success: function (result) {
+							alert(result);
+							console.log(result);
+						}
+					});
+				}
 			}
 		});
 		$("#newfilm").click(function () {
-
 			url = $(this).attr("src");
 			titolo = $(this).attr("titolo");
-
 
 			$("#formdiv").css("visibility", "visible");
 			$("#labeltitolo").text(titolo);
 			$("#filmdiv").toggle("slide");
 
-
 			$("#buttonhide").css("visibility", "visible");
 			$("#rightdiv").removeClass('col-sm-6 col-md-4').addClass('col-sm-10 col-md-11');
 			$("#centerdiv").removeClass('col-sm-2 col-md-2').addClass('col-sm-1 col-md-1');
 			$("#leftdiv").removeClass('col-sm-4 col-md-4').addClass(' leftdivbg');
-
-
-
-
 		});
 		$("#saveModal").click(function () {
 			if ($("#title").val() != "" && $("#input-b9").fileinput() != null) {
-
-
 				file = $("#input-b9").fileinput();
 				file.files[0];
 				$("#imagediv").html("<img  src=" + $("data") + "></img>");
@@ -207,13 +208,11 @@
 				console.log($("#input-b9").fileinput());
 
 				$("#fileModal").modal('toggle');
-
 			} else {
 				alert("inserimento non completo");
 				console.log($("#title").val());
 
 			}
-
 		});
 
 		$("#input-b9").fileinput({
@@ -228,11 +227,7 @@
 					titolo: $("#title").val(),
 				};
 			}
-
 		});
-
-
-
 	});
 </script>
 
@@ -387,9 +382,6 @@
 					<textarea type="textarea" id="desc" class="form-control" rows="5"> </textarea>
 
 				</div>
-				<div class="checkbox">
-
-				</div>
 				<button class="btn btn-default" id="Submit">Submit</button>
 			</form>
 
@@ -429,6 +421,19 @@
 						</div>
 						<div class="modal-body">
 							<p>La data di fine del film non può essere prima della data di inizio!</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="todaysDateModal" class="modal fade">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header" style="background-color: rgba(128, 0, 0, 0.7);">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title">ERRORE SULLE DATE!</h4>
+						</div>
+						<div class="modal-body">
+							<p>La data di inizio del film non può essere prima della data di oggi!</p>
 						</div>
 					</div>
 				</div>

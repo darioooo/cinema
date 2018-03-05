@@ -17,6 +17,8 @@ $this->map(['GET'],"/modifica","CinemaController:modifica_admin");
 
 $this->map(['GET'],"/admin","CinemaController:admin");
 
+$this->map(['GET'],"/cinelandia","CinemaController:Cinelandia");
+
 $this->map(['GET'],"/libri/{id:[\d]+}","LibreriaController:get");
 
 
