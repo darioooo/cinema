@@ -127,33 +127,52 @@ class CinemaController
 	function modifica_admin(Request $request, Response $response, $args)
 	{
 		$film = new Film();
-		try{
-			$visualizzato['visualizzato']=true;
-			$data['film']=$film->select($visualizzato);
-			// $id_scheda['id_scheda']=$data['film'][0]['id_scheda'];
-			$scheda=new Scheda();
+		$visualizzato['visualizzato']=true;
+		$data['filmtoday']=$film->get_FilmTodayDataCourrent();
+		$data['filmafter']=$film->get_FilmAfterDataCourrent();
+		// $id_scheda['id_scheda']=$data['film'][0]['id_scheda'];
+		$scheda=new Scheda();
+		$film_orario= new Film_Orario();
 		
-			for($i=0;$i<count($data['film']);$i++)
-			{
-				$sc=$scheda->select($data['film'][$i]['id_scheda']);
-				$data['film'][$i]['regia']=$sc[$i]['regia']; 
-				$data['film'][$i]['attori']=$sc[$i]['attori'];
-				$data['film'][$i]['durata']=$sc[$i]['durata'];  
-				$data['film'][$i]['genere']=$sc[$i]['genere']; 
-				$data['film'][$i]['pese']=$sc[$i]['pese']; 
-				$data['film'][$i]['id_scheda']=$sc[$i]['id_scheda'];
-				$data['film'][$i]['indice']=$i;
-				//  var_dump($i);
-				if($i==0)
-				{
-					$data['film'][$i]['active']='item active';
-				}
-				else
-				{
-					$data['film'][$i]['active']='item';	
-				} 
-			}
-
+		for($i=0;$i<count($data['filmtoday']);$i++)
+		{
+			$sc=$scheda->select($data['filmtoday'][$i]['id_scheda']);
+			$data['filmtoday'][$i]['regia']=$sc[$i]['regia']; 
+			$data['filmtoday'][$i]['attori']=$sc[$i]['attori'];
+			$data['filmtoday'][$i]['durata']=$sc[$i]['durata'];  
+			$data['filmtoday'][$i]['genere']=$sc[$i]['genere']; 
+			$data['filmtoday'][$i]['pese']=$sc[$i]['pese']; 
+			$data['filmtoday'][$i]['id_scheda']=$sc[$i]['id_scheda'];
+			$data['filmtoday'][$i]['indice']=$i;	
+			if($i==0)
+		{
+		$data['filmtoday'][$i]['active']='item active';
+		$data['filmtoday'][$i]['visible']='inline';
+		}
+		else
+		{
+			$data['filmtoday'][$i]['active']='item';	
+			$data['filmtoday'][$i]['visible']='none';
+		} 
+		}
+		for($i=0;$i<count($data['filmafter']);$i++)
+		{
+			$sc=$scheda->select($data['filmafter'][$i]['id_scheda']);
+			$orariAfter= $film_orario->select($data['filmafter'][$i]['id']);
+			$data['filmafter'][$i]['regia']=$sc[$i]['regia']; 
+			$data['filmafter'][$i]['attori']=$sc[$i]['attori'];
+			$data['filmafter'][$i]['durata']=$sc[$i]['durata'];  
+			$data['filmafter'][$i]['genere']=$sc[$i]['genere']; 
+			$data['filmafter'][$i]['pese']=$sc[$i]['pese']; 
+			$data['filmafter'][$i]['id_scheda']=$sc[$i]['id_scheda'];
+			$data['filmafter'][$i]['indice']=$i;
+			$data['filmafter'][$i]['ora']=$orariAfter[$i]['ora'];
+			$data['filmafter'][$i]['giornosettimana']=$orariAfter[$i]['giornosettimana'];
+			$data['filmafter'][$i]['giorno']=$orariAfter[$i]['giorno'];
+		}
+		try{
+			// var_dump($data);exit();
+		
 			$modifica= (new ModificaAdminView(null,$data));
 			$page = new Page();
 			$page->addView("content",$modifica);
@@ -163,6 +182,8 @@ class CinemaController
 		{
 			echo $e->getMessage();
 		}	
+
+		
 	}
 	/**
 	 * @desc This method provides the registration html page
