@@ -27,6 +27,10 @@
 			$("#filmdiv").toggle("slide");
 			$('#buttonhide').show();
 			$("#buttonhide").css("visibility", "visible");
+			$('#buttonhidemodifica').show();
+			$("#buttonhidemodifica").css("visibility", "visible");
+			$('#buttonadd').show();
+			$("#buttonadd").css("visibility", "visible");
 			$("#rightdiv").removeClass('col-sm-6 col-md-4').addClass('col-sm-10 col-md-11');
 			$("#centerdiv").removeClass('col-sm-2 col-md-2').addClass('col-sm-1 col-md-1');
 			$("#leftdiv").removeClass('col-sm-4 col-md-4').addClass('leftdivbg');
@@ -35,11 +39,42 @@
 		$('#buttonhide').click(function () {
 			$("#buttonhide").hide();
 			$("#buttonhide").css("visibility", "hidden");
+			$("#buttonhidemodifica").hide();
+			$("#buttonhidemodifica").css("visibility", "hidden");
+			$("#buttonadd").hide();
+			$("#buttonadd").css("visibility", "hidden");
 			$("#filmdiv").toggle("slide");
 			$("#rightdiv").removeClass('col-sm-10 col-md-11').addClass('col-sm-6 col-md-4');
 			$("#centerdiv").removeClass('col-sm-1 col-md-1').addClass('col-sm-2 col-md-2');
 			$("#leftdiv").removeClass(' leftdivbg').addClass('col-sm-4 col-md-4');
 		});
+		//TODO pagina modifica eccccc;
+		$('#buttonhidemodifica').click(function () {
+			$("#buttonhide").hide();
+			$("#buttonhide").css("visibility", "hidden");
+			$("#buttonhidemodifica").hide();
+			$("#buttonhidemodifica").css("visibility", "hidden");
+			$("#buttonadd").hide();
+			$("#buttonadd").css("visibility", "hidden");
+			$("#filmdiv").toggle("slide");
+			$("#rightdiv").removeClass('col-sm-10 col-md-11').addClass('col-sm-6 col-md-4');
+			$("#centerdiv").removeClass('col-sm-1 col-md-1').addClass('col-sm-2 col-md-2');
+			$("#leftdiv").removeClass(' leftdivbg').addClass('col-sm-4 col-md-4');
+		});
+		//TODO aggiungi eccc
+		$('#buttonadd').click(function () {
+			$("#buttonhide").hide();
+			$("#buttonhide").css("visibility", "hidden");
+			$("#buttonhidemodifica").hide();
+			$("#buttonhidemodifica").css("visibility", "hidden");
+			$("#buttonadd").hide();
+			$("#buttonadd").css("visibility", "hidden");
+			$("#filmdiv").toggle("slide");
+			$("#rightdiv").removeClass('col-sm-10 col-md-11').addClass('col-sm-6 col-md-4');
+			$("#centerdiv").removeClass('col-sm-1 col-md-1').addClass('col-sm-2 col-md-2');
+			$("#leftdiv").removeClass(' leftdivbg').addClass('col-sm-4 col-md-4');
+		});
+
 		$(".filmdropdown").click(function () {
 			$("#imgfilm").fadeIn(3000);
 		});
@@ -109,6 +144,7 @@
 			var datafine = $("#datafine").datepicker({
 				dateFormat: "yyyy-mm-dd"
 			}).val();
+			console.log(datainizio);
 			data_inizio = $("#datainizio").val();
 			data_fine = $("#datafine").val();
 
@@ -176,6 +212,76 @@
 				});
 			}
 		});
+		$("#buttonhide").mouseenter(function(){
+			$(this).animate({ width: '200px' },{
+				step:function(currentwidth){
+					if(currentwidth>150)
+			{
+				$(this).find("#phide").fadeIn();
+				$(this).find("#phide").css("transition-duration","0.3s");
+			}	
+				}
+			});
+		});
+		
+		$("#buttonhide").mouseleave(function(){
+			$(this).animate({ width: '80px' },{
+				step:function(currentwidth){
+					if(currentwidth<150)
+			{
+				$(this).find("#phide").fadeOut(3);
+				$(this).find("#phide").css("transition-duration","0s");
+			}	
+				}
+			});
+			
+			
+		});
+		$("#buttonhidemodifica").mouseenter(function(){
+			$("#buttonhidemodifica").animate({ width: '200px' },{
+				step:function(currentwidth){
+					if(currentwidth>150)
+			{
+				$(this).find("#pmodifica").fadeIn();
+				$(this).find("#pmodifica").css("transition-duration","0.3s");
+			}	
+				}
+			});
+		
+		});
+		$("#buttonhidemodifica").mouseleave(function(){
+			$("#buttonhidemodifica").animate({ width: '80px' },{
+				step:function(currentwidth){
+					if(currentwidth<150)
+			{
+				$(this).find("#pmodifica").fadeOut(3);
+				$(this).find("#pmodifica").css("transition-duration","0s");
+			}	
+				}
+			});
+		});
+		$("#buttonadd").mouseenter(function(){
+			$("#buttonadd").animate({ width: '200px' },{
+				step:function(currentwidth){
+					if(currentwidth>150)
+			{
+				//  $(this).find("#padd").fadeIn();
+			}	
+				}
+			});
+		
+		});
+		$("#buttonadd").mouseleave(function(){
+			$("#buttonadd").animate({ width: '80px' },{
+				step:function(currentwidth){
+					if(currentwidth<150)
+			{
+				//  $(this).find("#padd").fadeOut();
+			}	
+				}
+			});
+		});
+
 		$("#newfilm").click(function () {
 
 			url = $(this).attr("src");
@@ -188,6 +294,8 @@
 
 
 			$("#buttonhide").css("visibility", "visible");
+			$("#buttonhidemodifica").css("visibility", "visible");
+			$("#buttonadd").css("visibility", "visible");
 			$("#rightdiv").removeClass('col-sm-6 col-md-4').addClass('col-sm-10 col-md-11');
 			$("#centerdiv").removeClass('col-sm-2 col-md-2').addClass('col-sm-1 col-md-1');
 			$("#leftdiv").removeClass('col-sm-4 col-md-4').addClass(' leftdivbg');
@@ -239,10 +347,12 @@
 <div id="block">
 
 	<div class="btn-group-vertical inlinea col-sm-4 col-md-4" id="leftdiv">
-
-		<input type="button" style="visibility: hidden" id="buttonhide"></input>
+		<button  type="button" class="btn " style="visibility: hidden; text-align: center;" id="buttonadd" data-toggle="modal" data-target="#fileModal"><span id="padd" class="glyphicon glyphicon-plus" style="color:white;"></span></button>
+		<button type="button" class="btn " style="visibility: hidden; text-align: center;" id="buttonhide"><span id="phide" style="color:white; display:none; transition-duration: 0.3s; ">FILM  </span> <span id="spanhide" class="glyphicon glyphicon-chevron-right"style="color:white"></span> </button>
+		<button type="button" class="btn " style="visibility: hidden; text-align: center;" id="buttonhidemodifica"><span id="pmodifica" style="color:white; display:none; transition-duration: 0.3s;">MODIFICA  </span> <span id="spanmodifica" class="glyphicon glyphicon-chevron-right"style="color:white"></span> </button>
+		
 		<div class="btn-group-vertical inlinea  " id="filmdiv" style="background-color: black">
-			<button class="btn btn-danger " type="button" id="newfilm" data-toggle="modal" data-target="#fileModal">INSERISCI NUOVO FILM</button>
+			<button class="btn btn-danger " type="button" id="newfilm" data-toggle="modal" data-target="#fileModal"><span class="glyphicon glyphicon-plus" style="color:black; ">INSERISCI NUOVO FILM</span></button>
 			{{#film}}
 
 			<button class="btn btn-danger filmdropdown" type="button" data-toggle="collapse" data-target="#{{id}}">{{titolo}}</button>
