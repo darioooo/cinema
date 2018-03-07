@@ -126,6 +126,7 @@ class CinemaController
 
 	function modifica_admin(Request $request, Response $response, $args)
 	{
+		$film = new Film();
 		try{
 			$visualizzato['visualizzato']=true;
 			$data['film']=$film->select($visualizzato);
@@ -155,7 +156,7 @@ class CinemaController
 
 			$modifica= (new ModificaAdminView(null,$data));
 			$page = new Page();
-			$page->addView("content",$table);
+			$page->addView("content",$modifica);
 			return $response->write($page->render());
 		}
 		catch(Exception $e )
