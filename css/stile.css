@@ -314,3 +314,18 @@ input.fielderror {
 	text-decoration: underline;
 	color: black;
 }
+
+/* Cinelandia */
+
+.cinelandia {
+	padding: 0 50px;
+	text-align: center;
+}
+
+img#cinelandiaimg {
+	width: 200px;
+	height: 300px;
+	border: 2px solid #862312;
+}
+
+.cinelandia-contenuti {}

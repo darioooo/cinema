@@ -75,7 +75,6 @@ class CinemaController
 			$data['filmafter'][$i]['ora']=$orariAfter[$i]['ora'];
 			$data['filmafter'][$i]['giornosettimana']=$orariAfter[$i]['giornosettimana'];
 			$data['filmafter'][$i]['giorno']=$orariAfter[$i]['giorno'];
-		  	//var_dump($data);
 		}
 		try{
 			//var_dump($data);exit();
@@ -192,6 +191,9 @@ class CinemaController
 		$data_f = new DateTime($dataf['2'].'-'.$dataf['1'].'-'.$dataf['0']);
 		$datainizio = date_format($data_i, 'Y/m/d');
 		$datafine = date_format($data_f, 'Y/m/d');
+
+		var_dump($datainizio);
+		var_dump($datafine);
 		// $interval= DateInterval::createFromDateString('1 day');
 		// $period= new DatePeriod($data_i ,$interval ,$data_f);
 		}	
@@ -265,6 +267,10 @@ class CinemaController
 		$insert_film['descrizione']=$descrizione;
 		//var_dump($data_fine);
 		//var_dump($data_inizio);
+/* 		$data_i = new DateTime($data['2'].'-'.$data['1'].'-'.$data['0']);
+		$data_f = new DateTime($dataf['2'].'-'.$dataf['1'].'-'.$dataf['0']);
+		$datainizio = date_format($data_i, 'Y/m/d');
+		$datafine = date_format($data_f, 'Y/m/d'); */
 		$datai = explode( "/",$data_inizio  );
 		$dataf = explode( "/",$data_fine  );
 		$newDateInizio = new DateTime();
@@ -339,6 +345,22 @@ class CinemaController
 			move_uploaded_file($sourcePath,$targetPath) ;
 		}
 		catch(Exception $e)
+		{
+			echo $e->getMessage();
+		}	
+	}
+
+	function Cinelandia(Request $request, Response $response, $args)
+	{
+		try{
+			$feed = new FeedRssController();
+			$data=$feed->FeedRss();
+			$table = (new CinelandiaView(null,$data));
+			$page = new Page();
+			$page->addView("content",$table);
+			return $response->write($page->render());
+		}
+		catch(Exception $e )
 		{
 			echo $e->getMessage();
 		}	

@@ -74,12 +74,13 @@
 	</div>
 	{{/filmtoday}}
 </div>
-
-<h1 id="prossimi">Prossimi film</h1>
-<div class="row" id="easyPaginate">
-	{{#filmafter}}
-	<div value="{{indice}}" id="film-futuri" class="column">
-		<img src="http://localhost/cinema/{{immagine}}" id="film-after-img" value="{{indice}}">
+<div class="row">
+	<h1 id="prossimi">Prossimi film</h1>
+	<div class="row" id="easyPaginate">
+		{{#filmafter}}
+		<div value="{{indice}}" id="film-futuri" class="column">
+			<img src="http://localhost/cinema/{{immagine}}" id="film-after-img" value="{{indice}}">
+		</div>
+		{{/filmafter}}
 	</div>
-	{{/filmafter}}
 </div>

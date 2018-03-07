@@ -10,6 +10,7 @@ class FeedRssController
 
 		$xmlDoc = new DOMDocument();
 		$xmlDoc->load($xml);
+		$path = "";
 
 		$x=$xmlDoc->getElementsByTagName('item');
 
