@@ -5,9 +5,26 @@
 			elementsPerPage: 5,
 			effect: 'fade'
 		});
-	});
+
+ 
+ $(document).ready(function () {
+ 
+ $("#myCarousel").on('slid.bs.carousel', function () {
+   var valore = $($('#myCarousel .item.active').html()).attr('value');
+   $('#' + valore).fadeIn();
+   $('#' + valore).css("display", "inherit");
+ });
+
+ $("#myCarousel").on('slide.bs.carousel', function () {
+   var valore = $($('#myCarousel .item.active').html()).attr('value');
+   $('#' + valore).fadeOut();
+   $('#' + valore).css("display", "none");
+ });
+});
+});
+
 </script>
-<p id="filmprog">FILM IN PROGRAMMAZIONE</p>
+<p id="filmprog">IN PROGRAMMAZIONE</p>
 <div class="row jumbotron filmjumbo">
 	<div class="col-xs-0 col-md-2 col-lg-2">
 	</div>
@@ -37,45 +54,49 @@
 			</div>
 		</div>
 		<div class="col-xs-12 col-md-4 col-lg-5">
-			{{#filmtoday}}
-			<div class="col-xs-10 col-md-12 col-lg-12 jumbotron contentjumbo film-details" id="{{indice}}" style="display: {{visible}}"
-			    id="pinzagay">
-				<p class="film-title" align="center">
+			
+			<div class="col-xs-10 col-md-12 col-lg-12 jumbotron contentjumbo film-details"  >
+					{{#filmtoday}}
+					<div id="{{indice}}" style="display: {{visible}}">
+				<p class="film-title" align="center" >
 					{{titolo}}
 				</p>
-				<div class="col-xs-5 col-md-3 col-lg-3">
-					<p id="scheda_film" class="film-days">
-						<br>
-						<b>Lunedì</b>
-						<br>
-						<b>Martedì</b>
-						<br>
-						<b>Mercoledì</b>
-						<br>
-						<b>Venerdì</b>
-						<br>
-						<b>Sabato</b>
-						<br>
-						<b>Domenica</b>
+			<br><br>
+				{{#filmorario}}
+				<div class="col-xs-3 col-md-3 col-lg-3">
+				
+					<p class="film-days">
+					{{#giornosettimana}}{{giornosettimana}}{{/giornosettimana}}
 					</p>
+					
 				</div>
-				<div class="col-xs-7 col-md-9 col-lg-9">
-					<p class="film-hours">{{#lunedi}}
-						<br> | {{lunedi}} {{/lunedi}} {{#martedi}}
-						<br> | {{martedi}} {{/martedi}} {{#mercoledi}}
-						<br> | {{mercoledi}} {{/mercoledi}} {{#venerdi}}
-						<br> | {{venerdi}} {{/venerdi}} {{#sabato}}
-						<br> | {{sabato}} {{/sabato}} {{#domenica}}
-						<br> | {{domenica}} {{/domenica}}
-					</p>
+				<div class="col-xs-3 col-md-3 col-lg-3">
+					<p>{{#giorno}}{{giorno}}{{/giorno}}</p>
 				</div>
+				<div class="col-xs-6 col-md-6 col-lg-6">
+					<p>{{#ora}}{{ora}}{{/ora}}</p>
+				</div>
+				<!-- <div class="col-xs-7 col-md-9 col-lg-12"> -->
+					<!--  -->
+					<!-- <p class="film-hours" > -->
+							<!-- <br>|{{#ora}} {{ora}} {{/ora}}  -->
+					<!-- </p> -->
+					<!--  -->
+				<!-- </div> -->
+				{{/filmorario}}
+				<p class="film-hours" style="margin-left:15px; margin-top:5px;" >
+						<br><br>{{#durata}}<b>DURATA:</b> {{durata}} {{/durata}} 
+				</p>
+			</div>
+		
+				{{/filmtoday}}
 			</div>
 		</div>
+
 	</div>
-	{{/filmtoday}}
 </div>
 <div class="row">
-	<h1 id="prossimi">Prossimi film</h1>
+	<h1 id="prossimi">PROSSIMAMENTE</h1>
 	<div class="row" id="easyPaginate">
 		{{#filmafter}}
 		<div value="{{indice}}" id="film-futuri" class="column">

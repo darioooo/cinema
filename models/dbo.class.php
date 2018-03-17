@@ -55,6 +55,7 @@ class dbo
 	
 	function select($where=null, $field="*")
 	{
+		
 		if(is_array($where))
 		{
 			
@@ -62,6 +63,7 @@ class dbo
 				$condition[] = $this->table.".".$k."='".$v."'";
 			
 			$where = implode(" AND ", $condition);
+			
 		}
 		if($where)
 			$where = "where ".$where;
