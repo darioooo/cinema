@@ -139,7 +139,7 @@ div.contentjumbo.jumbotron.film-details {
 .filmdropdown.btn {
 	background-color: rgba(128, 0, 0, 0.9);
 	border: 1px solid;
-	border-color: rgba(128, 0, 0, 1.0);
+	/* border-color: rgba(128, 0, 0, 1.0); */
 	border-radius: 0px;
 	outline: none;
 }
@@ -159,6 +159,7 @@ input.fielderror {
 	/* transition-duration: 1s; */
 	visibility: hidden;
 }
+
 #buttonhide {
 	width: 80px;
 	height: 50px;
@@ -170,6 +171,7 @@ input.fielderror {
 	/* transition-duration: 1s; */
 	visibility: hidden;
 }
+
 #buttonhidemodifica {
 	width: 80px;
 	height: 50px;
@@ -181,7 +183,6 @@ input.fielderror {
 	/* transition-duration: 1s; */
 	visibility: hidden;
 }
-
 
 .leftdivbg {
 	background-color: rgba(128, 0, 0, 0.95);
@@ -219,8 +220,6 @@ input.fielderror {
 	font-family: 'Ubuntu', sans-serif;
 	text-decoration-color: black;
 	border-color: rgb(0, 0, 0);
-
-
 }
 
 #times {
@@ -250,7 +249,6 @@ input.fielderror {
 
 #titlejumbo {
 	background-color: rgb(56, 50, 52);
-	/* padding: 10px; */
 	border: 12px solid rgba(128, 0, 0, 0.95);
 	border-right: 0px;
 	border-left: 0px;
@@ -262,14 +260,6 @@ input.fielderror {
 #backgroundhoverdiv {
 	background-color: #862312;
 }
-
-/* #film-futuri {
-	width: 980px;
-	margin-right: auto;
-	margin-left: auto;
-	padding: 0px 30px;
-}
- */
 
 #film-after-img {
 	float: left;
@@ -327,5 +317,3 @@ img#cinelandiaimg {
 	height: 300px;
 	border: 2px solid #862312;
 }
-
-.cinelandia-contenuti {}
