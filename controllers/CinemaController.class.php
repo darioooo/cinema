@@ -31,7 +31,7 @@ class CinemaController
 		catch(Exception $e) {
 			echo $e -> getMessage();
 		} */
-	
+		
 		$film = new Film();
 		$visualizzato['visualizzato']=true;
 		$data['filmtoday']=$film->get_FilmTodayDataCourrent();
@@ -103,6 +103,7 @@ class CinemaController
 		{
 			echo $e->getMessage();
 		}	
+	
 	}
 	/**
 	 * @desc This method provides the registration html page
