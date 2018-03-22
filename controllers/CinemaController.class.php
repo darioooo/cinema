@@ -136,7 +136,7 @@ class CinemaController
 	 */
 
 	function modifica_admin(Request $request, Response $response, $args)
-	{
+	{ 
 		$film = new Film();
 		$visualizzato['visualizzato']=true;
 		$data['filmtoday']=$film->get_FilmTodayDataCourrent();
