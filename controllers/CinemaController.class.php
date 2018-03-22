@@ -39,7 +39,8 @@ class CinemaController
 		// $id_scheda['id_scheda']=$data['film'][0]['id_scheda'];
 		$scheda=new Scheda();
 		$film_orario= new Film_Orario();
-		
+		if($data['filmtoday']!= null)
+		{
 		for($i=0;$i<count($data['filmtoday']);$i++)
 		{
 			$sc=$scheda->select($data['filmtoday'][$i]['id_scheda']);
@@ -71,6 +72,10 @@ class CinemaController
 			$data['filmtoday'][$i]['visible']='none';
 		} 
 		}
+	}
+	if($data['filmafter']!= null)
+	{
+
 		for($i=0;$i<count($data['filmafter']);$i++)
 		{
 			$sc=$scheda->select($data['filmafter'][$i]['id_scheda']);
@@ -86,6 +91,7 @@ class CinemaController
 			$data['filmafter'][$i]['giornosettimana']=$orariAfter[$i]['giornosettimana'];
 			$data['filmafter'][$i]['giorno']=$orariAfter[$i]['giorno'];
 		}
+	}
 		try{
 			//var_dump($data);exit();
 			$table = (new HomeView(null,$data));
@@ -143,8 +149,9 @@ class CinemaController
 		// $id_scheda['id_scheda']=$data['film'][0]['id_scheda'];
 		$scheda=new Scheda();
 		$film_orario= new Film_Orario();
-		
-		for($i=0;$i<count($data['filmtoday']);$i++)
+		if($data['filmtoday']!= null)
+		{
+		for($i=0;$i < count($data['filmtoday']);$i++)
 		{
 			$sc=$scheda->select($data['filmtoday'][$i]['id_scheda']);
 			$data['filmtoday'][$i]['regia']=$sc[$i]['regia']; 
@@ -165,7 +172,10 @@ class CinemaController
 			$data['filmtoday'][$i]['visible']='none';
 		} 
 		}
-		for($i=0;$i<count($data['filmafter']);$i++)
+	}
+	if($data['filmafter']!=null)
+	{
+		for($i=0;$i < count($data['filmafter']);$i++)
 		{
 			$sc=$scheda->select($data['filmafter'][$i]['id_scheda']);
 			$orariAfter= $film_orario->select($data['filmafter'][$i]['id']);
@@ -180,6 +190,7 @@ class CinemaController
 			$data['filmafter'][$i]['giornosettimana']=$orariAfter[$i]['giornosettimana'];
 			$data['filmafter'][$i]['giorno']=$orariAfter[$i]['giorno'];
 		}
+	}
 		try{
 			// var_dump($data);exit();
 		

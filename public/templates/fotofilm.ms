@@ -88,11 +88,6 @@
 			}).val();
 			var datai = $("#datainizio").datepicker('getDate');
 			var dataf = $("#datafine").datepicker('getDate');
-			console.log("datainizio" + datainizio);
-			console.log("datafine" + datafine);
-
-			console.log("d_i" + datai);
-			console.log("d_f" + dataf);
 		});
 
 		$("form").on("submit", function (event) {
@@ -149,23 +144,22 @@
 			var datafine = $("#datafine").datepicker({
 				dateFormat: "yyyy-mm-dd"
 			}).val();
-			console.log(datainizio);
 			data_inizio = $("#datainizio").val();
 			data_fine = $("#datafine").val();
 
 			myDateInizio = datainizio.split("/");
 			var newDatei = myDateInizio[1] + "," + myDateInizio[0] + "," + myDateInizio[2];
 			var newDataInizio = new Date(newDatei).getTime();
-			var todaysDate = Date.now();
+			var todaysDate = new Date();
+			todaysDate.setHours(0, 0, 0, 0);
 
 			myDateFine = datafine.split("/");
 			var newDatef = myDateFine[1] + "," + myDateFine[0] + "," + myDateFine[2];
 			var newDataFine = new Date(newDatef).getTime();
 
-			if (newDataInizio < todaysDate) {
-				$("#datainizio").addClass("fielderror");
-				$("#todaysDateModal").modal();
-			} else {
+			console.log("datainizio" + newDataInizio);
+			console.log("datatoday" + todaysDate);
+			if (newDataInizio >= todaysDate) {
 				$("#datainizio").removeClass("fielderror");
 
 				if (newDataInizio > newDataFine) {
@@ -220,74 +214,80 @@
 						}
 					});
 				}
+			} else {
+				$("#datainizio").addClass("fielderror");
+				$("#todaysDateModal").modal();
 			}
 		});
-		$("#buttonhide").mouseenter(function(){
-			$(this).animate({ width: '200px' },{
-				step:function(currentwidth){
-					if(currentwidth>150)
-			{
-				$(this).find("#phide").fadeIn();
-				$(this).find("#phide").css("transition-duration","0.3s");
-			}	
+		$("#buttonhide").mouseenter(function () {
+			$(this).animate({
+				width: '200px'
+			}, {
+				step: function (currentwidth) {
+					if (currentwidth > 150) {
+						$(this).find("#phide").fadeIn();
+						$(this).find("#phide").css("transition-duration", "0.3s");
+					}
 				}
 			});
 		});
-		
-		$("#buttonhide").mouseleave(function(){
-			$(this).animate({ width: '80px' },{
-				step:function(currentwidth){
-					if(currentwidth<150)
-			{
-				$(this).find("#phide").fadeOut(3);
-				$(this).find("#phide").css("transition-duration","0s");
-			}	
+
+		$("#buttonhide").mouseleave(function () {
+			$(this).animate({
+				width: '80px'
+			}, {
+				step: function (currentwidth) {
+					if (currentwidth < 150) {
+						$(this).find("#phide").fadeOut(3);
+						$(this).find("#phide").css("transition-duration", "0s");
+					}
 				}
 			});
-			
-			
+
 		});
-		$("#buttonhidemodifica").mouseenter(function(){
-			$("#buttonhidemodifica").animate({ width: '200px' },{
-				step:function(currentwidth){
-					if(currentwidth>150)
-			{
-				$(this).find("#pmodifica").fadeIn();
-				$(this).find("#pmodifica").css("transition-duration","0.3s");
-			}	
-				}
-			});
-		
-		});
-		$("#buttonhidemodifica").mouseleave(function(){
-			$("#buttonhidemodifica").animate({ width: '80px' },{
-				step:function(currentwidth){
-					if(currentwidth<150)
-			{
-				$(this).find("#pmodifica").fadeOut(3);
-				$(this).find("#pmodifica").css("transition-duration","0s");
-			}	
+		$("#buttonhidemodifica").mouseenter(function () {
+			$("#buttonhidemodifica").animate({
+				width: '200px'
+			}, {
+				step: function (currentwidth) {
+					if (currentwidth > 150) {
+						$(this).find("#pmodifica").fadeIn();
+						$(this).find("#pmodifica").css("transition-duration", "0.3s");
+					}
 				}
 			});
 		});
-		$("#buttonadd").mouseenter(function(){
-			$("#buttonadd").animate({ width: '200px' },{
-				step:function(currentwidth){
-					if(currentwidth>150)
-			{
-				//  $(this).find("#padd").fadeIn();
-			}	
+		$("#buttonhidemodifica").mouseleave(function () {
+			$("#buttonhidemodifica").animate({
+				width: '80px'
+			}, {
+				step: function (currentwidth) {
+					if (currentwidth < 150) {
+						$(this).find("#pmodifica").fadeOut(3);
+						$(this).find("#pmodifica").css("transition-duration", "0s");
+					}
 				}
 			});
-		
 		});
-		$("#buttonadd").mouseleave(function(){
-			$("#buttonadd").animate({ width: '80px' },{
-				step:function(currentwidth){
-					if(currentwidth<150)
-			{
-				//  $(this).find("#padd").fadeOut();
-			}	
+		$("#buttonadd").mouseenter(function () {
+			$("#buttonadd").animate({
+				width: '200px'
+			}, {
+				step: function (currentwidth) {
+					if (currentwidth > 150) {
+						//  $(this).find("#padd").fadeIn();
+					}
+				}
+			});
+		});
+		$("#buttonadd").mouseleave(function () {
+			$("#buttonadd").animate({
+				width: '80px'
+			}, {
+				step: function (currentwidth) {
+					if (currentwidth < 150) {
+						//  $(this).find("#padd").fadeOut();
+					}
 				}
 			});
 		});
@@ -342,12 +342,23 @@
 <div id="block">
 
 	<div class="btn-group-vertical inlinea col-sm-4 col-md-4" id="leftdiv">
-		<button  type="button" class="btn " style="visibility: hidden; text-align: center;" id="buttonadd" data-toggle="modal" data-target="#fileModal"><span id="padd" class="glyphicon glyphicon-plus" style="color:white;"></span></button>
-		<button type="button" class="btn " style="visibility: hidden; text-align: center;" id="buttonhide"><span id="phide" style="color:white; display:none; transition-duration: 0.3s; ">FILM  </span> <span id="spanhide" class="glyphicon glyphicon-chevron-right"style="color:white"></span> </button>
-		<button type="button" class="btn " style="visibility: hidden; text-align: center;" id="buttonhidemodifica"><span id="pmodifica" style="color:white; display:none; transition-duration: 0.3s;">MODIFICA  </span> <span id="spanmodifica" class="glyphicon glyphicon-chevron-right"style="color:white"></span> </button>
-		
+		<button type="button" class="btn " style="visibility: hidden; text-align: center;" id="buttonadd" data-toggle="modal" data-target="#fileModal">
+			<span id="padd" class="glyphicon glyphicon-plus" style="color:white;"></span>
+		</button>
+		<button type="button" class="btn " style="visibility: hidden; text-align: center;" id="buttonhide">
+			<span id="phide" style="color:white; display:none; transition-duration: 0.3s; ">FILM </span>
+			<span id="spanhide" class="glyphicon glyphicon-chevron-right" style="color:white"></span>
+		</button>
+		<a href="http://localhost/cinema/index.php/modifica">
+			<button type="button" class="btn " style="visibility: hidden; text-align: center;" id="buttonhidemodifica">
+				<span id="pmodifica" style="color:white; display:none; transition-duration: 0.3s;">MODIFICA </span>
+				<span id="spanmodifica" class="glyphicon glyphicon-chevron-right" style="color:white"></span>
+			</button>
+		</a>
 		<div class="btn-group-vertical inlinea  " id="filmdiv" style="background-color: black">
-			<button class="btn btn-danger " type="button" id="newfilm" data-toggle="modal" data-target="#fileModal"><span class="glyphicon glyphicon-plus" style="color:black; ">INSERISCI NUOVO FILM</span></button>
+			<button class="btn btn-danger " type="button" id="newfilm" data-toggle="modal" data-target="#fileModal">
+				<span class="glyphicon glyphicon-plus" style="color:black; ">INSERISCI NUOVO FILM</span>
+			</button>
 			{{#film}}
 
 			<button class="btn btn-danger filmdropdown" type="button" data-toggle="collapse" data-target="#{{id}}">{{titolo}}</button>
