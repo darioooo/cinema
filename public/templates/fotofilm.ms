@@ -15,6 +15,7 @@
 		var sabato = "";
 		var domenica = "";
 
+
 		$('.datepicker').datepicker();
 		event.preventDefault();
 		$(".imgfilm").click(function () {
@@ -137,7 +138,7 @@
 					domenica += $(this).val() + " | ";
 				}
 			});
-			alert(venerdì);
+
 			var datainizio = $("#datainizio").datepicker({
 				dateFormat: "yyyy-mm-dd"
 			}).val();
@@ -223,73 +224,73 @@
 			$(this).animate({
 				width: '200px'
 			}, {
-				step: function (currentwidth) {
-					if (currentwidth > 150) {
-						$(this).find("#phide").fadeIn();
-						$(this).find("#phide").css("transition-duration", "0.3s");
+					step: function (currentwidth) {
+						if (currentwidth > 150) {
+							$(this).find("#phide").fadeIn();
+							$(this).find("#phide").css("transition-duration", "0.3s");
+						}
 					}
-				}
-			});
+				});
 		});
 
 		$("#buttonhide").mouseleave(function () {
 			$(this).animate({
 				width: '80px'
 			}, {
-				step: function (currentwidth) {
-					if (currentwidth < 150) {
-						$(this).find("#phide").fadeOut(3);
-						$(this).find("#phide").css("transition-duration", "0s");
+					step: function (currentwidth) {
+						if (currentwidth < 150) {
+							$(this).find("#phide").fadeOut(3);
+							$(this).find("#phide").css("transition-duration", "0s");
+						}
 					}
-				}
-			});
+				});
 
 		});
 		$("#buttonhidemodifica").mouseenter(function () {
 			$("#buttonhidemodifica").animate({
 				width: '200px'
 			}, {
-				step: function (currentwidth) {
-					if (currentwidth > 150) {
-						$(this).find("#pmodifica").fadeIn();
-						$(this).find("#pmodifica").css("transition-duration", "0.3s");
+					step: function (currentwidth) {
+						if (currentwidth > 150) {
+							$(this).find("#pmodifica").fadeIn();
+							$(this).find("#pmodifica").css("transition-duration", "0.3s");
+						}
 					}
-				}
-			});
+				});
 		});
 		$("#buttonhidemodifica").mouseleave(function () {
 			$("#buttonhidemodifica").animate({
 				width: '80px'
 			}, {
-				step: function (currentwidth) {
-					if (currentwidth < 150) {
-						$(this).find("#pmodifica").fadeOut(3);
-						$(this).find("#pmodifica").css("transition-duration", "0s");
+					step: function (currentwidth) {
+						if (currentwidth < 150) {
+							$(this).find("#pmodifica").fadeOut(3);
+							$(this).find("#pmodifica").css("transition-duration", "0s");
+						}
 					}
-				}
-			});
+				});
 		});
 		$("#buttonadd").mouseenter(function () {
 			$("#buttonadd").animate({
 				width: '200px'
 			}, {
-				step: function (currentwidth) {
-					if (currentwidth > 150) {
-						//  $(this).find("#padd").fadeIn();
+					step: function (currentwidth) {
+						if (currentwidth > 150) {
+							//  $(this).find("#padd").fadeIn();
+						}
 					}
-				}
-			});
+				});
 		});
 		$("#buttonadd").mouseleave(function () {
 			$("#buttonadd").animate({
 				width: '80px'
 			}, {
-				step: function (currentwidth) {
-					if (currentwidth < 150) {
-						//  $(this).find("#padd").fadeOut();
+					step: function (currentwidth) {
+						if (currentwidth < 150) {
+							//  $(this).find("#padd").fadeOut();
+						}
 					}
-				}
-			});
+				});
 		});
 
 		$("#newfilm").click(function () {
@@ -335,6 +336,81 @@
 					titolo: $("#title").val(),
 				};
 			}
+		});
+
+		$("#datainizio,#datafine").change(function () {
+
+			if ($("#datainizio").val() && $("#datafine").val()) {
+				var datainizio = $("#datainizio").datepicker({
+					dateFormat: "yyyy-mm-dd"
+				}).val();
+				var datafine = $("#datafine").datepicker({
+					dateFormat: "yyyy-mm-dd"
+				}).val();
+
+				myDateInizio = datainizio.split("/");
+				var newDatei = myDateInizio[1] + "," + myDateInizio[0] + "," + myDateInizio[2];
+				var newDataInizio = new Date(newDatei).getTime();
+				var todaysDate = new Date();
+				todaysDate.setHours(0, 0, 0, 0);
+
+				myDateFine = datafine.split("/");
+				var newDatef = myDateFine[1] + "," + myDateFine[0] + "," + myDateFine[2];
+				var newDataFine = new Date(newDatef).getTime();
+
+				if (newDataInizio >= todaysDate) {
+					$("#datainizio").removeClass("fielderror");
+
+					if (newDataInizio > newDataFine) {
+						$("#datainizio").addClass("fielderror");
+						$("#datafine").addClass("fielderror");
+						$("#datafine").blur();
+						$("#myModal").modal();
+					} else {
+						$("#datainizio").removeClass("fielderror");
+						$("#datafine").removeClass("fielderror");
+						$("#orariM").empty();
+						var day;
+						for (var d = new Date(newDatei); d <= new Date(newDatef); d.setDate(d.getDate() + 1)) {
+							switch (d.getDay()) {
+								case 0:
+									day = "Lunedi";
+									break;
+								case 1:
+									day = "Martedi";
+									break;
+								case 2:
+									day = "Mercoledi";
+									break;
+								case 3:
+									day = "Giovedi";
+									break;
+								case 4:
+									day = "Venerdi";
+									break;
+								case 5:
+									day = "Sabato";
+									break;
+								case 6:
+									day = "Domenica";
+							}
+							$("#orariM").append("<p>" + day + " " + d.getDate() + "/" + d.getMonth() + "/" + d.getFullYear() + "</p></br>");
+
+						}
+						$("#orarimodal").modal();
+
+
+
+					}
+
+				} else {
+					$("#datainizio").addClass("fielderror");
+					$("#todaysDateModal").modal();
+				}
+			}
+		});
+		$('#datetimepicker3').datetimepicker({
+			pickDate: false
 		});
 	});
 </script>
@@ -558,6 +634,24 @@
 						</div>
 					</div>
 				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="orarimodal" class="modal fade ">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header" style="background-color: rgba(128, 0, 0, 0.7);">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Selezionare Orari</h4>
+			</div>
+			<div class="modal-body" id="orariM">
+
+			</div>
+			<div class="modal-footer">
+
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-success" data-dismiss="modal">Confirm</button>
 			</div>
 		</div>
 	</div>
