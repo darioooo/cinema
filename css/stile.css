@@ -317,3 +317,12 @@ img#cinelandiaimg {
 	height: 300px;
 	border: 2px solid #862312;
 }
+
+#img-modifica {
+	height: 100px;
+	width: 70px;
+}
+
+.modifica-row-contenuti {
+	border: 1px solid black;
+}

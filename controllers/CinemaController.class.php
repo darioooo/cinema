@@ -161,7 +161,7 @@ class CinemaController
 			$data['filmtoday'][$i]['genere']=$sc[$i]['genere']; 
 			$data['filmtoday'][$i]['pese']=$sc[$i]['pese']; 
 			$data['filmtoday'][$i]['id_scheda']=$sc[$i]['id_scheda'];
-			$data['filmtoday'][$i]['indice']=$i;	
+			$data['filmtoday'][$i]['indice']=$i;
 			if($i==0)
 		{
 		$data['filmtoday'][$i]['active']='item active';
