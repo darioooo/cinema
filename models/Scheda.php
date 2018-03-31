@@ -7,6 +7,7 @@ class Scheda extends dbo
 	private $genere = "";
 	private $paese = "";
 	private $id_scheda = null;
+	private $id_film = "";
 
 	function __construct()
 	{
@@ -42,6 +43,10 @@ class Scheda extends dbo
 	{
 		return $this->paese;
 	}
+	function get_id_film()
+	{
+		return $this->id_film;
+	}
 
 	private function set_regia($mValue)
 
@@ -71,5 +76,10 @@ class Scheda extends dbo
 
 	{
 		$this->paese=$mValue;
+	}
+	private function set_id_film($mValue)
+
+	{
+		$this->id_film=$mValue;
 	}
 }

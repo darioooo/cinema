@@ -6,6 +6,7 @@
 		var descrizione;
 		var attori;
 		var regia;
+		var durata;
 		var data_inizio, data_fine;
 		var lunedì = "";
 		var martedì = "";
@@ -95,6 +96,7 @@
 			descrizione = $("#desc").val();
 			attori = $("#attori").val();
 			regia = $("#regia").val();
+			durata = $("#durata").val();
 
 			$(".lunedì").each(function () {
 				var ischecked = $(this).is(":checked");
@@ -152,7 +154,6 @@
 			var newDataInizio = new Date(newDatei).getTime();
 			var todaysDate = new Date();
 			todaysDate.setHours(0, 0, 0, 0);
-
 			myDateFine = datafine.split("/");
 			var newDatef = myDateFine[1] + "," + myDateFine[0] + "," + myDateFine[2];
 			var newDataFine = new Date(newDatef).getTime();
@@ -182,6 +183,10 @@
 					if (regia != null) {
 						var dataString = dataString + '&regia=' + regia;
 					}
+					if (durata != null) {
+						var dataString = dataString + '&durata=' + durata;
+					}
+					
 
 					$.ajax({
 						type: "POST",
