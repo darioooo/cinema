@@ -421,7 +421,7 @@
 		});
 
 		$(document).on('click', '.nuovoorario', function () {
-			$(this).parent().parent().find();
+			$(this).parent().parent().remove();
 		});
 
 
