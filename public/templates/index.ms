@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="http://127.0.0.1/cinema/css/bootstrap-datepicker.min.css">
   <link rel="stylesheet" href="http://127.0.0.1/cinema/css/stile.css">
   <link rel="stylesheet" href="http://127.0.0.1/cinema/fileinput/css/fileinput.min.css">
+  <link rel="stylesheet" href="http://127.0.0.1/cinema/lib/clockpicker-gh-pages/src/clockpicker.css">
 
   <script src="http://127.0.0.1/cinema/js/jquery-2.2.2.js"></script>
   <script src="http://127.0.0.1/cinema/css/bootstrap-3.3.5/dist/js/bootstrap.min.js"></script>
@@ -18,6 +19,7 @@
   <script src="http://127.0.0.1/cinema/fileinput/themes/fa/theme.js"></script>
   <script src="http://127.0.0.1/cinema/fileinput/js/locales/it.js"></script>
   <script src="http://127.0.0.1/cinema/easyPaginateJQuery/lib/jquery.easyPaginate.js"></script>
+  <script src="http://127.0.0.1/cinema/lib/clockpicker-gh-pages/src/clockpicker.js"></script>
 
   <title>Cinema Accademia</title>
 </head>

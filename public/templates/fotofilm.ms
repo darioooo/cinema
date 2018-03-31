@@ -6,6 +6,7 @@
 		var descrizione;
 		var attori;
 		var regia;
+		var durata;
 		var data_inizio, data_fine;
 		var lunedì = "";
 		var martedì = "";
@@ -96,6 +97,7 @@
 			descrizione = $("#desc").val();
 			attori = $("#attori").val();
 			regia = $("#regia").val();
+			durata = $("#durata").val();
 
 			$(".lunedì").each(function () {
 				var ischecked = $(this).is(":checked");
@@ -153,7 +155,6 @@
 			var newDataInizio = new Date(newDatei).getTime();
 			var todaysDate = new Date();
 			todaysDate.setHours(0, 0, 0, 0);
-
 			myDateFine = datafine.split("/");
 			var newDatef = myDateFine[1] + "," + myDateFine[0] + "," + myDateFine[2];
 			var newDataFine = new Date(newDatef).getTime();
@@ -183,6 +184,10 @@
 					if (regia != null) {
 						var dataString = dataString + '&regia=' + regia;
 					}
+					if (durata != null) {
+						var dataString = dataString + '&durata=' + durata;
+					}
+
 
 					$.ajax({
 						type: "POST",
@@ -397,7 +402,11 @@
 							$("#orariM").append("<div class=\"row \"><div id=\"divData" + d.getDate() + d.getMonth() + "\" class=\"col-md-3 orario\"><p>" + day + " " + d.getDate() + "/" + d.getMonth() + "/" + d.getFullYear() + "</p></div><div class=\"col-md-1\"><a class=\"glyphicon glyphicon-plus-sign spanAdd \"></a></div><div class=\"col-md-8 orariDiv \"></div></div></br>");
 
 						}
-						$("#orarimodal").modal();
+						$("#orarimodal").modal({
+							backdrop: 'static',
+							keyboard: false
+						});
+
 
 
 
@@ -409,22 +418,30 @@
 				}
 			}
 		});
-		// $('#datetimepicker3').datetimepicker({
-		// 	pickDate: false
-		// });
+
 		$(document).on('click', '.spanAdd', function () {
 
-			$(this).parent().parent().find(".orariDiv").append(" <div class=\"form-group\"> <label for=\"exampleSelect1\">Nuovo Orario</label> <select class=\"form-control\" data-width=\"100px\" id=\"exampleSelect1\"></select > </div > ");
-			$("select.form-control").append(" <option class=\"nuovoorario\"><span class=\" glyphicon glyphicon-plus\"></span>Nuovo Orario</option>");
-			$("select.form-control").append(" <option><input type=\"text\"></input></option>");
-			$("select.form-control").append(" <option>15.00</option>");
+			$(this).parent().parent().find(".orariDiv").append("<div class=\"input-group col-md-3 clockpicker \"  data-autoclose=\"true\"><span class=\"input-group-addon\"><span class=\"glyphicon glyphicon-time\"></span></span><input type=\"text\" class=\"form-control\" value=\"09:30\"><span class=\"input-group-addon removeOrario\" style=\"color:red;\"><span class=\"glyphicon glyphicon-remove\"></span></span></div>");
+			$(this).parent().parent().find(".orariDiv").css('display', 'inline-flex');
 		});
 
-		$(document).on('click', '.nuovoorario', function () {
-			$(this).parent().parent().remove();
+		$(document).on('click', '.clockpicker', function () {
+			$(this).clockpicker({
+				donetext: 'Done'
+			});
 		});
 
+		$(document).on('click', '.removeOrario', function () {
+			$(this).parent().remove();
+		});
 
+		$('#orariClose').click(function () {
+
+		});
+
+		$('#orariConfirm').click(function () {
+
+		});
 	});
 </script>
 
@@ -663,8 +680,8 @@
 			</div>
 			<div class="modal-footer">
 
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-success" data-dismiss="modal">Confirm</button>
+				<button type="button" id="orariClose" class="btn btn-default" data-dismiss="modal">Close</button>
+				<button type="button" id="orariConfirm" class="btn btn-success" data-dismiss="modal">Confirm</button>
 			</div>
 		</div>
 	</div>
