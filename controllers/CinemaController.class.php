@@ -41,26 +41,28 @@ class CinemaController
 		$film_orario= new Film_Orario();
 		if($data['filmtoday']!= null)
 		{
+			var_dump(count($data['filmtoday']));exit();
 		for($i=0;$i<count($data['filmtoday']);$i++)
 		{
-			$sc=$scheda->select($data['filmtoday'][$i]['id_scheda']);
+
 			$id['id_film']=$data['filmtoday'][$i]['id'];
+			$sc=$scheda->select($id);
 			$orariToday= $film_orario->select($id);
 			$data['filmtoday'][$i]['regia']=$sc[$i]['regia']; 
 			$data['filmtoday'][$i]['attori']=$sc[$i]['attori'];
 			$data['filmtoday'][$i]['durata']=$sc[$i]['durata'];  
 			$data['filmtoday'][$i]['genere']=$sc[$i]['genere']; 
 			$data['filmtoday'][$i]['pese']=$sc[$i]['pese']; 
-			$data['filmtoday'][$i]['id_scheda']=$sc[$i]['id_scheda'];
 			$data['filmtoday'][$i]['indice']=$i;
+			
 			foreach($orariToday as $k=>$v)
 			{
 			$data['filmtoday'][$i]['filmorario'][$k]['ora']=$v['ora'];
 			$data['filmtoday'][$i]['filmorario'][$k]['giornosettimana']=$v['giornosettimana'];
 			$data['filmtoday'][$i]['filmorario'][$k]['giorno']=$v['giorno'];
 			}
-			//  var_dump($data['filmtoday'][$i]);
-			//  exit();
+			 // var_dump($data['filmtoday'][$i]);
+			 // exit();
 			if($i==0)
 		{
 		$data['filmtoday'][$i]['active']='item active';
@@ -78,14 +80,13 @@ class CinemaController
 
 		for($i=0;$i<count($data['filmafter']);$i++)
 		{
-			$sc=$scheda->select($data['filmafter'][$i]['id_scheda']);
+			$sc=$scheda->select($data['filmafter'][$i]['id']);
 			$orariAfter= $film_orario->select($data['filmafter'][$i]['id']);
 			$data['filmafter'][$i]['regia']=$sc[$i]['regia']; 
 			$data['filmafter'][$i]['attori']=$sc[$i]['attori'];
 			$data['filmafter'][$i]['durata']=$sc[$i]['durata'];  
 			$data['filmafter'][$i]['genere']=$sc[$i]['genere']; 
 			$data['filmafter'][$i]['pese']=$sc[$i]['pese']; 
-			$data['filmafter'][$i]['id_scheda']=$sc[$i]['id_scheda'];
 			$data['filmafter'][$i]['indice']=$i;
 			$data['filmafter'][$i]['ora']=$orariAfter[$i]['ora'];
 			$data['filmafter'][$i]['giornosettimana']=$orariAfter[$i]['giornosettimana'];
@@ -93,7 +94,7 @@ class CinemaController
 		}
 	}
 		try{
-			//var_dump($data);exit();
+			// var_dump($data);exit();
 			$table = (new HomeView(null,$data));
 			$page = new Page();
 			$page->addView("content",$table);
@@ -154,13 +155,13 @@ class CinemaController
 		{
 		for($i=0;$i < count($data['filmtoday']);$i++)
 		{
-			$sc=$scheda->select($data['filmtoday'][$i]['id_scheda']);
+			$sc=$scheda->select($data['filmtoday'][$i]['id']);
+			// var_dump($sc);exit();
 			$data['filmtoday'][$i]['regia']=$sc[$i]['regia']; 
 			$data['filmtoday'][$i]['attori']=$sc[$i]['attori'];
 			$data['filmtoday'][$i]['durata']=$sc[$i]['durata'];  
 			$data['filmtoday'][$i]['genere']=$sc[$i]['genere']; 
 			$data['filmtoday'][$i]['pese']=$sc[$i]['pese']; 
-			$data['filmtoday'][$i]['id_scheda']=$sc[$i]['id_scheda'];
 			$data['filmtoday'][$i]['indice']=$i;
 			if($i==0)
 		{
@@ -175,17 +176,18 @@ class CinemaController
 		}
 	}
 	if($data['filmafter']!=null)
-	{
+	{		
+
 		for($i=0;$i < count($data['filmafter']);$i++)
 		{
-			$sc=$scheda->select($data['filmafter'][$i]['id_scheda']);
-			$orariAfter= $film_orario->select($data['filmafter'][$i]['id']);
+			$id['id_film'] = $data['filmafter'][$i]['id'];
+			$sc=$scheda->select($id);
+			$orariAfter= $film_orario->select($id);
 			$data['filmafter'][$i]['regia']=$sc[$i]['regia']; 
 			$data['filmafter'][$i]['attori']=$sc[$i]['attori'];
 			$data['filmafter'][$i]['durata']=$sc[$i]['durata'];  
 			$data['filmafter'][$i]['genere']=$sc[$i]['genere']; 
 			$data['filmafter'][$i]['pese']=$sc[$i]['pese']; 
-			$data['filmafter'][$i]['id_scheda']=$sc[$i]['id_scheda'];
 			$data['filmafter'][$i]['indice']=$i;
 			$data['filmafter'][$i]['ora']=$orariAfter[$i]['ora'];
 			$data['filmafter'][$i]['giornosettimana']=$orariAfter[$i]['giornosettimana'];
@@ -193,7 +195,7 @@ class CinemaController
 		}
 	}
 		try{
-			// var_dump($data);exit();
+			//    var_dump($data);exit();
 		
 			$modifica= (new ModificaAdminView(null,$data));
 			$page = new Page();
@@ -221,6 +223,7 @@ class CinemaController
 		$url =$_POST["url"];
 		$attori =$_POST["attori"];
 		$regia =$_POST["regia"];
+		$durata = $_POST["durata"];
 		$descrizione =$_POST["descrizione"];
 		$titolo =$_POST["titolo"];
 		$data_inizio=$_POST["data_inizio"];
@@ -309,6 +312,7 @@ class CinemaController
 		$insert_film['immagine']=$img;
 		$insert_film['titolo']= $titolo;
 		$insert_film['descrizione']=$descrizione;
+		$insert_scheda['durata']=$durata;
 		//var_dump($data_fine);
 		//var_dump($data_inizio);
 /* 		$data_i = new DateTime($data['2'].'-'.$data['1'].'-'.$data['0']);
@@ -333,20 +337,20 @@ class CinemaController
 		$film_orario= new Film_Orario();
 		// var_dump($orari);exit();
 	
-		$scheda->insert($insert_scheda);
+		$film->insert($insert_film);
 		
-		$id=$scheda->get_last_id("id_scheda");
+		$id=$film->get_last_id("id");
 		
 		
-		$insert_film['id_scheda']=$id[0]['id_scheda'];
+		$insert_scheda['id_film']=$id[0]['id'];
 
 		// $film->unvisible_last_id();
 		
 		try {
-			$film->insert($insert_film);
-			$id_film=$film->get_last_id("id");
-			var_dump($id_film);
 			
+
+
+			$scheda->insert($insert_scheda);
 			if($orari!= null)
 			{
 				foreach($orari as $value)
@@ -356,7 +360,7 @@ class CinemaController
 						$orarioDbo["ora"]=$value["ora"];
 						$orarioDbo["giorno"]=$value["giorno"];
 						$orarioDbo["giornosettimana"]=str_replace("ì","i",$value["giornosettimana"]);
-						$orarioDbo["id_film"]=$id_film[0]['id'];
+						$orarioDbo["id_film"]=$id[0]['id'];
 						$film_orario->insert($orarioDbo);
 					}
 				}
@@ -403,6 +407,28 @@ class CinemaController
 			$page = new Page();
 			$page->addView("content",$table);
 			return $response->write($page->render());
+		}
+		catch(Exception $e )
+		{
+			echo $e->getMessage();
+		}	
+	}
+
+		/**
+	 * @desc This method provides the registration html page
+	 * @link /deleteById
+	 * @method POST
+	 * @param Request $request
+	 * @param Response $response
+	 * @param array $args
+	 * @return \Slim\Http\Response
+	 */
+	function deleteById(Request $request, Response $response, $args)
+	{
+		try{
+		$id['id'] =$_POST["id"];
+		$film = new Film ();
+		$film->delete($id);
 		}
 		catch(Exception $e )
 		{

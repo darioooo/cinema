@@ -1,0 +1,9 @@
+diff a/controllers/CinemaController.class.php b/controllers/CinemaController.class.php	(rejected hunks)
+@@ -31,6 +31,7 @@
+ 		catch(Exception $e) {
+ 			echo $e -> getMessage();
+ 		} */
++		
+ 		$film = new Film();
+ 		$visualizzato['visualizzato']=true;
+ 		$data['filmtoday']=$film->get_FilmTodayDataCourrent();
