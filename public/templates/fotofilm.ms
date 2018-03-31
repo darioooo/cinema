@@ -394,7 +394,7 @@
 								case 6:
 									day = "Domenica";
 							}
-							$("#orariM").append("<p>" + day + " " + d.getDate() + "/" + d.getMonth() + "/" + d.getFullYear() + "</p></br>");
+							$("#orariM").append("<div class=\"row \"><div id=\"divData" + d.getDate() + d.getMonth() + "\" class=\"col-md-3 orario\"><p>" + day + " " + d.getDate() + "/" + d.getMonth() + "/" + d.getFullYear() + "</p></div><div class=\"col-md-1\"><a class=\"glyphicon glyphicon-plus-sign spanAdd \"></a></div><div class=\"col-md-8 orariDiv \"></div></div></br>");
 
 						}
 						$("#orarimodal").modal();
@@ -409,9 +409,22 @@
 				}
 			}
 		});
-		$('#datetimepicker3').datetimepicker({
-			pickDate: false
+		// $('#datetimepicker3').datetimepicker({
+		// 	pickDate: false
+		// });
+		$(document).on('click', '.spanAdd', function () {
+
+			$(this).parent().parent().find(".orariDiv").append(" <div class=\"form-group\"> <label for=\"exampleSelect1\">Nuovo Orario</label> <select class=\"form-control\" data-width=\"100px\" id=\"exampleSelect1\"></select > </div > ");
+			$("select.form-control").append(" <option class=\"nuovoorario\"><span class=\" glyphicon glyphicon-plus\"></span>Nuovo Orario</option>");
+			$("select.form-control").append(" <option><input type=\"text\"></input></option>");
+			$("select.form-control").append(" <option>15.00</option>");
 		});
+
+		$(document).on('click', '.nuovoorario', function () {
+			$(this).parent().parent().find();
+		});
+
+
 	});
 </script>
 
