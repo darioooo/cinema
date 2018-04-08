@@ -9,10 +9,13 @@
 		var regia;
 		var durata;
 		var data_inizio, data_fine;
-		function oraro() {
+		function orario() {
 			this.orari = new Array();
 			this.giornoSettimana = "";
 			this.data = "";
+			this.day = "";
+			this.mounth = "";
+			this.year = "";
 
 		}
 		var lunedì = "";
@@ -409,7 +412,7 @@
 									day = "Domenica";
 							}
 							arrayOrari.push(d.getDate().toString() + d.getMonth().toString() + d.getFullYear().toString());
-							$("#orariM").append("<div class=\"row \"><div id=\"divData" + d.getDate() + d.getMonth() + d.getFullYear() + "\" class=\"col-md-3 orario\"><p>" + day + " " + d.getDate() + "/" + d.getMonth() + "/" + d.getFullYear() + "</p></div><div class=\"col-md-1\"><a class=\"glyphicon glyphicon-plus-sign spanAdd \"></a></div><div class=\"col-md-8 orariDiv \"></div></div></br>");
+							$("#orariM").append("<div class=\"row \"><div id=\"divData" + d.getDate() + d.getMonth() + d.getFullYear() + "\" class=\"col-md-3 orario\"><p day=\"" + day + "\" date=\"" + d.getDate() + "\" mounth=\"" + d.getMonth() + "\" year=\"" + d.getFullYear() + "\">" + day + " " + d.getDate() + "/" + d.getMonth() + "/" + d.getFullYear() + "</p></div><div class=\"col-md-1\"><a class=\"glyphicon glyphicon-plus-sign spanAdd \"></a></div><div class=\"col-md-8 orariDiv \"></div></div></br>");
 
 						}
 						$("#orarimodal").modal({
@@ -452,8 +455,11 @@
 		$('#orariConfirm').click(function () {
 			console.log(arrayOrari);
 			for (i = 0; i < arrayOrari.length; i++) {
-				var orarioO = new oraro();
-				orarioO.data = $('#divData' + arrayOrari[i]).find('p').text();
+				var orarioO = new orario();
+				orarioO.day = $('#divData' + arrayOrari[i]).find('p').attr("date");
+				orarioO.giornoSettimana = $('#divData' + arrayOrari[i]).find('p').attr("day");
+				orarioO.mounth = $('#divData' + arrayOrari[i]).find('p').attr("mounth");
+				orarioO.year = $('#divData' + arrayOrari[i]).find('p').attr("year");
 				$('#divData' + arrayOrari[i]).find('p');
 				$('#divData' + arrayOrari[i]).parent().find('.orariDiv').val();
 				$('#divData' + arrayOrari[i]).parent().find('.orariDiv').children().each(function () {
@@ -471,6 +477,14 @@
 				// console.log($('#divData' + arrayOrari[i]).find('p').text());//prendere la data 
 
 
+			}
+			for (i = 0; i < orari.length; i++) {
+				$('#orari').append("<p>" + orari[i].giornoSettimana + " " + orari[i].day + "/" + orari[i].mounth + "/" + orari[i].year + "</p>");
+
+				for (o = 0; o < orari[i].orari.length; o++) {
+
+					$('#orari').append("<p>" + orari[i].orari[o] + "</p>");
+				}
 			}
 		});
 	});
@@ -530,102 +544,8 @@
 
 					<label for="comment">data fine</label>
 					<input id="datafine" class="datepicker form-control " data-date-format="dd/mm/yyyy" rows="1" required>
-					<div id="orari">
-						<div id="venerdì">
-							<div class="col-md-5" id="times">
-								<h4 id="timesLabels" for="comment">VENERDÌ</h4>
-							</div>
-							<div class="col-md-7" id="checkboxes">
-								<label class="radio-inline">
-									<input type="checkbox" id="datafineCheckbox" class="form-control venerdì" value="17.00" rows="1">17.00</label>
-								<label class="radio-inline">
-									<input type="checkbox" id="datafineCheckbox" class="form-control venerdì" value="17.30" rows="1">17.30</label>
-								<label class="radio-inline">
-									<input type="checkbox" id="datafineCheckbox" class="form-control venerdì" value="21.00" rows="1">21.00</label>
-								<label class="radio-inline">
-									<input type="checkbox" id="datafineCheckbox" class="form-control venerdì" value="21.30" rows="1">21.30</label>
-							</div>
-						</div>
+					<div id="orari" style="text-align: left;">
 
-						<div id="sabato">
-							<div class="col-md-5" id="times">
-								<h4 id="timesLabels" for="comment">SABATO</h4>
-							</div>
-							<div class="col-md-7" id="checkboxes">
-								<label class="radio-inline">
-									<input type="checkbox" id="datafineCheckbox" class="form-control sabato" value="17.00" rows="1">17.00</label>
-								<label class="radio-inline">
-									<input type="checkbox" id="datafineCheckbox" class="form-control sabato" value="17.30" rows="1">17.30</label>
-								<label class="radio-inline">
-									<input type="checkbox" id="datafineCheckbox" class="form-control sabato" value="21.00" rows="1">21.00</label>
-								<label class="radio-inline">
-									<input type="checkbox" id="datafineCheckbox" class="form-control sabato" value="21.30" rows="1">21.30</label>
-							</div>
-						</div>
-
-						<div id="domenica">
-							<div class="col-md-5" id="times">
-								<h4 id="timesLabels" for="comment">DOMENICA</h4>
-							</div>
-							<div class="col-md-7" id="checkboxes">
-								<label class="radio-inline">
-									<input type="checkbox" id="datafineCheckbox" class="form-control domenica" value="17.00" rows="1">17.00</label>
-								<label class="radio-inline">
-									<input type="checkbox" id="datafineCheckbox" class="form-control domenica" value="17.30" rows="1">17.30</label>
-								<label class="radio-inline">
-									<input type="checkbox" id="datafineCheckbox" class="form-control domenica" value="21.00" rows="1">21.00</label>
-								<label class="radio-inline">
-									<input type="checkbox" id="datafineCheckbox" class="form-control domenica" value="21.30" rows="1">21.30</label>
-							</div>
-						</div>
-
-						<div id="lunedì">
-							<div class="col-md-5" id="times">
-								<h4 id="timesLabels" for="comment">LUNEDÌ</h4>
-							</div>
-							<div class="col-md-7" id="checkboxes">
-								<label class="radio-inline">
-									<input type="checkbox" id="datafineCheckbox" class="form-control lunedì" value="17.00" rows="1">17.00</label>
-								<label class="radio-inline">
-									<input type="checkbox" id="datafineCheckbox" class="form-control lunedì" value="17.30" rows="1">17.30</label>
-								<label class="radio-inline">
-									<input type="checkbox" id="datafineCheckbox" class="form-control lunedì" value="21.00" rows="1">21.00</label>
-								<label class="radio-inline">
-									<input type="checkbox" id="datafineCheckbox" class="form-control lunedì" value="21.30" rows="1">21.30</label>
-							</div>
-						</div>
-
-						<div id="martedì">
-							<div class="col-md-5" id="times">
-								<h4 id="timesLabels" for="comment">MARTEDÌ</h4>
-							</div>
-							<div class="col-md-7" id="checkboxes">
-								<label class="radio-inline">
-									<input type="checkbox" id="datafineCheckbox" class="form-control martedì" value="17.00" rows="1">17.00</label>
-								<label class="radio-inline">
-									<input type="checkbox" id="datafineCheckbox" class="form-control martedì" value="17.30" rows="1">17.30</label>
-								<label class="radio-inline">
-									<input type="checkbox" id="datafineCheckbox" class="form-control martedì" value="21.00" rows="1">21.00</label>
-								<label class="radio-inline">
-									<input type="checkbox" id="datafineCheckbox" class="form-control martedì" value="21.30" rows="1">21.30</label>
-							</div>
-						</div>
-
-						<div id="mercoledì">
-							<div class="col-md-5" id="times">
-								<h4 id="timesLabels" for="comment">MERCOLEDÌ</h4>
-							</div>
-							<div class="col-md-7" id="checkboxes">
-								<label class="radio-inline">
-									<input type="checkbox" id="datafineCheckbox" class="form-control mercoledì" value="17.00" rows="1">17.00</label>
-								<label class="radio-inline">
-									<input type="checkbox" id="datafineCheckbox" class="form-control mercoledì" value="17.30" rows="1">17.30</label>
-								<label class="radio-inline">
-									<input type="checkbox" id="datafineCheckbox" class="form-control mercoledì" value="21.00" rows="1">21.00</label>
-								<label class="radio-inline">
-									<input type="checkbox" id="datafineCheckbox" class="form-control mercoledì" value="21.30" rows="1">21.30</label>
-							</div>
-						</div>
 					</div>
 					<label for="comment">durata</label>
 					<textarea id="durata" class="form-control" rows="1"> </textarea>
