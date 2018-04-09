@@ -328,6 +328,7 @@
 
 				myDateInizio = datainizio.split("/");
 				var newDatei = myDateInizio[1] + "," + myDateInizio[0] + "," + myDateInizio[2];
+
 				var newDataInizio = new Date(newDatei).getTime();
 				var todaysDate = new Date();
 				todaysDate.setHours(0, 0, 0, 0);
@@ -373,8 +374,9 @@
 								case 6:
 									day = "Domenica";
 							}
-							arrayOrari.push(d.getDate().toString() + d.getMonth().toString() + d.getFullYear().toString());
-							$("#orariM").append("<div class=\"row \"><div id=\"divData" + d.getDate() + d.getMonth() + d.getFullYear() + "\" class=\"col-md-3 orario\"><p day=\"" + day + "\" date=\"" + d.getDate() + "\" mounth=\"" + d.getMonth() + "\" year=\"" + d.getFullYear() + "\">" + day + " " + d.getDate() + "/" + d.getMonth() + "/" + d.getFullYear() + "</p></div><div class=\"col-md-1\"><a class=\"glyphicon glyphicon-plus-sign spanAdd \"></a></div><div class=\"col-md-8 orariDiv \"></div></div></br>");
+							var mese = d.getMonth() + 1;
+							arrayOrari.push(d.getDate().toString() + mese.toString() + d.getFullYear().toString());
+							$("#orariM").append("<div class=\"row \"><div id=\"divData" + d.getDate() + mese + d.getFullYear() + "\" class=\"col-md-3 orario\"><p day=\"" + day + "\" date=\"" + d.getDate() + "\" mounth=\"" + mese + "\" year=\"" + d.getFullYear() + "\">" + day + " " + d.getDate() + "/" + mese + "/" + d.getFullYear() + "</p></div><div class=\"col-md-1\"><a class=\"glyphicon glyphicon-plus-sign spanAdd \"></a></div><div class=\"col-md-8 orariDiv \"></div></div></br>");
 
 						}
 						$("#orarimodal").modal({
