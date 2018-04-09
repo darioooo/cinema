@@ -8,11 +8,11 @@
 		var attori;
 		var regia;
 		var durata;
+		var orariStrig;
 		var data_inizio, data_fine;
 		function orario() {
 			this.orari = new Array();
 			this.giornoSettimana = "";
-			this.data = "";
 			this.day = "";
 			this.mounth = "";
 			this.year = "";
@@ -27,6 +27,7 @@
 		var domenica = "";
 		var arrayOrari = new Array();
 		var orari = new Array();
+
 
 
 		$('.datepicker').datepicker();
@@ -111,47 +112,7 @@
 			regia = $("#regia").val();
 			durata = $("#durata").val();
 
-			$(".lunedì").each(function () {
-				var ischecked = $(this).is(":checked");
-				if (ischecked) {
-					lunedì += $(this).val() + " | ";
-				}
-			});
-
-			$(".martedì").each(function () {
-				var ischecked = $(this).is(":checked");
-				if (ischecked) {
-					martedì += $(this).val() + " | ";
-				}
-			});
-
-			$(".mercoledì").each(function () {
-				var ischecked = $(this).is(":checked");
-				if (ischecked) {
-					mercoledì += $(this).val() + " | ";
-				}
-			});
-
-			$(".venerdì").each(function () {
-				var ischecked = $(this).is(":checked");
-				if (ischecked) {
-					venerdì += $(this).val() + " | ";
-				}
-			});
-
-			$(".sabato").each(function () {
-				var ischecked = $(this).is(":checked");
-				if (ischecked) {
-					sabato += $(this).val() + " | ";
-				}
-			});
-
-			$(".domenica").each(function () {
-				var ischecked = $(this).is(":checked");
-				if (ischecked) {
-					domenica += $(this).val() + " | ";
-				}
-			});
+			orariStrig = JSON.stringify(orari);
 
 			var datainizio = $("#datainizio").datepicker({
 				dateFormat: "yyyy-mm-dd"
@@ -185,8 +146,7 @@
 					$("#datafine").removeClass("fielderror");
 
 					var dataString = 'titolo=' + titolo + '&url=' + url + '&data_inizio=' + datainizio +
-						'&data_fine=' + datafine + '&lunedì=' + lunedì + '&martedì=' + martedì + '&mercoledì=' +
-						mercoledì + '&venerdì=' + venerdì + '&sabato=' + sabato + '&domenica=' + domenica;
+						'&data_fine=' + datafine + '&orari=' + orariStrig;
 					if (descrizione != null) {
 						var dataString = dataString + '&descrizione=' + descrizione;
 					}
@@ -473,7 +433,9 @@
 					}
 				});
 				console.log(orarioO);
-				orari.push(orarioO);
+				if (orarioO.orari.length > 0) {
+					orari.push(orarioO);
+				}
 				// console.log($('#divData' + arrayOrari[i]).find('p').text());//prendere la data 
 
 
