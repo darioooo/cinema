@@ -38,7 +38,7 @@ class CinemaController
 		$data['filmafter']=$film->get_FilmAfterDataCourrent();
 		// $id_scheda['id_scheda']=$data['film'][0]['id_scheda'];
 		$scheda=new Scheda();
-		$film_orario= new Film_Orario();
+		$film_orario= new Film_Orario(); 
 		if($data['filmtoday']!= null)
 		{
 			
@@ -230,10 +230,11 @@ class CinemaController
 		$titolo =$_POST["titolo"];
 		$data_inizio=$_POST["data_inizio"];
 		$data_fine=$_POST["data_fine"];
+		$orari=$_POST["orari"];
+	
 		$data=explode("/",$data_inizio);
 		$dataf=explode("/",$data_fine);
-		// $data_i=$data['2']."/".$data['1']."/".$data['0'];
-		// $data_f=$dataf['2']."/".$dataf['1']."/".$dataf['0'];
+	
 		try
 		{
 		$data_i = new DateTime($data['2'].'-'.$data['1'].'-'.$data['0']);
@@ -243,66 +244,15 @@ class CinemaController
 
 		var_dump($datainizio);
 		var_dump($datafine);
-		// $interval= DateInterval::createFromDateString('1 day');
-		// $period= new DatePeriod($data_i ,$interval ,$data_f);
+
 		}	
 		catch(Exception $e)
 		{
 			echo $e->getMessage();
 		}
-		for($i=$data_i; $i<$data_f; $i->modify('+1 day'))
-		{	
-			$timeTemp=strtotime(date_format($i,'Y/m/d'));
-			if(date("w",$timeTemp)==1)
-			{
-				$orari[date("w",$timeTemp)]["ora"]=$_POST["lunedì"];
-				$orari[date("w",$timeTemp)]["giornosettimana"]="lunedì";
-				$orari[date("w",$timeTemp)]["giorno"]=date_format($i,'Y/m/d');
-				var_dump("lunedi", $timeTemp);
-			}
-			if(date("w",$timeTemp)==2)
-			{
-				$orari[date("w",$timeTemp)]["ora"]=$_POST["martedì"];
-				$orari[date("w",$timeTemp)]["giornosettimana"]="martedì";
-				$orari[date("w",$timeTemp)]["giorno"]=date_format($i,'Y/m/d');
-				var_dump("martedi", $timeTemp);
-			}
-			if(date("w",$timeTemp)==3)
-			{
-				$orari[date("w",$timeTemp)]["ora"]=$_POST["mercoledì"];
-				$orari[date("w",$timeTemp)]["giornosettimana"]="mercoledì";
-				$orari[date("w",$timeTemp)]["giorno"]=date_format($i,'Y/m/d');
-				var_dump("mercoledi", $timeTemp);
-			}
-			if(date("w",$timeTemp)==4)
-			{
-				$orari[date("w",$timeTemp)]["ora"]="";
-				$orari[date("w",$timeTemp)]["giornosettimana"]="giovedì";
-				$orari[date("w",$timeTemp)]["giorno"]=date_format($i,'Y/m/d');
-			}
-			if(date("w",$timeTemp)==5)
-			{
-				$orari[date("w",$timeTemp)]["ora"]=$_POST["venerdì"];
-				$orari[date("w",$timeTemp)]["giornosettimana"]="venerdì";
-				$orari[date("w",$timeTemp)]["giorno"]=date_format($i,'Y/m/d');
-				var_dump("venerdi", $timeTemp);
-			}
-			if(date("w",$timeTemp)==6)
-			{
-				$orari[date("w",$timeTemp)]["ora"]=$_POST["sabato"];
-				$orari[date("w",$timeTemp)]["giornosettimana"]="sabato";
-				$orari[date("w",$timeTemp)]["giorno"]=date_format($i,'Y/m/d');
-				var_dump("sabato", $timeTemp);
-			}
-			if(date("w",$timeTemp)==0)
-			{
-				$orari[date("w",$timeTemp)]["ora"]=$_POST["domenica"];
-				$orari[date("w",$timeTemp)]["giornosettimana"]="domenica";
-				$orari[date("w",$timeTemp)]["giorno"]=date_format($i,'Y/m/d');
-				var_dump("domenica", $timeTemp);
-			}
-		}
-	
+		$seralizedOrari= json_decode($orari);
+		
+		
 		$vowels = array(" ","'");
 		$titolourl=  str_replace($vowels, '', $titolo);
 	
@@ -315,12 +265,7 @@ class CinemaController
 		$insert_film['titolo']= $titolo;
 		$insert_film['descrizione']=$descrizione;
 		$insert_scheda['durata']=$durata;
-		//var_dump($data_fine);
-		//var_dump($data_inizio);
-/* 		$data_i = new DateTime($data['2'].'-'.$data['1'].'-'.$data['0']);
-		$data_f = new DateTime($dataf['2'].'-'.$dataf['1'].'-'.$dataf['0']);
-		$datainizio = date_format($data_i, 'Y/m/d');
-		$datafine = date_format($data_f, 'Y/m/d'); */
+	
 		$datai = explode( "/",$data_inizio  );
 		$dataf = explode( "/",$data_fine  );
 		$newDateInizio = new DateTime();
@@ -331,13 +276,10 @@ class CinemaController
 		$newDateFine->setDate($dataf['2'],$dataf['1'],$dataf['0']);
 		$newDateFine = date_format($newDateFine, 'Y/m/d');
 		$insert_film['data_fine']=$newDateFine;
-		// echo("kjenkvsseseoe inizio     ");
-		//var_dump($data_fine);
-		//var_dump($data_inizio);	
+	
 		$film = new Film();
 		$scheda=new Scheda();	
 		$film_orario= new Film_Orario();
-		// var_dump($orari);exit();
 	
 		$film->insert($insert_film);
 		
@@ -346,27 +288,32 @@ class CinemaController
 		
 		$insert_scheda['id_film']=$id[0]['id'];
 
-		// $film->unvisible_last_id();
 		
 		try {
 			
 
 
 			$scheda->insert($insert_scheda);
-			if($orari!= null)
-			{
-				foreach($orari as $value)
-				{
-					if($value["ora"]!="")
-					{
-						$orarioDbo["ora"]=$value["ora"];
-						$orarioDbo["giorno"]=$value["giorno"];
-						$orarioDbo["giornosettimana"]=str_replace("ì","i",$value["giornosettimana"]);
-						$orarioDbo["id_film"]=$id[0]['id'];
-						$film_orario->insert($orarioDbo);
-					}
-				}
-			}
+			$orarioDbo["ora"]="";
+			 if($seralizedOrari!= null)
+			 {
+				
+			 	foreach($seralizedOrari as $value)
+			 	{
+					// var_dump($value->orari);exit();
+					
+						 foreach($value->orari as $a)
+						 {
+						 	$orarioDbo["ora"]=$orarioDbo["ora"] ." ".$a;
+						 }
+			 			$orarioDbo["giorno"]=$value->year.'/'.$value->mounth.'/'.$value->day;
+			 			$orarioDbo["giornosettimana"]=$value->giornoSettimana;
+						 $orarioDbo["id_film"]=$id[0]['id'];
+					
+			 			$film_orario->insert($orarioDbo);
+			 	
+			 	}
+			 }
 		}
 		catch(Exception $e)
 	    {

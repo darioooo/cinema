@@ -1,4 +1,5 @@
 <script type="text/javascript">
+
 	$(document).ready(function () {
 		var url;
 		var file;
@@ -7,7 +8,16 @@
 		var attori;
 		var regia;
 		var durata;
+		var orariStrig;
 		var data_inizio, data_fine;
+		function orario() {
+			this.orari = new Array();
+			this.giornoSettimana = "";
+			this.day = "";
+			this.mounth = "";
+			this.year = "";
+
+		}
 		var lunedì = "";
 		var martedì = "";
 		var mercoledì = "";
@@ -15,6 +25,10 @@
 		var venerdì = "";
 		var sabato = "";
 		var domenica = "";
+		var arrayOrari;
+		var orari;
+
+
 
 		$('.datepicker').datepicker();
 		event.preventDefault();
@@ -98,48 +112,8 @@
 			regia = $("#regia").val();
 			durata = $("#durata").val();
 
-			$(".lunedì").each(function () {
-				var ischecked = $(this).is(":checked");
-				if (ischecked) {
-					lunedì += $(this).val() + " | ";
-				}
-			});
+			orariStrig = JSON.stringify(orari);
 
-			$(".martedì").each(function () {
-				var ischecked = $(this).is(":checked");
-				if (ischecked) {
-					martedì += $(this).val() + " | ";
-				}
-			});
-
-			$(".mercoledì").each(function () {
-				var ischecked = $(this).is(":checked");
-				if (ischecked) {
-					mercoledì += $(this).val() + " | ";
-				}
-			});
-
-			$(".venerdì").each(function () {
-				var ischecked = $(this).is(":checked");
-				if (ischecked) {
-					venerdì += $(this).val() + " | ";
-				}
-			});
-
-			$(".sabato").each(function () {
-				var ischecked = $(this).is(":checked");
-				if (ischecked) {
-					sabato += $(this).val() + " | ";
-				}
-			});
-
-			$(".domenica").each(function () {
-				var ischecked = $(this).is(":checked");
-				if (ischecked) {
-					domenica += $(this).val() + " | ";
-				}
-			});
-			alert(venerdì);
 			var datainizio = $("#datainizio").datepicker({
 				dateFormat: "yyyy-mm-dd"
 			}).val();
@@ -172,8 +146,7 @@
 					$("#datafine").removeClass("fielderror");
 
 					var dataString = 'titolo=' + titolo + '&url=' + url + '&data_inizio=' + datainizio +
-						'&data_fine=' + datafine + '&lunedì=' + lunedì + '&martedì=' + martedì + '&mercoledì=' +
-						mercoledì + '&venerdì=' + venerdì + '&sabato=' + sabato + '&domenica=' + domenica;
+						'&data_fine=' + datafine + '&orari=' + orariStrig;
 					if (descrizione != null) {
 						var dataString = dataString + '&descrizione=' + descrizione;
 					}
@@ -186,7 +159,7 @@
 					if (durata != null) {
 						var dataString = dataString + '&durata=' + durata;
 					}
-					
+
 
 					$.ajax({
 						type: "POST",
@@ -196,8 +169,9 @@
 						data: file,
 						cache: false,
 						success: function (result) {
-							alert(result);
+
 							console.log(result);
+
 						}
 					});
 					lunedì = "";
@@ -214,7 +188,7 @@
 						data: dataString,
 						cache: false,
 						success: function (result) {
-							alert(result);
+
 							console.log(result);
 						}
 					});
@@ -228,73 +202,73 @@
 			$(this).animate({
 				width: '200px'
 			}, {
-				step: function (currentwidth) {
-					if (currentwidth > 150) {
-						$(this).find("#phide").fadeIn();
-						$(this).find("#phide").css("transition-duration", "0.3s");
+					step: function (currentwidth) {
+						if (currentwidth > 150) {
+							$(this).find("#phide").fadeIn();
+							$(this).find("#phide").css("transition-duration", "0.3s");
+						}
 					}
-				}
-			});
+				});
 		});
 
 		$("#buttonhide").mouseleave(function () {
 			$(this).animate({
 				width: '80px'
 			}, {
-				step: function (currentwidth) {
-					if (currentwidth < 150) {
-						$(this).find("#phide").fadeOut(3);
-						$(this).find("#phide").css("transition-duration", "0s");
+					step: function (currentwidth) {
+						if (currentwidth < 150) {
+							$(this).find("#phide").fadeOut(3);
+							$(this).find("#phide").css("transition-duration", "0s");
+						}
 					}
-				}
-			});
+				});
 
 		});
 		$("#buttonhidemodifica").mouseenter(function () {
 			$("#buttonhidemodifica").animate({
 				width: '200px'
 			}, {
-				step: function (currentwidth) {
-					if (currentwidth > 150) {
-						$(this).find("#pmodifica").fadeIn();
-						$(this).find("#pmodifica").css("transition-duration", "0.3s");
+					step: function (currentwidth) {
+						if (currentwidth > 150) {
+							$(this).find("#pmodifica").fadeIn();
+							$(this).find("#pmodifica").css("transition-duration", "0.3s");
+						}
 					}
-				}
-			});
+				});
 		});
 		$("#buttonhidemodifica").mouseleave(function () {
 			$("#buttonhidemodifica").animate({
 				width: '80px'
 			}, {
-				step: function (currentwidth) {
-					if (currentwidth < 150) {
-						$(this).find("#pmodifica").fadeOut(3);
-						$(this).find("#pmodifica").css("transition-duration", "0s");
+					step: function (currentwidth) {
+						if (currentwidth < 150) {
+							$(this).find("#pmodifica").fadeOut(3);
+							$(this).find("#pmodifica").css("transition-duration", "0s");
+						}
 					}
-				}
-			});
+				});
 		});
 		$("#buttonadd").mouseenter(function () {
 			$("#buttonadd").animate({
 				width: '200px'
 			}, {
-				step: function (currentwidth) {
-					if (currentwidth > 150) {
-						//  $(this).find("#padd").fadeIn();
+					step: function (currentwidth) {
+						if (currentwidth > 150) {
+							//  $(this).find("#padd").fadeIn();
+						}
 					}
-				}
-			});
+				});
 		});
 		$("#buttonadd").mouseleave(function () {
 			$("#buttonadd").animate({
 				width: '80px'
 			}, {
-				step: function (currentwidth) {
-					if (currentwidth < 150) {
-						//  $(this).find("#padd").fadeOut();
+					step: function (currentwidth) {
+						if (currentwidth < 150) {
+							//  $(this).find("#padd").fadeOut();
+						}
 					}
-				}
-			});
+				});
 		});
 
 		$("#newfilm").click(function () {
@@ -339,6 +313,145 @@
 				return {
 					titolo: $("#title").val(),
 				};
+			}
+		});
+
+		$("#datainizio,#datafine").change(function () {
+
+			if ($("#datainizio").val() && $("#datafine").val()) {
+				var datainizio = $("#datainizio").datepicker({
+					dateFormat: "yyyy-mm-dd"
+				}).val();
+				var datafine = $("#datafine").datepicker({
+					dateFormat: "yyyy-mm-dd"
+				}).val();
+
+				myDateInizio = datainizio.split("/");
+				var newDatei = myDateInizio[1] + "," + myDateInizio[0] + "," + myDateInizio[2];
+				var newDataInizio = new Date(newDatei).getTime();
+				var todaysDate = new Date();
+				todaysDate.setHours(0, 0, 0, 0);
+
+				myDateFine = datafine.split("/");
+				var newDatef = myDateFine[1] + "," + myDateFine[0] + "," + myDateFine[2];
+				var newDataFine = new Date(newDatef).getTime();
+
+				if (newDataInizio >= todaysDate) {
+					$("#datainizio").removeClass("fielderror");
+
+					if (newDataInizio > newDataFine) {
+						$("#datainizio").addClass("fielderror");
+						$("#datafine").addClass("fielderror");
+						$("#datafine").blur();
+						$("#myModal").modal();
+					} else {
+						arrayOrari = new Array();
+						$("#datainizio").removeClass("fielderror");
+						$("#datafine").removeClass("fielderror");
+						$("#orariM").empty();
+						var day;
+						for (var d = new Date(newDatei); d <= new Date(newDatef); d.setDate(d.getDate() + 1)) {
+							switch (d.getDay()) {
+								case 0:
+									day = "Lunedi";
+									break;
+								case 1:
+									day = "Martedi";
+									break;
+								case 2:
+									day = "Mercoledi";
+									break;
+								case 3:
+									day = "Giovedi";
+									break;
+								case 4:
+									day = "Venerdi";
+									break;
+								case 5:
+									day = "Sabato";
+									break;
+								case 6:
+									day = "Domenica";
+							}
+							arrayOrari.push(d.getDate().toString() + d.getMonth().toString() + d.getFullYear().toString());
+							$("#orariM").append("<div class=\"row \"><div id=\"divData" + d.getDate() + d.getMonth() + d.getFullYear() + "\" class=\"col-md-3 orario\"><p day=\"" + day + "\" date=\"" + d.getDate() + "\" mounth=\"" + d.getMonth() + "\" year=\"" + d.getFullYear() + "\">" + day + " " + d.getDate() + "/" + d.getMonth() + "/" + d.getFullYear() + "</p></div><div class=\"col-md-1\"><a class=\"glyphicon glyphicon-plus-sign spanAdd \"></a></div><div class=\"col-md-8 orariDiv \"></div></div></br>");
+
+						}
+						$("#orarimodal").modal({
+							backdrop: 'static',
+							keyboard: false
+						});
+
+
+
+
+					}
+
+				} else {
+					$("#datainizio").addClass("fielderror");
+					$("#todaysDateModal").modal();
+				}
+			}
+		});
+
+		$(document).on('click', '.spanAdd', function () {
+
+			$(this).parent().parent().find(".orariDiv").append("<div class=\"input-group col-md-3 clockpicker \"  data-autoclose=\"true\"><span class=\"input-group-addon\"><span class=\"glyphicon glyphicon-time\"></span></span><input type=\"text\" class=\"form-control ora\" value=\"21:30\"><span class=\"input-group-addon removeOrario\" style=\"color:red;\"><span class=\"glyphicon glyphicon-remove\"></span></span></div>");
+			$(this).parent().parent().find(".orariDiv").css('display', 'inline-flex');
+		});
+
+		$(document).on('click', '.clockpicker', function () {
+			$(this).clockpicker({
+				donetext: 'Done'
+			});
+		});
+
+		$(document).on('click', '.removeOrario', function () {
+			$(this).parent().remove();
+		});
+
+		$('#orariClose').click(function () {
+
+		});
+
+		$('#orariConfirm').click(function () {
+			console.log(arrayOrari);
+			orari = new Array();
+			for (i = 0; i < arrayOrari.length; i++) {
+				var orarioO = new orario();
+				orarioO.day = $('#divData' + arrayOrari[i]).find('p').attr("date");
+				orarioO.giornoSettimana = $('#divData' + arrayOrari[i]).find('p').attr("day");
+				orarioO.mounth = $('#divData' + arrayOrari[i]).find('p').attr("mounth");
+				orarioO.year = $('#divData' + arrayOrari[i]).find('p').attr("year");
+				$('#divData' + arrayOrari[i]).find('p');
+				$('#divData' + arrayOrari[i]).parent().find('.orariDiv').val();
+				$('#divData' + arrayOrari[i]).parent().find('.orariDiv').children().each(function () {
+
+					if ($(this).is('.clockpicker')) {
+						orarioO.orari.push($(this).find('.ora').val());
+
+						// console.log('ora');
+						// console.log($(this).find('.ora').val());
+
+					}
+				});
+				console.log(orarioO);
+				if (orarioO.orari.length > 0) {
+					orari.push(orarioO);
+				}
+				// console.log($('#divData' + arrayOrari[i]).find('p').text());//prendere la data 
+
+
+			}
+			$('#orari').empty();
+			for (i = 0; i < orari.length; i++) {
+				$('#orari').append("<span class=\"spanDay\">" + orari[i].giornoSettimana + " " + orari[i].day + "/" + orari[i].mounth + "/" + orari[i].year + "</span>");
+
+				for (o = 0; o < orari[i].orari.length; o++) {
+
+					$('#orari').append("<span class= \"spanOra\">" + orari[i].orari[o] + "</span>");
+				}
+				$('#orari').append('</br>');
 			}
 		});
 	});
@@ -398,102 +511,8 @@
 
 					<label for="comment">data fine</label>
 					<input id="datafine" class="datepicker form-control " data-date-format="dd/mm/yyyy" rows="1" required>
-					<div id="orari">
-						<div id="venerdì">
-							<div class="col-md-5" id="times">
-								<h4 id="timesLabels" for="comment">VENERDÌ</h4>
-							</div>
-							<div class="col-md-7" id="checkboxes">
-								<label class="radio-inline">
-									<input type="checkbox" id="datafineCheckbox" class="form-control venerdì" value="17.00" rows="1">17.00</label>
-								<label class="radio-inline">
-									<input type="checkbox" id="datafineCheckbox" class="form-control venerdì" value="17.30" rows="1">17.30</label>
-								<label class="radio-inline">
-									<input type="checkbox" id="datafineCheckbox" class="form-control venerdì" value="21.00" rows="1">21.00</label>
-								<label class="radio-inline">
-									<input type="checkbox" id="datafineCheckbox" class="form-control venerdì" value="21.30" rows="1">21.30</label>
-							</div>
-						</div>
+					<div id="orari" style="text-align: left;">
 
-						<div id="sabato">
-							<div class="col-md-5" id="times">
-								<h4 id="timesLabels" for="comment">SABATO</h4>
-							</div>
-							<div class="col-md-7" id="checkboxes">
-								<label class="radio-inline">
-									<input type="checkbox" id="datafineCheckbox" class="form-control sabato" value="17.00" rows="1">17.00</label>
-								<label class="radio-inline">
-									<input type="checkbox" id="datafineCheckbox" class="form-control sabato" value="17.30" rows="1">17.30</label>
-								<label class="radio-inline">
-									<input type="checkbox" id="datafineCheckbox" class="form-control sabato" value="21.00" rows="1">21.00</label>
-								<label class="radio-inline">
-									<input type="checkbox" id="datafineCheckbox" class="form-control sabato" value="21.30" rows="1">21.30</label>
-							</div>
-						</div>
-
-						<div id="domenica">
-							<div class="col-md-5" id="times">
-								<h4 id="timesLabels" for="comment">DOMENICA</h4>
-							</div>
-							<div class="col-md-7" id="checkboxes">
-								<label class="radio-inline">
-									<input type="checkbox" id="datafineCheckbox" class="form-control domenica" value="17.00" rows="1">17.00</label>
-								<label class="radio-inline">
-									<input type="checkbox" id="datafineCheckbox" class="form-control domenica" value="17.30" rows="1">17.30</label>
-								<label class="radio-inline">
-									<input type="checkbox" id="datafineCheckbox" class="form-control domenica" value="21.00" rows="1">21.00</label>
-								<label class="radio-inline">
-									<input type="checkbox" id="datafineCheckbox" class="form-control domenica" value="21.30" rows="1">21.30</label>
-							</div>
-						</div>
-
-						<div id="lunedì">
-							<div class="col-md-5" id="times">
-								<h4 id="timesLabels" for="comment">LUNEDÌ</h4>
-							</div>
-							<div class="col-md-7" id="checkboxes">
-								<label class="radio-inline">
-									<input type="checkbox" id="datafineCheckbox" class="form-control lunedì" value="17.00" rows="1">17.00</label>
-								<label class="radio-inline">
-									<input type="checkbox" id="datafineCheckbox" class="form-control lunedì" value="17.30" rows="1">17.30</label>
-								<label class="radio-inline">
-									<input type="checkbox" id="datafineCheckbox" class="form-control lunedì" value="21.00" rows="1">21.00</label>
-								<label class="radio-inline">
-									<input type="checkbox" id="datafineCheckbox" class="form-control lunedì" value="21.30" rows="1">21.30</label>
-							</div>
-						</div>
-
-						<div id="martedì">
-							<div class="col-md-5" id="times">
-								<h4 id="timesLabels" for="comment">MARTEDÌ</h4>
-							</div>
-							<div class="col-md-7" id="checkboxes">
-								<label class="radio-inline">
-									<input type="checkbox" id="datafineCheckbox" class="form-control martedì" value="17.00" rows="1">17.00</label>
-								<label class="radio-inline">
-									<input type="checkbox" id="datafineCheckbox" class="form-control martedì" value="17.30" rows="1">17.30</label>
-								<label class="radio-inline">
-									<input type="checkbox" id="datafineCheckbox" class="form-control martedì" value="21.00" rows="1">21.00</label>
-								<label class="radio-inline">
-									<input type="checkbox" id="datafineCheckbox" class="form-control martedì" value="21.30" rows="1">21.30</label>
-							</div>
-						</div>
-
-						<div id="mercoledì">
-							<div class="col-md-5" id="times">
-								<h4 id="timesLabels" for="comment">MERCOLEDÌ</h4>
-							</div>
-							<div class="col-md-7" id="checkboxes">
-								<label class="radio-inline">
-									<input type="checkbox" id="datafineCheckbox" class="form-control mercoledì" value="17.00" rows="1">17.00</label>
-								<label class="radio-inline">
-									<input type="checkbox" id="datafineCheckbox" class="form-control mercoledì" value="17.30" rows="1">17.30</label>
-								<label class="radio-inline">
-									<input type="checkbox" id="datafineCheckbox" class="form-control mercoledì" value="21.00" rows="1">21.00</label>
-								<label class="radio-inline">
-									<input type="checkbox" id="datafineCheckbox" class="form-control mercoledì" value="21.30" rows="1">21.30</label>
-							</div>
-						</div>
 					</div>
 					<label for="comment">durata</label>
 					<textarea id="durata" class="form-control" rows="1"> </textarea>
@@ -563,6 +582,24 @@
 						</div>
 					</div>
 				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="orarimodal" class="modal fade ">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header" style="background-color: rgba(128, 0, 0, 0.7);">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Selezionare Orari</h4>
+			</div>
+			<div class="modal-body" id="orariM">
+
+			</div>
+			<div class="modal-footer">
+
+				<button type="button" id="orariClose" class="btn btn-default" data-dismiss="modal">Close</button>
+				<button type="button" id="orariConfirm" class="btn btn-success" data-dismiss="modal">Confirm</button>
 			</div>
 		</div>
 	</div>
