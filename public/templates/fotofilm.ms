@@ -25,8 +25,8 @@
 		var venerdì = "";
 		var sabato = "";
 		var domenica = "";
-		var arrayOrari = new Array();
-		var orari = new Array();
+		var arrayOrari;
+		var orari;
 
 
 
@@ -169,8 +169,9 @@
 						data: file,
 						cache: false,
 						success: function (result) {
-							alert(result);
+
 							console.log(result);
+
 						}
 					});
 					lunedì = "";
@@ -187,7 +188,7 @@
 						data: dataString,
 						cache: false,
 						success: function (result) {
-							alert(result);
+
 							console.log(result);
 						}
 					});
@@ -344,6 +345,7 @@
 						$("#datafine").blur();
 						$("#myModal").modal();
 					} else {
+						arrayOrari = new Array();
 						$("#datainizio").removeClass("fielderror");
 						$("#datafine").removeClass("fielderror");
 						$("#orariM").empty();
@@ -414,6 +416,7 @@
 
 		$('#orariConfirm').click(function () {
 			console.log(arrayOrari);
+			orari = new Array();
 			for (i = 0; i < arrayOrari.length; i++) {
 				var orarioO = new orario();
 				orarioO.day = $('#divData' + arrayOrari[i]).find('p').attr("date");
@@ -440,13 +443,15 @@
 
 
 			}
+			$('#orari').empty();
 			for (i = 0; i < orari.length; i++) {
-				$('#orari').append("<p>" + orari[i].giornoSettimana + " " + orari[i].day + "/" + orari[i].mounth + "/" + orari[i].year + "</p>");
+				$('#orari').append("<span class=\"spanDay\">" + orari[i].giornoSettimana + " " + orari[i].day + "/" + orari[i].mounth + "/" + orari[i].year + "</span>");
 
 				for (o = 0; o < orari[i].orari.length; o++) {
 
-					$('#orari').append("<p>" + orari[i].orari[o] + "</p>");
+					$('#orari').append("<span class= \"spanOra\">" + orari[i].orari[o] + "</span>");
 				}
+				$('#orari').append('</br>');
 			}
 		});
 	});
