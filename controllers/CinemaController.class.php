@@ -295,13 +295,14 @@ class CinemaController
 
 			$scheda->insert($insert_scheda);
 			$orarioDbo["ora"]="";
+			
 			 if($seralizedOrari!= null)
 			 {
 				
 			 	foreach($seralizedOrari as $value)
 			 	{
-					// var_dump($value->orari);exit();
 					
+					$orarioDbo["ora"]="";
 						 foreach($value->orari as $a)
 						 {
 						 	$orarioDbo["ora"]=$orarioDbo["ora"] ." ".$a;
@@ -312,7 +313,8 @@ class CinemaController
 					
 			 			$film_orario->insert($orarioDbo);
 			 	
-			 	}
+				 }
+				 
 			 }
 		}
 		catch(Exception $e)

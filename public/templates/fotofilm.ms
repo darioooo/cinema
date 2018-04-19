@@ -353,25 +353,25 @@
 						var day;
 						for (var d = new Date(newDatei); d <= new Date(newDatef); d.setDate(d.getDate() + 1)) {
 							switch (d.getDay()) {
-								case 0:
+								case 1:
 									day = "Lunedi";
 									break;
-								case 1:
+								case 2:
 									day = "Martedi";
 									break;
-								case 2:
+								case 3:
 									day = "Mercoledi";
 									break;
-								case 3:
+								case 4:
 									day = "Giovedi";
 									break;
-								case 4:
+								case 5:
 									day = "Venerdi";
 									break;
-								case 5:
+								case 6:
 									day = "Sabato";
 									break;
-								case 6:
+								case 7:
 									day = "Domenica";
 							}
 							var mese = d.getMonth() + 1;
@@ -432,7 +432,7 @@
 					if ($(this).is('.clockpicker')) {
 						orarioO.orari.push($(this).find('.ora').val());
 
-						// console.log('ora');
+						//console.log('ora');
 						// console.log($(this).find('.ora').val());
 
 					}
@@ -458,6 +458,7 @@
 		});
 	});
 </script>
+
 
 <div id="block">
 

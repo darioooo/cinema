@@ -19,6 +19,9 @@
 		});
 	});
 </script>
+<div id="logo" class=" text-center">
+	<img src="../CinemaImages/CINEMA.png">
+</div>
 <p id="filmprog">IN PROGRAMMAZIONE</p>
 <div class="row jumbotron filmjumbo">
 	<div class="col-xs-0 col-md-2 col-lg-2">
