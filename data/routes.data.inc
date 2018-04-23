@@ -19,7 +19,7 @@ $this->map(['GET'],"/admin","CinemaController:admin");
 
 $this->map(['GET'],"/cinelandia","CinemaController:Cinelandia");
 
-$this->map(['GET'],"/libri/{id:[\d]+}","LibreriaController:get");
+
 
 
 $this->map(['POST'],"/action_admin","CinemaController:save_film");
@@ -29,4 +29,6 @@ $this->map(['GET'],"/action_image","CinemaController:save_new_image");
 
 
 $this->map(['POST'],"/delete","CinemaController:deleteById");
+
+$this->map(['GET'],"/dettaglio/{id:[\d]+}","CinemaController:DettaglioFilm");
 

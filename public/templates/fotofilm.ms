@@ -482,6 +482,7 @@
 			</button>
 			{{#film}}
 
+
 			<button class="btn btn-danger filmdropdown" type="button" data-toggle="collapse" data-target="#{{id}}">{{titolo}}</button>
 
 			<div id="{{id}}" class="collapse">

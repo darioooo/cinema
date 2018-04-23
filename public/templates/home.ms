@@ -19,7 +19,7 @@
 		});
 	});
 </script>
-<div id="logo" class=" text-center">
+<div id="logoCenter" class=" text-center">
 	<img src="../CinemaImages/CINEMA.png">
 </div>
 <p id="filmprog">IN PROGRAMMAZIONE</p>
@@ -87,6 +87,12 @@
 						<br>{{#durata}}
 						<b>DURATA:</b> {{durata}} {{/durata}}
 					</p>
+
+					<a href="dettaglio/{{id}}" value="{{id}}" class="film-hours" style="margin-left:15px; margin-top:5px;">
+						<span class="glyphicon glyphicon-menu-down"></span>
+
+					</a>
+					</form>
 				</div>
 
 				{{/filmtoday}}

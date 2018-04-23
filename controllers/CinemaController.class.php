@@ -126,6 +126,7 @@ class CinemaController
 			$table = (new FeedRssView(null,$data));
 			$page = new Page();
 			$page->addView("content",$table);
+			// var_dump($page);exit();
 			return $response->write($page->render());
 		}
 		catch(Exception $e )
@@ -386,4 +387,30 @@ class CinemaController
 			echo $e->getMessage();
 		}	
 	}
+
+
+/**
+	 * @desc This method provides the registration html page
+	 * @link /dettaglio/{id:[\d]+}
+	 * @method GET
+	 * @param Request $request
+	 * @param Response $response
+	 * @param array $args
+	 * @return \Slim\Http\Response
+	 */
+
+	function DettaglioFilm(Request $request, Response $response, $args)
+	{
+		try{
+			$postData = $request->getParams();
+		
+			 
+			
+		}
+		catch(Exception $e )
+		{
+			echo $e->getMessage();
+		}	
+	}
+
 }
