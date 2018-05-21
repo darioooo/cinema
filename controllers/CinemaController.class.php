@@ -56,6 +56,8 @@ class CinemaController
 			$data['filmtoday'][$i]['genere']=$sc[0]['genere']; 
 			$data['filmtoday'][$i]['pese']=$sc[0]['pese']; 
 			$data['filmtoday'][$i]['indice']=$i;
+			$data['filmtoday'][$i]['close']=$i;
+			
 			
 			foreach($orariToday as $k=>$v)
 			{
@@ -93,12 +95,22 @@ class CinemaController
 			$data['filmafter'][$i]['ora']=$orariAfter[$i]['ora'];
 			$data['filmafter'][$i]['giornosettimana']=$orariAfter[$i]['giornosettimana'];
 			$data['filmafter'][$i]['giorno']=$orariAfter[$i]['giorno'];
+			
 		}
 	}
 		try{
-			// var_dump($data);exit();
+			//   var_dump($data);exit();
+			if($data['filmtoday']== null)
+			{
+				$data['filmtoday']['immagine']= "image/SystemImage/closed.png";
+				$data['filmtoday']['active']='item active';
+				$data['filmtoday']['visible']='inline';
+				
+
+
+			}
 			$table = (new HomeView(null,$data));
-			$page = new Page();
+			$page = new Page("indexHome.ms");
 			$page->addView("content",$table);
 			return $response->write($page->render());
 		}
@@ -120,19 +132,29 @@ class CinemaController
 
 	function admin(Request $request, Response $response, $args)
 	{
+		session_start();
 		try{
+			if(isset($_SESSION['user']))      // if there is no valid session
+			{
 			$feed = new FeedRssController();
 			$data=$feed->FeedRss();
 			$table = (new FeedRssView(null,$data));
 			$page = new Page();
 			$page->addView("content",$table);
-			// var_dump($page);exit();
 			return $response->write($page->render());
+			}
+			else
+			{
+				header("Location: http://127.0.0.1/cinema/index.php/auth");
+				exit();
+			}
+
 		}
 		catch(Exception $e )
 		{
 			echo $e->getMessage();
 		}	
+		session_destroy();
 	}
 
 	/**
@@ -147,6 +169,9 @@ class CinemaController
 
 	function modifica_admin(Request $request, Response $response, $args)
 	{ 
+		session_start();
+		if(isset($_SESSION['user']))      // if there is no valid session
+			{
 		$film = new Film();
 		$visualizzato['visualizzato']=true;
 		$data['filmtoday']=$film->get_FilmTodayDataCourrent();
@@ -209,7 +234,14 @@ class CinemaController
 		{
 			echo $e->getMessage();
 		}	
-
+		
+	}
+		else
+			{
+				header("Location: http://127.0.0.1/cinema/index.php/auth");
+				exit();
+			}
+			session_destroy();
 		
 	}
 	/**
@@ -335,19 +367,27 @@ class CinemaController
 	 */
 	function save_new_image(Request $request, Response $response, $args)
 	{
-		$sourcePath = $_FILES["file"]["tmp_name"];
-		//var_dump($sourcePath);
-		$targetPath = "image/".$_FILES['file']['name'];
-		//var_dump($targetPath);
 
-		try 
-		{	
-			move_uploaded_file($sourcePath,$targetPath) ;
-		}
-		catch(Exception $e)
-		{
-			echo $e->getMessage();
-		}	
+		$info = pathinfo($_FILES['picture']['name']);
+		$ext = $info['extension']; // get the extension of the file
+		$newname = "perfil.".$ext; 
+
+		$target = 'image/'.$newname;
+		move_uploaded_file( $_FILES['file']['tmp_name'], $target);
+		var_dump($_FILES['file']['tmp_name']);
+
+
+		// $targetPath = "image/".$_FILES['file']['name'];
+		// //var_dump($targetPath);
+
+		// try 
+		// {	
+		// 	move_uploaded_file($sourcePath,$targetPath) ;
+		// }
+		// catch(Exception $e)
+		// {
+		// 	echo $e->getMessage();
+		// }	
 	}
 
 	function Cinelandia(Request $request, Response $response, $args)
@@ -401,10 +441,17 @@ class CinemaController
 
 	function DettaglioFilm(Request $request, Response $response, $args)
 	{
-		try{
-			$postData = $request->getParams();
 		
-			 
+			$data = $_GET["id"];
+			
+
+			try{
+
+			// var_dump($data);exit();
+			$table = (new DettaglioView(null,$data));
+			$page = new Page();
+			$page->addView("content",$table);
+			return $response->write($page->render());
 			
 		}
 		catch(Exception $e )

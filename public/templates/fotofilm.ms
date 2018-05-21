@@ -1,6 +1,8 @@
 <script type="text/javascript">
 
 	$(document).ready(function () {
+
+
 		var url;
 		var file;
 		var titolo;
@@ -27,6 +29,8 @@
 		var domenica = "";
 		var arrayOrari;
 		var orari;
+
+		var form_data;
 
 
 
@@ -166,7 +170,7 @@
 						dataType: 'script',
 						url: "action_image",
 						// data: { titolo: titolo, url: url  },
-						data: file,
+						data: form_data,
 						cache: false,
 						success: function (result) {
 
@@ -287,12 +291,32 @@
 			$("#leftdiv").removeClass('col-sm-4 col-md-4').addClass(' leftdivbg');
 		});
 		$("#saveModal").click(function () {
-			if ($("#title").val() != "" && $("#input-b9").fileinput() != null) {
-				file = $("#input-b9").fileinput();
-				file.files[0];
-				$("#imagediv").html("<img  src=" + $("data") + "></img>");
 
-				console.log($("#input-b9").fileinput());
+
+			var file_data = $('#input-b9').prop('files')[0].getAsFile();
+
+			form_data = new FormData();
+			form_data.append('file', file, file_data);
+			alert(form_data);
+			console.log(form_data);
+			if ($("#title").val() != "" && form_data != null) {
+
+				var xhr = new XMLHttpRequest();
+				xhr.open('POST', 'action_image', true);
+
+				xhr.onload = function () {
+					if (xhr.status === 200) {
+						// File(s) uploaded.
+						// uploadButton.innerHTML = 'Upload';
+					} else {
+						alert('An error occurred!');
+					}
+				};
+
+				// Send the Data.
+				xhr.send(form_data);
+
+				$("#imagediv").html("<img  src=" + form_data.url + "></img>");
 
 				$("#fileModal").modal('toggle');
 			} else {
@@ -477,9 +501,16 @@
 			</button>
 		</a>
 		<div class="btn-group-vertical inlinea  " id="filmdiv" style="background-color: black">
-			<button class="btn btn-danger " type="button" id="newfilm" data-toggle="modal" data-target="#fileModal">
-				<span class="glyphicon glyphicon-plus" style="color:black; ">INSERISCI NUOVO FILM</span>
-			</button>
+			<div class="btn-group-horizontal   ">
+				<button class="btn btn-danger " type="button" id="modificabutton">
+					<span class="glyphicon glyphicon-chevron-right" style="color:white; ">MODIFICA</span>
+				</button>
+
+				<button class="btn btn-danger " type="button" id="newfilm" data-toggle="modal" data-target="#fileModal">
+					<span class="glyphicon glyphicon-plus" style="color:white; ">INSERISCI NUOVO FILM</span>
+				</button>
+			</div>
+
 			{{#film}}
 
 
@@ -487,11 +518,11 @@
 
 			<div id="{{id}}" class="collapse">
 
-				<div class="well" style="background-color: black;     margin-bottom: 0px">
+				<!-- <div class="well" style="background-color: black;     margin-bottom: 0px">
 					<p style="text-align:center; color:white"> {{titolo}}</p>
-				</div>
+				</div> -->
 
-				<img src="{{url}}" class="imgfilm" titolo="{{titolo}}" style="min-width: 433px"></img>
+				<img src="{{url}}" class="imgfilm" titolo="{{titolo}}" style="min-width: 433px ;    width: 100%;"></img>
 
 			</div>
 
@@ -545,7 +576,7 @@
 						</div>
 						<div class="modal-body">
 							<div class="file-loading">
-								<input id="input-b9" type="file" class="file" name="image" multiple type="file" required>
+								<input id="input-b9" type="file" class="file" multiple type="file" required></input>
 							</div>
 							<div>
 								<label for="comment form-control">TITOLO</label>

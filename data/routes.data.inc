@@ -30,5 +30,13 @@ $this->map(['GET'],"/action_image","CinemaController:save_new_image");
 
 $this->map(['POST'],"/delete","CinemaController:deleteById");
 
-$this->map(['GET'],"/dettaglio/{id:[\d]+}","CinemaController:DettaglioFilm");
+$this->map(['GET'],"/dettaglio","CinemaController:DettaglioFilm");
+
+$this->map(['GET'],"/auth","CinemaAuth:autentication");
+
+$this->map(['GET'],"/recupero","CinemaAuth:recuperoCredenziali");
+
+$this->map(['POST'],"/autenticazione","CinemaAuth:verifica");
+
+$this->map(['POST'],"/mail","CinemaAuth:mail");
 

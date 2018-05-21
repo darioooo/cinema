@@ -26,11 +26,12 @@ class FeedRssController
 				{
 					if($matches[0][$i])
 					{
-					$path=parse_url($matches[0][$i], PHP_URL_PATH);
-					
-					if (strpos($path, '.jpg')!= false) {
-						$data['film'][$contatore] = array('url' =>$matches[0][$i] ,'titolo'=>$titolo ,'id'=>$a);
-						$contatore++;
+						$path=parse_url($matches[0][$i], PHP_URL_PATH);
+						
+						if (strpos($path, '.jpg')!= false) {
+							$data['film'][$contatore] = array('url' =>$matches[0][$i] ,'titolo'=>$titolo ,'id'=>$a);
+							$contatore++;
+						
 						// $data['film']['titolo'][$a]=$titolo;
 						// $data['imageurl']=$matches[0][$i];
 						// $data['titolo']=$titolo;
@@ -40,7 +41,7 @@ class FeedRssController
 				}
 			}
 		}
-	
+
 		return $data; 
 	}
 }

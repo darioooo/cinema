@@ -5,23 +5,24 @@
 			elementsPerPage: 5,
 			effect: 'fade'
 		});
-		$(document).ready(function () {
-			$("#myCarousel").on('slid.bs.carousel', function () {
-				var valore = $($('#myCarousel .item.active').html()).attr('value');
-				$('#' + valore).fadeIn();
-				$('#' + valore).css("display", "inherit");
-			});
-			$("#myCarousel").on('slide.bs.carousel', function () {
-				var valore = $($('#myCarousel .item.active').html()).attr('value');
-				$('#' + valore).fadeOut();
-				$('#' + valore).css("display", "none");
-			});
+
+		$("#myCarousel").on('slid.bs.carousel', function () {
+			var valore = $($('#myCarousel .item.active').html()).attr('value');
+			$('#' + valore).fadeIn();
+			$('#' + valore).css("display", "inherit");
+		});
+		$("#myCarousel").on('slide.bs.carousel', function () {
+			var valore = $($('#myCarousel .item.active').html()).attr('value');
+			$('#' + valore).fadeOut();
+			$('#' + valore).css("display", "none");
+		});
+		$(".dettaglio").click(function () {
+
+			window.location = 'dettaglio?id=' + $(this).attr("value");
 		});
 	});
+
 </script>
-<div id="logoCenter" class=" text-center">
-	<img src="../CinemaImages/CINEMA.png">
-</div>
 <p id="filmprog">IN PROGRAMMAZIONE</p>
 <div class="row jumbotron filmjumbo">
 	<div class="col-xs-0 col-md-2 col-lg-2">
@@ -51,8 +52,8 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-xs-12 col-md-4 col-lg-5">
 
+		<div class="col-xs-12 col-md-4 col-lg-5">
 			<div class="col-xs-10 col-md-12 col-lg-12 jumbotron contentjumbo film-details">
 				{{#filmtoday}}
 				<div id="{{indice}}" style="display: {{visible}}">
@@ -82,29 +83,29 @@
 					<!--  -->
 					<!-- </div> -->
 					{{/filmorario}}
-					<p class="film-hours" style="margin-left:15px; margin-top:5px;">
+					<!-- <p class="film-hours" style="margin-left:15px; margin-top:5px;">
 						<br>
 						<br>{{#durata}}
 						<b>DURATA:</b> {{durata}} {{/durata}}
-					</p>
+					</p> -->
 
-					<a href="dettaglio/{{id}}" value="{{id}}" class="film-hours" style="margin-left:15px; margin-top:5px;">
+					<a class="dettaglio" value="{{id}}" class="film-hours" style="margin-left:15px; margin-top:5px;">
 						<span class="glyphicon glyphicon-menu-down"></span>
 
 					</a>
 					</form>
 				</div>
-
 				{{/filmtoday}}
 			</div>
 		</div>
 
+
 	</div>
 </div>
 <div class="row">
+	{{#filmafter}}
 	<h1 id="prossimi">PROSSIMAMENTE</h1>
 	<div class="row" id="easyPaginate">
-		{{#filmafter}}
 		<div value="{{indice}}" id="film-futuri" class="column">
 			<img src="http://localhost/cinema/{{immagine}}" id="film-after-img" value="{{indice}}">
 		</div>

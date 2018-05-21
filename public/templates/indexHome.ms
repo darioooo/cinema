@@ -26,40 +26,69 @@
 
 <body>
   <div id="tot">
-    <nav class="navbar navbar-inverse navbar-fixed-top barranav">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar3">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
+    <div class="container-fluid initial-div">
+      <div id=" logoCenter " class=" text-center">
+        <img src="../CinemaImages/CINEMA.png " id="initial-img">
+      </div>
+      <a href="#maincontainer">
+        <span class="glyphicon glyphicon-download" id="arrow-down-to-div">
+        </span>
+      </a>
+    </div>
+    <nav class="navbar" style="background-color: rgba(128, 0, 0, 0.95);">
+      <div class="container-fluid ">
+        <div class="navbar-header ">
+          <button type="button " class="navbar-toggle collapsed " data-toggle="collapse " data-target="#navbar3 ">
+            <span class="sr-only ">Toggle navigation</span>
+            <span class="icon-bar "></span>
+            <span class="icon-bar "></span>
+            <span class="icon-bar "></span>
           </button>
-          <a class="navbar-brand" href="#">
-            <img id="logo" src="../CinemaImages/CINEMA.png" alt="CinemaAccademia">
+          <a class="navbar-brand " href="# ">
+            <img id="logo " src="../CinemaImages/CINEMA.png " alt="CinemaAccademia ">
           </a>
         </div>
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
+        <div class="collapse navbar-collapse ">
+          <ul class="nav navbar-nav nav-links" style="display: inline-block;">
             <li>
-              <a href="#" class="links">CineLandia</a>
+              <a href="# " class="links ">CineLandia</a>
             </li>
             <li>
-              <a href="#" class="links">Contatti</a>
+              <a href="# " class="links ">Contatti</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
-
     <div class="container-fluid" id="maincontainer">
       {{{content}}}
     </div>
-
-    <!-- <footer class="footer">
+    <footer class="footer ">
       <h5>Via Montanelli 33, 50065 Pontassieve FI - Tel. 0558368252</h5>
-    </footer> -->
+    </footer>
   </div>
+  <script>
+    $(document).ready(function () {
+      $(window).scroll(function () {
+        var nav = $('.navbar');
+        var top = $(window).height();
+        if ($(window).scrollTop() >= top) {
+          nav.addClass('navbar-fixed-top');
+        } else {
+          nav.removeClass('navbar-fixed-top');
+        }
+      });
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+
+          document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+          });
+        });
+      });
+    })
+  </script>
 </body>
 
 </html>

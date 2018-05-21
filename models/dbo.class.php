@@ -201,7 +201,7 @@ class dbo
 
 		function get_FilmTodayDataCourrent()
 		{
-			$sql = 'SELECT * FROM film,film_orario WHERE film.id = film_orario.id_film AND CURDATE() = film_orario.giorno';
+			$sql = 'SELECT * FROM film  WHERE  CURDATE() >= data_inizio and CURDATE() < data_fine';
 			try {
 			   return $this->db->query($sql);
 			   
