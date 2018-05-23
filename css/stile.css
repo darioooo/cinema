@@ -231,11 +231,21 @@ body {
 	width: auto;
 }
 
+#myCarousel > .cinemaslider > .item {
+    position: relative;
+    display: none;
+    -webkit-transition: 0.6s ease-in-out left;
+    -moz-transition: 0.6s ease-in-out left;
+    -o-transition: 0.6s ease-in-out left;
+	transition: 0.6s ease-in-out left;
+	min-height: 600px;
+}
 .carousel-inner>.item>img {
 	width: 100%;
 	max-height: 1300px;
 	min-height: 492px;
 	position: relative;
+	
 }
 
 @media screen and (min-width: 480px) {

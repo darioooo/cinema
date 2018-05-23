@@ -112,3 +112,38 @@
 		{{/filmafter}}
 	</div>
 </div>
+<div id="chisiamo">
+	<h1>CHI SIAMO</h1>
+	<div class="text-center" style="min-height: 100px;background-image: url('http://localhost/cinema/CinemaImages/chisiamobg.png'); padding: 10px 0px 10px;">
+		<!-- <img src="http://localhost/cinema/CinemaImages/chisiamo.png"> -->
+	</div>
+
+	<div id="myCarousel" class="carousel slide" data-ride="carousel">
+		<div class="carousel-inner cinema-slider">
+			<div class="item active" style="background-image: url('http://127.0.0.1/cinema/CinemaImages/slider/021.jpg'); background-repeat:no-repeat; background-position:center; min-height: 600px; background-size: cover; width:100%;">
+			</div>
+
+			<div class="item" style="background-image: url('http://127.0.0.1/cinema/CinemaImages/slider/022.jpg'); background-repeat:no-repeat; background-position:center;background-size: cover; min-height: 600px; width:100%;">
+			</div>
+		</div>
+	</div>
+	<div class="text-center" style="min-height: 100px;background-image: url('http://localhost/cinema/CinemaImages/chisiamobg.png'); padding: 10px 0px 10px;">
+		<!-- <img src="http://localhost/cinema/CinemaImages/chisiamo.png"> -->
+	</div>
+	<div style=" margin: 50px 30px 50px 30px; clear: both; display: table;">
+		<div style="float: left; width: 15%;">
+			<img src="http://localhost/cinema/CinemaImages/movie-projector.png" style="float: right; max-width: 150px;">
+		</div>
+		<div style="float: left; word-wrap: break-word; width: 80%; margin-left: -10px; margin-top: 30px; border: 5px solid black; border-radius: 5px; padding: 10px;">
+			<h4>In sagittis leo non bow wow wow. That's the shizzle tellivizzle, arcu yippiyo away facilisizzle, sem nulla doggy tellivizzle,
+				non auctor that's the shizzle felizzle nizzle est. Suspendisse volutpizzle scelerisque augue. Sed egestas crazy izzle
+				shizzlin dizzle. Prizzle bling bling things sapizzle. Etizzle aliquizzle, dizzle check it out shizznit accumsan boofron,
+				pimpin' sizzle ultricizzle mofo, ac vestibulizzle bling bling nisi mammasay mammasa mamma oo sa amet purus. Maecenas
+				funky fresh shizzle my nizzle crocodizzle vel enim. Ma nizzle lobortis. Nulla lectizzle lacus, convallis for sure, aliquizzle
+				sit amizzle, pulvinizzle crackalackin, ghetto. Vivamizzle convallizzle. Vestibulum gangster ipsizzle primis in ass rizzle
+				luctizzle et gangsta posuere dawg Curae; Bow wow wow eu elizzle eu mammasay mammasa mamma oo sa bibendizzle doggy. Fusce
+				est tortor, phat vizzle, semper , commodo ac, fo shizzle mah nizzle fo rizzle, mah home g-dizzle. Etizzle shizznit, tortor
+				eget vehicula pot, crunk dang ultricizzle lorizzle, izzle izzle mi urna vitae erat.</h4>
+		</div>
+	</div>
+</div>
