@@ -11,34 +11,33 @@ body {
 	display: inline-block;
 }
 
-#initial-img
-{
+#initial-img {
 	margin-top: 50px;
 	margin-left: 50px;
 }
 
 .initial-div {
-	height:100vh;
+	height: 100vh;
 	padding-top: 25vh;
 	padding-bottom: 25vh;
 	background-image: url('../CinemaImages/fotocinema.jpg');
 	background-repeat: no-repeat;
-	background-size:cover;
+	background-size: cover;
 	background-position: 50% 50%;
 	background-attachment: fixed;
 }
 
 #arrow-down-to-div {
-	color:  rgba(0, 0, 0, 0.5); 
-	left: 0; 
-	bottom: 0; 
-	margin-top: 32vh; 
+	color: rgba(0, 0, 0, 0.5);
+	left: 0;
+	bottom: 0;
+	margin-top: 32vh;
 	font-size: 50px;
 	transition: color 1s;
 }
 
 #arrow-down-to-div:hover {
-	color:  rgba(0, 0, 0, 1); 
+	color: rgba(0, 0, 0, 1);
 }
 
 @media only screen and (min-device-width: 240px) {
@@ -47,9 +46,8 @@ body {
 		margin-left: 0px;
 		width: 900px;
 	}
-
 	.initial-div {
-		height:100vh;
+		height: 100vh;
 		padding-top: 25vh;
 		padding-bottom: 25vh;
 		background-image: url('../CinemaImages/fotocinema.jpg');
@@ -58,12 +56,11 @@ body {
 		background-position: 53% 50%;
 		background-attachment: fixed;
 	}
-
 	#arrow-down-to-div {
-		color:  rgba(0, 0, 0, 0.5); 
-		left: 50%; 
-		bottom: 0; 
-		margin-top: 32vh; 
+		color: rgba(0, 0, 0, 0.5);
+		left: 50%;
+		bottom: 0;
+		margin-top: 32vh;
 		font-size: 200px;
 		margin-left: -100px;
 	}
@@ -75,9 +72,8 @@ body {
 		margin-left: 0px;
 		width: 900px;
 	}
-
 	.initial-div {
-		height:100vh;
+		height: 100vh;
 		padding-top: 25vh;
 		padding-bottom: 25vh;
 		background-image: url('../CinemaImages/fotocinema.jpg');
@@ -86,25 +82,23 @@ body {
 		background-position: 53% 50%;
 		background-attachment: fixed;
 	}
-
 	#arrow-down-to-div {
-		color:  rgba(128, 0, 0, 0.5); 
-		bottom: 0; 
+		color: rgba(128, 0, 0, 0.5);
+		bottom: 0;
 		left: 50%;
-		margin-left: -100px; 
+		margin-left: -100px;
 		font-size: 200px;
 	}
 }
 
 @media only screen and (min-device-width: 768px) {
-	#initial-img
-	{
+	#initial-img {
 		margin-top: 160px;
 		margin-left: 0px;
 		width: 800px;
 	}
 	.initial-div {
-		height:100vh;
+		height: 100vh;
 		padding-top: 25vh;
 		padding-bottom: 25vh;
 		background-image: url('../CinemaImages/fotocinema.jpg');
@@ -113,26 +107,24 @@ body {
 		background-position: 53% 50%;
 		background-attachment: fixed;
 	}
-
 	#arrow-down-to-div {
-		color:  rgba(0, 0, 0, 0.5); 
-		bottom: 0; 
+		color: rgba(0, 0, 0, 0.5);
+		bottom: 0;
 		margin-top: 30vh;
 		left: 50%;
-		margin-left: -100px; 
+		margin-left: -100px;
 		font-size: 200px;
 	}
 }
 
 @media only screen and (min-device-width: 1024px) {
-	#initial-img
-	{
+	#initial-img {
 		margin-top: 170px;
 		margin-left: 0px;
 		width: 800px;
 	}
 	.initial-div {
-		height:100vh;
+		height: 100vh;
 		padding-top: 25vh;
 		padding-bottom: 25vh;
 		background-image: url('../CinemaImages/fotocinema.jpg');
@@ -141,27 +133,24 @@ body {
 		background-position: 53% 50%;
 		background-attachment: fixed;
 	}
-
 	#arrow-down-to-div {
-		color:  rgba(0, 0, 0, 0.5); 
-		bottom: 0; 
+		color: rgba(0, 0, 0, 0.5);
+		bottom: 0;
 		left: 50%;
-		margin-left: -75px; 
+		margin-left: -75px;
 		font-size: 150px;
 		margin-top: 30vh;
 	}
 }
 
 @media only screen and (min-device-width: 1200px) {
-	#initial-img
-	{
+	#initial-img {
 		margin-top: 50px;
 		margin-left: 50px;
 		width: 630px;
 	}
-
 	.initial-div {
-		height:100vh;
+		height: 100vh;
 		padding-top: 25vh;
 		padding-bottom: 25vh;
 		background-image: url('../CinemaImages/fotocinema.jpg');
@@ -170,26 +159,22 @@ body {
 		background-position: 53% 50%;
 		background-attachment: fixed;
 	}
-
 	#arrow-down-to-div {
-		color:  rgba(0, 0, 0, 0.7);
+		color: rgba(0, 0, 0, 0.7);
 		left: 50%;
-		margin-left: -60px; 
+		margin-left: -60px;
 		font-size: 120px;
 	}
 }
 
 @media only screen and (min-device-width: 1280px) {
-	#initial-img
-	{
+	#initial-img {
 		margin-top: 50px;
 		margin-left: 50px;
 		width: 630px;
 	}
-
 	.initial-div {
-		
-		height:100vh;
+		height: 100vh;
 		padding-top: 25vh;
 		padding-bottom: 25vh;
 		background-image: url('../CinemaImages/fotocinema.jpg');
@@ -198,22 +183,21 @@ body {
 		background-position: 53% 50%;
 		background-attachment: fixed;
 	}
-
 	#arrow-down-to-div {
-		
-		color:  rgba(0, 0, 0, 0.7);
+		color: rgba(0, 0, 0, 0.7);
 		left: 50%;
-		margin-left: -45px; 
+		margin-left: -45px;
 		font-size: 90px;
 		margin-top: 20vh;
 	}
 }
 
-.navbar{
-	background-color:  rgba(128, 0, 0, 0.9);
+.navbar {
+	background-color: rgba(128, 0, 0, 0.9);
 	border: 0px transparent;
 	border-radius: 0px;
 }
+
 .navbar-nav>li>a {
 	color: white !important;
 }
@@ -231,21 +215,21 @@ body {
 	width: auto;
 }
 
-#myCarousel > .cinemaslider > .item {
-    position: relative;
-    display: none;
-    -webkit-transition: 0.6s ease-in-out left;
-    -moz-transition: 0.6s ease-in-out left;
-    -o-transition: 0.6s ease-in-out left;
+#myCarousel>.cinemaslider>.item {
+	position: relative;
+	display: none;
+	-webkit-transition: 0.6s ease-in-out left;
+	-moz-transition: 0.6s ease-in-out left;
+	-o-transition: 0.6s ease-in-out left;
 	transition: 0.6s ease-in-out left;
 	min-height: 600px;
 }
+
 .carousel-inner>.item>img {
 	width: 100%;
 	max-height: 1300px;
 	min-height: 492px;
 	position: relative;
-	
 }
 
 @media screen and (min-width: 480px) {
@@ -282,10 +266,10 @@ body {
 	}
 }
 
-.footer{
-	float:left;
+.footer {
+	float: left;
 	text-align: center;
-	width:100%;
+	width: 100%;
 	height: 50px;
 	bottom: 0px;
 	background-color: maroon;
@@ -408,7 +392,6 @@ input.fielderror {
 		overflow-y: scroll;
 	}
 }
-
 
 #rightdiv {
 	height: -webkit-fill-available;
@@ -542,7 +525,7 @@ img#cinelandiaimg {
 	color: white;
 }
 
-#logoCenter{	
+#logoCenter {
 	margin-top: -21px;
 }
 
@@ -552,6 +535,32 @@ img#cinelandiaimg {
 	z-index: 9999 !important;
 }
 
-.affix + .container-fluid {
+.affix+.container-fluid {
 	padding-top: 70px;
+}
+
+.dettaglio-film .glyphicon {
+	color: white;
+	font-size: 25px;
+}
+
+/* Tooltip text */
+
+.dettaglio-film .tooltiptext {
+	visibility: hidden;
+	width: 120px;
+	background-color: transparent;
+	color: #fff;
+	text-align: center;
+	padding: 5px 0;
+	border-radius: 6px;
+	/* Position the tooltip text - see examples below! */
+	position: absolute;
+	z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+
+.dettaglio-film:hover .tooltiptext {
+	visibility: visible;
 }

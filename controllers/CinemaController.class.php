@@ -15,23 +15,6 @@ class CinemaController
 	 */
 	function home(Request $request, Response $response, $args)
 	{
-		/* try{
-			$film = new Film();
-			$visualizzato['visualizzato']=true;
-			$data['film']=$film->select($visualizzato);
-			$id_scheda['id_scheda']=$data['film'][0]['id_scheda'];
-			$scheda=new Scheda();
-			$data['scheda']=$scheda->select($id_scheda);
-			// var_dump($data);exit();
-			$table = (new HomeView(null,$data));
-			$page = new Page();
-			$page->addView("content",$table);
-			return $response->write($page->render());
-		}
-		catch(Exception $e) {
-			echo $e -> getMessage();
-		} */
-		
 		$film = new Film();
 		$visualizzato['visualizzato']=true;
 		$data['filmtoday']=$film->get_FilmTodayDataCourrent();
@@ -41,73 +24,61 @@ class CinemaController
 		$film_orario= new Film_Orario(); 
 		if($data['filmtoday']!= null)
 		{
-			
-
-		for($i=0;$i<count($data['filmtoday']);$i++)
-		{
-
-			$id['id_film']=$data['filmtoday'][$i]['id'];
-			$sc=$scheda->select($id);
-			$orariToday= $film_orario->select($id);
-			
-			$data['filmtoday'][$i]['regia']=$sc[0]['regia']; 
-			$data['filmtoday'][$i]['attori']=$sc[0]['attori'];
-			$data['filmtoday'][$i]['durata']=$sc[0]['durata'];  
-			$data['filmtoday'][$i]['genere']=$sc[0]['genere']; 
-			$data['filmtoday'][$i]['pese']=$sc[0]['pese']; 
-			$data['filmtoday'][$i]['indice']=$i;
-			$data['filmtoday'][$i]['close']=$i;
-			
-			
-			foreach($orariToday as $k=>$v)
+			for($i=0;$i<count($data['filmtoday']);$i++)
 			{
-			$data['filmtoday'][$i]['filmorario'][$k]['ora']=$v['ora'];
-			$data['filmtoday'][$i]['filmorario'][$k]['giornosettimana']=$v['giornosettimana'];
-			$data['filmtoday'][$i]['filmorario'][$k]['giorno']=$v['giorno'];
+				$id['id_film']=$data['filmtoday'][$i]['id'];
+				$sc=$scheda->select($id);
+				$orariToday= $film_orario->select($id);
+				
+				$data['filmtoday'][$i]['regia']=$sc[0]['regia']; 
+				$data['filmtoday'][$i]['attori']=$sc[0]['attori'];
+				$data['filmtoday'][$i]['durata']=$sc[0]['durata'];  
+				$data['filmtoday'][$i]['genere']=$sc[0]['genere']; 
+				$data['filmtoday'][$i]['pese']=$sc[0]['pese']; 
+				$data['filmtoday'][$i]['indice']=$i;
+				$data['filmtoday'][$i]['close']=$i;
+				
+				foreach($orariToday as $k=>$v)
+				{
+					$data['filmtoday'][$i]['filmorario'][$k]['ora']=$v['ora'];
+					$data['filmtoday'][$i]['filmorario'][$k]['giornosettimana']=$v['giornosettimana'];
+					$data['filmtoday'][$i]['filmorario'][$k]['giorno']=$v['giorno'];
+				}
+				if($i==0)
+				{
+					$data['filmtoday'][$i]['active']='item active';
+					$data['filmtoday'][$i]['visible']='inline';
+				}
+				else
+				{
+					$data['filmtoday'][$i]['active']='item';	
+					$data['filmtoday'][$i]['visible']='none';
+				} 
 			}
-			 // var_dump($data['filmtoday'][$i]);
-			 // exit();
-			if($i==0)
-		{
-		$data['filmtoday'][$i]['active']='item active';
-		$data['filmtoday'][$i]['visible']='inline';
 		}
-		else
+		if($data['filmafter']!= null)
 		{
-			$data['filmtoday'][$i]['active']='item';	
-			$data['filmtoday'][$i]['visible']='none';
-		} 
+			for($i=0;$i<count($data['filmafter']);$i++)
+			{
+				$sc=$scheda->select($data['filmafter'][$i]['id']);
+				$orariAfter= $film_orario->select($data['filmafter'][$i]['id']);
+				$data['filmafter'][$i]['regia']=$sc[0]['regia']; 
+				$data['filmafter'][$i]['attori']=$sc[0]['attori'];
+				$data['filmafter'][$i]['durata']=$sc[0]['durata'];  
+				$data['filmafter'][$i]['genere']=$sc[0]['genere']; 
+				$data['filmafter'][$i]['pese']=$sc[0]['pese']; 
+				$data['filmafter'][$i]['indice']=$i;
+				$data['filmafter'][$i]['ora']=$orariAfter[$i]['ora'];
+				$data['filmafter'][$i]['giornosettimana']=$orariAfter[$i]['giornosettimana'];
+				$data['filmafter'][$i]['giorno']=$orariAfter[$i]['giorno'];
+			}
 		}
-	}
-	if($data['filmafter']!= null)
-	{
-
-		for($i=0;$i<count($data['filmafter']);$i++)
-		{
-			$sc=$scheda->select($data['filmafter'][$i]['id']);
-			$orariAfter= $film_orario->select($data['filmafter'][$i]['id']);
-			$data['filmafter'][$i]['regia']=$sc[0]['regia']; 
-			$data['filmafter'][$i]['attori']=$sc[0]['attori'];
-			$data['filmafter'][$i]['durata']=$sc[0]['durata'];  
-			$data['filmafter'][$i]['genere']=$sc[0]['genere']; 
-			$data['filmafter'][$i]['pese']=$sc[0]['pese']; 
-			$data['filmafter'][$i]['indice']=$i;
-			$data['filmafter'][$i]['ora']=$orariAfter[$i]['ora'];
-			$data['filmafter'][$i]['giornosettimana']=$orariAfter[$i]['giornosettimana'];
-			$data['filmafter'][$i]['giorno']=$orariAfter[$i]['giorno'];
-			
-		}
-	}
 		try{
-			//   var_dump($data);exit();
 			if($data['filmtoday']== null)
 			{
 				$data['filmtoday']['immagine']= "image/SystemImage/closed.png";
 				$data['filmtoday']['active']='item active';
 				$data['filmtoday']['visible']='inline';
-				
-
-
 			}
 			$table = (new HomeView(null,$data));
 			$page = new Page("indexHome.ms");
@@ -118,7 +89,6 @@ class CinemaController
 		{
 			echo $e->getMessage();
 		}	
-	
 	}
 	/**
 	 * @desc This method provides the registration html page
@@ -136,19 +106,18 @@ class CinemaController
 		try{
 			if(isset($_SESSION['user']))      // if there is no valid session
 			{
-			$feed = new FeedRssController();
-			$data=$feed->FeedRss();
-			$table = (new FeedRssView(null,$data));
-			$page = new Page();
-			$page->addView("content",$table);
-			return $response->write($page->render());
+				$feed = new FeedRssController();
+				$data=$feed->FeedRss();
+				$table = (new FeedRssView(null,$data));
+				$page = new Page();
+				$page->addView("content",$table);
+				return $response->write($page->render());
 			}
 			else
 			{
 				header("Location: http://127.0.0.1/cinema/index.php/auth");
 				exit();
 			}
-
 		}
 		catch(Exception $e )
 		{
@@ -181,50 +150,70 @@ class CinemaController
 		$film_orario= new Film_Orario();
 		if($data['filmtoday']!= null)
 		{
-		for($i=0;$i < count($data['filmtoday']);$i++)
-		{
-			$sc=$scheda->select($data['filmtoday'][$i]['id']);
-			// var_dump($sc);exit();
-			$data['filmtoday'][$i]['regia']=$sc[0]['regia']; 
-			$data['filmtoday'][$i]['attori']=$sc[0]['attori'];
-			$data['filmtoday'][$i]['durata']=$sc[0]['durata'];  
-			$data['filmtoday'][$i]['genere']=$sc[0]['genere']; 
-			$data['filmtoday'][$i]['pese']=$sc[0]['pese']; 
-			$data['filmtoday'][$i]['indice']=$i;
-			if($i==0)
-		{
-		$data['filmtoday'][$i]['active']='item active';
-		$data['filmtoday'][$i]['visible']='inline';
-		}
-		else
-		{
-			$data['filmtoday'][$i]['active']='item';	
-			$data['filmtoday'][$i]['visible']='none';
-		} 
-		}
-	}
-	if($data['filmafter']!=null)
-	{		
+			for($i=0;$i < count($data['filmtoday']);$i++)
+			{
+				$id['id_film'] = $data['filmtoday'][$i]['id'];
+				$sc=$scheda->select($id);
+				$orariToday= $film_orario->select($id);
+				$data['filmtoday'][$i]['regia']=$sc[0]['regia']; 
+				$data['filmtoday'][$i]['attori']=$sc[0]['attori'];
+				$data['filmtoday'][$i]['durata']=$sc[0]['durata'];  
+				$data['filmtoday'][$i]['genere']=$sc[0]['genere']; 
+				$data['filmtoday'][$i]['pese']=$sc[0]['pese']; 
+				$data['filmtoday'][$i]['indice']=$i;
+				foreach($orariToday as $k=>$v)
+				{
+					
+					$data['filmtoday'][$i]['filmorario'][$k]['giornosettimana']=$v['giornosettimana'];
+					$data['filmtoday'][$i]['filmorario'][$k]['giorno']=$v['giorno'];
 
-		for($i=0;$i < count($data['filmafter']);$i++)
-		{
-			$id['id_film'] = $data['filmafter'][$i]['id'];
-			$sc=$scheda->select($id);
-			$orariAfter= $film_orario->select($id);
-			$data['filmafter'][$i]['regia']=$sc[0]['regia']; 
-			$data['filmafter'][$i]['attori']=$sc[0]['attori'];
-			$data['filmafter'][$i]['durata']=$sc[0]['durata'];  
-			$data['filmafter'][$i]['genere']=$sc[0]['genere']; 
-			$data['filmafter'][$i]['pese']=$sc[0]['pese']; 
-			$data['filmafter'][$i]['indice']=$i;
-			$data['filmafter'][$i]['ora']=$orariAfter[$i]['ora'];
-			$data['filmafter'][$i]['giornosettimana']=$orariAfter[$i]['giornosettimana'];
-			$data['filmafter'][$i]['giorno']=$orariAfter[$i]['giorno'];
+					$mioOrario =$v['ora'];
+					$trimmedMioOrario = trim($mioOrario);
+
+						$orarioExplode = explode(" ", $mioOrario);
+						// var_dump($orarioExplode[0].'*'.$orarioExplode[1].'*'.$orarioExplode[2].$data['filmtoday'][$i]['filmorario'][$k]['id_orario']=$v['id_orario']);
+					
+						foreach($orarioExplode as $item )
+					{
+						$data['filmtoday'][$i]['filmorario']['orari'][$k]['ora']=$item;
+					}
+				}
+				if($i==0)
+				{
+					$data['filmtoday'][$i]['active']='item active';
+					$data['filmtoday'][$i]['visible']='inline';
+				}
+				else
+				{
+					$data['filmtoday'][$i]['active']='item';	
+					$data['filmtoday'][$i]['visible']='none';
+				}
+				
+			}
 		}
-	}
+
+		if($data['filmafter']!=null)
+		{		
+			for($i=0;$i < count($data['filmafter']);$i++)
+			{
+				$id['id_film'] = $data['filmafter'][$i]['id'];
+				$sc=$scheda->select($id);
+				$orariAfter= $film_orario->select($id);
+				$data['filmafter'][$i]['regia']=$sc[0]['regia']; 
+				$data['filmafter'][$i]['genere']=$sc[0]['genere']; 
+				$data['filmafter'][$i]['attori']=$sc[0]['attori'];
+				$data['filmafter'][$i]['durata']=$sc[0]['durata'];  
+				$data['filmafter'][$i]['pese']=$sc[0]['pese']; 
+				$data['filmafter'][$i]['indice']=$i;
+				foreach($orariAfter as $k=>$v)
+				{
+					$data['filmafter'][$i]['filmorario'][$k]['ora']=$v['ora'];
+					$data['filmafter'][$i]['filmorario'][$k]['giornosettimana']=$v['giornosettimana'];
+					$data['filmafter'][$i]['filmorario'][$k]['giorno']=$v['giorno'];
+				}
+			}
+		}
 		try{
-			//    var_dump($data);exit();
-		
 			$modifica= (new ModificaAdminView(null,$data));
 			$page = new Page();
 			$page->addView("content",$modifica);
@@ -244,6 +233,7 @@ class CinemaController
 			session_destroy();
 		
 	}
+
 	/**
 	 * @desc This method provides the registration html page
 	 * @link /save_film
@@ -270,21 +260,16 @@ class CinemaController
 	
 		try
 		{
-		$data_i = new DateTime($data['2'].'-'.$data['1'].'-'.$data['0']);
-		$data_f = new DateTime($dataf['2'].'-'.$dataf['1'].'-'.$dataf['0']);
-		$datainizio = date_format($data_i, 'Y/m/d');
-		$datafine = date_format($data_f, 'Y/m/d');
-
-		var_dump($datainizio);
-		var_dump($datafine);
-
+			$data_i = new DateTime($data['2'].'-'.$data['1'].'-'.$data['0']);
+			$data_f = new DateTime($dataf['2'].'-'.$dataf['1'].'-'.$dataf['0']);
+			$datainizio = date_format($data_i, 'Y/m/d');
+			$datafine = date_format($data_f, 'Y/m/d');
 		}	
 		catch(Exception $e)
 		{
 			echo $e->getMessage();
 		}
 		$seralizedOrari= json_decode($orari);
-		
 		
 		$vowels = array(" ","'");
 		$titolourl=  str_replace($vowels, '', $titolo);
@@ -318,37 +303,29 @@ class CinemaController
 		
 		$id=$film->get_last_id("id");
 		
-		
 		$insert_scheda['id_film']=$id[0]['id'];
-
 		
 		try {
-			
-
-
 			$scheda->insert($insert_scheda);
 			$orarioDbo["ora"]="";
 			
 			 if($seralizedOrari!= null)
 			 {
-				
 			 	foreach($seralizedOrari as $value)
 			 	{
-					
 					$orarioDbo["ora"]="";
-						 foreach($value->orari as $a)
-						 {
-						 	$orarioDbo["ora"]=$orarioDbo["ora"] ." ".$a;
-						 }
-			 			$orarioDbo["giorno"]=$value->year.'/'.$value->mounth.'/'.$value->day;
-			 			$orarioDbo["giornosettimana"]=$value->giornoSettimana;
-						 $orarioDbo["id_film"]=$id[0]['id'];
-					
-			 			$film_orario->insert($orarioDbo);
-			 	
-				 }
-				 
-			 }
+
+					foreach($value->orari as $a)
+					{
+						$orarioDbo["ora"]=$orarioDbo["ora"] ." ".$a;
+					}
+					$orarioDbo["giorno"]=$value->year.'/'.$value->mounth.'/'.$value->day;
+					$orarioDbo["giornosettimana"]=$value->giornoSettimana;
+					$orarioDbo["id_film"]=$id[0]['id'];
+			
+					$film_orario->insert($orarioDbo);
+				}
+			}
 		}
 		catch(Exception $e)
 	    {
@@ -428,8 +405,7 @@ class CinemaController
 		}	
 	}
 
-
-/**
+	/**
 	 * @desc This method provides the registration html page
 	 * @link /dettaglio/{id:[\d]+}
 	 * @method GET
@@ -441,23 +417,18 @@ class CinemaController
 
 	function DettaglioFilm(Request $request, Response $response, $args)
 	{
-		
-			$data = $_GET["id"];
-			
+		$detail_id = $_GET["id"];
 
-			try{
-
+		try{
 			// var_dump($data);exit();
 			$table = (new DettaglioView(null,$data));
 			$page = new Page();
 			$page->addView("content",$table);
 			return $response->write($page->render());
-			
 		}
 		catch(Exception $e )
 		{
 			echo $e->getMessage();
 		}	
 	}
-
 }
