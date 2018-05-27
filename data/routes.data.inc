@@ -25,7 +25,7 @@ $this->map(['GET'],"/cinelandia","CinemaController:Cinelandia");
 $this->map(['POST'],"/action_admin","CinemaController:save_film");
 
 
-$this->map(['GET'],"/action_image","CinemaController:save_new_image");
+$this->map(['POST'],"/action_image","CinemaController:save_new_image");
 
 
 $this->map(['POST'],"/delete","CinemaController:deleteById");

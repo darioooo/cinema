@@ -343,15 +343,15 @@ class CinemaController
 	 * @return \Slim\Http\Response
 	 */
 	function save_new_image(Request $request, Response $response, $args)
-	{
+	{		
+		// var_dump($_FILES);exit();
+		// $info = pathinfo($_FILES['file']);
+		//  $ext = $info['extension']; // get the extension of the file
+		//  $newname = "perfil.".$ext; 
 
-		$info = pathinfo($_FILES['picture']['name']);
-		$ext = $info['extension']; // get the extension of the file
-		$newname = "perfil.".$ext; 
-
-		$target = 'image/'.$newname;
-		move_uploaded_file( $_FILES['file']['tmp_name'], $target);
-		var_dump($_FILES['file']['tmp_name']);
+		// $target = 'image/'.$newname;
+		move_uploaded_file( $_FILES['file']['name'], 'image/');
+		var_dump($_FILES['hidden_data']);
 
 
 		// $targetPath = "image/".$_FILES['file']['name'];

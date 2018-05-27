@@ -20,6 +20,12 @@
 
 			window.location = 'dettaglio?id=' + $(this).attr("value");
 		});
+
+
+		if ($('#easyPaginate').children().length == 0) {
+			alert('ciao');
+			$('#easyPaginate').parent().empty();
+		}
 	});
 
 </script>
@@ -32,7 +38,7 @@
 		</div>
 		<div class="col-xs-12 col-md-4 col-lg-3">
 			<div class="col-xs-12 col-md-12 col-lg-12 jumbotron contentjumbo">
-				<div id="myCarousel" class="carousel slide" data-ride="carousel">
+				<div id="myCarousel" class="carousel slide" data-ride="carousel" style="border: 8px dotted yellow; ">
 					<ol class="carousel-indicators">
 						{{#filmtoday}}
 						<li data-target="#myCarousel" data-slide-to="{{indice}}"></li>
@@ -54,7 +60,7 @@
 		</div>
 
 		<div class="col-xs-12 col-md-4 col-lg-5">
-			<div class="col-xs-10 col-md-12 col-lg-12 jumbotron contentjumbo film-details">
+			<div class="col-xs-10 col-md-12 col-lg-12 jumbotron contentjumbo film-details" style="border: 5px solid #00000082; ">
 				{{#filmtoday}}
 				<div id="{{indice}}" style="display: {{visible}}">
 					<p class="film-title" align="center">
@@ -102,12 +108,17 @@
 
 	</div>
 </div>
-<div class="row">
-	{{#filmafter}}
+<div class="row" id="divProssimi" style="background-color: #ffffff82; max-height: fit-content ; border-top: 4px black solid;  border-bottom: 4px black solid;">
 	<h1 id="prossimi">PROSSIMAMENTE</h1>
 	<div class="row" id="easyPaginate">
+		{{#filmafter}}
 		<div value="{{indice}}" id="film-futuri" class="column">
 			<img src="http://localhost/cinema/{{immagine}}" id="film-after-img" value="{{indice}}">
+			<!-- margin-top: 5px;
+			border-left: 8px double black;
+			border-right: 8px double black;
+			margin-bottom: 0px;
+		 -->
 		</div>
 		{{/filmafter}}
 	</div>
