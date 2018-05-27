@@ -290,19 +290,44 @@
 			$("#centerdiv").removeClass('col-sm-2 col-md-2').addClass('col-sm-1 col-md-1');
 			$("#leftdiv").removeClass('col-sm-4 col-md-4').addClass(' leftdivbg');
 		});
+		$('#input-b9').change(function () {
+			var file = $('#input-b9').fileinput();
+			var image = file[0].files[0];
+			console.log(file);
+			console.log(image);
+			form_data = new FormData();
+			form_data.append("file", image);
+			// form_data.append("upload_file", true);
+			console.log(form_data);
+			alert('ciao');
+			$.ajax({
+				type: "POST",
+				processData: false,
+				contentType: false,
+				url: "action_image",
+				data: form_data,
+				cache: false,
+				success: function (result) {
+
+					console.log(result);
+
+				}
+			});
+
+		});
+
 		$("#saveModal").click(function () {
 
-
-			var file_data = $('#input-b9').prop('files')[0].getAsFile();
+			var file = $('#input-b9').fileinput();
+			var image = file[0].files[0];
 
 			form_data = new FormData();
-			form_data.append('file', file, file_data);
-			alert(form_data);
+			formData.append("file", image, image.name);
+			formData.append("upload_file", true);
+
 			console.log(form_data);
 			if ($("#title").val() != "" && form_data != null) {
 
-				var xhr = new XMLHttpRequest();
-				xhr.open('POST', 'action_image', true);
 
 				xhr.onload = function () {
 					if (xhr.status === 200) {
@@ -484,8 +509,7 @@
 </script>
 
 
-<div id="block">
-
+<div id="block" style="padding-top: 70px;">
 	<div class="btn-group-vertical inlinea col-sm-4 col-md-4" id="leftdiv">
 		<button type="button" class="btn " style="visibility: hidden; text-align: center;" id="buttonadd" data-toggle="modal" data-target="#fileModal">
 			<span id="padd" class="glyphicon glyphicon-plus" style="color:white;"></span>
@@ -576,11 +600,11 @@
 						</div>
 						<div class="modal-body">
 							<div class="file-loading">
-								<input id="input-b9" type="file" class="file" multiple type="file" required></input>
+								<input id="input-b9" type="file" class="file" required>
 							</div>
 							<div>
 								<label for="comment form-control">TITOLO</label>
-								<input id="title" type="text" class="form-control" required></input>
+								<input id="title" type="text" class="form-control" required>
 							</div>
 							<div id="kartik-file-errors"></div>
 						</div>
