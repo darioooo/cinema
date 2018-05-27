@@ -1,17 +1,14 @@
 <script>
 	$(document).ready(function () {
-
 		$(".dettaglio").click(function () {
-
 			window.location = 'dettaglio?id=' + $(this).attr("value");
 		});
 	});
 </script>
 
-<div class="detail-div" style="background-color: darkgrey; border-radius: 10px; box-shadow: 2px 2px 2px 2px grey; margin-top: 70px; margin-bottom: 50px;">
+<div class="detail-div" style="background-color: rgb(209, 209, 209); border-radius: 10px; box-shadow: 2px 2px 2px 2px grey; margin-top: 70px; margin-bottom: 50px;">
 	<div class="row filmjumbo container-fluid" style="padding-top: 70px; padding-bottom: 50px;">
 		{{#filmdetails}}
-		<h3 align="middle">{{titolo}}</h3>
 		<div class=" col-xs-12 col-md-4 col-lg-4 detail-image" style="margin-bottom: 10px;">
 			<div class=" col-xs-12 col-md-12 col-lg-12 jumbotron contentjumbo " style="border: 8px yellow dotted">
 				<div id="imageFilmDiv ">

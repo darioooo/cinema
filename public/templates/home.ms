@@ -21,16 +21,14 @@
 			window.location = 'dettaglio?id=' + $(this).attr("value");
 		});
 
-
 		if ($('#easyPaginate').children().length == 0) {
-			alert('ciao');
 			$('#easyPaginate').parent().empty();
 		}
 	});
 </script>
-<div style="background-color: rgb(209, 209, 209); border-radius: 10px; box-shadow: 2px 2px 2px 2px grey; margin-top: 70px; margin-bottom: 50px;">
+<div id="in-programmazione">
 	<p id="filmprog">IN PROGRAMMAZIONE</p>
-	<div class="row jumbotron filmjumbo">
+	<div class="row jumbotron filmjumbo" id="in-programmazione-jumbotron">
 		<div class="col-xs-0 col-md-2 col-lg-2">
 		</div>
 		<div class="row jumbotron filmjumbo ">
@@ -79,31 +77,16 @@
 						<div class="col-xs-6 col-md-6 col-lg-6">
 							<p>{{#ora}}{{ora}}{{/ora}}</p>
 						</div>
-						<!-- <div class="col-xs-7 col-md-9 col-lg-12"> -->
-						<!--  -->
-						<!-- <p class="film-hours" > -->
-						<!-- <br>|{{#ora}} {{ora}} {{/ora}}  -->
-						<!-- </p> -->
-						<!--  -->
-						<!-- </div> -->
 						{{/filmorario}}
-						<!-- <p class="film-hours" style="margin-left:15px; margin-top:5px;">
-						<br>
-						<br>{{#durata}}
-						<b>DURATA:</b> {{durata}} {{/durata}}
-					</p> -->
 
 						<a class="dettaglio" value="{{id}}" class="film-hours" style="margin-left:15px; margin-top:5px;">
 							<span class="glyphicon glyphicon-menu-down"></span>
-
 						</a>
 						</form>
 					</div>
 					{{/filmtoday}}
 				</div>
 			</div>
-
-
 		</div>
 	</div>
 	<div class="row">
@@ -116,12 +99,11 @@
 			{{/filmafter}}
 		</div>
 	</div>
-	<div id="chisiamo" style="background-color: rgba(209, 209, 209); border-radius: 10px; box-shadow: 2px 2px 2px 2px grey; margin-top: 70px; margin-bottom: 50px; padding: 50px;">
-		<h1>CHI SIAMO</h1>
+	<div id="chi-siamo">
+		<h1 id="chi-siamo-titolo">CHI SIAMO</h1>
 		<div>
 			<div class=" text-center " style="min-height: 100px;background-image: url(
 		    'http://localhost/cinema/CinemaImages/chisiamobg.png'); padding: 10px 0px 10px; ">
-				<!-- <img src="http://localhost/cinema/CinemaImages/chisiamo.png "> -->
 			</div>
 
 			<div id="myCarousel " class="carousel slide " data-ride="carousel ">
@@ -129,7 +111,6 @@
 					<div class="item active " style="background-image: url( 'http://127.0.0.1/cinema/CinemaImages/slider/021.jpg'); background-repeat:no-repeat;
 		    background-position:center; min-height: 600px; background-size: cover; width:100%; ">
 					</div>
-
 					<div class="item " style="background-image: url( 'http://127.0.0.1/cinema/CinemaImages/slider/022.jpg'); background-repeat:no-repeat;
 		    background-position:center;background-size: cover; min-height: 600px; width:100%; ">
 					</div>
@@ -137,15 +118,17 @@
 			</div>
 			<div class="text-center " style="min-height: 100px;background-image: url(
 		    'http://localhost/cinema/CinemaImages/chisiamobg.png'); padding: 10px 0px 10px; ">
-				<!-- <img src="http://localhost/cinema/CinemaImages/chisiamo.png "> -->
 			</div>
 		</div>
-		<div style=" margin: 50px 30px 50px 30px; clear: both; display: table; ">
-			<div style="float: left; width: 15%; ">
+	</div>
+
+	<div id="storia">
+		<h1 id="chi-siamo-titolo">STORIA</h1>
+		<div id="storia-contenuto">
+			<div id="storia-icona">
 				<img src="http://localhost/cinema/CinemaImages/movie-projector.png " style="float: right; max-width: 150px; ">
 			</div>
-			<div style="float: left; word-wrap: break-word; width: 80%; margin-left: -10px; margin-top: 30px; border: 5px solid
-		    black; border-radius: 5px; padding: 10px; ">
+			<div id="storia-testo">
 				<h4>In sagittis leo non bow wow wow. That's the shizzle tellivizzle, arcu yippiyo away facilisizzle, sem nulla doggy tellivizzle,
 					non auctor that's the shizzle felizzle nizzle est. Suspendisse volutpizzle scelerisque augue. Sed egestas crazy izzle
 					shizzlin dizzle. Prizzle bling bling things sapizzle. Etizzle aliquizzle, dizzle check it out shizznit accumsan boofron,

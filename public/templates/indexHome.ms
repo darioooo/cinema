@@ -26,36 +26,45 @@
 </head>
 
 <body>
+  <div id="top"></div>
   <div id="tot">
     <div class="container-fluid initial-div">
       <div id=" logoCenter " class=" text-center">
         <img src="../CinemaImages/CINEMA.png " id="initial-img">
       </div>
-      <a href="#maincontainer">
-        <span class="glyphicon glyphicon-download" id="arrow-down-to-div">
-        </span>
-      </a>
+      <div id="anchor-to-main-div">
+        <a href="#maincontainer">
+          <span class="glyphicon glyphicon-download" id="arrow-down-to-div">
+          </span>
+        </a>
+      </div>
     </div>
     <nav class="navbar" style="background-color: rgba(128, 0, 0, 0.95);">
       <div class="container-fluid ">
         <div class="navbar-header ">
-          <button type="button " class="navbar-toggle collapsed " data-toggle="collapse " data-target="#navbar3 ">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar3">
             <span class="sr-only ">Toggle navigation</span>
             <span class="icon-bar "></span>
             <span class="icon-bar "></span>
             <span class="icon-bar "></span>
           </button>
-          <a class="navbar-brand " href="# ">
-            <img id="logo " src="../CinemaImages/CINEMA.png " alt="CinemaAccademia ">
+          <a class="navbar-brand" href="#top">
+            <img id="logo" src="../CinemaImages/CINEMA.png" alt="CinemaAccademia">
           </a>
         </div>
         <div class="collapse navbar-collapse ">
           <ul class="nav navbar-nav nav-links" style="display: inline-block;">
             <li>
-              <a href="# " class="links ">CineLandia</a>
+              <a href="#" class="links ">CineLandia</a>
             </li>
             <li>
-              <a href="# " class="links ">Contatti</a>
+              <a href="#in-programmazione" class="links ">In programmazione</a>
+            </li>
+            <li>
+              <a href="#chi-siamo" class="links">Chi siamo</a>
+            </li>
+            <li>
+              <a href="#storia" class="links">Storia</a>
             </li>
           </ul>
         </div>
@@ -79,16 +88,34 @@
           nav.removeClass('navbar-fixed-top');
         }
       });
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-          e.preventDefault();
+      $('.navbar a[href^="#"], #anchor-to-main-div a[href^="#maincontainer"]').on('click', function (event) {
+        // Make sure this.hash has a value before overriding default behavior
+        if (this.hash !== "") {
+          // Prevent default anchor click behavior
+          event.preventDefault();
 
-          document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
+          // Store hash
+          var hash = this.hash;
+
+          // Using jQuery's animate() method to add smooth page scroll
+          // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+          $('html, body').animate({
+            scrollTop: $(hash).offset().top
+          }, 900, function () {
+
+            // Add hash (#) to URL when done scrolling (default click behavior)
+            window.location.hash = hash;
           });
-        });
+        } // End if
       });
-    })
+
+      $('a[href=#top]').click(function () {
+        $('html, body').animate({
+          scrollTop: 0
+        }, 'slow');
+        return false;
+      });
+    });
   </script>
 </body>
 
