@@ -33,25 +33,11 @@
 	<div class="row jumbotron filmjumbo">
 		<div class="col-xs-0 col-md-2 col-lg-2">
 		</div>
-<<<<<<< HEAD
-		<div class="col-xs-12 col-md-4 col-lg-3">
-			<div class="col-xs-12 col-md-12 col-lg-12 jumbotron contentjumbo">
-				<div id="myCarousel" class="carousel slide" data-ride="carousel" style="border: 8px dotted yellow; ">
-					<ol class="carousel-indicators">
-						{{#filmtoday}}
-						<li data-target="#myCarousel" data-slide-to="{{indice}}"></li>
-						{{/filmtoday}}
-					</ol>
-					<div class="carousel-inner">
-						{{#filmtoday}}
-						<div class="{{active}}" value="{{indice}}" id="imageFilmDiv">
-							<img src="http://localhost/cinema/{{immagine}}" class="imgfilm" value="{{indice}}">
-=======
 		<div class="row jumbotron filmjumbo ">
 			<div class="col-xs-0 col-md-2 col-lg-1">
 			</div>
 			<div class="col-xs-12 col-md-4 col-lg-3">
-				<div class="col-xs-12 col-md-12 col-lg-12 jumbotron contentjumbo">
+				<div class="col-xs-12 col-md-12 col-lg-12 jumbotron contentjumbo" style="border: 8px dotted yellow;">
 					<div id="myCarousel" class="carousel slide" data-ride="carousel">
 						<ol class="carousel-indicators">
 							{{#filmtoday}}
@@ -68,34 +54,17 @@
 							</a>
 							<a class="right carousel-control" href="#myCarousel" data-slide="next">
 							</a>
->>>>>>> 34740954f1bb79796232a345c98c207c4a78e69a
 						</div>
 					</div>
 				</div>
 			</div>
 
-<<<<<<< HEAD
-		<div class="col-xs-12 col-md-4 col-lg-5">
-			<div class="col-xs-10 col-md-12 col-lg-12 jumbotron contentjumbo film-details" style="border: 5px solid #00000082; ">
-				{{#filmtoday}}
-				<div id="{{indice}}" style="display: {{visible}}">
-					<p class="film-title" align="center">
-						{{titolo}}
-					</p>
-					<br>
-					<br> {{#filmorario}}
-					<div class="col-xs-3 col-md-3 col-lg-3">
-
-						<p class="film-days">
-							{{#giornosettimana}}{{giornosettimana}}{{/giornosettimana}}
-=======
 			<div class="col-xs-12 col-md-4 col-lg-5">
 				<div class="col-xs-10 col-md-12 col-lg-12 jumbotron contentjumbo film-details">
 					{{#filmtoday}}
 					<div id="{{indice}}" style="display: {{visible}}">
 						<p class="film-title" align="center">
 							{{titolo}}
->>>>>>> 34740954f1bb79796232a345c98c207c4a78e69a
 						</p>
 						<br>
 						<br> {{#filmorario}}
@@ -135,22 +104,6 @@
 			</div>
 
 
-<<<<<<< HEAD
-	</div>
-</div>
-<div class="row" id="divProssimi" style="background-color: #ffffff82; max-height: fit-content ; border-top: 4px black solid;  border-bottom: 4px black solid;">
-	<h1 id="prossimi">PROSSIMAMENTE</h1>
-	<div class="row" id="easyPaginate">
-		{{#filmafter}}
-		<div value="{{indice}}" id="film-futuri" class="column">
-			<img src="http://localhost/cinema/{{immagine}}" id="film-after-img" value="{{indice}}">
-			<!-- margin-top: 5px;
-			border-left: 8px double black;
-			border-right: 8px double black;
-			margin-bottom: 0px;
-		 -->
-=======
->>>>>>> 34740954f1bb79796232a345c98c207c4a78e69a
 		</div>
 	</div>
 	<div class="row">
