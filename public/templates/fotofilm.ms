@@ -1,5 +1,4 @@
 <script type="text/javascript">
-
 	$(document).ready(function () {
 
 
@@ -12,6 +11,7 @@
 		var durata;
 		var orariStrig;
 		var data_inizio, data_fine;
+
 		function orario() {
 			this.orari = new Array();
 			this.giornoSettimana = "";
@@ -165,19 +165,19 @@
 					}
 
 
-					$.ajax({
-						type: "POST",
-						dataType: 'script',
-						url: "action_image",
-						// data: { titolo: titolo, url: url  },
-						data: form_data,
-						cache: false,
-						success: function (result) {
+					// $.ajax({
+					// 	type: "POST",
+					// 	dataType: 'script',
+					// 	url: "action_image",
+					// 	// data: { titolo: titolo, url: url  },
+					// 	data: form_data,
+					// 	cache: false,
+					// 	success: function (result) {
 
-							console.log(result);
+					// 		console.log(result);
 
-						}
-					});
+					// 	}
+					// });
 					lunedì = "";
 					martedì = "";
 					mercoledì = "";
@@ -206,73 +206,73 @@
 			$(this).animate({
 				width: '200px'
 			}, {
-					step: function (currentwidth) {
-						if (currentwidth > 150) {
-							$(this).find("#phide").fadeIn();
-							$(this).find("#phide").css("transition-duration", "0.3s");
-						}
+				step: function (currentwidth) {
+					if (currentwidth > 150) {
+						$(this).find("#phide").fadeIn();
+						$(this).find("#phide").css("transition-duration", "0.3s");
 					}
-				});
+				}
+			});
 		});
 
 		$("#buttonhide").mouseleave(function () {
 			$(this).animate({
 				width: '80px'
 			}, {
-					step: function (currentwidth) {
-						if (currentwidth < 150) {
-							$(this).find("#phide").fadeOut(3);
-							$(this).find("#phide").css("transition-duration", "0s");
-						}
+				step: function (currentwidth) {
+					if (currentwidth < 150) {
+						$(this).find("#phide").fadeOut(3);
+						$(this).find("#phide").css("transition-duration", "0s");
 					}
-				});
+				}
+			});
 
 		});
 		$("#buttonhidemodifica").mouseenter(function () {
 			$("#buttonhidemodifica").animate({
 				width: '200px'
 			}, {
-					step: function (currentwidth) {
-						if (currentwidth > 150) {
-							$(this).find("#pmodifica").fadeIn();
-							$(this).find("#pmodifica").css("transition-duration", "0.3s");
-						}
+				step: function (currentwidth) {
+					if (currentwidth > 150) {
+						$(this).find("#pmodifica").fadeIn();
+						$(this).find("#pmodifica").css("transition-duration", "0.3s");
 					}
-				});
+				}
+			});
 		});
 		$("#buttonhidemodifica").mouseleave(function () {
 			$("#buttonhidemodifica").animate({
 				width: '80px'
 			}, {
-					step: function (currentwidth) {
-						if (currentwidth < 150) {
-							$(this).find("#pmodifica").fadeOut(3);
-							$(this).find("#pmodifica").css("transition-duration", "0s");
-						}
+				step: function (currentwidth) {
+					if (currentwidth < 150) {
+						$(this).find("#pmodifica").fadeOut(3);
+						$(this).find("#pmodifica").css("transition-duration", "0s");
 					}
-				});
+				}
+			});
 		});
 		$("#buttonadd").mouseenter(function () {
 			$("#buttonadd").animate({
 				width: '200px'
 			}, {
-					step: function (currentwidth) {
-						if (currentwidth > 150) {
-							//  $(this).find("#padd").fadeIn();
-						}
+				step: function (currentwidth) {
+					if (currentwidth > 150) {
+						//  $(this).find("#padd").fadeIn();
 					}
-				});
+				}
+			});
 		});
 		$("#buttonadd").mouseleave(function () {
 			$("#buttonadd").animate({
 				width: '80px'
 			}, {
-					step: function (currentwidth) {
-						if (currentwidth < 150) {
-							//  $(this).find("#padd").fadeOut();
-						}
+				step: function (currentwidth) {
+					if (currentwidth < 150) {
+						//  $(this).find("#padd").fadeOut();
 					}
-				});
+				}
+			});
 		});
 
 		$("#newfilm").click(function () {
@@ -420,12 +420,16 @@
 								case 6:
 									day = "Sabato";
 									break;
-								case 7:
+								case 0:
 									day = "Domenica";
 							}
 							var mese = d.getMonth() + 1;
 							arrayOrari.push(d.getDate().toString() + mese.toString() + d.getFullYear().toString());
-							$("#orariM").append("<div class=\"row \"><div id=\"divData" + d.getDate() + mese + d.getFullYear() + "\" class=\"col-md-3 orario\"><p day=\"" + day + "\" date=\"" + d.getDate() + "\" mounth=\"" + mese + "\" year=\"" + d.getFullYear() + "\">" + day + " " + d.getDate() + "/" + mese + "/" + d.getFullYear() + "</p></div><div class=\"col-md-1\"><a class=\"glyphicon glyphicon-plus-sign spanAdd \"></a></div><div class=\"col-md-8 orariDiv \"></div></div></br>");
+							$("#orariM").append("<div class=\"row \"><div id=\"divData" + d.getDate() + mese + d.getFullYear() +
+								"\" class=\"col-md-3 orario\"><p day=\"" + day + "\" date=\"" + d.getDate() + "\" mounth=\"" + mese +
+								"\" year=\"" + d.getFullYear() + "\">" + day + " " + d.getDate() + "/" + mese + "/" + d.getFullYear() +
+								"</p></div><div class=\"col-md-1\"><a class=\"glyphicon glyphicon-plus-sign spanAdd \"></a></div><div class=\"col-md-8 orariDiv \"></div></div></br>"
+							);
 
 						}
 						$("#orarimodal").modal({
@@ -447,7 +451,9 @@
 
 		$(document).on('click', '.spanAdd', function () {
 
-			$(this).parent().parent().find(".orariDiv").append("<div class=\"input-group col-md-3 clockpicker \"  data-autoclose=\"true\"><span class=\"input-group-addon\"><span class=\"glyphicon glyphicon-time\"></span></span><input type=\"text\" class=\"form-control ora\" value=\"21:30\"><span class=\"input-group-addon removeOrario\" style=\"color:red;\"><span class=\"glyphicon glyphicon-remove\"></span></span></div>");
+			$(this).parent().parent().find(".orariDiv").append(
+				"<div class=\"input-group col-md-3 clockpicker \"  data-autoclose=\"true\"><span class=\"input-group-addon\"><span class=\"glyphicon glyphicon-time\"></span></span><input type=\"text\" class=\"form-control ora\" value=\"21:30\"><span class=\"input-group-addon removeOrario\" style=\"color:red;\"><span class=\"glyphicon glyphicon-remove\"></span></span></div>"
+			);
 			$(this).parent().parent().find(".orariDiv").css('display', 'inline-flex');
 		});
 
@@ -496,7 +502,8 @@
 			}
 			$('#orari').empty();
 			for (i = 0; i < orari.length; i++) {
-				$('#orari').append("<span class=\"spanDay\">" + orari[i].giornoSettimana + " " + orari[i].day + "/" + orari[i].mounth + "/" + orari[i].year + "</span>");
+				$('#orari').append("<span class=\"spanDay\">" + orari[i].giornoSettimana + " " + orari[i].day + "/" + orari[i].mounth +
+					"/" + orari[i].year + "</span>");
 
 				for (o = 0; o < orari[i].orari.length; o++) {
 

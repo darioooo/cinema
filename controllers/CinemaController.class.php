@@ -270,7 +270,6 @@ class CinemaController
 			echo $e->getMessage();
 		}
 		$seralizedOrari= json_decode($orari);
-		
 		$vowels = array(" ","'");
 		$titolourl=  str_replace($vowels, '', $titolo);
 	
@@ -313,19 +312,19 @@ class CinemaController
 			 {
 			 	foreach($seralizedOrari as $value)
 			 	{
-					$orarioDbo["ora"]="";
-
 					foreach($value->orari as $a)
 					{
 						$orarioDbo["ora"]=$orarioDbo["ora"] ." ".$a;
 					}
+
 					$orarioDbo["giorno"]=$value->year.'/'.$value->mounth.'/'.$value->day;
 					$orarioDbo["giornosettimana"]=$value->giornoSettimana;
 					$orarioDbo["id_film"]=$id[0]['id'];
-			
 					$film_orario->insert($orarioDbo);
-				}
+					$orarioDbo["ora"]="";
+			 	}
 			}
+			var_dump($orarioDbo);exit();
 		}
 		catch(Exception $e)
 	    {
@@ -417,7 +416,47 @@ class CinemaController
 
 	function DettaglioFilm(Request $request, Response $response, $args)
 	{
-		$detail_id = $_GET["id"];
+		$id = $_GET["id"];
+
+		$film = new Film();
+		// $id_scheda['id_scheda']=$data['film'][0]['id_scheda'];
+		$scheda=new Scheda();
+		$film_orario= new Film_Orario(); 
+
+		$data['filmdetails'] = $film->get_detailFilm($id);
+		if($data['filmdetails']!= null)
+		{
+			for($i=0;$i<count($data['filmdetails']);$i++)
+			{
+				$sc=$scheda->select($id);
+				$orariToday= $film_orario->select($id);
+				
+				$data['filmdetails'][$i]['regia']=$sc[0]['regia']; 
+				$data['filmdetails'][$i]['attori']=$sc[0]['attori'];
+				$data['filmdetails'][$i]['durata']=$sc[0]['durata'];  
+				$data['filmdetails'][$i]['genere']=$sc[0]['genere']; 
+				$data['filmdetails'][$i]['pese']=$sc[0]['pese']; 
+				$data['filmdetails'][$i]['indice']=$i;
+				$data['filmdetails'][$i]['close']=$i;
+				
+				foreach($orariToday as $k=>$v)
+				{
+					$data['filmdetails'][$i]['filmorario'][$k]['ora']=$v['ora'];
+					$data['filmdetails'][$i]['filmorario'][$k]['giornosettimana']=$v['giornosettimana'];
+					$data['filmdetails'][$i]['filmorario'][$k]['giorno']=$v['giorno'];
+				}
+				if($i==0)
+				{
+					$data['filmdetails'][$i]['active']='item active';
+					$data['filmdetails'][$i]['visible']='inline';
+				}
+				else
+				{
+					$data['filmdetails'][$i]['active']='item';	
+					$data['filmdetails'][$i]['visible']='none';
+				} 
+			}
+		}
 
 		try{
 			// var_dump($data);exit();
