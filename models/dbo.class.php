@@ -204,6 +204,17 @@ class dbo
 			$sql = 'SELECT * FROM film  WHERE  CURDATE() >= data_inizio and CURDATE() < data_fine';
 			try {
 			   return $this->db->query($sql);
+		   	} 
+		   	catch (Exception $e) {
+			   echo $e->getMessage();
+			}
+		}
+
+		function get_detailFilm($id)
+		{
+			$sql = 'SELECT * FROM film  WHERE  id ='.$id;
+			try {
+			   return $this->db->query($sql);
 			   
 		   } catch (Exception $e) {
    
@@ -211,7 +222,7 @@ class dbo
 			   
 		   }
 		   
-		   }
+		}
 
 
 
