@@ -349,8 +349,8 @@ class CinemaController
 		//  $newname = "perfil.".$ext; 
 
 		// $target = 'image/'.$newname;
-		move_uploaded_file( $_FILES['file']['name'], 'image/');
-		var_dump($_FILES['hidden_data']);
+		var_dump($_FILES);
+		move_uploaded_file( $_FILES['file_data']['tmp_name'], 'image/ciao.png');
 
 
 		// $targetPath = "image/".$_FILES['file']['name'];

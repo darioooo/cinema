@@ -82,16 +82,18 @@
 		});
 		//TODO aggiungi eccc
 		$('#buttonadd').click(function () {
-			$("#buttonhide").hide();
-			$("#buttonhide").css("visibility", "hidden");
-			$("#buttonhidemodifica").hide();
-			$("#buttonhidemodifica").css("visibility", "hidden");
-			$("#buttonadd").hide();
-			$("#buttonadd").css("visibility", "hidden");
-			$("#filmdiv").toggle("slide");
-			$("#rightdiv").removeClass('col-sm-10 col-md-11').addClass('col-sm-6 col-md-4');
-			$("#centerdiv").removeClass('col-sm-1 col-md-1').addClass('col-sm-2 col-md-2');
-			$("#leftdiv").removeClass(' leftdivbg').addClass('col-sm-4 col-md-4');
+			if (!$('#leftdiv').attr('class') == 'leftdivbg') {
+				$("#buttonhide").hide();
+				$("#buttonhide").css("visibility", "hidden");
+				$("#buttonhidemodifica").hide();
+				$("#buttonhidemodifica").css("visibility", "hidden");
+				$("#buttonadd").hide();
+				$("#buttonadd").css("visibility", "hidden");
+				$("#filmdiv").toggle("slide");
+				$("#rightdiv").removeClass('col-sm-10 col-md-11').addClass('col-sm-6 col-md-4');
+				$("#centerdiv").removeClass('col-sm-1 col-md-1').addClass('col-sm-2 col-md-2');
+				$("#leftdiv").removeClass(' leftdivbg').addClass('col-sm-4 col-md-4');
+			}
 		});
 
 		$(".filmdropdown").click(function () {
@@ -164,20 +166,22 @@
 						var dataString = dataString + '&durata=' + durata;
 					}
 
+					console.log('fileupload' + $('#input-b9').val());
 
-					// $.ajax({
-					// 	type: "POST",
-					// 	dataType: 'script',
-					// 	url: "action_image",
-					// 	// data: { titolo: titolo, url: url  },
-					// 	data: form_data,
-					// 	cache: false,
-					// 	success: function (result) {
+					// if ($('#input-b9').val()) {
+					// 	var file = $('#input-b9').fileinput('refresh', {
+					// 		allowedFileExtensions: ["jpg", "png", "gif"],
+					// 		uploadUrl: "action_image",
+					// 		uploadExtraData: function () {
+					// 			return {
+					// 				titolo: $("#title").val(),
+					// 			};
+					// 		}
+					// 	});
+					// }
 
-					// 		console.log(result);
 
-					// 	}
-					// });
+
 					lunedì = "";
 					martedì = "";
 					mercoledì = "";
@@ -206,73 +210,73 @@
 			$(this).animate({
 				width: '200px'
 			}, {
-				step: function (currentwidth) {
-					if (currentwidth > 150) {
-						$(this).find("#phide").fadeIn();
-						$(this).find("#phide").css("transition-duration", "0.3s");
+					step: function (currentwidth) {
+						if (currentwidth > 150) {
+							$(this).find("#phide").fadeIn();
+							$(this).find("#phide").css("transition-duration", "0.3s");
+						}
 					}
-				}
-			});
+				});
 		});
 
 		$("#buttonhide").mouseleave(function () {
 			$(this).animate({
 				width: '80px'
 			}, {
-				step: function (currentwidth) {
-					if (currentwidth < 150) {
-						$(this).find("#phide").fadeOut(3);
-						$(this).find("#phide").css("transition-duration", "0s");
+					step: function (currentwidth) {
+						if (currentwidth < 150) {
+							$(this).find("#phide").fadeOut(3);
+							$(this).find("#phide").css("transition-duration", "0s");
+						}
 					}
-				}
-			});
+				});
 
 		});
 		$("#buttonhidemodifica").mouseenter(function () {
 			$("#buttonhidemodifica").animate({
 				width: '200px'
 			}, {
-				step: function (currentwidth) {
-					if (currentwidth > 150) {
-						$(this).find("#pmodifica").fadeIn();
-						$(this).find("#pmodifica").css("transition-duration", "0.3s");
+					step: function (currentwidth) {
+						if (currentwidth > 150) {
+							$(this).find("#pmodifica").fadeIn();
+							$(this).find("#pmodifica").css("transition-duration", "0.3s");
+						}
 					}
-				}
-			});
+				});
 		});
 		$("#buttonhidemodifica").mouseleave(function () {
 			$("#buttonhidemodifica").animate({
 				width: '80px'
 			}, {
-				step: function (currentwidth) {
-					if (currentwidth < 150) {
-						$(this).find("#pmodifica").fadeOut(3);
-						$(this).find("#pmodifica").css("transition-duration", "0s");
+					step: function (currentwidth) {
+						if (currentwidth < 150) {
+							$(this).find("#pmodifica").fadeOut(3);
+							$(this).find("#pmodifica").css("transition-duration", "0s");
+						}
 					}
-				}
-			});
+				});
 		});
 		$("#buttonadd").mouseenter(function () {
 			$("#buttonadd").animate({
 				width: '200px'
 			}, {
-				step: function (currentwidth) {
-					if (currentwidth > 150) {
-						//  $(this).find("#padd").fadeIn();
+					step: function (currentwidth) {
+						if (currentwidth > 150) {
+							//  $(this).find("#padd").fadeIn();
+						}
 					}
-				}
-			});
+				});
 		});
 		$("#buttonadd").mouseleave(function () {
 			$("#buttonadd").animate({
 				width: '80px'
 			}, {
-				step: function (currentwidth) {
-					if (currentwidth < 150) {
-						//  $(this).find("#padd").fadeOut();
+					step: function (currentwidth) {
+						if (currentwidth < 150) {
+							//  $(this).find("#padd").fadeOut();
+						}
 					}
-				}
-			});
+				});
 		});
 
 		$("#newfilm").click(function () {
@@ -291,79 +295,28 @@
 			$("#leftdiv").removeClass('col-sm-4 col-md-4').addClass(' leftdivbg');
 		});
 		$('#input-b9').change(function () {
-			var file = $('#input-b9').fileinput();
-			var image = file[0].files[0];
-			console.log(file);
-			console.log(image);
-			form_data = new FormData();
-			form_data.append("file", image);
-			// form_data.append("upload_file", true);
-			console.log(form_data);
-			alert('ciao');
-			$.ajax({
-				type: "POST",
-				processData: false,
-				contentType: false,
-				url: "action_image",
-				data: form_data,
-				cache: false,
-				success: function (result) {
-
-					console.log(result);
-
+			var file = $('#input-b9').fileinput('refresh', {
+				allowedFileExtensions: ["jpg", "png", "gif"],
+				uploadUrl: "action_image",
+				uploadExtraData: function () {
+					return {
+						titolo: $("#title").val(),
+					};
 				}
 			});
-
 		});
 
 		$("#saveModal").click(function () {
+			if ($('#input-b9').val()) {
+				var urlimg = $('.file-preview-image').attr('src');
+				console.log(urlimg);
+				$("#imagediv").html("<img style=\"  max-height: 200px;\" src=" + urlimg + "></img>");
 
-			var file = $('#input-b9').fileinput();
-			var image = file[0].files[0];
-
-			form_data = new FormData();
-			formData.append("file", image, image.name);
-			formData.append("upload_file", true);
-
-			console.log(form_data);
-			if ($("#title").val() != "" && form_data != null) {
-
-
-				xhr.onload = function () {
-					if (xhr.status === 200) {
-						// File(s) uploaded.
-						// uploadButton.innerHTML = 'Upload';
-					} else {
-						alert('An error occurred!');
-					}
-				};
-
-				// Send the Data.
-				xhr.send(form_data);
-
-				$("#imagediv").html("<img  src=" + form_data.url + "></img>");
-
-				$("#fileModal").modal('toggle');
-			} else {
-				alert("inserimento non completo");
-				console.log($("#title").val());
 
 			}
+
 		});
 
-		$("#input-b9").fileinput({
-			showPreview: true,
-			showUpload: true,
-			uploadAsync: false,
-			elErrorContainer: '#kartik-file-errors',
-			allowedFileExtensions: ["jpg", "png", "gif"],
-			uploadUrl: "action_image",
-			uploadExtraData: function () {
-				return {
-					titolo: $("#title").val(),
-				};
-			}
-		});
 
 		$("#datainizio,#datafine").change(function () {
 
@@ -518,7 +471,8 @@
 
 <div id="block" style="padding-top: 70px;">
 	<div class="btn-group-vertical inlinea col-sm-4 col-md-4" id="leftdiv">
-		<button type="button" class="btn " style="visibility: hidden; text-align: center;" id="buttonadd" data-toggle="modal" data-target="#fileModal">
+		<button type="button" class="btn " style="visibility: hidden; text-align: center;" id="buttonadd" data-toggle="modal" data-backdrop="static"
+		 data-keyboard="false" data-target="#fileModal">
 			<span id="padd" class="glyphicon glyphicon-plus" style="color:white;"></span>
 		</button>
 		<button type="button" class="btn " style="visibility: hidden; text-align: center;" id="buttonhide">
@@ -537,7 +491,8 @@
 					<span class="glyphicon glyphicon-chevron-right" style="color:white; ">MODIFICA</span>
 				</button>
 
-				<button class="btn btn-danger " type="button" id="newfilm" data-toggle="modal" data-target="#fileModal">
+				<button class="btn btn-danger " type="button" id="newfilm" data-toggle="modal" data-backdrop="static" data-keyboard="false"
+				 data-target="#fileModal">
 					<span class="glyphicon glyphicon-plus" style="color:white; ">INSERISCI NUOVO FILM</span>
 				</button>
 			</div>
