@@ -688,3 +688,34 @@ img#cinelandiaimg {
 .navbar .container-fluid .navbar-collapse .navbar-nav .links:focus {
 	background-color: rgb(108, 0, 0);
 }
+
+.dettaglio {
+	margin-left: 15px;
+	margin-top: 5px;
+	color: white;
+	font-size: 20px;
+}
+
+.dettaglio:hover {
+	color: darkgrey;
+}
+
+.dettaglio:hover .tooltip-text {
+	visibility: visible;
+}
+
+.dettaglio .tooltip-text {
+	visibility: hidden;
+	width: 120px;
+	background-color: darkgrey;
+	color: #fff;
+	text-align: center;
+	border-radius: 6px;
+	padding: 5px 0;
+	/* Position the tooltip */
+	position: absolute;
+	margin-left: 10px;
+	z-index: 1;
+	height: 30px;
+	font-size: 15px;
+}

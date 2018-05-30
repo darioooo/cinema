@@ -11,13 +11,14 @@
 			$('#' + valore).fadeIn();
 			$('#' + valore).css("display", "inherit");
 		});
+
 		$("#myCarousel").on('slide.bs.carousel', function () {
 			var valore = $($('#myCarousel .item.active').html()).attr('value');
 			$('#' + valore).fadeOut();
 			$('#' + valore).css("display", "none");
 		});
-		$(".dettaglio").click(function () {
 
+		$(".dettaglio").click(function () {
 			window.location = 'dettaglio?id=' + $(this).attr("value");
 		});
 
@@ -79,8 +80,9 @@
 						</div>
 						{{/filmorario}}
 
-						<a class="dettaglio" value="{{id}}" class="film-hours" style="margin-left:15px; margin-top:5px;">
-							<span class="glyphicon glyphicon-menu-down"></span>
+						<a class="dettaglio film-hours" value="{{id}}">
+							<span class="glyphicon glyphicon-chevron-right"></span>
+							<span class="tooltip-text">Dettaglio</span>
 						</a>
 						</form>
 					</div>
@@ -105,7 +107,6 @@
 			<div class=" text-center " style="min-height: 100px;background-image: url(
 		    'http://localhost/cinema/CinemaImages/chisiamobg.png'); padding: 10px 0px 10px; ">
 			</div>
-
 			<div id="myCarousel " class="carousel slide " data-ride="carousel ">
 				<div class="carousel-inner cinema-slider ">
 					<div class="item active " style="background-image: url( 'http://127.0.0.1/cinema/CinemaImages/slider/021.jpg'); background-repeat:no-repeat;
