@@ -379,6 +379,7 @@ input.fielderror {
 	margin-left: -30px;
 	margin-top: -20PX;
 	padding-top: 20px;
+	z-index: 9999;
 }
 
 #filmdiv {

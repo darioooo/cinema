@@ -245,6 +245,7 @@ class CinemaController
 	 */
 	function save_film(Request $request, Response $response, $args)
 	{	
+		
 		$url =$_POST["url"];
 		$attori =$_POST["attori"];
 		$regia =$_POST["regia"];
@@ -274,6 +275,7 @@ class CinemaController
 		$titolourl=  str_replace($vowels, '', $titolo);
 	
 		$img = "image/".$titolourl.".jpg";
+		if ($url=!'null')
 		file_put_contents($img, file_get_contents($url));
 		$insert_scheda['attori']=$attori;
 		$insert_scheda['regia']=$regia;
@@ -349,8 +351,11 @@ class CinemaController
 		//  $newname = "perfil.".$ext; 
 
 		// $target = 'image/'.$newname;
-		move_uploaded_file( $_FILES['file']['name'], 'image/');
-		var_dump($_FILES['hidden_data']);
+
+		var_dump($_FILES);
+		
+		var_dump($_POST);
+		move_uploaded_file( $_FILES['file_data']['tmp_name'], 'image/'.$_POST['title'].'.jpg');
 
 
 		// $targetPath = "image/".$_FILES['file']['name'];
