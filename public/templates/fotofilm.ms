@@ -29,7 +29,7 @@
 		var domenica = "";
 		var arrayOrari;
 		var orari;
-
+		var fileImputtato;
 		var form_data;
 
 
@@ -39,7 +39,7 @@
 		$(".imgfilm").click(function () {
 			url = $(this).attr("src");
 			titolo = $(this).attr("titolo");
-
+			$("#imagediv").attr('uploaded', 'false');
 			$("#imagediv").html("<img  src=" + url + "></img>");
 			$("#formdiv").css("visibility", "visible");
 			$("#labeltitolo").text(titolo);
@@ -151,35 +151,40 @@
 					$("#datainizio").removeClass("fielderror");
 					$("#datafine").removeClass("fielderror");
 
-					var dataString = 'titolo=' + titolo + '&url=' + url + '&data_inizio=' + datainizio +
+					var dataString = 'titolo=' + titolo + '&data_inizio=' + datainizio +
 						'&data_fine=' + datafine + '&orari=' + orariStrig;
 					if (descrizione != null) {
-						var dataString = dataString + '&descrizione=' + descrizione;
+						dataString = dataString + '&descrizione=' + descrizione;
 					}
 					if (attori != null) {
-						var dataString = dataString + '&attori=' + attori;
+						dataString = dataString + '&attori=' + attori;
 					}
 					if (regia != null) {
-						var dataString = dataString + '&regia=' + regia;
+						dataString = dataString + '&regia=' + regia;
 					}
 					if (durata != null) {
-						var dataString = dataString + '&durata=' + durata;
+						dataString = dataString + '&durata=' + durata;
 					}
 
+					dataString = dataString + '&url=' + url;
+
+
 					console.log('fileupload' + $('#input-b9').val());
-
-					// if ($('#input-b9').val()) {
-					// 	var file = $('#input-b9').fileinput('refresh', {
-					// 		allowedFileExtensions: ["jpg", "png", "gif"],
-					// 		uploadUrl: "action_image",
-					// 		uploadExtraData: function () {
-					// 			return {
-					// 				titolo: $("#title").val(),
-					// 			};
-					// 		}
-					// 	});
-					// }
-
+					console.log($('#imagediv').attr('uploaded'));
+					if ($('#imagediv').attr('uploaded') == 'true') {
+						if ($('#input-b9').val() != '') {
+							alert('fileupload');
+							var file = fileImputtato.fileinput('refresh', {
+								allowedFileExtensions: ["jpg", "png", "gif"],
+								uploadUrl: "action_image",
+								uploadExtraData: { title: titolo }
+							});
+							$('.fileinput-upload-button').trigger('click');
+							alert(file);
+						} else {
+							$("#fileModal").modal();
+						}
+					}
 
 
 					lunedì = "";
@@ -201,6 +206,7 @@
 						}
 					});
 				}
+
 			} else {
 				$("#datainizio").addClass("fielderror");
 				$("#todaysDateModal").modal();
@@ -294,26 +300,40 @@
 			$("#centerdiv").removeClass('col-sm-2 col-md-2').addClass('col-sm-1 col-md-1');
 			$("#leftdiv").removeClass('col-sm-4 col-md-4').addClass(' leftdivbg');
 		});
-		$('#input-b9').change(function () {
-			var file = $('#input-b9').fileinput('refresh', {
-				allowedFileExtensions: ["jpg", "png", "gif"],
-				uploadUrl: "action_image",
-				uploadExtraData: function () {
-					return {
-						titolo: $("#title").val(),
-					};
-				}
-			});
-		});
+		// $('#input-b9').change(function () {
+		// 	var file = $('#input-b9').fileinput('refresh', {
+		// 		allowedFileExtensions: ["jpg", "png", "gif"],
+		// 		uploadUrl: "action_image",
+		// 		uploadExtraData: function () {
+		// 			return {
+		// 				titolo: $("#title").val(),
+		// 			};
+		// 		}
+		// 	});
+		// });
 
 		$("#saveModal").click(function () {
-			if ($('#input-b9').val()) {
+			if ($('#input-b9').val() != '' && $('#title').val() != '') {
 				var urlimg = $('.file-preview-image').attr('src');
-				console.log(urlimg);
+				// console.log(urlimg);
+				url = null;
 				$("#imagediv").html("<img style=\"  max-height: 200px;\" src=" + urlimg + "></img>");
+				$("#imagediv").attr('uploaded', 'true');
+				titolo = $('#title').val();
+				$("#labeltitolo").text(titolo);
+				$('#fileModal').modal('toggle');
+				fileImputtato = $('#input-b9');
+			} else {
+				alert('macano alcuni camppi da inserire');
+				if ($('#title').val() == '') {
 
-
+					$('#title').addClass("fielderror");
+				}
+				if (!$('#input-b9').val() == '') {
+					$('#input-b9').addClass("fielderror")
+				}
 			}
+
 
 		});
 
