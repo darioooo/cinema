@@ -657,10 +657,6 @@
 						</div>
 						<br>
 						<div class="row insertorari" style="overflow: scroll; height: 120px;">
-
-
-
-
 						</div>
 					</div>
 				</div>
@@ -720,7 +716,6 @@
 					<h3>Continuare con l'eliminazione?</h3>
 				</div>
 				<div class="modal-footer delete-footer" style="background-color: rgba(128, 0, 0, 0.7); text-align: center;">
-
 				</div>
 			</div>
 		</div>
@@ -764,7 +759,6 @@
 						</div>
 						<br>
 						<div class="row insertorari" id="orari" style="overflow: scroll; height: 120px;">
-
 						</div>
 					</div>
 				</div>
@@ -786,10 +780,8 @@
 					<h4 class="modal-title">Selezionare Orari</h4>
 				</div>
 				<div class="modal-body" id="orariM">
-
 				</div>
 				<div class="modal-footer">
-
 					<button type="button" id="orariClose" class="btn btn-default" data-dismiss="modal">Close</button>
 					<button type="button" id="orariConfirm" class="btn btn-success" data-dismiss="modal">Confirm</button>
 				</div>
