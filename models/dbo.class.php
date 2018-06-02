@@ -224,6 +224,20 @@ class dbo
 		   
 		}
 
+		function get_filmHours($id)
+		{
+			$sql = 'SELECT * FROM film_orario  WHERE  id_film ='.$id;
+			try {
+			   return $this->db->query($sql);
+			   
+		   } catch (Exception $e) {
+   
+			   echo $e->getMessage();
+			   
+		   }
+		   
+		}
+
 
 
 }
