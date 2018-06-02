@@ -92,9 +92,9 @@
 		</div>
 	</div>
 	<div class="row">
-		{{#filmafter}}
 		<h1 id="prossimi">PROSSIMAMENTE</h1>
 		<div class="row" id="easyPaginate">
+			{{#filmafter}}
 			<div value="{{indice}}" id="film-futuri" class="column">
 				<img src="http://localhost/cinema/{{immagine}}" id="film-after-img" value="{{indice}}">
 			</div>

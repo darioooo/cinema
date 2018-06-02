@@ -200,7 +200,16 @@
 						data: dataString,
 						cache: false,
 						success: function (result) {
-
+							$('#Modalresponse').modal();
+							$('#Modalresponse').find('.modal-header').html('<h1>OK</h1>');
+							$('#Modalresponse').find('.modal-body').html('<p>inserimento effettuato con successso!!</p>');
+							console.log(result);
+							location.reload();
+						},
+						error: function (result) {
+							$('#Modalresponse').modal();
+							$('#Modalresponse').find('.modal-header').html('<h1>ERROR</h1>');
+							$('#Modalresponse').find('.modal-body').html('<p>ERRORE NELL\'INSERIMENTO RIPROVARE</p>');
 							console.log(result);
 						}
 					});
@@ -610,6 +619,21 @@
 					</div>
 				</div>
 			</div>
+
+			<div id="Modalresponse" class="modal fade">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header" style="background-color: rgba(128, 0, 0, 0.7);">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+
+						</div>
+						<div class="modal-body">
+
+						</div>
+					</div>
+				</div>
+			</div>
+
 			<div id="todaysDateModal" class="modal fade">
 				<div class="modal-dialog">
 					<div class="modal-content">
