@@ -152,7 +152,7 @@
 					$("#datafine").removeClass("fielderror");
 
 					var dataString = 'titolo=' + titolo + '&data_inizio=' + datainizio +
-						'&data_fine=' + datafine + '&orari=' + orariStrig;
+						'&data_fine=' + datafine + '&orari=' + orariStrig + '&url=' + url;
 					if (descrizione != null) {
 						dataString = dataString + '&descrizione=' + descrizione;
 					}
@@ -166,10 +166,9 @@
 						dataString = dataString + '&durata=' + durata;
 					}
 
-					dataString = dataString + '&url=' + url;
 
 
-					console.log('fileupload' + $('#input-b9').val());
+					console.log(url);
 					console.log($('#imagediv').attr('uploaded'));
 					if ($('#imagediv').attr('uploaded') == 'true') {
 						if ($('#input-b9').val() != '') {

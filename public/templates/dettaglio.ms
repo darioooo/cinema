@@ -12,7 +12,7 @@
 		<div class=" col-xs-12 col-md-4 col-lg-4 detail-image" style="margin-bottom: 10px;">
 			<div class=" col-xs-12 col-md-12 col-lg-12 jumbotron contentjumbo " style="border: 8px yellow dotted">
 				<div id="imageFilmDiv ">
-					<img src="http://localhost/cinema/{{immagine}} " style="min-width:100%; " class="imgfilm ">
+					<img src="http://localhost/cinema/{{immagine}} " class="imgfilm-dettaglio">
 				</div>
 			</div>
 		</div>

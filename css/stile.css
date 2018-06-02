@@ -720,3 +720,8 @@ img#cinelandiaimg {
 	height: 30px;
 	font-size: 15px;
 }
+
+.imgfilm-dettaglio {
+	min-width:100%;
+	max-width: 100%;
+}

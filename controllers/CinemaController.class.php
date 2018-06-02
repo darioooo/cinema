@@ -247,6 +247,7 @@ class CinemaController
 	{	
 		
 		$url =$_POST["url"];
+		
 		$attori =$_POST["attori"];
 		$regia =$_POST["regia"];
 		$durata = $_POST["durata"];
@@ -273,10 +274,12 @@ class CinemaController
 		$seralizedOrari= json_decode($orari);
 		$vowels = array(" ","'");
 		$titolourl=  str_replace($vowels, '', $titolo);
-	
 		$img = "image/".$titolourl.".jpg";
-		if ($url=!'null')
+
+		if($url!="null")
+		{
 		file_put_contents($img, file_get_contents($url));
+		}
 		$insert_scheda['attori']=$attori;
 		$insert_scheda['regia']=$regia;
 		$insert_film['visualizzato']=TRUE;
