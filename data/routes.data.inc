@@ -40,3 +40,5 @@ $this->map(['POST'],"/autenticazione","CinemaAuth:verifica");
 
 $this->map(['POST'],"/mail","CinemaAuth:mail");
 
+$this->map(['POST'], "/getorari", "CinemaRest:getOrari");
+

@@ -278,7 +278,7 @@ class CinemaController
 
 		if($url!="null")
 		{
-		file_put_contents($img, file_get_contents($url));
+			file_put_contents($img, file_get_contents($url));
 		}
 		$insert_scheda['attori']=$attori;
 		$insert_scheda['regia']=$regia;
@@ -478,4 +478,14 @@ class CinemaController
 			echo $e->getMessage();
 		}	
 	}
+
+	/**
+	 * @desc This method provides the registration html page
+	 * @link /dettaglio/{id:[\d]+}
+	 * @method POST
+	 * @param Request $request
+	 * @param Response $response
+	 * @param array $args
+	 * @return \Slim\Http\Response
+	 */
 }

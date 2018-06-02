@@ -2,6 +2,9 @@
 	var id;
 	var dey;
 	var indiceEliminazione;
+
+
+
 	$(document).ready(function () {
 		var data_inizio;
 		var data_fine;
@@ -12,6 +15,14 @@
 		var classToModify;
 		var getOrari = new Array();
 		var idArray = new Array();
+
+		function orario() {
+			this.orari = new Array();
+			this.giornoSettimana = "";
+			this.day = "";
+			this.mounth = "";
+			this.year = "";
+		}
 
 		var count = 0;
 
@@ -24,13 +35,6 @@
 			this.orari = new orario();
 		}
 
-		function orario() {
-			this.orari = new Array();
-			this.giornoSettimana = "";
-			this.day = "";
-			this.mounth = "";
-			this.year = "";
-		}
 
 		$('.bottone-visualizza-today').click(function () {
 			var indice = $(this).val();
@@ -104,7 +108,6 @@
 			});
 		});
 		$(".bottone-modifica-oggi, .button-modify-tomorrow").click(function () {
-			var orari;
 			$.ajax({
 				type: "POST",
 				url: "getorari",
@@ -124,6 +127,7 @@
 					// count = count(element);
 					risposta.forEach(element => {
 						// console.log(element.id_orario);
+						getOrari.length = 0;
 						var trimmedOrari = $.trim(element.ora);
 						var splittedOrari = trimmedOrari.split(/ +/);
 						// giorno = element.giorno;
@@ -134,14 +138,18 @@
 							// hoursObject.hour.push(element.id_orario);
 
 						});
-						var html = "<div class=\" row \" style=\" dislpay:inline-flex\"><div class=\" col-md-4\"><p>" + element.giorno +
+						var html =
+							"<div class=\" row \" style=\" dislpay:inline-flex\"><div class=\" col-md-4 pgiorni\" giornosettimana = \"" +
+							element.giornosettimana + "\" giorno = \"" +
+							element.giorno + "\"><p>" +
+							element.giorno +
 							" " +
 							element.giornosettimana +
 							"</p></div><div class=\"input-group col-md-8 clockpicker \" style=\"float: left; display: inline-flex;\" data-autoclose=\"true\">";
 
 						getOrari.forEach(x => {
 							html = html +
-								"<div class=\"input-group col-md-3 clockpicker \"  data-autoclose=\"true\"><span class=\"input-group-addon\"><span class=\"glyphicon glyphicon-time\"></span></span><input type=\"text\" class=\"form-control ora\" value= " +
+								"<div class=\"input-group col-md-3 clockpicker \"  data-autoclose=\"true\"><span class=\"input-group-addon\"><span class=\"glyphicon glyphicon-time\"></span></span><input type=\"text\" class=\"form-control orariDiv ora\" value= " +
 								x +
 								" ><span class=\"input-group-addon removeOrario\" style=\"color:red;\"><span class=\"glyphicon glyphicon-remove\"></span></span></div>";
 						});
@@ -214,24 +222,32 @@
 			}
 			// lallalllallallalaaaaaaaaaaaaaa aaaaaaaa
 			// console.log($(".insertorari").find(".pgiorni"));
+			var orarioO = new Array();
 			$(".insertorari").children().each(function () {
+				var orariol = new orario();
 				var giornosettimana = $(this).find(".pgiorni").attr("giornosettimana");
 				var giorno = $(this).find(".pgiorni").attr("giorno");
-				var mounth = $(this).find(".pgiorni").attr("mounth");
-				var year = $(this).find(".pgiorni").attr("year");
+				orariol['day'] = giorno;
+				orariol['giornosettimana'] = giornosettimana;
 
-				$(this).find('.orariDiv').children().each(function () {
-					console.log($(this.find('.ora').val()));
+				// var mounth = $(this).find(".pgiorni").attr("mounth");
+				// var year = $(this).find(".pgiorni").attr("year");
+
+				$(this).parent().find('.orariDiv').parent().each(function () {
+					console.log($(this).find('.ora').val());
+					orariol['orari'].push($(this).find('.ora').val());
+
 				});
+				orarioO.push(orariol);
 			});
 
-			// console.log(orarioO);
+			console.log(orarioO);
 			// if (orarioO.orari.length > 0) {
 			// 	orari.push(orarioO);
 			// }
 
-			var orariString = JSON.stringify(orari);
-			dataString = dataString + "&orari = " + orariString;
+			// var orariString = JSON.stringify(orari);
+			// dataString = dataString + "&orari = " + orariString;
 
 			$.ajax({
 				type: "POST",
