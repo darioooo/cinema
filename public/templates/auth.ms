@@ -1,4 +1,4 @@
-<script src="http://127.0.0.1/cinema/js/jquery-2.2.2.js"></script>
+<script src="../js/jquery-2.2.2.js"></script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
@@ -99,14 +99,14 @@
 							alert("username o password errate");
 							break;
 						case "success":
-							window.location.assign("http://127.0.0.1/cinema/index.php/admin");
+							window.location.assign("../index.php/admin");
 							break;
 						default:
 							text = "I have never heard of that fruit...";
 					}
 
 
-					//window.location.assign("http://127.0.0.1/cinema/index.php/admin");
+					//window.location.assign("../index.php/admin");
 
 				},
 				error: function (xhr, ajaxOptions, thrownError) {
@@ -138,7 +138,7 @@
 			</label>
 			<input type="password" placeholder="Enter Password" name="psw" id="psw" required>
 			<label for="psw">
-				<a href="http://127.0.0.1/cinema/index.php/recupero">Password Dimenticata?</b>
+				<a href="../index.php/recupero">Password Dimenticata?</b>
 			</label>
 			<button id="submit">Login</button>
 

@@ -27,74 +27,79 @@
 		}
 	});
 </script>
-<div id="in-programmazione">
-	<p id="filmprog">IN PROGRAMMAZIONE</p>
-	<div class="row jumbotron filmjumbo" id="in-programmazione-jumbotron">
-		<div class="col-xs-0 col-md-2 col-lg-2">
+<div>
+	<div id="in-programmazione">
+		<div id="prossimi-film-titolo">
+			<h1>IN PROGRAMMAZIONE</h1>
 		</div>
-		<div class="row jumbotron filmjumbo ">
-			<div class="col-xs-0 col-md-2 col-lg-1">
+		<div class="row jumbotron filmjumbo" id="in-programmazione-jumbotron">
+			<div class="col-xs-0 col-md-2 col-lg-2">
 			</div>
-			<div class="col-xs-12 col-md-4 col-lg-3">
-				<div class="col-xs-12 col-md-12 col-lg-12 jumbotron contentjumbo" style="border: 8px dotted yellow;">
-					<div id="myCarousel" class="carousel slide" data-ride="carousel">
-						<ol class="carousel-indicators">
-							{{#filmtoday}}
-							<li data-target="#myCarousel" data-slide-to="{{indice}}"></li>
-							{{/filmtoday}}
-						</ol>
-						<div class="carousel-inner">
-							{{#filmtoday}}
-							<div class="{{active}}" value="{{indice}}" id="imageFilmDiv">
-								<img src="http://localhost/cinema/{{immagine}}" class="imgfilm" value="{{indice}}">
+			<div class="row jumbotron filmjumbo ">
+				<div class="col-xs-0 col-md-2 col-lg-1">
+				</div>
+				<div class="col-xs-12 col-md-4 col-lg-3">
+					<div class="col-xs-12 col-md-12 col-lg-12 jumbotron contentjumbo" style="border: 8px dotted yellow;">
+						<div id="myCarousel" class="carousel slide" data-ride="carousel">
+							<ol class="carousel-indicators">
+								{{#filmtoday}}
+								<li data-target="#myCarousel" data-slide-to="{{indice}}"></li>
+								{{/filmtoday}}
+							</ol>
+							<div class="carousel-inner">
+								{{#filmtoday}}
+								<div class="{{active}}" value="{{indice}}" id="imageFilmDiv">
+									<img src="http://localhost/cinema/{{immagine}}" class="imgfilm" value="{{indice}}">
+								</div>
+								{{/filmtoday}}
+								<a class="left carousel-control" href="#myCarousel" data-slide="prev">
+								</a>
+								<a class="right carousel-control" href="#myCarousel" data-slide="next">
+								</a>
 							</div>
-							{{/filmtoday}}
-							<a class="left carousel-control" href="#myCarousel" data-slide="prev">
-							</a>
-							<a class="right carousel-control" href="#myCarousel" data-slide="next">
-							</a>
 						</div>
 					</div>
 				</div>
-			</div>
 
-			<div class="col-xs-12 col-md-4 col-lg-5">
-				<div class="col-xs-10 col-md-12 col-lg-12 jumbotron contentjumbo film-details">
-					{{#filmtoday}}
-					<div id="{{indice}}" style="display: {{visible}}">
-						<p class="film-title" align="center">
-							{{titolo}}
-						</p>
-						<br>
-						<br> {{#filmorario}}
-						<div class="col-xs-3 col-md-3 col-lg-3">
-							<p class="film-days">
-								{{#giornosettimana}}{{giornosettimana}}{{/giornosettimana}}
+				<div class="col-xs-12 col-md-4 col-lg-5">
+					<div class="col-xs-10 col-md-12 col-lg-12 jumbotron contentjumbo film-details">
+						{{#filmtoday}}
+						<div id="{{indice}}" style="display: {{visible}}">
+							<p class="film-title" align="center">
+								{{titolo}}
 							</p>
-						</div>
-						<div class="col-xs-3 col-md-3 col-lg-3">
-							<p>{{#giorno}}{{giorno}}{{/giorno}}</p>
-						</div>
-						<div class="col-xs-6 col-md-6 col-lg-6">
-							<p>{{#ora}}{{ora}}{{/ora}}</p>
-						</div>
-						{{/filmorario}}
+							<br>
+							<br> {{#filmorario}}
+							<div class="col-xs-3 col-md-3 col-lg-3">
+								<p class="film-days">
+									{{#giornosettimana}}{{giornosettimana}}{{/giornosettimana}}
+								</p>
+							</div>
+							<div class="col-xs-3 col-md-3 col-lg-3">
+								<p>{{#giorno}}{{giorno}}{{/giorno}}</p>
+							</div>
+							<div class="col-xs-6 col-md-6 col-lg-6">
+								<p>{{#ora}}{{ora}}{{/ora}}</p>
+							</div>
+							{{/filmorario}}
 
-						<a class="dettaglio film-hours" value="{{id}}">
-							<span class="glyphicon glyphicon-chevron-right"></span>
-							<span class="tooltip-text">Dettaglio</span>
-						</a>
-						</form>
+							<a class="dettaglio film-hours" value="{{id}}">
+								<span class="glyphicon glyphicon-chevron-right"></span>
+								<span class="tooltip-text">Dettaglio</span>
+							</a>
+							</form>
+						</div>
+						{{/filmtoday}}
 					</div>
-					{{/filmtoday}}
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="row">
-		<h1 id="prossimi">PROSSIMAMENTE</h1>
+	<div class="row" id="prossimi-film">
 		<div class="row" id="easyPaginate">
-			{{#filmafter}}
+			<div id="prossimi-film-titolo">
+				<h1>PROSSIMAMENTE</h1>
+			</div> {{#filmafter}}
 			<div value="{{indice}}" id="film-futuri" class="column">
 				<img src="http://localhost/cinema/{{immagine}}" id="film-after-img" value="{{indice}}">
 			</div>
@@ -102,17 +107,19 @@
 		</div>
 	</div>
 	<div id="chi-siamo">
-		<h1 id="chi-siamo-titolo">CHI SIAMO</h1>
+		<div id="prossimi-film-titolo">
+			<h1>CHI SIAMO</h1>
+		</div>
 		<div>
 			<div class=" text-center " style="min-height: 100px;background-image: url(
 		    'http://localhost/cinema/CinemaImages/chisiamobg.png'); padding: 10px 0px 10px; ">
 			</div>
 			<div id="myCarousel " class="carousel slide " data-ride="carousel ">
 				<div class="carousel-inner cinema-slider ">
-					<div class="item active " style="background-image: url( 'http://127.0.0.1/cinema/CinemaImages/slider/021.jpg'); background-repeat:no-repeat;
+					<div class="item active " style="background-image: url( '../CinemaImages/slider/021.jpg'); background-repeat:no-repeat;
 		    background-position:center; min-height: 600px; background-size: cover; width:100%; ">
 					</div>
-					<div class="item " style="background-image: url( 'http://127.0.0.1/cinema/CinemaImages/slider/022.jpg'); background-repeat:no-repeat;
+					<div class="item " style="background-image: url( '../CinemaImages/slider/022.jpg'); background-repeat:no-repeat;
 		    background-position:center;background-size: cover; min-height: 600px; width:100%; ">
 					</div>
 				</div>
@@ -124,7 +131,9 @@
 	</div>
 
 	<div id="storia">
-		<h1 id="chi-siamo-titolo">STORIA</h1>
+		<div id="prossimi-film-titolo">
+			<h1>STORIA</h1>
+		</div>
 		<div id="storia-contenuto">
 			<div id="storia-icona">
 				<img src="http://localhost/cinema/CinemaImages/movie-projector.png " style="float: right; max-width: 150px; ">

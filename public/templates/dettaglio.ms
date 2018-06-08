@@ -3,6 +3,7 @@
 		$(".dettaglio").click(function () {
 			window.location = 'dettaglio?id=' + $(this).attr("value");
 		});
+
 	});
 </script>
 
@@ -19,7 +20,23 @@
 
 		<div class="col-xs-12 col-md-8 col-lg-8">
 			<div class="col-xs-1 col-md-0 col-lg-0"></div>
-			<div class="col-xs-10 col-md-12 col-lg-12" id="jumbotron-details-content">
+			<div class="col-xs-10 col-md-12 col-lg-12" id="jumbotron-details-content" style="background-color: rgb(209, 209, 209);
+			border-radius: 10px;
+			border: 2px solid darkgrey;
+			padding: 15px;">
+				<div class="row" style="background-color: rgba(128, 0, 0, 0.9);
+				border-radius: 10px;
+				text-align: center;
+				height: 70px;
+				margin-bottom: 50px;
+				width: fit-content;
+				margin: 0px auto;
+				margin-bottom: 20px;
+				padding: 10px 10px;
+				font-size: 30px;
+				color: rgb(209, 209, 209);">
+					<p>{{titolo}}</p>
+				</div>
 				<div class="row">
 					<div class="col-xs-3 col-md-3 col-lg-3 ">
 						<b>
@@ -51,13 +68,24 @@
 					<div class="col-xs-3 col-md-3 col-lg-3 ">
 					</div>
 					<div class="col-xs-9 col-md-9 col-lg-9 ">
-						<p>{{giornosettimana}} - {{giorno}} - {{ora}}</p>
+						<div class="col-xs-4 col-md-3 col-lg-3">
+							<b style="color: rgb(128, 0, 0);">
+								<p>{{giornosettimana}}</p>
+							</b>
+						</div>
+						<div class="col-xs-4 col-md-3 col-lg-3">
+							<p>{{giorno}}</p>
+						</div>
+						<div class="col-xs-4 col-md-3 col-lg-3">
+							<p>{{ora}}</p>
+						</div>
+						<!-- <p>{{giornosettimana}} - {{giorno}} - {{ora}}</p> -->
 					</div>
 					{{/filmorario}}
 				</div>
 
-				<div class="row ">
-					<div class="col-xs-3 col-md-3 col-lg-3 ">
+				<div class="row " style="word-wrap: break-word;">
+					<div class="col-xs-3 col-md-3 col-lg-3">
 						<b>
 							<p style="float:right;">Descrizione</p>
 						</b>

@@ -87,8 +87,8 @@
 					$('.delete-footer').find('button').remove();
 					$('.delete-footer').append('<button class="btn-success" data-dismiss="modal">OK</button>');
 					setTimeout(function () {
-							$("#delete-modal" + indiceEliminazione).modal("toggle");
-						},
+						$("#delete-modal" + indiceEliminazione).modal("toggle");
+					},
 						3000);
 				},
 				error: function (result) {
@@ -101,8 +101,8 @@
 					$('.delete-footer').find('button').remove();
 					$('.delete-footer').append('<button class="btn-success" data-dismiss="modal">OK</button>');
 					setTimeout(function () {
-							$("#delete-modal" + indiceEliminazione).modal("toggle");
-						},
+						$("#delete-modal" + indiceEliminazione).modal("toggle");
+					},
 						3000);
 				}
 			});
@@ -233,7 +233,7 @@
 				// var mounth = $(this).find(".pgiorni").attr("mounth");
 				// var year = $(this).find(".pgiorni").attr("year");
 
-				$(this).parent().find('.orariDiv').parent().each(function () {
+				$(this).parent().find('.orariDiv').children().children().each(function () {
 					console.log($(this).find('.ora').val());
 					orariol['orari'].push($(this).find('.ora').val());
 
@@ -246,8 +246,8 @@
 			// 	orari.push(orarioO);
 			// }
 
-			// var orariString = JSON.stringify(orari);
-			// dataString = dataString + "&orari = " + orariString;
+			var orariString = JSON.stringify(orarioO);
+			dataString = dataString + "&orari = " + orariString;
 
 			$.ajax({
 				type: "POST",
@@ -265,51 +265,51 @@
 			$(this).animate({
 				width: '200px'
 			}, {
-				step: function (currentwidth) {
-					if (currentwidth > 150) {
-						$(this).find("#phide").fadeIn();
-						$(this).find("#phide").css("transition-duration", "0.3s");
+					step: function (currentwidth) {
+						if (currentwidth > 150) {
+							$(this).find("#phide").fadeIn();
+							$(this).find("#phide").css("transition-duration", "0.3s");
+						}
 					}
-				}
-			});
+				});
 		});
 
 		$("#buttonhide").mouseleave(function () {
 			$(this).animate({
 				width: '80px'
 			}, {
-				step: function (currentwidth) {
-					if (currentwidth < 150) {
-						$(this).find("#phide").fadeOut(3);
-						$(this).find("#phide").css("transition-duration", "0s");
+					step: function (currentwidth) {
+						if (currentwidth < 150) {
+							$(this).find("#phide").fadeOut(3);
+							$(this).find("#phide").css("transition-duration", "0s");
+						}
 					}
-				}
-			});
+				});
 
 		});
 		$("#buttonhidemodifica").mouseenter(function () {
 			$("#buttonhidemodifica").animate({
 				width: '200px'
 			}, {
-				step: function (currentwidth) {
-					if (currentwidth > 150) {
-						$(this).find("#pmodifica").fadeIn();
-						$(this).find("#pmodifica").css("transition-duration", "0.3s");
+					step: function (currentwidth) {
+						if (currentwidth > 150) {
+							$(this).find("#pmodifica").fadeIn();
+							$(this).find("#pmodifica").css("transition-duration", "0.3s");
+						}
 					}
-				}
-			});
+				});
 		});
 		$("#buttonhidemodifica").mouseleave(function () {
 			$("#buttonhidemodifica").animate({
 				width: '80px'
 			}, {
-				step: function (currentwidth) {
-					if (currentwidth < 150) {
-						$(this).find("#pmodifica").fadeOut(3);
-						$(this).find("#pmodifica").css("transition-duration", "0s");
+					step: function (currentwidth) {
+						if (currentwidth < 150) {
+							$(this).find("#pmodifica").fadeOut(3);
+							$(this).find("#pmodifica").css("transition-duration", "0s");
+						}
 					}
-				}
-			});
+				});
 		});
 
 		$(".datepicker").datepicker({
@@ -412,7 +412,7 @@
 			$(this).parent().remove();
 		});
 
-		$('#orariClose').click(function () {});
+		$('#orariClose').click(function () { });
 
 		$('#orariConfirm').click(function () {
 			console.log(arrayOrari);
@@ -443,7 +443,7 @@
 					orari[i].giornoSettimana + " giorno=" + orari[i].day + " mounth=" + orari[i].mounth + " year=" + orari[i].year +
 					" >" + orari[i].giornoSettimana +
 					" " + orari[i].day + "/" + orari[i]
-					.mounth +
+						.mounth +
 					"/" + orari[i].year +
 					"</p></div><div class=\"input-group col-md-8 clockpicker \" style=\"float: left; display: inline-flex;\" data-autoclose=\"true\">";
 
@@ -466,13 +466,11 @@
 	<div class="col-sm-1 col-md-1">
 		<div class="btn-group-vertical   inlinea leftdivbg">
 
-			<a href="http://127.0.0.1/cinema/index.php/modifica" class="btn " style="visibility: visible; text-align: center; padding-top: 13px"
-			    id="buttonhidemodifica">
+			<a href="../index.php/modifica" class="btn " style="visibility: visible; text-align: center; padding-top: 13px" id="buttonhidemodifica">
 				<span id="pmodifica" style="color:white; display:none; transition-duration: 0.3s;">MODIFICA </span>
 				<span id="spanmodifica" class="glyphicon glyphicon-cog" style="color:white"></span>
 			</a>
-			<a href="http://127.0.0.1/cinema/index.php/admin" class="btn " style="visibility: visible; text-align: center; padding-top: 13px;"
-			    id="buttonhide">
+			<a href="../index.php/admin" class="btn " style="visibility: visible; text-align: center; padding-top: 13px;" id="buttonhide">
 				<span id="phide" style="color:white; display:none; transition-duration: 0.3s;">FILM </span>
 				<span id="spanhide" class="glyphicon glyphicon-facetime-video" style="color:white"></span>
 			</a>
@@ -652,10 +650,10 @@
 								<div class="form-group">
 									<label for="comment">Data inizio</label>
 									<input class="datepicker form-control datainizio" value="{{data_inizio}}" data-date-format="yyyy-mm-dd" rows="1" style="margin-bottom: 5px;"
-									    required>
+									 required>
 									<label for="comment">Data fine</label>
 									<input class="datepicker form-control datafine" value="{{data_fine}}" data-date-format="yyyy-mm-dd" rows="1" style="margin-bottom: 5px;"
-									    required>
+									 required>
 									<label for="comment">Durata</label>
 									<input type="text" value="{{durata}}" class="form-control durata" rows="1" required>
 								</div>
@@ -754,10 +752,10 @@
 								<div class="form-group">
 									<label for="comment">Data inizio</label>
 									<input class="datepicker form-control datainizio" value="{{data_inizio}}" data-date-format="yyyy-mm-dd" rows="1" style="margin-bottom: 5px;"
-									    required>
+									 required>
 									<label for="comment">Data fine</label>
 									<input class="datepicker form-control datafine" value="{{data_fine}}" data-date-format="yyyy-mm-dd" rows="1" style="margin-bottom: 5px;"
-									    required>
+									 required>
 									<label for="comment">Durata</label>
 									<input type="text" value="{{durata}}" class="form-control durata" rows="1" required>
 								</div>

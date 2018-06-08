@@ -2,24 +2,24 @@
 <html>
 
 <head>
-  <link rel="stylesheet" href="http://127.0.0.1/cinema/css/bootstrap-3.3.5/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="http://127.0.0.1/cinema/css/bootstrap-datepicker.min.css">
-  <link rel="stylesheet" href="http://127.0.0.1/cinema/css/stile.css">
-  <link rel="stylesheet" href="http://127.0.0.1/cinema/fileinput/css/fileinput.min.css">
-  <link rel="stylesheet" href="http://127.0.0.1/cinema/lib/clockpicker-gh-pages/src/clockpicker.css">
+  <link rel="stylesheet" href="../css/bootstrap-3.3.5/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/bootstrap-datepicker.min.css">
+  <link rel="stylesheet" href="../css/stile.css">
+  <link rel="stylesheet" href="../fileinput/css/fileinput.min.css">
+  <link rel="stylesheet" href="../lib/clockpicker-gh-pages/src/clockpicker.css">
 
-  <script src="http://127.0.0.1/cinema/js/jquery-2.2.2.js"></script>
-  <script src="http://127.0.0.1/cinema/css/bootstrap-3.3.5/dist/js/bootstrap.min.js"></script>
-  <script src="http://127.0.0.1/cinema/js/bootstrap-datepicker.min.js"></script>
-  <script src="http://127.0.0.1/cinema/js/bootstrap-datepicker.it.min.js"></script>
-  <script src="http://127.0.0.1/cinema/fileinput/js/plugins/piexif.min.js"></script>
-  <script src="http://127.0.0.1/cinema/fileinput/js/plugins/sortable.min.js"></script>
-  <script src="http://127.0.0.1/cinema/fileinput/js/plugins/purify.min.js"></script>
-  <script src="http://127.0.0.1/cinema/fileinput/js/fileinput.min.js"></script>
-  <script src="http://127.0.0.1/cinema/fileinput/themes/fa/theme.js"></script>
-  <script src="http://127.0.0.1/cinema/fileinput/js/locales/it.js"></script>
-  <script src="http://127.0.0.1/cinema/easyPaginateJQuery/lib/jquery.easyPaginate.js"></script>
-  <script src="http://127.0.0.1/cinema/lib/clockpicker-gh-pages/src/clockpicker.js"></script>
+  <script src="../js/jquery-2.2.2.js"></script>
+  <script src="../css/bootstrap-3.3.5/dist/js/bootstrap.min.js"></script>
+  <script src="../js/bootstrap-datepicker.min.js"></script>
+  <script src="../js/bootstrap-datepicker.it.min.js"></script>
+  <script src="../fileinput/js/plugins/piexif.min.js"></script>
+  <script src="../fileinput/js/plugins/sortable.min.js"></script>
+  <script src="../fileinput/js/plugins/purify.min.js"></script>
+  <script src="../fileinput/js/fileinput.min.js"></script>
+  <script src="../fileinput/themes/fa/theme.js"></script>
+  <script src="../fileinput/js/locales/it.js"></script>
+  <script src="../easyPaginateJQuery/lib/jquery.easyPaginate.js"></script>
+  <script src="../lib/clockpicker-gh-pages/src/clockpicker.js"></script>
 
   <title>Cinema Accademia</title>
 </head>

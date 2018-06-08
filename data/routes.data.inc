@@ -11,6 +11,8 @@ $this->get("/user/{titolo}",function($request,$response,$args)
 
 
 
+
+
 $this->map(['GET'],"/home","CinemaController:home");
 
 $this->map(['GET'],"/modifica","CinemaController:modifica_admin");

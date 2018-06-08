@@ -172,14 +172,12 @@
 					console.log($('#imagediv').attr('uploaded'));
 					if ($('#imagediv').attr('uploaded') == 'true') {
 						if ($('#input-b9').val() != '') {
-							alert('fileupload');
 							var file = fileImputtato.fileinput('refresh', {
 								allowedFileExtensions: ["jpg", "png", "gif"],
 								uploadUrl: "action_image",
 								uploadExtraData: { title: titolo }
 							});
 							$('.fileinput-upload-button').trigger('click');
-							alert(file);
 						} else {
 							$("#fileModal").modal();
 						}
@@ -515,7 +513,7 @@
 		</a>
 		<div class="btn-group-vertical inlinea  " id="filmdiv" style="background-color: black">
 			<div class="btn-group-horizontal   ">
-				<button class="btn btn-danger " type="button" id="modificabutton">
+				<button class="btn btn-danger " type="button" id="modificabutton" onclick="location.href='modifica';">
 					<span class="glyphicon glyphicon-chevron-right" style="color:white; ">MODIFICA</span>
 				</button>
 
