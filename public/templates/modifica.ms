@@ -3,8 +3,6 @@
 	var dey;
 	var indiceEliminazione;
 
-
-
 	$(document).ready(function () {
 		var data_inizio;
 		var data_fine;
@@ -34,7 +32,6 @@
 			this.descrizione = "";
 			this.orari = new orario();
 		}
-
 
 		$('.bottone-visualizza-today').click(function () {
 			var indice = $(this).val();
@@ -380,7 +377,6 @@
 								"</p></div><div class=\"col-md-1\"><a class=\"glyphicon glyphicon-plus-sign spanAdd \"></a></div><div class=\"col-md-8 orariDiv \"></div></div></br>"
 							);
 						}
-
 						// count = count(arrayOrari);
 						$("#orarimodal").modal({
 							backdrop: 'static',
@@ -456,9 +452,6 @@
 				html = html + "</div></br></div>";
 				$('.insertorari').append(html);
 			}
-
-
-
 		});
 	});
 </script>
@@ -595,22 +588,77 @@
 						<img src="http://localhost/cinema/{{immagine}}" value="{{indice}}" style="width:250px">
 					</div>
 					<div class="col-md-8">
-						<div class="col-md-4">
-							<p>
-								<b>Data inizio</b>
-							</p>
-							<p>
-								<b>Data fine</b>
-							</p>
-							<p>
-								<b>Descrizione</b>
-							</p>
+						<div class="row">
+							<div class="col-md-4">
+								<p>
+									<b>Data inizio</b>
+								</p>
+							</div>
+							<div class="col-md-8">
+								<p>{{data_inizio}}</p>
+							</div>
 						</div>
-						<div class="col-md-8">
-							<p>{{data_inizio}}</p>
-							<p>{{data_fine}}</p>
-							<p style="word-wrap:break-word;">{{descrizione}}</p>
-							<p style="word-wrap:break-word;">{{attori}}</p>
+						<div class="row">
+							<div class="col-md-4">
+								<p>
+									<b>Data fine</b>
+								</p>
+							</div>
+							<div class="col-md-8">
+								<p>{{data_fine}}</p>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+								<p>
+									<b>Durata</b>
+								</p>
+							</div>
+							<div class="col-md-8">
+								<p>{{durata}}'</p>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+								<p>
+									<b>Descrizione</b>
+								</p>
+							</div>
+							<div class="col-md-8">
+								<p>{{descrizione}}</p>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+								<p>
+									<b>Regia</b>
+								</p>
+							</div>
+							<div class="col-md-8">
+								<p>{{regia}}</p>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+								<p>
+									<b>Attori</b>
+								</p>
+							</div>
+							<div class="col-md-8">
+								<p>{{attori}}</p>
+							</div>
+						</div>
+						<div class="row ">
+							<div class="col-md-4">
+								<b>
+									<p>Orari</p>
+								</b>
+							</div>
+							<div class="col-md-8">
+								{{#filmorario}}
+								<p>{{giornosettimana}} - {{giorno}} - {{ora}}</p>
+								{{/filmorario}}
+							</div>
 						</div>
 					</div>
 				</div>
@@ -696,23 +744,77 @@
 						<img src="http://localhost/cinema/{{immagine}}" value="{{indice}}" style="width:250px">
 					</div>
 					<div class="col-md-8">
-						<div class="col-md-4">
-							<p>
-								<b>Data inizio</b>
-							</p>
-							<p>
-								<b>Data fine</b>
-							</p>
-							<p>
-								<b>Descrizione</b>
-							</p>
+						<div class="row">
+							<div class="col-md-4">
+								<p>
+									<b>Data inizio</b>
+								</p>
+							</div>
+							<div class="col-md-8">
+								<p>{{data_inizio}}</p>
+							</div>
 						</div>
-						<div class="col-md-8">
-							<p>{{data_inizio}}</p>
-							<p>{{data_fine}}</p>
-							<p style="word-wrap:break-word;">{{descrizione}}</p>
-							<p>{{attori}}</p>
-							<p>{{regia}}</p>
+						<div class="row">
+							<div class="col-md-4">
+								<p>
+									<b>Data fine</b>
+								</p>
+							</div>
+							<div class="col-md-8">
+								<p>{{data_fine}}</p>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+								<p>
+									<b>Durata</b>
+								</p>
+							</div>
+							<div class="col-md-8">
+								<p>{{durata}}'</p>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+								<p>
+									<b>Descrizione</b>
+								</p>
+							</div>
+							<div class="col-md-8">
+								<p>{{descrizione}}</p>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+								<p>
+									<b>Regia</b>
+								</p>
+							</div>
+							<div class="col-md-8">
+								<p>{{regia}}</p>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+								<p>
+									<b>Attori</b>
+								</p>
+							</div>
+							<div class="col-md-8">
+								<p>{{attori}}</p>
+							</div>
+						</div>
+						<div class="row ">
+							<div class="col-md-4">
+								<b>
+									<p>Orari</p>
+								</b>
+							</div>
+							<div class="col-md-8">
+								{{#filmorario}}
+								<p>{{giornosettimana}} - {{giorno}} - {{#orari}}{{ora}}{{/orari}}</p>
+								{{/filmorario}}
+							</div>
 						</div>
 					</div>
 				</div>
