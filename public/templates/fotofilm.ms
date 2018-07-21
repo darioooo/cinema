@@ -159,7 +159,6 @@
 
 					if ($('#imagediv').attr('uploaded') == 'true') {
 						if ($('#input-b9').val() != '') {
-							alert('fileupload');
 							var file = fileImputtato.fileinput('refresh', {
 								allowedFileExtensions: ["jpg", "png", "gif"],
 								uploadUrl: "action_image",
@@ -168,7 +167,6 @@
 								}
 							});
 							$('.fileinput-upload-button').trigger('click');
-							alert(file);
 						} else {
 							$("#fileModal").modal();
 						}

@@ -230,7 +230,7 @@
 				// var mounth = $(this).find(".pgiorni").attr("mounth");
 				// var year = $(this).find(".pgiorni").attr("year");
 
-				$(this).parent().find('.orariDiv').parent().each(function () {
+				$(this).parent().find('.orariDiv').children().children().each(function () {
 					console.log($(this).find('.ora').val());
 					orariol['orari'].push($(this).find('.ora').val());
 
@@ -243,8 +243,8 @@
 			// 	orari.push(orarioO);
 			// }
 
-			// var orariString = JSON.stringify(orari);
-			// dataString = dataString + "&orari = " + orariString;
+			var orariString = JSON.stringify(orarioO);
+			dataString = dataString + "&orari = " + orariString;
 
 			$.ajax({
 				type: "POST",
@@ -459,13 +459,11 @@
 	<div class="col-sm-1 col-md-1">
 		<div class="btn-group-vertical   inlinea leftdivbg">
 
-			<a href="http://127.0.0.1/cinema/index.php/modifica" class="btn " style="visibility: visible; text-align: center; padding-top: 13px"
-			    id="buttonhidemodifica">
+			<a href="../index.php/modifica" class="btn " style="visibility: visible; text-align: center; padding-top: 13px" id="buttonhidemodifica">
 				<span id="pmodifica" style="color:white; display:none; transition-duration: 0.3s;">MODIFICA </span>
 				<span id="spanmodifica" class="glyphicon glyphicon-cog" style="color:white"></span>
 			</a>
-			<a href="http://127.0.0.1/cinema/index.php/admin" class="btn " style="visibility: visible; text-align: center; padding-top: 13px;"
-			    id="buttonhide">
+			<a href="../index.php/admin" class="btn " style="visibility: visible; text-align: center; padding-top: 13px;" id="buttonhide">
 				<span id="phide" style="color:white; display:none; transition-duration: 0.3s;">FILM </span>
 				<span id="spanhide" class="glyphicon glyphicon-facetime-video" style="color:white"></span>
 			</a>

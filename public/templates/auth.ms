@@ -1,4 +1,4 @@
-<script src="http://127.0.0.1/cinema/js/jquery-2.2.2.js"></script>
+<script src="../js/jquery-2.2.2.js"></script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>

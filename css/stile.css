@@ -406,9 +406,23 @@ input.fielderror {
 #newfilm {
 	background-color: rgba(128, 0, 0, 0.95);
 	font-weight: bold;
+	width: 64%;
 	font-family: 'Ubuntu', sans-serif;
 	text-decoration-color: black;
-	border-color: rgb(0, 0, 0);
+	border-color: rgb(255, 255, 255);
+	border-radius: 0px;
+	padding-left: 0px;
+}
+
+#modificabutton{
+	background-color: rgba(128, 0, 0, 0.95);
+	font-weight: bold;
+	width: 35%;
+	font-family: 'Ubuntu', sans-serif;
+	text-decoration-color: black;
+	border-color: rgb(255, 255, 255);
+	border-radius: 0px;
+	padding-right: 0px;
 }
 
 #times {
@@ -624,6 +638,28 @@ img#cinelandiaimg {
 	margin-top: 70px;
 	margin-bottom: 50px;
 	padding: 15px;
+}
+
+#prossimi-film {
+	background-color: rgb(209, 209, 209);
+	border-radius: 10px;
+	box-shadow: 2px 2px 2px 2px grey;
+	margin-top: 70px;
+	margin-bottom: 50px;
+	padding: 15px;
+	margin-right: 0px;
+	margin-left: 0px;
+}
+
+#prossimi-film-titolo {
+	background-color: rgba(128, 0, 0, 0.9);
+	border-radius: 10px;
+	box-shadow: 2px 2px 2px 2px grey;
+	text-align: center;
+	height: 70px;
+	margin-bottom: 50px;
+	padding: 1px 0px;
+	color: rgb(209, 209, 209);
 }
 
 #chi-siamo {

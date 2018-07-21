@@ -115,7 +115,7 @@ class CinemaController
 			}
 			else
 			{
-				header("Location: http://127.0.0.1/cinema/index.php/auth");
+				header("Location: ../index.php/auth");
 				exit();
 			}
 		}
@@ -224,7 +224,7 @@ class CinemaController
 	}
 		else
 			{
-				header("Location: http://127.0.0.1/cinema/index.php/auth");
+				header("Location: ../index.php/auth");
 				exit();
 			}
 			session_destroy();
@@ -420,20 +420,23 @@ class CinemaController
 
 	function DettaglioFilm(Request $request, Response $response, $args)
 	{
-		$id = $_GET["id"];
-
+		try
+		{
+		$id['id_film'] = $_GET["id"];
+		$id_film['id'] = $id['id_film'];
 		$film = new Film();
 		// $id_scheda['id_scheda']=$data['film'][0]['id_scheda'];
 		$scheda=new Scheda();
 		$film_orario= new Film_Orario(); 
 
-		$data['filmdetails'] = $film->get_detailFilm($id);
+		$data['filmdetails'] = $film->select($id_film);
 		if($data['filmdetails']!= null)
 		{
 			for($i=0;$i<count($data['filmdetails']);$i++)
 			{
 				$sc=$scheda->select($id);
 				$orariToday= $film_orario->select($id);
+				
 				
 				$data['filmdetails'][$i]['regia']=$sc[0]['regia']; 
 				$data['filmdetails'][$i]['attori']=$sc[0]['attori'];
@@ -461,7 +464,11 @@ class CinemaController
 				} 
 			}
 		}
-
+	}
+	catch(Exception $e )
+	{
+		echo $e->getMessage();
+	}	
 		try{
 			// var_dump($data);exit();
 			$table = (new DettaglioView(null,$data));
@@ -475,13 +482,5 @@ class CinemaController
 		}	
 	}
 
-	/**
-	 * @desc This method provides the registration html page
-	 * @link /dettaglio/{id:[\d]+}
-	 * @method POST
-	 * @param Request $request
-	 * @param Response $response
-	 * @param array $args
-	 * @return \Slim\Http\Response
-	 */
+	
 }
