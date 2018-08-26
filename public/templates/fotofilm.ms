@@ -1,5 +1,7 @@
 <script type="text/javascript">
 	$(document).ready(function () {
+
+
 		var url;
 		var file;
 		var titolo;
@@ -16,6 +18,7 @@
 			this.day = "";
 			this.mounth = "";
 			this.year = "";
+
 		}
 		var lunedì = "";
 		var martedì = "";
@@ -28,6 +31,8 @@
 		var orari;
 		var fileImputtato;
 		var form_data;
+
+
 
 		$('.datepicker').datepicker();
 		event.preventDefault();
@@ -112,6 +117,7 @@
 			attori = $("#attori").val();
 			regia = $("#regia").val();
 			durata = $("#durata").val();
+
 			orariStrig = JSON.stringify(orari);
 
 			var datainizio = $("#datainizio").datepicker({
@@ -132,6 +138,8 @@
 			var newDatef = myDateFine[1] + "," + myDateFine[0] + "," + myDateFine[2];
 			var newDataFine = new Date(newDatef).getTime();
 
+			console.log("datainizio" + newDataInizio);
+			console.log("datatoday" + todaysDate);
 			if (newDataInizio >= todaysDate) {
 				$("#datainizio").removeClass("fielderror");
 
@@ -142,6 +150,7 @@
 				} else {
 					$("#datainizio").removeClass("fielderror");
 					$("#datafine").removeClass("fielderror");
+
 					var dataString = 'titolo=' + titolo + '&data_inizio=' + datainizio +
 						'&data_fine=' + datafine + '&orari=' + orariStrig + '&url=' + url;
 					if (descrizione != null) {
@@ -157,20 +166,23 @@
 						dataString = dataString + '&durata=' + durata;
 					}
 
+
+
+					console.log(url);
+					console.log($('#imagediv').attr('uploaded'));
 					if ($('#imagediv').attr('uploaded') == 'true') {
 						if ($('#input-b9').val() != '') {
 							var file = fileImputtato.fileinput('refresh', {
 								allowedFileExtensions: ["jpg", "png", "gif"],
 								uploadUrl: "action_image",
-								uploadExtraData: {
-									title: titolo
-								}
+								uploadExtraData: { title: titolo }
 							});
 							$('.fileinput-upload-button').trigger('click');
 						} else {
 							$("#fileModal").modal();
 						}
 					}
+
 
 					lunedì = "";
 					martedì = "";
@@ -189,15 +201,18 @@
 							$('#Modalresponse').modal();
 							$('#Modalresponse').find('.modal-header').html('<h1>OK</h1>');
 							$('#Modalresponse').find('.modal-body').html('<p>inserimento effettuato con successso!!</p>');
+							console.log(result);
 							location.reload();
 						},
 						error: function (result) {
 							$('#Modalresponse').modal();
 							$('#Modalresponse').find('.modal-header').html('<h1>ERROR</h1>');
 							$('#Modalresponse').find('.modal-body').html('<p>ERRORE NELL\'INSERIMENTO RIPROVARE</p>');
+							console.log(result);
 						}
 					});
 				}
+
 			} else {
 				$("#datainizio").addClass("fielderror");
 				$("#todaysDateModal").modal();
@@ -207,72 +222,73 @@
 			$(this).animate({
 				width: '200px'
 			}, {
-				step: function (currentwidth) {
-					if (currentwidth > 150) {
-						$(this).find("#phide").fadeIn();
-						$(this).find("#phide").css("transition-duration", "0.3s");
+					step: function (currentwidth) {
+						if (currentwidth > 150) {
+							$(this).find("#phide").fadeIn();
+							$(this).find("#phide").css("transition-duration", "0.3s");
+						}
 					}
-				}
-			});
+				});
 		});
 
 		$("#buttonhide").mouseleave(function () {
 			$(this).animate({
 				width: '80px'
 			}, {
-				step: function (currentwidth) {
-					if (currentwidth < 150) {
-						$(this).find("#phide").fadeOut(3);
-						$(this).find("#phide").css("transition-duration", "0s");
+					step: function (currentwidth) {
+						if (currentwidth < 150) {
+							$(this).find("#phide").fadeOut(3);
+							$(this).find("#phide").css("transition-duration", "0s");
+						}
 					}
-				}
-			});
+				});
+
 		});
 		$("#buttonhidemodifica").mouseenter(function () {
 			$("#buttonhidemodifica").animate({
 				width: '200px'
 			}, {
-				step: function (currentwidth) {
-					if (currentwidth > 150) {
-						$(this).find("#pmodifica").fadeIn();
-						$(this).find("#pmodifica").css("transition-duration", "0.3s");
+					step: function (currentwidth) {
+						if (currentwidth > 150) {
+							$(this).find("#pmodifica").fadeIn();
+							$(this).find("#pmodifica").css("transition-duration", "0.3s");
+						}
 					}
-				}
-			});
+				});
 		});
 		$("#buttonhidemodifica").mouseleave(function () {
 			$("#buttonhidemodifica").animate({
 				width: '80px'
 			}, {
-				step: function (currentwidth) {
-					if (currentwidth < 150) {
-						$(this).find("#pmodifica").fadeOut(3);
-						$(this).find("#pmodifica").css("transition-duration", "0s");
+					step: function (currentwidth) {
+						if (currentwidth < 150) {
+							$(this).find("#pmodifica").fadeOut(3);
+							$(this).find("#pmodifica").css("transition-duration", "0s");
+						}
 					}
-				}
-			});
+				});
 		});
 		$("#buttonadd").mouseenter(function () {
 			$("#buttonadd").animate({
 				width: '200px'
 			}, {
-				step: function (currentwidth) {
-					if (currentwidth > 150) {
-						//  $(this).find("#padd").fadeIn();
+					step: function (currentwidth) {
+						if (currentwidth > 150) {
+							//  $(this).find("#padd").fadeIn();
+						}
 					}
-				}
-			});
+				});
 		});
 		$("#buttonadd").mouseleave(function () {
 			$("#buttonadd").animate({
 				width: '80px'
 			}, {
-				step: function (currentwidth) {
-					if (currentwidth < 150) {
-						//  $(this).find("#padd").fadeOut();
+					step: function (currentwidth) {
+						if (currentwidth < 150) {
+							//  $(this).find("#padd").fadeOut();
+						}
 					}
-				}
-			});
+				});
 		});
 
 		$("#newfilm").click(function () {
@@ -282,6 +298,7 @@
 			$("#formdiv").css("visibility", "visible");
 			$("#labeltitolo").text(titolo);
 			$("#filmdiv").toggle("slide");
+
 			$("#buttonhide").css("visibility", "visible");
 			$("#buttonhidemodifica").css("visibility", "visible");
 			$("#buttonadd").css("visibility", "visible");
@@ -315,15 +332,20 @@
 			} else {
 				alert('macano alcuni camppi da inserire');
 				if ($('#title').val() == '') {
+
 					$('#title').addClass("fielderror");
 				}
 				if (!$('#input-b9').val() == '') {
 					$('#input-b9').addClass("fielderror")
 				}
 			}
+
+
 		});
 
+
 		$("#datainizio,#datafine").change(function () {
+
 			if ($("#datainizio").val() && $("#datafine").val()) {
 				var datainizio = $("#datainizio").datepicker({
 					dateFormat: "yyyy-mm-dd"
@@ -387,12 +409,18 @@
 								"\" year=\"" + d.getFullYear() + "\">" + day + " " + d.getDate() + "/" + mese + "/" + d.getFullYear() +
 								"</p></div><div class=\"col-md-1\"><a class=\"glyphicon glyphicon-plus-sign spanAdd \"></a></div><div class=\"col-md-8 orariDiv \"></div></div></br>"
 							);
+
 						}
 						$("#orarimodal").modal({
 							backdrop: 'static',
 							keyboard: false
 						});
+
+
+
+
 					}
+
 				} else {
 					$("#datainizio").addClass("fielderror");
 					$("#todaysDateModal").modal();
@@ -418,9 +446,12 @@
 			$(this).parent().remove();
 		});
 
-		$('#orariClose').click(function () {});
+		$('#orariClose').click(function () {
+
+		});
 
 		$('#orariConfirm').click(function () {
+			console.log(arrayOrari);
 			orari = new Array();
 			for (i = 0; i < arrayOrari.length; i++) {
 				var orarioO = new orario();
@@ -431,13 +462,22 @@
 				$('#divData' + arrayOrari[i]).find('p');
 				$('#divData' + arrayOrari[i]).parent().find('.orariDiv').val();
 				$('#divData' + arrayOrari[i]).parent().find('.orariDiv').children().each(function () {
+
 					if ($(this).is('.clockpicker')) {
 						orarioO.orari.push($(this).find('.ora').val());
+
+						//console.log('ora');
+						// console.log($(this).find('.ora').val());
+
 					}
 				});
+				console.log(orarioO);
 				if (orarioO.orari.length > 0) {
 					orari.push(orarioO);
 				}
+				// console.log($('#divData' + arrayOrari[i]).find('p').text());//prendere la data 
+
+
 			}
 			$('#orari').empty();
 			for (i = 0; i < orari.length; i++) {
@@ -454,10 +494,11 @@
 	});
 </script>
 
+
 <div id="block" style="padding-top: 70px;">
 	<div class="btn-group-vertical inlinea col-sm-4 col-md-4" id="leftdiv">
 		<button type="button" class="btn " style="visibility: hidden; text-align: center;" id="buttonadd" data-toggle="modal" data-backdrop="static"
-		    data-keyboard="false" data-target="#fileModal">
+		 data-keyboard="false" data-target="#fileModal">
 			<span id="padd" class="glyphicon glyphicon-plus" style="color:white;"></span>
 		</button>
 		<button type="button" class="btn " style="visibility: hidden; text-align: center;" id="buttonhide">
@@ -470,6 +511,7 @@
 				<span id="spanmodifica" class="glyphicon glyphicon-chevron-right" style="color:white"></span>
 			</button>
 		</a>
+<<<<<<< HEAD
 		<div class="btn-group-vertical inlinea" id="filmdiv" style="background-color: black">
 			<div class="btn-group-justified">
 				<button class="btn btn-danger" type="button" id="modificabutton">
@@ -478,21 +520,35 @@
 							MODIFICA
 						</span>
 					</a>
+=======
+		<div class="btn-group-vertical inlinea  " id="filmdiv" style="background-color: black">
+			<div class="btn-group-horizontal   ">
+				<button class="btn btn-danger " type="button" id="modificabutton" onclick="location.href='modifica';">
+					<span class="glyphicon glyphicon-chevron-right" style="color:white; ">MODIFICA</span>
+>>>>>>> fdb31f37b654c6e549013caa9eabb555781f4a86
 				</button>
-				<button class="btn btn-danger" type="button" id="newfilm">
+
+				<button class="btn btn-danger " type="button" id="newfilm" data-toggle="modal" data-backdrop="static" data-keyboard="false"
+				 data-target="#fileModal">
 					<span class="glyphicon glyphicon-plus" style="color:white; ">INSERISCI NUOVO FILM</span>
 				</button>
 			</div>
 
 			{{#film}}
+
+
 			<button class="btn btn-danger filmdropdown" type="button" data-toggle="collapse" data-target="#{{id}}">{{titolo}}</button>
 
 			<div id="{{id}}" class="collapse">
+
 				<!-- <div class="well" style="background-color: black;     margin-bottom: 0px">
 					<p style="text-align:center; color:white"> {{titolo}}</p>
 				</div> -->
+
 				<img src="{{url}}" class="imgfilm" titolo="{{titolo}}" style="min-width: 433px ;    width: 100%;"></img>
+
 			</div>
+
 			{{/film}}
 		</div>
 	</div>
@@ -507,12 +563,14 @@
 					<label id="labeltitolo"></label>
 				</div>
 				<div class="form-group" id="myForm">
+
 					<label for="comment">data inizio</label>
 					<input id="datainizio" class="datepicker form-control " data-date-format="dd/mm/yyyy" rows="1" required>
 
 					<label for="comment">data fine</label>
 					<input id="datafine" class="datepicker form-control " data-date-format="dd/mm/yyyy" rows="1" required>
 					<div id="orari" style="text-align: left;">
+
 					</div>
 					<label for="comment">durata</label>
 					<textarea id="durata" class="form-control" rows="1"> </textarea>
@@ -525,6 +583,7 @@
 
 					<label for="comment">descrizione</label>
 					<textarea type="textarea" id="desc" class="form-control" rows="5"> </textarea>
+
 				</div>
 				<button class="btn btn-default" id="Submit">Submit</button>
 			</form>
@@ -575,8 +634,10 @@
 					<div class="modal-content">
 						<div class="modal-header" style="background-color: rgba(128, 0, 0, 0.7);">
 							<button type="button" class="close" data-dismiss="modal">&times;</button>
+
 						</div>
 						<div class="modal-body">
+
 						</div>
 					</div>
 				</div>
@@ -598,7 +659,7 @@
 		</div>
 	</div>
 </div>
-<div id="orarimodal" class="modal fade">
+<div id="orarimodal" class="modal fade ">
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 			<div class="modal-header" style="background-color: rgba(128, 0, 0, 0.7);">
@@ -606,8 +667,10 @@
 				<h4 class="modal-title">Selezionare Orari</h4>
 			</div>
 			<div class="modal-body" id="orariM">
+
 			</div>
 			<div class="modal-footer">
+
 				<button type="button" id="orariClose" class="btn btn-default" data-dismiss="modal">Close</button>
 				<button type="button" id="orariConfirm" class="btn btn-success" data-dismiss="modal">Confirm</button>
 			</div>

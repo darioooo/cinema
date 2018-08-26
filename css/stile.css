@@ -407,7 +407,7 @@ input.fielderror {
 #newfilm {
 	background-color: rgba(128, 0, 0, 0.7);
 	font-weight: bold;
-	width: 64%;
+	width: 63%;
 	font-family: 'Ubuntu', sans-serif;
 	text-decoration-color: black;
 	border-color: rgb(255, 255, 255);
@@ -476,15 +476,6 @@ input.fielderror {
 }
 
 #prossimi {
-	background-color: rgb(209, 209, 209);
-	border-radius: 10px;
-	box-shadow: 2px 2px 2px 2px grey;
-	margin-top: 70px;
-	margin-bottom: 50px;
-	padding: 15px;
-}
-
-#prossimi-titolo {
 	text-align: center;
 	font-size: 50px;
 }
@@ -620,6 +611,7 @@ img#cinelandiaimg {
 		padding-left: 50px;
 		padding-right: 50px;
 		margin-top: -5px;
+		background-color: rgb(255, 255, 255) !important;
 	}
 }
 
@@ -629,6 +621,7 @@ img#cinelandiaimg {
 		padding-left: 50px;
 		padding-right: 50px;
 		margin-top: -5px;
+		background-color: rgb(255, 255, 255) !important;
 	}
 }
 
@@ -767,18 +760,6 @@ img#cinelandiaimg {
 }
 
 .imgfilm-dettaglio {
-	min-width: 100%;
+	min-width:100%;
 	max-width: 100%;
-}
-
-#modificabutton {
-	border-radius: 0px;
-	width: 50%;
-	margin: 0px;
-}
-
-#newfilm {
-	border-radius: 0px;
-	margin: 0px;
-	width: 50%;
 }

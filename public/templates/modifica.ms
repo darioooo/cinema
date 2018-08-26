@@ -3,6 +3,8 @@
 	var dey;
 	var indiceEliminazione;
 
+
+
 	$(document).ready(function () {
 		var data_inizio;
 		var data_fine;
@@ -32,6 +34,7 @@
 			this.descrizione = "";
 			this.orari = new orario();
 		}
+
 
 		$('.bottone-visualizza-today').click(function () {
 			var indice = $(this).val();
@@ -84,8 +87,8 @@
 					$('.delete-footer').find('button').remove();
 					$('.delete-footer').append('<button class="btn-success" data-dismiss="modal">OK</button>');
 					setTimeout(function () {
-							$("#delete-modal" + indiceEliminazione).modal("toggle");
-						},
+						$("#delete-modal" + indiceEliminazione).modal("toggle");
+					},
 						3000);
 				},
 				error: function (result) {
@@ -98,8 +101,8 @@
 					$('.delete-footer').find('button').remove();
 					$('.delete-footer').append('<button class="btn-success" data-dismiss="modal">OK</button>');
 					setTimeout(function () {
-							$("#delete-modal" + indiceEliminazione).modal("toggle");
-						},
+						$("#delete-modal" + indiceEliminazione).modal("toggle");
+					},
 						3000);
 				}
 			});
@@ -258,50 +261,56 @@
 			$(this).animate({
 				width: '200px'
 			}, {
-				step: function (currentwidth) {
-					if (currentwidth > 150) {
-						$(this).find("#phide").fadeIn();
-						$(this).find("#phide").css("transition-duration", "0.3s");
+					step: function (currentwidth) {
+						if (currentwidth > 150) {
+							$(this).find("#phide").fadeIn();
+							$(this).find("#phide").css("transition-duration", "0.3s");
+						}
 					}
-				}
-			});
+				});
 		});
 
 		$("#buttonhide").mouseleave(function () {
 			$(this).animate({
 				width: '80px'
 			}, {
-				step: function (currentwidth) {
-					if (currentwidth < 150) {
-						$(this).find("#phide").fadeOut(3);
-						$(this).find("#phide").css("transition-duration", "0s");
+					step: function (currentwidth) {
+						if (currentwidth < 150) {
+							$(this).find("#phide").fadeOut(3);
+							$(this).find("#phide").css("transition-duration", "0s");
+						}
 					}
+<<<<<<< HEAD
 				}
 			});
+=======
+				});
+
+>>>>>>> fdb31f37b654c6e549013caa9eabb555781f4a86
 		});
 		$("#buttonhidemodifica").mouseenter(function () {
 			$("#buttonhidemodifica").animate({
 				width: '200px'
 			}, {
-				step: function (currentwidth) {
-					if (currentwidth > 150) {
-						$(this).find("#pmodifica").fadeIn();
-						$(this).find("#pmodifica").css("transition-duration", "0.3s");
+					step: function (currentwidth) {
+						if (currentwidth > 150) {
+							$(this).find("#pmodifica").fadeIn();
+							$(this).find("#pmodifica").css("transition-duration", "0.3s");
+						}
 					}
-				}
-			});
+				});
 		});
 		$("#buttonhidemodifica").mouseleave(function () {
 			$("#buttonhidemodifica").animate({
 				width: '80px'
 			}, {
-				step: function (currentwidth) {
-					if (currentwidth < 150) {
-						$(this).find("#pmodifica").fadeOut(3);
-						$(this).find("#pmodifica").css("transition-duration", "0s");
+					step: function (currentwidth) {
+						if (currentwidth < 150) {
+							$(this).find("#pmodifica").fadeOut(3);
+							$(this).find("#pmodifica").css("transition-duration", "0s");
+						}
 					}
-				}
-			});
+				});
 		});
 
 		$(".datepicker").datepicker({
@@ -372,6 +381,7 @@
 								"</p></div><div class=\"col-md-1\"><a class=\"glyphicon glyphicon-plus-sign spanAdd \"></a></div><div class=\"col-md-8 orariDiv \"></div></div></br>"
 							);
 						}
+
 						// count = count(arrayOrari);
 						$("#orarimodal").modal({
 							backdrop: 'static',
@@ -403,7 +413,7 @@
 			$(this).parent().remove();
 		});
 
-		$('#orariClose').click(function () {});
+		$('#orariClose').click(function () { });
 
 		$('#orariConfirm').click(function () {
 			console.log(arrayOrari);
@@ -434,7 +444,7 @@
 					orari[i].giornoSettimana + " giorno=" + orari[i].day + " mounth=" + orari[i].mounth + " year=" + orari[i].year +
 					" >" + orari[i].giornoSettimana +
 					" " + orari[i].day + "/" + orari[i]
-					.mounth +
+						.mounth +
 					"/" + orari[i].year +
 					"</p></div><div class=\"input-group col-md-8 clockpicker \" style=\"float: left; display: inline-flex;\" data-autoclose=\"true\">";
 
@@ -447,6 +457,9 @@
 				html = html + "</div></br></div>";
 				$('.insertorari').append(html);
 			}
+
+
+
 		});
 	});
 </script>
@@ -579,77 +592,22 @@
 						<img src="http://localhost/cinema/{{immagine}}" value="{{indice}}" style="width:250px">
 					</div>
 					<div class="col-md-8">
-						<div class="row">
-							<div class="col-md-4">
-								<p>
-									<b>Data inizio</b>
-								</p>
-							</div>
-							<div class="col-md-8">
-								<p>{{data_inizio}}</p>
-							</div>
+						<div class="col-md-4">
+							<p>
+								<b>Data inizio</b>
+							</p>
+							<p>
+								<b>Data fine</b>
+							</p>
+							<p>
+								<b>Descrizione</b>
+							</p>
 						</div>
-						<div class="row">
-							<div class="col-md-4">
-								<p>
-									<b>Data fine</b>
-								</p>
-							</div>
-							<div class="col-md-8">
-								<p>{{data_fine}}</p>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-4">
-								<p>
-									<b>Durata</b>
-								</p>
-							</div>
-							<div class="col-md-8">
-								<p>{{durata}}'</p>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-4">
-								<p>
-									<b>Descrizione</b>
-								</p>
-							</div>
-							<div class="col-md-8">
-								<p>{{descrizione}}</p>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-4">
-								<p>
-									<b>Regia</b>
-								</p>
-							</div>
-							<div class="col-md-8">
-								<p>{{regia}}</p>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-4">
-								<p>
-									<b>Attori</b>
-								</p>
-							</div>
-							<div class="col-md-8">
-								<p>{{attori}}</p>
-							</div>
-						</div>
-						<div class="row ">
-							<div class="col-md-4">
-								<b>
-									<p>Orari</p>
-								</b>
-							</div>
-							<div class="col-md-8">
-								{{#filmorario}}
-								<p>{{giornosettimana}} - {{giorno}} - {{ora}}</p>
-								{{/filmorario}}
-							</div>
+						<div class="col-md-8">
+							<p>{{data_inizio}}</p>
+							<p>{{data_fine}}</p>
+							<p style="word-wrap:break-word;">{{descrizione}}</p>
+							<p style="word-wrap:break-word;">{{attori}}</p>
 						</div>
 					</div>
 				</div>
@@ -691,10 +649,10 @@
 								<div class="form-group">
 									<label for="comment">Data inizio</label>
 									<input class="datepicker form-control datainizio" value="{{data_inizio}}" data-date-format="yyyy-mm-dd" rows="1" style="margin-bottom: 5px;"
-									    required>
+									 required>
 									<label for="comment">Data fine</label>
 									<input class="datepicker form-control datafine" value="{{data_fine}}" data-date-format="yyyy-mm-dd" rows="1" style="margin-bottom: 5px;"
-									    required>
+									 required>
 									<label for="comment">Durata</label>
 									<input type="text" value="{{durata}}" class="form-control durata" rows="1" required>
 								</div>
@@ -735,77 +693,23 @@
 						<img src="http://localhost/cinema/{{immagine}}" value="{{indice}}" style="width:270px">
 					</div>
 					<div class="col-md-8">
-						<div class="row">
-							<div class="col-md-4">
-								<p>
-									<b>Data inizio</b>
-								</p>
-							</div>
-							<div class="col-md-8">
-								<p>{{data_inizio}}</p>
-							</div>
+						<div class="col-md-4">
+							<p>
+								<b>Data inizio</b>
+							</p>
+							<p>
+								<b>Data fine</b>
+							</p>
+							<p>
+								<b>Descrizione</b>
+							</p>
 						</div>
-						<div class="row">
-							<div class="col-md-4">
-								<p>
-									<b>Data fine</b>
-								</p>
-							</div>
-							<div class="col-md-8">
-								<p>{{data_fine}}</p>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-4">
-								<p>
-									<b>Durata</b>
-								</p>
-							</div>
-							<div class="col-md-8">
-								<p>{{durata}}'</p>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-4">
-								<p>
-									<b>Descrizione</b>
-								</p>
-							</div>
-							<div class="col-md-8">
-								<p>{{descrizione}}</p>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-4">
-								<p>
-									<b>Regia</b>
-								</p>
-							</div>
-							<div class="col-md-8">
-								<p>{{regia}}</p>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-4">
-								<p>
-									<b>Attori</b>
-								</p>
-							</div>
-							<div class="col-md-8">
-								<p>{{attori}}</p>
-							</div>
-						</div>
-						<div class="row ">
-							<div class="col-md-4">
-								<b>
-									<p>Orari</p>
-								</b>
-							</div>
-							<div class="col-md-8">
-								{{#filmorario}}
-								<p>{{giornosettimana}} - {{giorno}} - {{#orari}}{{ora}}{{/orari}}</p>
-								{{/filmorario}}
-							</div>
+						<div class="col-md-8">
+							<p>{{data_inizio}}</p>
+							<p>{{data_fine}}</p>
+							<p style="word-wrap:break-word;">{{descrizione}}</p>
+							<p>{{attori}}</p>
+							<p>{{regia}}</p>
 						</div>
 					</div>
 				</div>
@@ -847,10 +751,10 @@
 								<div class="form-group">
 									<label for="comment">Data inizio</label>
 									<input class="datepicker form-control datainizio" value="{{data_inizio}}" data-date-format="yyyy-mm-dd" rows="1" style="margin-bottom: 5px;"
-									    required>
+									 required>
 									<label for="comment">Data fine</label>
 									<input class="datepicker form-control datafine" value="{{data_fine}}" data-date-format="yyyy-mm-dd" rows="1" style="margin-bottom: 5px;"
-									    required>
+									 required>
 									<label for="comment">Durata</label>
 									<input type="text" value="{{durata}}" class="form-control durata" rows="1" required>
 								</div>
