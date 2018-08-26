@@ -473,7 +473,11 @@
 		<div class="btn-group-vertical inlinea" id="filmdiv" style="background-color: black">
 			<div class="btn-group-justified">
 				<button class="btn btn-danger" type="button" id="modificabutton">
-					<span class="glyphicon glyphicon-chevron-right" style="color:white; ">MODIFICA</span>
+					<a href="http://127.0.0.1/cinema/index.php/modifica">
+						<span class="glyphicon glyphicon-chevron-right" style="color:white; ">
+							MODIFICA
+						</span>
+					</a>
 				</button>
 				<button class="btn btn-danger" type="button" id="newfilm">
 					<span class="glyphicon glyphicon-plus" style="color:white; ">INSERISCI NUOVO FILM</span>

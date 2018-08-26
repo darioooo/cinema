@@ -157,9 +157,9 @@ class CinemaController
 				$orariToday= $film_orario->select($id);
 				$data['filmtoday'][$i]['regia']=$sc[0]['regia']; 
 				$data['filmtoday'][$i]['attori']=$sc[0]['attori'];
-				$data['filmtoday'][$i]['durata']=$sc[0]['durata'];  
-				$data['filmtoday'][$i]['genere']=$sc[0]['genere']; 
-				$data['filmtoday'][$i]['pese']=$sc[0]['pese']; 
+				$data['filmtoday'][$i]['durata']=$sc[0]['durata'];
+				$data['filmtoday'][$i]['genere']=$sc[0]['genere'];
+				$data['filmtoday'][$i]['pese']=$sc[0]['pese'];
 				$data['filmtoday'][$i]['indice']=$i;
 				foreach($orariToday as $k=>$v)
 				{
@@ -170,7 +170,7 @@ class CinemaController
 					$trimmedMioOrario = trim($mioOrario);
 
 					$orarioExplode = explode(" ", $mioOrario);
-					var_dump($orarioExplode[0].'*'.$orarioExplode[1].'*'.$orarioExplode[2].$data['filmtoday'][$i]['filmorario'][$k]['id_orario']=$v['id_orario']);
+					// var_dump($orarioExplode[0].'*'.$orarioExplode[1].'*'.$orarioExplode[2].$data['filmtoday'][$i]['filmorario'][$k]['id_orario']=$v['id_orario']);
 
 					foreach($orarioExplode as $item )
 					{
@@ -436,7 +436,6 @@ class CinemaController
 			{
 				$sc=$scheda->select($id);
 				$orariToday= $film_orario->select($id);
-				
 				
 				$data['filmdetails'][$i]['regia']=$sc[0]['regia']; 
 				$data['filmdetails'][$i]['attori']=$sc[0]['attori'];

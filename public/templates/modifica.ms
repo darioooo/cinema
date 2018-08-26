@@ -117,7 +117,6 @@
 					idArray.length = 0;
 					$('.insertorari').empty();
 					var risposta = response.var;
-					console.log(risposta);
 					var giorno;
 					var giornoSettimana;
 					//add giornone 
@@ -125,6 +124,7 @@
 					risposta.forEach(element => {
 						// console.log(element.id_orario);
 						getOrari.length = 0;
+						console.log("Hambaramendu: " + element.ora + element.giorno + element.giornosettimana);
 						var trimmedOrari = $.trim(element.ora);
 						var splittedOrari = trimmedOrari.split(/ +/);
 						// giorno = element.giorno;
@@ -143,7 +143,6 @@
 							" " +
 							element.giornosettimana +
 							"</p></div><div class=\"input-group col-md-8 clockpicker \" style=\"float: left; display: inline-flex;\" data-autoclose=\"true\">";
-
 						getOrari.forEach(x => {
 							html = html +
 								"<div class=\"input-group col-md-3 clockpicker \"  data-autoclose=\"true\"><span class=\"input-group-addon\"><span class=\"glyphicon glyphicon-time\"></span></span><input type=\"text\" class=\"form-control orariDiv ora\" value= " +
@@ -161,6 +160,13 @@
 				}
 			});
 		});
+
+		$('.oradiDiv').change(function () {
+			$.ajax({
+				type: "POST",
+				url: "updateorari",
+			});
+		});
 		$(".bottone-modifica-oggi").click(function () {
 			var indiceModifica = $(this).val();
 			classToModify = ".todays_films_modify input";
@@ -175,12 +181,6 @@
 			var indiceModifica = $(this).val();
 			classToModify = ".next_films_modify input";
 			id = $(this).attr('idFilm');
-			// $("#datainizio").val($("#datainizio").attr('valoreiniziale'));
-			// $("#datafine").val($("#datafine").attr('valoreiniziale'));
-			// $("#descrizione").val($("#descrizione").attr('valoreiniziale'));
-			// $("#regia").val($("#regia").attr('valoreiniziale'));
-			// $("#durata").val($("#durata").attr('valoreiniziale'));
-			// $("#attori").val($("#attori").attr('valoreiniziale'));
 			$("#modify-modal-tomorrow" + indiceModifica).modal();
 			$(".close-modify-modal").click(function () {
 				("#modify-modal-tomorrow" + indiceModifica).modal("toggle");
@@ -217,9 +217,9 @@
 			if (durata != null) {
 				var dataString = dataString + '&durata=' + durata;
 			}
-			// lallalllallallalaaaaaaaaaaaaaa aaaaaaaa
-			// console.log($(".insertorari").find(".pgiorni"));
+
 			var orarioO = new Array();
+
 			$(".insertorari").children().each(function () {
 				var orariol = new orario();
 				var giornosettimana = $(this).find(".pgiorni").attr("giornosettimana");
@@ -227,13 +227,9 @@
 				orariol['day'] = giorno;
 				orariol['giornosettimana'] = giornosettimana;
 
-				// var mounth = $(this).find(".pgiorni").attr("mounth");
-				// var year = $(this).find(".pgiorni").attr("year");
-
 				$(this).parent().find('.orariDiv').children().children().each(function () {
 					console.log($(this).find('.ora').val());
 					orariol['orari'].push($(this).find('.ora').val());
-
 				});
 				orarioO.push(orariol);
 			});
@@ -282,7 +278,6 @@
 					}
 				}
 			});
-
 		});
 		$("#buttonhidemodifica").mouseenter(function () {
 			$("#buttonhidemodifica").animate({
@@ -570,8 +565,6 @@
 		</div>
 		{{/filmafter}}
 	</div>
-	<!-- <div class="col-xs-0 col-md-1 col-lg-1">
-</div> -->
 
 	{{#filmafter}}
 	<div id="view-modal{{indice}}" class="modal fade" style "height: 700px;">
@@ -737,9 +730,9 @@
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title">{{titolo}}</h4>
 				</div>
-				<div class="modal-body" style="height: 400px;">
+				<div class="modal-body" style="height: 500px;">
 					<div class="col-md-4">
-						<img src="http://localhost/cinema/{{immagine}}" value="{{indice}}" style="width:250px">
+						<img src="http://localhost/cinema/{{immagine}}" value="{{indice}}" style="width:270px">
 					</div>
 					<div class="col-md-8">
 						<div class="row">

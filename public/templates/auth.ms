@@ -98,7 +98,7 @@
             var username = $('#name').val();
             var password = $('#psw').val();
             console.log(username);
-            alert(username);
+            // alert(username);
             $.ajax({
                 type: "POST",
                 url: "autenticazione",
@@ -107,22 +107,23 @@
                 success: function (result) {
 
                     var obj = JSON.parse(result);
-                    alert(obj["status"]);
+                    // alert(obj["status"]);
                     switch (obj["status"]) {
                         case "error":
-                            alert("username o password errate");
+                            // alert("username o password errate");
                             break;
                         case "success":
                             window.location.assign(
                                 "http://127.0.0.1/cinema/index.php/admin");
                             break;
                         default:
+                            console.log("MACHECAZZ!!!");
                             text = "I have never heard of that fruit...";
                     }
                 },
                 error: function (xhr, ajaxOptions, thrownError) {
-                    alert(xhr.status);
-                    alert(thrownError);
+                    // alert(xhr.status);
+                    // alert(thrownError);
                 }
             });
         });

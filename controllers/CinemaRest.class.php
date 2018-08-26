@@ -27,4 +27,26 @@ class CinemaRest
             echo $e->getMessage();
         }
     }
+
+
+    /**
+	 * @desc This method provides the registration html page
+	 * @link /updateOrari
+	 * @method POST
+	 * @param Request $request
+	 * @param Response $response
+	 * @param array $args
+	 * @return \Slim\Http\Response
+	 */
+    function updateOrari(Request $request, Response $response, $args)
+    {
+        try {
+
+        }
+
+        catch(Exception $e)
+        {
+            echo $e->getMessage();
+        }
+    }
 }

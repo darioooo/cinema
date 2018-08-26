@@ -21,18 +21,15 @@ $this->map(['GET'],"/admin","CinemaController:admin");
 
 $this->map(['GET'],"/cinelandia","CinemaController:Cinelandia");
 
-
-
-
 $this->map(['POST'],"/action_admin","CinemaController:save_film");
 
-
 $this->map(['POST'],"/action_image","CinemaController:save_new_image");
-
 
 $this->map(['POST'],"/delete","CinemaController:deleteById");
 
 $this->map(['GET'],"/dettaglio","CinemaController:DettaglioFilm");
+
+
 
 $this->map(['GET'],"/auth","CinemaAuth:autentication");
 
@@ -42,5 +39,9 @@ $this->map(['POST'],"/autenticazione","CinemaAuth:verifica");
 
 $this->map(['POST'],"/mail","CinemaAuth:mail");
 
+
+
 $this->map(['POST'], "/getorari", "CinemaRest:getOrari");
+
+$this->map(['POST'], "/updateorari", "CinemaRest:updateOrari");
 
