@@ -163,17 +163,16 @@ class CinemaController
 				$data['filmtoday'][$i]['indice']=$i;
 				foreach($orariToday as $k=>$v)
 				{
-					
 					$data['filmtoday'][$i]['filmorario'][$k]['giornosettimana']=$v['giornosettimana'];
 					$data['filmtoday'][$i]['filmorario'][$k]['giorno']=$v['giorno'];
 
 					$mioOrario =$v['ora'];
 					$trimmedMioOrario = trim($mioOrario);
 
-						$orarioExplode = explode(" ", $mioOrario);
-						// var_dump($orarioExplode[0].'*'.$orarioExplode[1].'*'.$orarioExplode[2].$data['filmtoday'][$i]['filmorario'][$k]['id_orario']=$v['id_orario']);
-					
-						foreach($orarioExplode as $item )
+					$orarioExplode = explode(" ", $mioOrario);
+					var_dump($orarioExplode[0].'*'.$orarioExplode[1].'*'.$orarioExplode[2].$data['filmtoday'][$i]['filmorario'][$k]['id_orario']=$v['id_orario']);
+
+					foreach($orarioExplode as $item )
 					{
 						$data['filmtoday'][$i]['filmorario']['orari'][$k]['ora']=$item;
 					}
