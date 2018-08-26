@@ -187,7 +187,6 @@ class CinemaController
 					$data['filmtoday'][$i]['active']='item';	
 					$data['filmtoday'][$i]['visible']='none';
 				}
-				
 			}
 		}
 
@@ -222,7 +221,6 @@ class CinemaController
 		{
 			echo $e->getMessage();
 		}	
-		
 	}
 		else
 			{
@@ -230,7 +228,6 @@ class CinemaController
 				exit();
 			}
 			session_destroy();
-		
 	}
 
 	/**
