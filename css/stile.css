@@ -406,7 +406,7 @@ input.fielderror {
 #newfilm {
 	background-color: rgba(128, 0, 0, 0.95);
 	font-weight: bold;
-	width: 64%;
+	width: 63%;
 	font-family: 'Ubuntu', sans-serif;
 	text-decoration-color: black;
 	border-color: rgb(255, 255, 255);
@@ -610,6 +610,7 @@ img#cinelandiaimg {
 		padding-left: 50px;
 		padding-right: 50px;
 		margin-top: -5px;
+		background-color: rgb(255, 255, 255) !important;
 	}
 }
 
@@ -619,6 +620,7 @@ img#cinelandiaimg {
 		padding-left: 50px;
 		padding-right: 50px;
 		margin-top: -5px;
+		background-color: rgb(255, 255, 255) !important;
 	}
 }
 

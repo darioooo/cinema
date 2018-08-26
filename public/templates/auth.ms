@@ -83,7 +83,7 @@
 			var username = $('#name').val();
 			var password = $('#psw').val();
 			console.log(username);
-			alert(username);
+			// alert(username);
 			$.ajax({
 				type: "POST",
 
@@ -93,10 +93,10 @@
 				success: function (result) {
 
 					var obj = JSON.parse(result);
-					alert(obj["status"]);
+					// alert(obj["status"]);
 					switch (obj["status"]) {
 						case "error":
-							alert("username o password errate");
+							// alert("username o password errate");
 							break;
 						case "success":
 							window.location.assign("../index.php/admin");
@@ -110,8 +110,8 @@
 
 				},
 				error: function (xhr, ajaxOptions, thrownError) {
-					alert(xhr.status);
-					alert(thrownError);
+					// alert(xhr.status);
+					// alert(thrownError);
 				}
 			});
 

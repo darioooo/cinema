@@ -61,6 +61,9 @@
               <a href="#in-programmazione" class="links ">In programmazione</a>
             </li>
             <li>
+              <a href="#prossimi-film" class="links ">Prossimamente</a>
+            </li>
+            <li>
               <a href="#chi-siamo" class="links">Chi siamo</a>
             </li>
             <li>
