@@ -25,6 +25,11 @@
 		if ($('#easyPaginate').children().length == 0) {
 			$('#easyPaginate').parent().empty();
 		}
+
+		if ($("#film-futuri") != null) {
+			$("#prossimi-film").hide();
+			$("#prossimi-film-link").hide();
+		}
 	});
 </script>
 <div>
@@ -114,12 +119,36 @@
 			<div class=" text-center " style="min-height: 100px;background-image: url(
 		    'http://localhost/cinema/CinemaImages/chisiamobg.png'); padding: 10px 0px 10px; ">
 			</div>
-			<div id="myCarousel " class="carousel slide " data-ride="carousel ">
+			<div id="myCarousel " class="carousel slide " data-ride="carousel" data-interval="5000">
 				<div class="carousel-inner cinema-slider ">
-					<div class="item active " style="background-image: url( '../CinemaImages/slider/021.jpg'); background-repeat:no-repeat;
+					<div class="item active " style="background-image: url( '../CinemaImages/SliderCinema/1.jpg'); background-repeat:no-repeat;
 		    background-position:center; min-height: 600px; background-size: cover; width:100%; ">
 					</div>
-					<div class="item " style="background-image: url( '../CinemaImages/slider/022.jpg'); background-repeat:no-repeat;
+					<div class="item " style="background-image: url( '../CinemaImages/SliderCinema/2.jpg'); background-repeat:no-repeat;
+		    background-position:center;background-size: cover; min-height: 600px; width:100%; ">
+					</div>
+					<div class="item " style="background-image: url( '../CinemaImages/SliderCinema/3.jpg'); background-repeat:no-repeat;
+		    background-position:center;background-size: cover; min-height: 600px; width:100%; ">
+					</div>
+					<div class="item " style="background-image: url( '../CinemaImages/SliderCinema/4.jpg'); background-repeat:no-repeat;
+		    background-position:center;background-size: cover; min-height: 600px; width:100%; ">
+					</div>
+					<div class="item " style="background-image: url( '../CinemaImages/SliderCinema/5.jpg'); background-repeat:no-repeat;
+		    background-position:center;background-size: cover; min-height: 600px; width:100%; ">
+					</div>
+					<div class="item " style="background-image: url( '../CinemaImages/SliderCinema/6.jpg'); background-repeat:no-repeat;
+		    background-position:center;background-size: cover; min-height: 600px; width:100%; ">
+					</div>
+					<div class="item " style="background-image: url( '../CinemaImages/SliderCinema/7.jpg'); background-repeat:no-repeat;
+		    background-position:center;background-size: cover; min-height: 600px; width:100%; ">
+					</div>
+					<div class="item " style="background-image: url( '../CinemaImages/SliderCinema/8.jpg'); background-repeat:no-repeat;
+		    background-position:center;background-size: cover; min-height: 600px; width:100%; ">
+					</div>
+					<div class="item " style="background-image: url( '../CinemaImages/SliderCinema/9.jpg'); background-repeat:no-repeat;
+		    background-position:center;background-size: cover; min-height: 600px; width:100%; ">
+					</div>
+					<div class="item " style="background-image: url( '../CinemaImages/SliderCinema/10.jpg'); background-repeat:no-repeat;
 		    background-position:center;background-size: cover; min-height: 600px; width:100%; ">
 					</div>
 				</div>
@@ -139,15 +168,16 @@
 				<img src="http://localhost/cinema/CinemaImages/movie-projector.png " style="float: right; max-width: 150px; ">
 			</div>
 			<div id="storia-testo">
-				<h4>In sagittis leo non bow wow wow. That's the shizzle tellivizzle, arcu yippiyo away facilisizzle, sem nulla doggy tellivizzle,
-					non auctor that's the shizzle felizzle nizzle est. Suspendisse volutpizzle scelerisque augue. Sed egestas crazy izzle
-					shizzlin dizzle. Prizzle bling bling things sapizzle. Etizzle aliquizzle, dizzle check it out shizznit accumsan boofron,
-					pimpin' sizzle ultricizzle mofo, ac vestibulizzle bling bling nisi mammasay mammasa mamma oo sa amet purus. Maecenas
-					funky fresh shizzle my nizzle crocodizzle vel enim. Ma nizzle lobortis. Nulla lectizzle lacus, convallis for sure, aliquizzle
-					sit amizzle, pulvinizzle crackalackin, ghetto. Vivamizzle convallizzle. Vestibulum gangster ipsizzle primis in ass rizzle
-					luctizzle et gangsta posuere dawg Curae; Bow wow wow eu elizzle eu mammasay mammasa mamma oo sa bibendizzle doggy. Fusce
-					est tortor, phat vizzle, semper , commodo ac, fo shizzle mah nizzle fo rizzle, mah home g-dizzle. Etizzle shizznit,
-					tortor eget vehicula pot, crunk dang ultricizzle lorizzle, izzle izzle mi urna vitae erat.</h4>
+				<h3>Il Cinema Accademia è un teatro situato a Pontassieve.
+
+					Già dal 1870 si erano avviate le pratiche relative alla costruzione del teatro, ma solo vent'anni dopo fu
+					realizzato con la denominazione di Teatro dell'Accademia Vincenzo da Filicaia. Nel 1929 il locale venne dato in
+					gestione al Partito Nazionale Fascista e venne ben presto adibito anche a cinematografo.
+
+					In questa redazione, giunta fino agli anni cinquanta, il teatro presentava una sala presumibilmente ovata, 14
+					palchi e un loggione, capaci di ospitare 700 spettatori. Nel 1990 è stato restaurato sia nell'impiantistica che
+					nelle decorazioni. Nella nuova redazione ha accentuato il suo ruolo di sala cinematografica, con posti a sedere
+					solo in platea, mentre la galleria è stata adattata a cabina di proiezione e di regia.</h3>
 			</div>
 		</div>
 	</div>

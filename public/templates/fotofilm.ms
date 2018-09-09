@@ -175,7 +175,9 @@
 							var file = fileImputtato.fileinput('refresh', {
 								allowedFileExtensions: ["jpg", "png", "gif"],
 								uploadUrl: "action_image",
-								uploadExtraData: { title: titolo }
+								uploadExtraData: {
+									title: titolo
+								}
 							});
 							$('.fileinput-upload-button').trigger('click');
 						} else {
@@ -222,73 +224,73 @@
 			$(this).animate({
 				width: '200px'
 			}, {
-					step: function (currentwidth) {
-						if (currentwidth > 150) {
-							$(this).find("#phide").fadeIn();
-							$(this).find("#phide").css("transition-duration", "0.3s");
-						}
+				step: function (currentwidth) {
+					if (currentwidth > 150) {
+						$(this).find("#phide").fadeIn();
+						$(this).find("#phide").css("transition-duration", "0.3s");
 					}
-				});
+				}
+			});
 		});
 
 		$("#buttonhide").mouseleave(function () {
 			$(this).animate({
 				width: '80px'
 			}, {
-					step: function (currentwidth) {
-						if (currentwidth < 150) {
-							$(this).find("#phide").fadeOut(3);
-							$(this).find("#phide").css("transition-duration", "0s");
-						}
+				step: function (currentwidth) {
+					if (currentwidth < 150) {
+						$(this).find("#phide").fadeOut(3);
+						$(this).find("#phide").css("transition-duration", "0s");
 					}
-				});
+				}
+			});
 
 		});
 		$("#buttonhidemodifica").mouseenter(function () {
 			$("#buttonhidemodifica").animate({
 				width: '200px'
 			}, {
-					step: function (currentwidth) {
-						if (currentwidth > 150) {
-							$(this).find("#pmodifica").fadeIn();
-							$(this).find("#pmodifica").css("transition-duration", "0.3s");
-						}
+				step: function (currentwidth) {
+					if (currentwidth > 150) {
+						$(this).find("#pmodifica").fadeIn();
+						$(this).find("#pmodifica").css("transition-duration", "0.3s");
 					}
-				});
+				}
+			});
 		});
 		$("#buttonhidemodifica").mouseleave(function () {
 			$("#buttonhidemodifica").animate({
 				width: '80px'
 			}, {
-					step: function (currentwidth) {
-						if (currentwidth < 150) {
-							$(this).find("#pmodifica").fadeOut(3);
-							$(this).find("#pmodifica").css("transition-duration", "0s");
-						}
+				step: function (currentwidth) {
+					if (currentwidth < 150) {
+						$(this).find("#pmodifica").fadeOut(3);
+						$(this).find("#pmodifica").css("transition-duration", "0s");
 					}
-				});
+				}
+			});
 		});
 		$("#buttonadd").mouseenter(function () {
 			$("#buttonadd").animate({
 				width: '200px'
 			}, {
-					step: function (currentwidth) {
-						if (currentwidth > 150) {
-							//  $(this).find("#padd").fadeIn();
-						}
+				step: function (currentwidth) {
+					if (currentwidth > 150) {
+						//  $(this).find("#padd").fadeIn();
 					}
-				});
+				}
+			});
 		});
 		$("#buttonadd").mouseleave(function () {
 			$("#buttonadd").animate({
 				width: '80px'
 			}, {
-					step: function (currentwidth) {
-						if (currentwidth < 150) {
-							//  $(this).find("#padd").fadeOut();
-						}
+				step: function (currentwidth) {
+					if (currentwidth < 150) {
+						//  $(this).find("#padd").fadeOut();
 					}
-				});
+				}
+			});
 		});
 
 		$("#newfilm").click(function () {
@@ -497,8 +499,8 @@
 
 <div id="block" style="padding-top: 70px;">
 	<div class="btn-group-vertical inlinea col-sm-4 col-md-4" id="leftdiv">
-		<button type="button" class="btn " style="visibility: hidden; text-align: center;" id="buttonadd" data-toggle="modal" data-backdrop="static"
-		 data-keyboard="false" data-target="#fileModal">
+		<button type="button" class="btn " style="visibility: hidden; text-align: center;" id="buttonadd" data-toggle="modal"
+		    data-backdrop="static" data-keyboard="false" data-target="#fileModal">
 			<span id="padd" class="glyphicon glyphicon-plus" style="color:white;"></span>
 		</button>
 		<button type="button" class="btn " style="visibility: hidden; text-align: center;" id="buttonhide">
@@ -511,25 +513,14 @@
 				<span id="spanmodifica" class="glyphicon glyphicon-chevron-right" style="color:white"></span>
 			</button>
 		</a>
-<<<<<<< HEAD
-		<div class="btn-group-vertical inlinea" id="filmdiv" style="background-color: black">
-			<div class="btn-group-justified">
-				<button class="btn btn-danger" type="button" id="modificabutton">
-					<a href="http://127.0.0.1/cinema/index.php/modifica">
-						<span class="glyphicon glyphicon-chevron-right" style="color:white; ">
-							MODIFICA
-						</span>
-					</a>
-=======
 		<div class="btn-group-vertical inlinea  " id="filmdiv" style="background-color: black">
 			<div class="btn-group-horizontal   ">
 				<button class="btn btn-danger " type="button" id="modificabutton" onclick="location.href='modifica';">
 					<span class="glyphicon glyphicon-chevron-right" style="color:white; ">MODIFICA</span>
->>>>>>> fdb31f37b654c6e549013caa9eabb555781f4a86
 				</button>
 
 				<button class="btn btn-danger " type="button" id="newfilm" data-toggle="modal" data-backdrop="static" data-keyboard="false"
-				 data-target="#fileModal">
+				    data-target="#fileModal">
 					<span class="glyphicon glyphicon-plus" style="color:white; ">INSERISCI NUOVO FILM</span>
 				</button>
 			</div>

@@ -15,6 +15,7 @@ class FeedRssController
 		$x=$xmlDoc->getElementsByTagName('item');
 		$contatore = 0 ;
 		for ($a=0; $a < 35; $a++) { 
+			try{
 			$titolo =$x->item($a)->getElementsByTagName('title')->item(0)->childNodes->item(0)->nodeValue;
 			$image = $x->item($a)->getElementsByTagName('description')->item(0)->childNodes->item(0)->nodeValue;
 			$regex = '/\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|$!:,.;]*[A-Z0-9+&@#\/%=~_|$]/i';
@@ -40,6 +41,11 @@ class FeedRssController
 					}
 				}
 			}
+		}
+		catch(Exception $e )
+		{
+			syslog( $e->getMessage());
+		}	
 		}
 
 		return $data; 
