@@ -30,7 +30,7 @@ body {
 
 #arrow-down-to-div {
 	color: rgba(0, 0, 0, 0.5);
-	left: 0;
+	6 left: 0;
 	bottom: 0;
 	margin-top: 32vh;
 	font-size: 50px;
@@ -760,6 +760,6 @@ img#cinelandiaimg {
 }
 
 .imgfilm-dettaglio {
-	min-width:100%;
+	min-width: 100%;
 	max-width: 100%;
 }

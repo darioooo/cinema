@@ -23,6 +23,14 @@
 
 
   <title>Cinema Accademia</title>
+
+  <style>
+    @media only screen and (max-width: 1000px) {
+      #anchor-to-main-div {
+        visibility: hidden;
+      }
+}
+  </style>
 </head>
 
 <body>

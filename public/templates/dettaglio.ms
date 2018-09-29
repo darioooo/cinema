@@ -4,6 +4,9 @@
 			window.location = 'dettaglio?id=' + $(this).attr("value");
 		});
 
+		$("#return").click(function () {
+			window.location = "../";
+		});
 	});
 </script>
 
@@ -13,7 +16,7 @@
 		<div class=" col-xs-12 col-md-4 col-lg-4 detail-image" style="margin-bottom: 10px;">
 			<div class=" col-xs-12 col-md-12 col-lg-12 jumbotron contentjumbo " style="border: 8px yellow dotted">
 				<div id="imageFilmDiv ">
-					<img src="http://localhost/cinema/{{immagine}} " class="imgfilm-dettaglio">
+					<img src="../{{immagine}} " class="imgfilm-dettaglio">
 				</div>
 			</div>
 		</div>
@@ -128,5 +131,6 @@
 			<div class="col-xs-1 col-md-0 col-lg-0"></div>
 		</div>
 		{{/filmdetails}}
+		<button id="return" class="btn btn-default"><span class="glyphicon glyphicon-arrow-left"></span></button>
 	</div>
 </div>

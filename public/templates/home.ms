@@ -18,15 +18,24 @@
 			$('#' + valore).css("display", "none");
 		});
 
+		var dettaglio = $(this).attr(".dettaglio idDettaglio");
+
+		if (dettaglio == null) {
+			$("#detail_film_today").css("display", "none");
+			$("#image_film_today").removeClass();
+			$("#image_film_today").addClass("col-xs-12 col-md-12 col-lg-12");
+			//$("#image_film_today").css("align-items");
+		}
+
 		$(".dettaglio").click(function () {
-			window.location = 'dettaglio?id=' + $(this).attr("value");
+			window.location = 'dettaglio?id=' + $(this).attr("idDettaglio");
 		});
 
 		if ($('#easyPaginate').children().length == 0) {
 			$('#easyPaginate').parent().empty();
 		}
 
-		if ($("#film-futuri") != null) {
+		if ($("#film-futuri") == null) {
 			$("#prossimi-film").hide();
 			$("#prossimi-film-link").hide();
 		}
@@ -38,7 +47,7 @@
 			<h1>IN PROGRAMMAZIONE</h1>
 		</div>
 		<div class="row jumbotron filmjumbo" id="in-programmazione-jumbotron">
-			<div class="col-xs-0 col-md-2 col-lg-2">
+			<div class="col-xs-0 col-md-2 col-lg-2" id="image_film_today">
 			</div>
 			<div class="row jumbotron filmjumbo ">
 				<div class="col-xs-0 col-md-2 col-lg-1">
@@ -54,7 +63,7 @@
 							<div class="carousel-inner">
 								{{#filmtoday}}
 								<div class="{{active}}" value="{{indice}}" id="imageFilmDiv">
-									<img src="http://localhost/cinema/{{immagine}}" class="imgfilm" value="{{indice}}">
+									<img src="../{{immagine}}" class="imgfilm" value="{{indice}}">
 								</div>
 								{{/filmtoday}}
 								<a class="left carousel-control" href="#myCarousel" data-slide="prev">
@@ -66,7 +75,7 @@
 					</div>
 				</div>
 
-				<div class="col-xs-12 col-md-4 col-lg-5">
+				<div class="col-xs-12 col-md-4 col-lg-5" id="detail_film_today">
 					<div class="col-xs-10 col-md-12 col-lg-12 jumbotron contentjumbo film-details">
 						{{#filmtoday}}
 						<div id="{{indice}}" style="display: {{visible}}">
@@ -88,7 +97,7 @@
 							</div>
 							{{/filmorario}}
 
-							<a class="dettaglio film-hours" value="{{id}}">
+							<a class="dettaglio film-hours" idDettaglio="{{id}}">
 								<span class="glyphicon glyphicon-chevron-right"></span>
 								<span class="tooltip-text">Dettaglio</span>
 							</a>
@@ -106,7 +115,7 @@
 				<h1>PROSSIMAMENTE</h1>
 			</div> {{#filmafter}}
 			<div value="{{indice}}" id="film-futuri" class="column">
-				<img src="http://localhost/cinema/{{immagine}}" id="film-after-img" value="{{indice}}">
+				<img src="../{{immagine}}" id="film-after-img" value="{{indice}}" idDettaglio="{{id}}">
 			</div>
 			{{/filmafter}}
 		</div>
@@ -117,7 +126,7 @@
 		</div>
 		<div>
 			<div class=" text-center " style="min-height: 100px;background-image: url(
-		    'http://localhost/cinema/CinemaImages/chisiamobg.png'); padding: 10px 0px 10px; ">
+		    '../CinemaImages/chisiamobg.png'); padding: 10px 0px 10px; ">
 			</div>
 			<div id="myCarousel " class="carousel slide " data-ride="carousel" data-interval="5000">
 				<div class="carousel-inner cinema-slider ">
@@ -154,7 +163,7 @@
 				</div>
 			</div>
 			<div class="text-center " style="min-height: 100px;background-image: url(
-		    'http://localhost/cinema/CinemaImages/chisiamobg.png'); padding: 10px 0px 10px; ">
+		    '../CinemaImages/chisiamobg.png'); padding: 10px 0px 10px; ">
 			</div>
 		</div>
 	</div>
@@ -165,7 +174,7 @@
 		</div>
 		<div id="storia-contenuto">
 			<div id="storia-icona">
-				<img src="http://localhost/cinema/CinemaImages/movie-projector.png " style="float: right; max-width: 150px; ">
+				<img src="../CinemaImages/movie-projector.png " style="float: right; max-width: 150px; ">
 			</div>
 			<div id="storia-testo">
 				<h3>Il Cinema Accademia è un teatro situato a Pontassieve.
