@@ -252,6 +252,7 @@ class CinemaController
 		$data_inizio=$_POST["data_inizio"];
 		$data_fine=$_POST["data_fine"];
 		$orari=$_POST["orari"];
+		$extension = $_POST["extension"];
 	
 		$data=explode("/",$data_inizio);
 		$dataf=explode("/",$data_fine);
@@ -270,19 +271,19 @@ class CinemaController
 		$seralizedOrari= json_decode($orari);
 		$vowels = array(" ","'");
 		$titolourl=  str_replace($vowels, '', $titolo);
-		$img = "image/".$titolourl.".jpg";
+		$img = "image/".$titolourl.".".$extension;
 
 		if($url!="null")
 		{
 			file_put_contents($img, file_get_contents($url));
 		}
-		$insert_scheda['attori']=$attori;
-		$insert_scheda['regia']=$regia;
+		$insert_scheda['attori']=addslashes($attori);
+		$insert_scheda['regia']=addslashes($regia);
 		$insert_film['visualizzato']=TRUE;
 		$insert_film['immagine']=$img;
-		$insert_film['titolo']= $titolo;
-		$insert_film['descrizione']=$descrizione;
-		$insert_scheda['durata']=$durata;
+		$insert_film['titolo']= addslashes($titolo);
+		$insert_film['descrizione']=addslashes($descrizione);
+		$insert_scheda['durata']=addslashes($durata);
 	
 		$datai = explode( "/",$data_inizio  );
 		$dataf = explode( "/",$data_fine  );
@@ -354,9 +355,14 @@ class CinemaController
 		var_dump($_FILES);
 		
 		var_dump($_POST);
-		move_uploaded_file( $_FILES['file_data']['tmp_name'], 'image/'.$_POST['title'].'.jpg');
+		$title = $_POST['title'];
+		$extension = $_POST['extension'];
+		$vowels = array(" ","'");
+		$titolourl=  str_replace($vowels, '', $title);
+		$path = $_FILES['file_data']['tmp_name'];
+		move_uploaded_file($path , 'image/'.$titolourl.".".$extension);
 
-
+	
 		// $targetPath = "image/".$_FILES['file']['name'];
 		// //var_dump($targetPath);
 

@@ -3,3 +3,4 @@ image/
 .htaccess
 .vscode/
 
+.vscode/settings.json
