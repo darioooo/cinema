@@ -566,10 +566,10 @@
 				<div class="form-group" id="myForm">
 
 					<label for="comment">data inizio</label>
-					<input id="datainizio" class="datepicker form-control " data-date-format="dd/mm/yyyy" rows="1" required>
+					<input id="datainizio" class="datepicker form-control " data-date-format="dd/mm/yyyy" rows="1" required autocomplete="off">
 
 					<label for="comment">data fine</label>
-					<input id="datafine" class="datepicker form-control " data-date-format="dd/mm/yyyy" rows="1" required>
+					<input id="datafine" class="datepicker form-control " data-date-format="dd/mm/yyyy" rows="1" required autocomplete="off">
 					<div id="orari" style="text-align: left;">
 
 					</div>

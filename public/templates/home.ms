@@ -115,11 +115,7 @@
 				<h1>PROSSIMAMENTE</h1>
 			</div> {{#filmafter}}
 			<div value="{{indice}}" id="film-futuri" class="column">
-<<<<<<< HEAD
 				<img src="../{{immagine}}" id="film-after-img" value="{{indice}}" idDettaglio="{{id}}">
-=======
-				<img src="../{{immagine}}" id="film-after-img" value="{{indice}}">
->>>>>>> 598aa57080081625287e8b02d39ff17d7a95ab56
 			</div>
 			{{/filmafter}}
 		</div>
