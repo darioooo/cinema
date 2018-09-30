@@ -31,6 +31,7 @@
 		var orari;
 		var fileImputtato;
 		var form_data;
+		var extensionImage;
 
 
 
@@ -165,6 +166,9 @@
 					if (durata != null) {
 						dataString = dataString + '&durata=' + durata;
 					}
+					if (durata != null) {
+						dataString = dataString + '&extension=' + extensionImage;
+					}
 
 
 
@@ -176,10 +180,14 @@
 								allowedFileExtensions: ["jpg", "png", "gif"],
 								uploadUrl: "action_image",
 								uploadExtraData: {
-									title: titolo
+									title: titolo,
+									extension: extensionImage
 								}
 							});
 							$('.fileinput-upload-button').trigger('click');
+							console.log(extensionImage);
+
+
 						} else {
 							$("#fileModal").modal();
 						}
@@ -224,73 +232,73 @@
 			$(this).animate({
 				width: '200px'
 			}, {
-				step: function (currentwidth) {
-					if (currentwidth > 150) {
-						$(this).find("#phide").fadeIn();
-						$(this).find("#phide").css("transition-duration", "0.3s");
+					step: function (currentwidth) {
+						if (currentwidth > 150) {
+							$(this).find("#phide").fadeIn();
+							$(this).find("#phide").css("transition-duration", "0.3s");
+						}
 					}
-				}
-			});
+				});
 		});
 
 		$("#buttonhide").mouseleave(function () {
 			$(this).animate({
 				width: '80px'
 			}, {
-				step: function (currentwidth) {
-					if (currentwidth < 150) {
-						$(this).find("#phide").fadeOut(3);
-						$(this).find("#phide").css("transition-duration", "0s");
+					step: function (currentwidth) {
+						if (currentwidth < 150) {
+							$(this).find("#phide").fadeOut(3);
+							$(this).find("#phide").css("transition-duration", "0s");
+						}
 					}
-				}
-			});
+				});
 
 		});
 		$("#buttonhidemodifica").mouseenter(function () {
 			$("#buttonhidemodifica").animate({
 				width: '200px'
 			}, {
-				step: function (currentwidth) {
-					if (currentwidth > 150) {
-						$(this).find("#pmodifica").fadeIn();
-						$(this).find("#pmodifica").css("transition-duration", "0.3s");
+					step: function (currentwidth) {
+						if (currentwidth > 150) {
+							$(this).find("#pmodifica").fadeIn();
+							$(this).find("#pmodifica").css("transition-duration", "0.3s");
+						}
 					}
-				}
-			});
+				});
 		});
 		$("#buttonhidemodifica").mouseleave(function () {
 			$("#buttonhidemodifica").animate({
 				width: '80px'
 			}, {
-				step: function (currentwidth) {
-					if (currentwidth < 150) {
-						$(this).find("#pmodifica").fadeOut(3);
-						$(this).find("#pmodifica").css("transition-duration", "0s");
+					step: function (currentwidth) {
+						if (currentwidth < 150) {
+							$(this).find("#pmodifica").fadeOut(3);
+							$(this).find("#pmodifica").css("transition-duration", "0s");
+						}
 					}
-				}
-			});
+				});
 		});
 		$("#buttonadd").mouseenter(function () {
 			$("#buttonadd").animate({
 				width: '200px'
 			}, {
-				step: function (currentwidth) {
-					if (currentwidth > 150) {
-						//  $(this).find("#padd").fadeIn();
+					step: function (currentwidth) {
+						if (currentwidth > 150) {
+							//  $(this).find("#padd").fadeIn();
+						}
 					}
-				}
-			});
+				});
 		});
 		$("#buttonadd").mouseleave(function () {
 			$("#buttonadd").animate({
 				width: '80px'
 			}, {
-				step: function (currentwidth) {
-					if (currentwidth < 150) {
-						//  $(this).find("#padd").fadeOut();
+					step: function (currentwidth) {
+						if (currentwidth < 150) {
+							//  $(this).find("#padd").fadeOut();
+						}
 					}
-				}
-			});
+				});
 		});
 
 		$("#newfilm").click(function () {
@@ -323,6 +331,8 @@
 		$("#saveModal").click(function () {
 			if ($('#input-b9').val() != '' && $('#title').val() != '') {
 				var urlimg = $('.file-preview-image').attr('src');
+				var titleImage = $('.file-preview-image').attr('title');
+				extensionImage = titleImage.split('.').pop();
 				// console.log(urlimg);
 				url = null;
 				$("#imagediv").html("<img style=\"  max-height: 200px;\" src=" + urlimg + "></img>");
@@ -499,8 +509,8 @@
 
 <div id="block" style="padding-top: 70px;">
 	<div class="btn-group-vertical inlinea col-sm-4 col-md-4" id="leftdiv">
-		<button type="button" class="btn " style="visibility: hidden; text-align: center;" id="buttonadd" data-toggle="modal"
-		    data-backdrop="static" data-keyboard="false" data-target="#fileModal">
+		<button type="button" class="btn " style="visibility: hidden; text-align: center;" id="buttonadd" data-toggle="modal" data-backdrop="static"
+		 data-keyboard="false" data-target="#fileModal">
 			<span id="padd" class="glyphicon glyphicon-plus" style="color:white;"></span>
 		</button>
 		<button type="button" class="btn " style="visibility: hidden; text-align: center;" id="buttonhide">
@@ -520,7 +530,7 @@
 				</button>
 
 				<button class="btn btn-danger " type="button" id="newfilm" data-toggle="modal" data-backdrop="static" data-keyboard="false"
-				    data-target="#fileModal">
+				 data-target="#fileModal">
 					<span class="glyphicon glyphicon-plus" style="color:white; ">INSERISCI NUOVO FILM</span>
 				</button>
 			</div>

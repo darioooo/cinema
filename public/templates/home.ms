@@ -54,7 +54,7 @@
 							<div class="carousel-inner">
 								{{#filmtoday}}
 								<div class="{{active}}" value="{{indice}}" id="imageFilmDiv">
-									<img src="http://localhost/cinema/{{immagine}}" class="imgfilm" value="{{indice}}">
+									<img src="../{{immagine}}" class="imgfilm" value="{{indice}}">
 								</div>
 								{{/filmtoday}}
 								<a class="left carousel-control" href="#myCarousel" data-slide="prev">
@@ -106,7 +106,7 @@
 				<h1>PROSSIMAMENTE</h1>
 			</div> {{#filmafter}}
 			<div value="{{indice}}" id="film-futuri" class="column">
-				<img src="http://localhost/cinema/{{immagine}}" id="film-after-img" value="{{indice}}">
+				<img src="../{{immagine}}" id="film-after-img" value="{{indice}}">
 			</div>
 			{{/filmafter}}
 		</div>
@@ -117,7 +117,7 @@
 		</div>
 		<div>
 			<div class=" text-center " style="min-height: 100px;background-image: url(
-		    'http://localhost/cinema/CinemaImages/chisiamobg.png'); padding: 10px 0px 10px; ">
+		    '../CinemaImages/chisiamobg.png'); padding: 10px 0px 10px; ">
 			</div>
 			<div id="myCarousel " class="carousel slide " data-ride="carousel" data-interval="5000">
 				<div class="carousel-inner cinema-slider ">
@@ -154,7 +154,7 @@
 				</div>
 			</div>
 			<div class="text-center " style="min-height: 100px;background-image: url(
-		    'http://localhost/cinema/CinemaImages/chisiamobg.png'); padding: 10px 0px 10px; ">
+		    '../CinemaImages/chisiamobg.png'); padding: 10px 0px 10px; ">
 			</div>
 		</div>
 	</div>
@@ -165,19 +165,16 @@
 		</div>
 		<div id="storia-contenuto">
 			<div id="storia-icona">
-				<img src="http://localhost/cinema/CinemaImages/movie-projector.png " style="float: right; max-width: 150px; ">
+				<img src="../CinemaImages/movie-projector.png " style="float: right; max-width: 150px; ">
 			</div>
 			<div id="storia-testo">
-				<h3>Il Cinema Accademia è un teatro situato a Pontassieve.
-
-					Già dal 1870 si erano avviate le pratiche relative alla costruzione del teatro, ma solo vent'anni dopo fu
-					realizzato con la denominazione di Teatro dell'Accademia Vincenzo da Filicaia. Nel 1929 il locale venne dato in
-					gestione al Partito Nazionale Fascista e venne ben presto adibito anche a cinematografo.
-
-					In questa redazione, giunta fino agli anni cinquanta, il teatro presentava una sala presumibilmente ovata, 14
-					palchi e un loggione, capaci di ospitare 700 spettatori. Nel 1990 è stato restaurato sia nell'impiantistica che
-					nelle decorazioni. Nella nuova redazione ha accentuato il suo ruolo di sala cinematografica, con posti a sedere
-					solo in platea, mentre la galleria è stata adattata a cabina di proiezione e di regia.</h3>
+				<h3>Il Cinema Accademia è un teatro situato a Pontassieve. Già dal 1870 si erano avviate le pratiche relative alla costruzione
+					del teatro, ma solo vent'anni dopo fu realizzato con la denominazione di Teatro dell'Accademia Vincenzo da Filicaia.
+					Nel 1929 il locale venne dato in gestione al Partito Nazionale Fascista e venne ben presto adibito anche a cinematografo.
+					In questa redazione, giunta fino agli anni cinquanta, il teatro presentava una sala presumibilmente ovata, 14 palchi
+					e un loggione, capaci di ospitare 700 spettatori. Nel 1990 è stato restaurato sia nell'impiantistica che nelle decorazioni.
+					Nella nuova redazione ha accentuato il suo ruolo di sala cinematografica, con posti a sedere solo in platea, mentre
+					la galleria è stata adattata a cabina di proiezione e di regia.</h3>
 			</div>
 		</div>
 	</div>
