@@ -56,6 +56,7 @@
 
 		function getFilmByid(id) {
 			var filmi;
+			$('.insertorari').empty();
 			$.ajax({
 				type: "POST",
 				url: "getFilm",
@@ -100,7 +101,7 @@
 							" " +
 							element.giornosettimana +
 							"</p></div><div class=\"input-group col-md-8 clockpicker \" style=\"float: left; display: inline-flex;\" data-autoclose=\"true\">";
-						getOrari.forEach(x => {
+						splittedOrari.forEach(x => {
 							html = html +
 								"<div class=\"input-group col-md-3 clockpicker \"  data-autoclose=\"true\"><span class=\"input-group-addon\"><span class=\"glyphicon glyphicon-time\"></span></span><input type=\"text\" class=\"form-control orariDiv ora\" value= " +
 								x +
@@ -198,12 +199,12 @@
 		});
 
 		$(".success-modify-modal").click(function () {
-			data_inizio = $(classToModify + ".datainizio").val();
-			data_fine = $(classToModify + ".datafine").val();
-			descrizione = $(classToModify + ".descrizione").val();
-			attori = $(classToModify + ".attori").val();
-			regia = $(classToModify + ".regia").val();
-			durata = $(classToModify + ".durata").val();
+			data_inizio = $(".next_films_modify .datainizio").val();
+			data_fine = $(".next_films_modify .datafine").val();
+			descrizione = $(".next_films_modify .descrizione").val();
+			attori = $(".next_films_modify .attori").val();
+			regia = $(".next_films_modify .regia").val();
+			durata = $(".next_films_modify .durata").val();
 
 			if (id != null) {
 				var dataString = dataString + '&id=' + id;
@@ -237,8 +238,8 @@
 				orariol['day'] = giorno;
 				orariol['giornosettimana'] = giornosettimana;
 
-				$(this).parent().find('.orariDiv').children().children().each(function () {
-					console.log($(this).find('.ora').val());
+				$(this).find('.clockpicker').children().children().each(function () {
+					console.log("zvosodvosd" + $(this).find('.ora').val());
 					orariol['orari'].push($(this).find('.ora').val());
 				});
 				orarioO.push(orariol);
@@ -251,6 +252,8 @@
 
 			var orariString = JSON.stringify(orarioO);
 			dataString = dataString + "&orari = " + orariString;
+
+			console.log("DATASTRING: " + dataString);
 
 			$.ajax({
 				type: "POST",
@@ -371,8 +374,9 @@
 						.mounth +
 					"/" + orari[i].year +
 					"</p></div><div class=\"input-group col-md-8 clockpicker \" style=\"float: left; display: inline-flex;\" data-autoclose=\"true\">";
-
+				console.log("yuppiayei " + orari[i]);
 				for (o = 0; o < orari[i].orari.length; o++) {
+					console.log("yuppiayei " + orari[i].orari[o]);
 					html = html +
 						"<div class=\"input-group col-md-3 clockpicker \"  data-autoclose=\"true\"><span class=\"input-group-addon\"><span class=\"glyphicon glyphicon-time\"></span></span><input type=\"text\" class=\"form-control ora\" value= " +
 						orari[i].orari[o] +
@@ -593,11 +597,11 @@
 							<textarea value="" id="descrizione" class="form-control descrizione" rows="5" required></textarea>
 						</div>
 						<br>
-						<div class="row insertorari" style="overflow: scroll; height: 120px;">
+						<div class="row insertorari" style="overflow: scroll; height: 65px;">
 						</div>
 					</div>
 				</div>
-				<div class="modal-footer" style="background-color: rgba(128, 0, 0, 0.7); text-align: center;">
+				<div class="modal-footer" style="background-color: rgba(128, 0, 0, 0.7); text-align: center; z-index: 1000;">
 					<button class="btn btn-success success-modify-modal">Modifica</button>
 					<button class="btn btn-danger close-modify-modal" data-dismiss="modal">Annulla</button>
 				</div>

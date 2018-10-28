@@ -28,6 +28,60 @@ class CinemaRest
         }
     }
 
+    /**
+	 * @desc This method provides the registration html page
+	 * @link /update
+	 * @method POST
+	 * @param Request $request
+	 * @param Response $response
+	 * @param array $args
+	 * @return \Slim\Http\Response
+	 */
+    function update(Request $request, Response $response, $args)
+    {
+        try {
+            $film_data['id']= $_POST["id"];
+            $film_data['data_inizio']= $_POST["data_inizio"];
+            $film_data['data_fine']= $_POST["data_fine"];
+            $film_data['descrizione']= $_POST["descrizione"];
+            $scheda_data['id_film']=$_POST["id_film"];
+            $scheda_data['attori']= $_POST["attori"];
+            $scheda_data['regia']= $_POST["regia"];
+            $scheda_data['duarta']= $_POST["durata"];
+            $filmorari['id_film'] = $_POST["id"];
+            $filmorari_data = $_POST["orari"];
+            // $filmorari['id_orario'] = $_POST["id_orario"];
+
+
+            $film_orario= new Film_Orario(); 
+            $film = new Film();
+            $scheda = new Scheda();
+            $orariToday= $film_orario->delete($filmorari);
+            if($filmorari_data!= null)
+            {
+                foreach($filmorari_data as $value)
+                {
+                   foreach($value->orari as $a)
+                   {
+                       $orarioDbo["ora"]=$orarioDbo["ora"] ." ".$a;
+                   }
+
+                   $orarioDbo["giorno"]=$value->year.'/'.$value->mounth.'/'.$value->day;
+                   $orarioDbo["giornosettimana"]=$value->giornoSettimana;
+                   $orarioDbo["id_film"]=$id[0]['id'];
+                   $film_orario->insert($orarioDbo);
+                   $orarioDbo["ora"]="";
+                }
+            }
+            $schedaFilm = $scheda->update($scheda_data);
+            $filmData = $film->update($film_data); 
+        }
+
+        catch(Exception $e)
+        {
+            echo $e->getMessage();
+        }
+    }
 
     /**
 	 * @desc This method provides the registration html page

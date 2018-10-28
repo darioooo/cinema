@@ -35,3 +35,4 @@ $this->map(['POST'], "/getorari", "CinemaRest:getOrari");
 
 $this->map(['POST'], "/updateorari", "CinemaRest:updateOrari");
 
+$this->map(['POST'], "/update", "CinemaRest:update");
